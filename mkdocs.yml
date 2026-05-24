@@ -263,6 +263,7 @@ nav:
     - "Data Governance & Cataloging": data-ref/data-governance-cataloging.md
     - "Real-Time & Streaming": data-ref/real-time-streaming.md
     - "Data Serving & Consumption": data-ref/data-serving-consumption.md
+    - "Design Patterns Reference": data-ref/data_design_patterns_exhaustive.html
 
   - Glossary:
     - AWS: glossary/aws.md
