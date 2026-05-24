@@ -45,6 +45,17 @@
   }
   #header h1 { font-size: 16px; font-weight: 600; color: var(--header-text); }
   #header .sub { font-size: 12px; color: var(--header-sub); }
+  #header a.home-link {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--header-sub);
+    text-decoration: none;
+    border: 1px solid #3a3d4a;
+    border-radius: 6px;
+    padding: 4px 10px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  #header a.home-link:hover { color: var(--header-text); border-color: #6a6d7a; }
 
   .page { max-width: 1100px; margin: 0 auto; padding: 24px 20px 48px; }
 
@@ -138,7 +149,8 @@
 
 <div id="header">
   <h1>Data Design Patterns</h1>
-  <span class="sub">Exhaustive reference — 14 categories</span>
+  <span class="sub">Exhaustive reference — 19 categories</span>
+  <a class="home-link" href="https://datechbridge-projects.github.io/databricks-trainer/" target="_blank" rel="noopener">&#8599; Home</a>
 </div>
 
 <div class="page">
@@ -183,6 +195,22 @@ const cats = [
   },
   {
     num: "02", color: "#5DCAA5", bg: "#D1F5EA",
+    title: "Storage systems",
+    items: [
+      { name: "Object / Blob storage", desc: "S3, Azure Blob, GCS — unstructured at scale" },
+      { name: "Block storage", desc: "EBS, Azure Disk — raw volumes, low latency I/O" },
+      { name: "File storage (NFS)", desc: "NFS, EFS, Azure Files — shared POSIX filesystem" },
+      { name: "HDFS", desc: "Distributed file system for big data clusters" },
+      { name: "DBFS (Databricks FS)", desc: "Abstraction over cloud object storage in Databricks" },
+      { name: "Local / ephemeral storage", desc: "Instance-attached SSD, temp compute storage" },
+      { name: "Cold / archive storage", desc: "S3 Glacier, Azure Archive — low cost, slow retrieval" },
+      { name: "Shared network storage (SAN)", desc: "Storage area network, block-level over network" },
+      { name: "In-memory storage", desc: "Redis, Memcached — sub-millisecond caching layer" },
+      { name: "Delta / Iceberg / Hudi tables", desc: "ACID table format on top of object storage" },
+    ]
+  },
+  {
+    num: "03", color: "#5DCAA5", bg: "#D1F5EA",
     title: "OLTP vs OLAP",
     items: [
       { name: "OLTP", desc: "Transactional, fast small writes" },
@@ -314,7 +342,72 @@ const cats = [
     ]
   },
   {
-    num: "14", color: "#D85A30", bg: "#FAE0D6",
+    num: "15", color: "#888780", bg: "#E8E6DF",
+    title: "Data governance",
+    items: [
+      { name: "Data governance framework", desc: "Policies, roles, and processes for data ownership" },
+      { name: "Data stewardship", desc: "Domain owners accountable for data assets" },
+      { name: "Data catalog", desc: "Centralized discovery: Collibra, Alation, Atlan" },
+      { name: "Data lineage", desc: "End-to-end tracking of data origin & transformations" },
+      { name: "Master data management (MDM)", desc: "Golden record for key entities (customer, product)" },
+      { name: "Reference data management", desc: "Controlled vocabularies, code tables, lookups" },
+      { name: "Data classification", desc: "Tagging PII, PHI, confidential, public" },
+      { name: "Data privacy & compliance", desc: "GDPR, CCPA, HIPAA controls & audit trails" },
+      { name: "Access control policies", desc: "RBAC, ABAC, column/row-level security" },
+      { name: "Data retention & archival", desc: "Lifecycle policies, regulatory hold" },
+      { name: "Data contracts", desc: "Schema agreements between producers and consumers" },
+      { name: "Policy-as-code", desc: "Open Policy Agent (OPA), automated enforcement" },
+      { name: "Unity Catalog", desc: "Databricks unified governance across clouds" },
+      { name: "Microsoft Purview", desc: "Azure-native data catalog & compliance" },
+      { name: "AWS Glue Data Catalog", desc: "Managed metadata store for AWS data assets" },
+      { name: "Google Dataplex", desc: "GCP intelligent data fabric & governance" },
+      { name: "Collibra", desc: "Enterprise data intelligence & governance platform" },
+      { name: "Alation", desc: "Data catalog with active governance features" },
+    ]
+  },
+  {
+    num: "16", color: "#888780", bg: "#E8E6DF",
+    title: "Data quality frameworks",
+    items: [
+      { name: "Great Expectations", desc: "Python-native data validation & docs" },
+      { name: "dbt tests", desc: "Built-in & custom tests in dbt pipelines" },
+      { name: "Soda Core", desc: "SQL-based data quality checks" },
+      { name: "Apache Griffin", desc: "Big data quality at scale (batch + stream)" },
+      { name: "AWS Deequ", desc: "Spark-based data quality library by Amazon" },
+      { name: "MonteCarlo", desc: "Data observability & anomaly detection" },
+      { name: "Acceldata", desc: "Multi-layer data reliability platform" },
+      { name: "Talend Data Quality", desc: "Profiling, cleansing, deduplication" },
+      { name: "Informatica DQ", desc: "Enterprise-grade data quality suite" },
+      { name: "Data profiling", desc: "Automated stats, nulls, distributions" },
+      { name: "Data validation rules", desc: "Schema, range, referential checks" },
+      { name: "Data SLAs / SLOs", desc: "Freshness, completeness, accuracy targets" },
+      { name: "Anomaly detection", desc: "ML-based drift & outlier alerting" },
+      { name: "Reconciliation patterns", desc: "Source-to-target count/sum checks" },
+    ]
+  },
+  {
+    num: "16", color: "#378ADD", bg: "#D6E9FA",
+    title: "Data frameworks",
+    items: [
+      { name: "Apache Spark", desc: "Distributed in-memory batch & stream processing" },
+      { name: "Apache Flink", desc: "Low-latency stateful stream processing" },
+      { name: "Apache Beam", desc: "Unified batch/stream SDK, multi-runner" },
+      { name: "Apache Kafka", desc: "Distributed event streaming platform" },
+      { name: "Apache Airflow", desc: "Workflow orchestration & DAG scheduling" },
+      { name: "dbt (data build tool)", desc: "SQL-first transformation & testing" },
+      { name: "Apache Hadoop / HDFS", desc: "Distributed storage & MapReduce" },
+      { name: "Apache Hive", desc: "SQL interface over Hadoop / object storage" },
+      { name: "Trino / Presto", desc: "Distributed SQL query engine, federated" },
+      { name: "Apache Arrow", desc: "In-memory columnar format & compute" },
+      { name: "DuckDB", desc: "Embedded OLAP for local analytics" },
+      { name: "Prefect", desc: "Modern Python-first workflow orchestration" },
+      { name: "Dagster", desc: "Asset-centric data orchestration platform" },
+      { name: "DAMA-DMBOK", desc: "Industry framework for data management practice" },
+      { name: "Zachman / TOGAF", desc: "Enterprise architecture frameworks for data" },
+    ]
+  },
+  {
+    num: "18", color: "#D85A30", bg: "#FAE0D6",
     title: "AI & vector data patterns",
     items: [
       { name: "Embedding storage", desc: "Vector DBMS for AI workloads" },

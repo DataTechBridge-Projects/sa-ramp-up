@@ -84,7 +84,22 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
 
 <script>
 // ── SA Notes map (patched by publish.py) ───────────────────────────────────
-const NOTES_MAP = {};
+const NOTES_MAP = {
+  'Introduction to Databricks Architecture on AWS': 'databricks/notes/notes_section_01_introduction_to_databricks_architecture_on_aws/',
+  'Databricks Compute and Cluster Configuration': 'databricks/notes/notes_section_02_databricks_compute_and_cluster_configuration/',
+  'Deep Dive into Delta Lake: ACID, Versioning, and Optimization': 'databricks/notes/notes_section_03_deep_dive_into_delta_lake_acid_versioning_and_opti/',
+  'Implementing Medallion Architecture: Bronze, Silver, and Gold Layers': 'databricks/notes/notes_section_04_implementing_medallion_architecture_bronze_silver_/',
+  'Efficient Data Ingestion with Auto Loader and COPY INTO': 'databricks/notes/notes_section_05_efficient_data_ingestion_with_auto_loader_and_copy/',
+  'Data Transformation with Spark SQL and PySpark': 'databricks/notes/notes_section_06_data_transformation_with_spark_sql_and_pyspark/',
+  'Stream Processing with Structured Streaming': 'databricks/notes/notes_section_07_stream_processing_with_structured_streaming/',
+  'Building Declarable Pipelines with Delta Live Tables (DLT)': 'databricks/notes/notes_section_08_building_declarable_pipelines_with_delta_live_tabl/',
+  'Data Governance and Security with Unity Catalog': 'databricks/notes/notes_section_09_data_governance_and_security_with_unity_catalog/',
+  'Monitoring, Logging, and Observability in Databricks': 'databricks/notes/notes_section_10_monitoring_logging_and_observability_in_databricks/',
+  'Cost Management and AWS Resource Optimization': 'databricks/notes/notes_section_11_cost_management_and_aws_resource_optimization/',
+  'Migration Strategies: Transitioning from AWS Glue to Databricks': 'databricks/notes/notes_section_12_migration_strategies_transitioning_from_aws_glue_t/',
+  'Orchestration and Automation with Databricks Workflows': 'databricks/notes/notes_section_13_orchestration_and_automation_with_databricks_workf/',
+  'Exam Readiness and Final Review': 'databricks/notes/notes_section_14_exam_readiness_and_final_review/'
+};
 
 // ── Domain config ──────────────────────────────────────────────────────────
 const DOMAINS = ['Data Engineering','Data Governance','Mosaic AI','Analytics & BI',
