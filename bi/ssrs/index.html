@@ -1,0 +1,8816 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A multi-agent AI system that generates technical training courses for  Solution Architects — powered by LangGraph and local LLM inference">
+      
+      
+        <meta name="author" content="Tech Ramp Up">
+      
+      
+        <link rel="canonical" href="https://datechbridge-projects.github.io/sa-ramp-up/bi/ssrs/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../cognos/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>SSRS - Tech Ramp Up</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ssrs-migration-guide-for-solution-architects" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Tech Ramp Up" class="md-header__button md-logo" aria-label="Tech Ramp Up" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tech Ramp Up
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SSRS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../gcp/" class="md-tabs__link">
+          
+  
+  
+  Google
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../snowflake/" class="md-tabs__link">
+          
+  
+  
+  Snowflake
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../azure/" class="md-tabs__link">
+          
+  
+  
+  Azure
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../databricks/" class="md-tabs__link">
+          
+  
+  
+  Databricks
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../aws/" class="md-tabs__link">
+          
+  
+  
+  AWS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../etl/" class="md-tabs__link">
+          
+  
+  
+  ETL Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  BI Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../otf/" class="md-tabs__link">
+          
+  
+  
+  OTF
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../data-ref/" class="md-tabs__link">
+          
+  
+  
+  Data Solutions & Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../glossary/aws/" class="md-tabs__link">
+          
+  
+  
+  Glossary
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tech Ramp Up" class="md-nav__button md-logo" aria-label="Tech Ramp Up" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Tech Ramp Up
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Google
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Google
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_01_gcp_fundamentals_and_resource_hierarchy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. GCP Fundamentals and Resource Hierarchy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_02_security_identity_and_access_management_iam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Security, Identity, and Access Management (IAM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_03_cloud_storage_and_data_lake_architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Cloud Storage and Data Lake Architectures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_04_relational_databases_cloud_sql_and_spanner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Relational Databases: Cloud SQL and Spanner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_05_nosql_and_widecolumn_stores_bigtable_and_firestore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. NoSQL and Wide-Column Stores: Bigtable and Firestore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_06_bigquery_scalable_data_warehousing_and_analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. BigQuery: Scalable Data Warehousing and Analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_07_realtime_data_ingestion_with_pubsub/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Real-time Data Ingestion with Pub/Sub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_08_stream_and_batch_processing_with_dataflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Stream and Batch Processing with Dataflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_09_managed_hadoop_and_spark_with_cloud_dataproc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Managed Hadoop and Spark with Cloud Dataproc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_10_workflow_orchestration_with_cloud_composer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Workflow Orchestration with Cloud Composer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_11_data_migration_and_modernization_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Data Migration and Modernization Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_12_monitoring_logging_and_observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Monitoring, Logging, and Observability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_13_cost_management_and_billing_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Cost Management and Billing Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_14_machine_learning_integration_with_vertex_ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Machine Learning Integration with Vertex AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_15_competitive_positioning_and_industry_use_cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Competitive Positioning and Industry Use Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_16_certification_exam_readiness_and_capstone_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Certification Exam Readiness and Capstone Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_18" id="__nav_2_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SA Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_18">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SA Quick Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_01_gcp_fundamentals_and_resource_hierarchy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GCP Fundamentals and Resource Hierarchy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_02_security_identity_and_access_management_iam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security, Identity, and Access Management (IAM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_03_cloud_storage_and_data_lake_architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cloud Storage and Data Lake Architectures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_04_relational_databases_cloud_sql_and_spanner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relational Databases: Cloud SQL and Spanner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_05_nosql_and_widecolumn_stores_bigtable_and_firestore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NoSQL and Wide-Column Stores: Bigtable and Firestore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_06_bigquery_scalable_data_warehousing_and_analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BigQuery: Scalable Data Warehousing and Analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_07_realtime_data_ingestion_with_pubsub/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-time Data Ingestion with Pub/Sub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_08_stream_and_batch_processing_with_dataflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stream and Batch Processing with Dataflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_09_managed_hadoop_and_spark_with_cloud_dataproc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Managed Hadoop and Spark with Cloud Dataproc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_10_workflow_orchestration_with_cloud_composer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Orchestration with Cloud Composer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_11_data_migration_and_modernization_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Migration and Modernization Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_12_monitoring_logging_and_observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoring, Logging, and Observability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_13_cost_management_and_billing_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost Management and Billing Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_14_machine_learning_integration_with_vertex_ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Machine Learning Integration with Vertex AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_15_competitive_positioning_and_industry_use_cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Competitive Positioning and Industry Use Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_16_certification_exam_readiness_and_capstone_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certification Exam Readiness and Capstone Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowflake
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Snowflake
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_01_snowflake_architecture_and_core_components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Snowflake Architecture and Core Components
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_02_data_storage_and_semistructured_data_handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Data Storage and Semi-Structured Data Handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_03_virtual_warehouse_management_and_scaling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Virtual Warehouse Management and Scaling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_04_data_ingestion_techniques_and_snowpipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Data Ingestion Techniques and Snowpipe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_05_time_travel_failsafe_and_zerocopy_cloning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Time Travel, Fail-safe, and Zero-Copy Cloning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_06_security_identity_and_access_control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Security, Identity, and Access Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_07_data_sharing_and_the_snowflake_marketplace/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Data Sharing and the Snowflake Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_08_snowpark_and_programmable_data_engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Snowpark and Programmable Data Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_09_query_optimization_and_performance_tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Query Optimization and Performance Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_10_monitoring_auditing_and_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Monitoring, Auditing, and Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_11_cost_management_and_billing_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Cost Management and Billing Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_12_migration_and_adoption_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Migration and Adoption Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_13_snowflake_use_cases_and_competitive_positioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Snowflake Use Cases and Competitive Positioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_14_certification_exam_preparation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Certification Exam Preparation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_16" id="__nav_3_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SA Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SA Quick Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_01_snowflake_architecture_and_core_components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowflake Architecture and Core Components
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_02_data_storage_and_semistructured_data_handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Storage and Semi-Structured Data Handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_03_virtual_warehouse_management_and_scaling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Virtual Warehouse Management and Scaling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_04_data_ingestion_techniques_and_snowpipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Ingestion Techniques and Snowpipe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_05_time_travel_failsafe_and_zerocopy_cloning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Time Travel, Fail-safe, and Zero-Copy Cloning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_06_security_identity_and_access_control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security, Identity, and Access Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_07_data_sharing_and_the_snowflake_marketplace/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Sharing and the Snowflake Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_08_snowpark_and_programmable_data_engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowpark and Programmable Data Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_09_query_optimization_and_performance_tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Query Optimization and Performance Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_10_monitoring_auditing_and_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoring, Auditing, and Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_11_cost_management_and_billing_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost Management and Billing Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_12_migration_and_adoption_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration and Adoption Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_13_snowflake_use_cases_and_competitive_positioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowflake Use Cases and Competitive Positioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_14_certification_exam_preparation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certification Exam Preparation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Azure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Azure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_01_course_introduction_and_dp203_exam_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Course Introduction and DP-203 Exam Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_02_designing_and_implementing_azure_storage_solutions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Designing and Implementing Azure Storage Solutions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_03_implementing_relational_data_stores_with_azure_sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Implementing Relational Data Stores with Azure SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_04_implementing_nosql_solutions_with_azure_cosmos_db/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Implementing NoSQL Solutions with Azure Cosmos DB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_05_data_integration_and_orchestration_with_azure_data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Data Integration and Orchestration with Azure Data Factory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_06_largescale_data_processing_with_azure_synapse_anal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Large-Scale Data Processing with Azure Synapse Analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_07_stream_processing_with_azure_stream_analytics_and_/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Stream Processing with Azure Stream Analytics and Event Hubs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_08_distributed_data_processing_with_azure_databricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Distributed Data Processing with Azure Databricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_09_implementing_security_identity_and_access_control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Implementing Security, Identity, and Access Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_10_monitoring_logging_and_operations_for_data_pipelin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Monitoring, Logging, and Operations for Data Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_11_data_migration_and_cloud_adoption_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Data Migration and Cloud Adoption Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_12_managing_cost_performance_and_billing_for_azure_da/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Managing Cost, Performance, and Billing for Azure Data Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_13_data_governance_and_metadata_management_with_azure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Data Governance and Metadata Management with Azure Purview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_14_exam_readiness_final_review_and_practice_scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Exam Readiness: Final Review and Practice Scenarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_16" id="__nav_4_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SA Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SA Quick Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Databricks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Databricks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_01_introduction_to_databricks_architecture_on_aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introduction to Databricks Architecture on AWS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_02_databricks_compute_and_cluster_configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Databricks Compute and Cluster Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_03_deep_dive_into_delta_lake_acid_versioning_and_opti/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Deep Dive into Delta Lake: ACID, Versioning, and Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_04_implementing_medallion_architecture_bronze_silver_/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Implementing Medallion Architecture: Bronze, Silver, and Gold Layers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_05_efficient_data_ingestion_with_auto_loader_and_copy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Efficient Data Ingestion with Auto Loader and COPY INTO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_06_data_transformation_with_spark_sql_and_pyspark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Data Transformation with Spark SQL and PySpark
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_07_stream_processing_with_structured_streaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Stream Processing with Structured Streaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_08_building_declarable_pipelines_with_delta_live_tabl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Building Declarable Pipelines with Delta Live Tables (DLT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_09_data_governance_and_security_with_unity_catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Data Governance and Security with Unity Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_10_monitoring_logging_and_observability_in_databricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Monitoring, Logging, and Observability in Databricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_11_cost_management_and_aws_resource_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Cost Management and AWS Resource Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_12_migration_strategies_transitioning_from_aws_glue_t/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Migration Strategies: Transitioning from AWS Glue to Databricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_13_orchestration_and_automation_with_databricks_workf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Orchestration and Automation with Databricks Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_14_exam_readiness_and_final_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Exam Readiness and Final Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_16" id="__nav_5_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SA Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SA Quick Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_01_introduction_to_databricks_architecture_on_aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Databricks Architecture on AWS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_02_databricks_compute_and_cluster_configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Databricks Compute and Cluster Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_03_deep_dive_into_delta_lake_acid_versioning_and_opti/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deep Dive into Delta Lake: ACID, Versioning, and Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_04_implementing_medallion_architecture_bronze_silver_/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementing Medallion Architecture: Bronze, Silver, and Gold Layers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_05_efficient_data_ingestion_with_auto_loader_and_copy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Efficient Data Ingestion with Auto Loader and COPY INTO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_06_data_transformation_with_spark_sql_and_pyspark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Transformation with Spark SQL and PySpark
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_07_stream_processing_with_structured_streaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stream Processing with Structured Streaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_08_building_declarable_pipelines_with_delta_live_tabl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building Declarable Pipelines with Delta Live Tables (DLT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_09_data_governance_and_security_with_unity_catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Governance and Security with Unity Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_10_monitoring_logging_and_observability_in_databricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoring, Logging, and Observability in Databricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_11_cost_management_and_aws_resource_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost Management and AWS Resource Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_12_migration_strategies_transitioning_from_aws_glue_t/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration Strategies: Transitioning from AWS Glue to Databricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_13_orchestration_and_automation_with_databricks_workf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestration and Automation with Databricks Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_14_exam_readiness_and_final_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Readiness and Final Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AWS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_01_course_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Course Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_02_exam_overview_and_strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Exam Overview and Strategy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_03_aws_data_architecture_foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. AWS Data Architecture Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_04_data_ingestion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Data Ingestion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_05_aws_glue_deep_dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. AWS Glue Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_06_amazon_s3_and_data_lake_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Amazon S3 and Data Lake Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_07_amazon_athena/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Amazon Athena
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_08_amazon_redshift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Amazon Redshift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_09_streaming_data_with_kinesis_and_msk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Streaming Data with Kinesis and MSK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_10_nosql_and_purposebuilt_databases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. NoSQL and Purpose-Built Databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_11_aws_lake_formation_and_data_governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. AWS Lake Formation and Data Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_12_data_orchestration_and_pipelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Data Orchestration and Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_13_performance_cost_optimization_and_monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Performance, Cost Optimization, and Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_14_security_compliance_and_networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Security, Compliance, and Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_15_capstone_and_exam_readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Capstone and Exam Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_17" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_17" id="__nav_6_17_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SA Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SA Quick Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_01_course_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_02_exam_overview_and_strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Overview and Strategy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_03_aws_data_architecture_foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Data Architecture Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_04_data_ingestion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Ingestion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_05_aws_glue_deep_dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Glue Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_06_amazon_s3_and_data_lake_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Amazon S3 and Data Lake Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_07_amazon_athena/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Amazon Athena
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_08_amazon_redshift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Amazon Redshift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_09_streaming_data_with_kinesis_and_msk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Streaming Data with Kinesis and MSK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_10_nosql_and_purposebuilt_databases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NoSQL and Purpose-Built Databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_11_aws_lake_formation_and_data_governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Lake Formation and Data Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_12_data_orchestration_and_pipelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Orchestration and Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_13_performance_cost_optimization_and_monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Performance, Cost Optimization, and Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_14_security_compliance_and_networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security, Compliance, and Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_15_capstone_and_exam_readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capstone and Exam Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETL Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETL Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etl/ab_initio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ab Initio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etl/talend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Talend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etl/datastage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IBM DataStage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etl/informatica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Informatica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etl/informatica_bdm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Informatica BDM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etl/matillion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matillion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etl/ssis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etl/pentaho/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pentaho
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etl/odi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Oracle Data Integrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etl/snaplogic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SnapLogic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etl/alteryx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Alteryx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BI Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    BI Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSRS
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSRS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#platform-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Platform Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-ecosystem-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ecosystem Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Ecosystem Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#product-variants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product Variants
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-customers-use-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Customers Use It
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-discovery-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Discovery Questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-component-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Component Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-artifact-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Artifact Lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-data-sources-and-dataset-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Data Sources and Dataset Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Data Sources and Dataset Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Sources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Datasets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-source-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Source Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameter Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-rendering-and-delivery-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Rendering and Delivery Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Rendering and Delivery Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rendering-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rendering Modes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delivery-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delivery Modes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-project-structure-and-version-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Project Structure and Version Control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-orchestration-and-scheduling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Orchestration and Scheduling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-metadata-lineage-and-impact-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Metadata, Lineage, and Impact Analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Metadata, Lineage, and Impact Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-tables-and-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Tables and Views
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lineage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lineage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-sql-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sample SQL Queries
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-data-quality-and-governance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Data Quality and Governance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Data Quality and Governance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#row-level-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Row-Level Security
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#column-level-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Column-Level Security
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-freshness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Freshness
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-file-formats-and-artifact-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. File Formats and Artifact Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. File Formats and Artifact Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rdl-report-definition-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RDL (Report Definition Language)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rsdl-report-definition-language-for-mobile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RSDL (Report Definition Language for Mobile)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rsd-shared-dataset-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RSD (Shared Dataset Definition)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rds-shared-data-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RDS (Shared Data Source)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rptproj-ssdt-report-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RPTPROJ (SSDT Report Project)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reportserver-db-catalog-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ReportServer DB Catalog Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#executionlogstorage-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ExecutionLogStorage View
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-assembly-dll" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom Assembly (.dll)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifact-quick-reference-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Artifact Quick-Reference Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-migration-assessment-and-artifact-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Migration Assessment and Artifact Inventory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Migration Assessment and Artifact Inventory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inventory-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inventory Approach
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complexity-scoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complexity Scoring
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-risk-areas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Risk Areas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-inventory-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sample Inventory Query
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-migration-mapping-to-databricks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Migration Mapping to Databricks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Migration Mapping to Databricks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-doesnt-map-cleanly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Doesn't Map Cleanly
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-quick-reference-cheat-sheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Quick-Reference Cheat Sheet
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cognos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IBM Cognos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quicksight/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Amazon QuickSight
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../power-bi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Power BI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tableau/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tableau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../obiee/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Oracle OBIEE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-bo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAP BusinessObjects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OTF
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OTF
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../otf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../otf/delta-lake/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Delta Lake
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../otf/hudi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apache Hudi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../otf/iceberg.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apache Iceberg
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Solutions & Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data Solutions & Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data-architecture-patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Architecture Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data-ingestion-pipelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Ingestion & Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data-storage-layers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Storage Layers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data-governance-cataloging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Governance & Cataloging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/real-time-streaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-Time & Streaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data-serving-consumption/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Serving & Consumption
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data_design_patterns_exhaustive.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design Patterns Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Glossary
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/azure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Azure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/gcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/data-architect-glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Architect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#platform-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Platform Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-ecosystem-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ecosystem Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Ecosystem Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#product-variants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product Variants
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-customers-use-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Customers Use It
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-discovery-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Discovery Questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-component-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Component Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-artifact-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Artifact Lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-data-sources-and-dataset-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Data Sources and Dataset Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Data Sources and Dataset Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Sources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Datasets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-source-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Source Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameter Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-rendering-and-delivery-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Rendering and Delivery Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Rendering and Delivery Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rendering-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rendering Modes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delivery-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delivery Modes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-project-structure-and-version-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Project Structure and Version Control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-orchestration-and-scheduling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Orchestration and Scheduling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-metadata-lineage-and-impact-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Metadata, Lineage, and Impact Analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Metadata, Lineage, and Impact Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-tables-and-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Tables and Views
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lineage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lineage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-sql-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sample SQL Queries
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-data-quality-and-governance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Data Quality and Governance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Data Quality and Governance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#row-level-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Row-Level Security
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#column-level-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Column-Level Security
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-freshness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Freshness
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-file-formats-and-artifact-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. File Formats and Artifact Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. File Formats and Artifact Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rdl-report-definition-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RDL (Report Definition Language)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rsdl-report-definition-language-for-mobile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RSDL (Report Definition Language for Mobile)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rsd-shared-dataset-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RSD (Shared Dataset Definition)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rds-shared-data-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RDS (Shared Data Source)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rptproj-ssdt-report-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RPTPROJ (SSDT Report Project)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reportserver-db-catalog-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ReportServer DB Catalog Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#executionlogstorage-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ExecutionLogStorage View
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-assembly-dll" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom Assembly (.dll)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifact-quick-reference-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Artifact Quick-Reference Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-migration-assessment-and-artifact-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Migration Assessment and Artifact Inventory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Migration Assessment and Artifact Inventory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inventory-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inventory Approach
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complexity-scoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complexity Scoring
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-risk-areas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Risk Areas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-inventory-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sample Inventory Query
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-migration-mapping-to-databricks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Migration Mapping to Databricks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Migration Mapping to Databricks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-doesnt-map-cleanly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Doesn't Map Cleanly
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-quick-reference-cheat-sheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Quick-Reference Cheat Sheet
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ssrs-migration-guide-for-solution-architects">SSRS Migration Guide for Solution Architects<a class="headerlink" href="#ssrs-migration-guide-for-solution-architects" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>This guide is for SAs analyzing a customer's SSRS estate and mapping it to Databricks (with Databricks SQL, Lakeview, Power BI, or Tableau). It is not a developer lab — focus is on understanding, discovery, and migration mapping.</p>
+</blockquote>
+<hr />
+<h2 id="platform-architecture">Platform Architecture<a class="headerlink" href="#platform-architecture" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>graph TD
+    AD[AD / Kerberos] --&gt;|auth| RS[Report Server Windows Service]
+    SQLDB[(ReportServer DB)] &lt;--&gt;|catalog, snapshots, security| RS
+    TMPDB[(ReportServerTempDB)] &lt;--&gt;|session cache| RS
+    SQLAGENT[SQL Server Agent] --&gt;|triggers subscriptions/snapshots| RS
+    SSAS[(SSAS Cube)] --&gt;|MDX/DAX queries| RS
+    SQLSRV[(SQL Server)] --&gt;|SQL queries| RS
+    ORACLE[(Oracle / ODBC)] --&gt;|queries| RS
+    RS --&gt;|serves| WP[Web Portal]
+    RS --&gt;|serves| WSAPI[Web Service / REST API]
+    WP --&gt;|browse &amp; run| BROWSER[Client Browser]
+    WSAPI --&gt;|programmatic calls| CUSTAPP[Custom Portal / .NET App]
+    CUSTAPP --&gt;|ReportViewer control| RVAPP[Embedded App]
+    RS --&gt;|email delivery| SMTP[SMTP / Email]
+    RS --&gt;|file drop| UNC[File Share / UNC]</code></pre>
+<h2 id="data-flow">Data Flow<a class="headerlink" href="#data-flow" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart LR
+    subgraph Sources
+        S1[(SQL Server)]
+        S2[(SSAS)]
+        S3[(Oracle / ODBC)]
+    end
+    subgraph SSRS["SSRS Report Server"]
+        FETCH[Fetch Data] --&gt; PROCESS[Bind Parameters\nApply Filters\nRun Expressions]
+        PROCESS --&gt; RENDER[Render Output\nHTML / PDF / Excel / CSV]
+        RENDER --&gt; DELIVER[Deliver]
+    end
+    subgraph Consumers
+        C1[Browser Portal]
+        C2[Email Subscription]
+        C3[File Share]
+        C4[Embedded App\nReportViewer]
+    end
+    S1 &amp; S2 &amp; S3 --&gt; FETCH
+    DELIVER --&gt; C1 &amp; C2 &amp; C3 &amp; C4</code></pre>
+<hr />
+<h2 id="1-ecosystem-overview">1. Ecosystem Overview<a class="headerlink" href="#1-ecosystem-overview" title="Permanent link">&para;</a></h2>
+<p>SQL Server Reporting Services (SSRS) is Microsoft's server-based reporting platform, shipped as part of SQL Server since 2000. It lives in the <strong>Microsoft BI stack</strong> alongside:</p>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SSRS</td>
+<td>Paginated, pixel-perfect operational reports — the focus of this guide</td>
+</tr>
+<tr>
+<td>SSAS</td>
+<td>Analytical engine (OLAP cubes via MDX, tabular models via DAX)</td>
+</tr>
+<tr>
+<td>SSIS</td>
+<td>ETL/data movement tool (pipelines, not reports)</td>
+</tr>
+<tr>
+<td>Power BI</td>
+<td>Self-service and interactive dashboards — the modern Microsoft BI platform</td>
+</tr>
+</tbody>
+</table>
+<h3 id="product-variants">Product Variants<a class="headerlink" href="#product-variants" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Variant</th>
+<th>Where it runs</th>
+<th>Key difference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SSRS (classic)</td>
+<td>On-premises Windows Server</td>
+<td>The baseline; ships with SQL Server</td>
+</tr>
+<tr>
+<td>Power BI Report Server</td>
+<td>On-premises</td>
+<td>A fork of SSRS that also renders Power BI Desktop (.pbix) files; requires Power BI Premium licensing</td>
+</tr>
+<tr>
+<td>Azure Paginated Reports (Power BI Premium)</td>
+<td>Azure / cloud</td>
+<td>SSRS-compatible cloud service; accepts RDL files directly</td>
+</tr>
+</tbody>
+</table>
+<h3 id="why-customers-use-it">Why Customers Use It<a class="headerlink" href="#why-customers-use-it" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Operational reporting</strong> — scheduled reports delivered to inboxes or file shares daily/weekly</li>
+<li><strong>Pixel-perfect output</strong> — fixed-layout reports for invoices, statements, regulatory filings where exact formatting matters</li>
+<li><strong>Embedded reports</strong> — rendered inside custom .NET applications via the ReportViewer control</li>
+<li><strong>Enterprise delivery</strong> — data-driven subscriptions that distribute personalized report slices to thousands of recipients from a database-driven recipient list</li>
+</ul>
+<h3 id="key-discovery-questions">Key Discovery Questions<a class="headerlink" href="#key-discovery-questions" title="Permanent link">&para;</a></h3>
+<ul>
+<li>How many reports are in the catalog? How many have been executed in the last 90 days? (Query <code>ExecutionLogStorage</code> — most estates have 60–80% unused)</li>
+<li>Are reports embedded in applications via ReportViewer, or accessed via the portal or direct URL?</li>
+<li>What data sources are in use — SQL Server only, or SSAS, Oracle, flat files?</li>
+<li>Is this plain SSRS or Power BI Report Server?</li>
+<li>Are email or file-share subscriptions business-critical? Are any data-driven subscriptions in use?</li>
+<li>Is Kerberos constrained delegation configured for data source connections?</li>
+<li>Are there external .NET assemblies (<code>.dll</code> files) deployed to the Report Server?</li>
+</ul>
+<hr />
+<h2 id="2-component-architecture">2. Component Architecture<a class="headerlink" href="#2-component-architecture" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Role</th>
+<th>What breaks if it's gone</th>
+<th>Migration Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Report Server Windows Service</strong></td>
+<td>Core processing engine — handles rendering, scheduling, delivery, and snapshot generation</td>
+<td>Everything stops; no reports execute, no deliveries fire</td>
+<td>No direct equivalent in cloud BI — this is the hardest component to replace</td>
+</tr>
+<tr>
+<td><strong>Web Portal</strong></td>
+<td>Browser UI for browsing, running, managing, and uploading reports</td>
+<td>Users lose self-service access; admins can't manage via UI</td>
+<td>Databricks SQL workspace, Power BI Service workspace, Tableau Server</td>
+</tr>
+<tr>
+<td><strong>Web Service / REST API</strong></td>
+<td>SOAP (legacy) and REST endpoints for programmatic report execution, parameter passing, and subscription management</td>
+<td>Custom portals and integrations that call the API break</td>
+<td>Partner BI REST APIs (Power BI REST API, Tableau REST API); Databricks SQL API</td>
+</tr>
+<tr>
+<td><strong>ReportServer DB</strong></td>
+<td>SQL Server database storing the entire catalog: RDL blobs, datasets, data sources, snapshots, subscriptions, security assignments, execution history</td>
+<td>Complete loss of all report definitions and metadata — this IS the source of truth</td>
+<td>No equivalent as a single artifact; content must be extracted before decommission</td>
+</tr>
+<tr>
+<td><strong>ReportServerTempDB</strong></td>
+<td>Temporary session data, cached report output, execution snapshots</td>
+<td>Active sessions break; cached reports clear</td>
+<td>Not a migration target</td>
+</tr>
+<tr>
+<td><strong>ExecutionLogStorage view</strong></td>
+<td>Usage telemetry: who ran what, when, in what format</td>
+<td>Not a runtime dependency — but losing this data before migration means losing the scoping baseline</td>
+<td>Databricks audit logs / partner BI usage analytics</td>
+</tr>
+<tr>
+<td><strong>SQL Server Agent</strong></td>
+<td>Backs SSRS's built-in scheduler — subscriptions and snapshot schedules won't fire without it</td>
+<td>No scheduled reports or deliveries — customers sometimes don't know this dependency</td>
+<td>Databricks Workflows, Azure Data Factory, Power BI Premium scheduled refresh</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> The Report Server Windows Service is the component with no cloud equivalent. When a customer says "we're moving to Azure," they need to understand that SSRS itself isn't moving — its reports move to Power BI paginated reports or another platform, and the delivery automation must be rebuilt.</p>
+</blockquote>
+<hr />
+<h2 id="3-artifact-lifecycle">3. Artifact Lifecycle<a class="headerlink" href="#3-artifact-lifecycle" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>What Happens</th>
+<th>Where (Server / Client)</th>
+<th>Artifact Involved</th>
+<th>Migration Risk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Author</strong></td>
+<td>Developer writes report in SSDT/Visual Studio or Report Builder</td>
+<td>Client</td>
+<td><code>.rdl</code> file (XML)</td>
+<td>Low — RDL is portable; risk is in the content (MDX, VB.NET code)</td>
+</tr>
+<tr>
+<td><strong>Deploy</strong></td>
+<td>RDL is uploaded to Report Server via Web Portal, SSDT Publish, or <code>rs.exe</code>; stored as binary blob in <code>Catalog</code> table</td>
+<td>Server</td>
+<td>RDL XML blob in <code>ReportServer.dbo.Catalog</code></td>
+<td>Medium — if customer has no SSDT project in source control, the catalog IS the source of truth</td>
+</tr>
+<tr>
+<td><strong>Compile</strong></td>
+<td>At first render (or snapshot time), Report Server parses RDL XML and compiles into an in-memory intermediate format; embedded VB.NET expressions are compiled here</td>
+<td>Server</td>
+<td>In-memory intermediate representation</td>
+<td>High for custom code — VB.NET expressions and code blocks have no direct migration path</td>
+</tr>
+<tr>
+<td><strong>Execute</strong></td>
+<td>Report Server fetches data from configured sources, binds parameters, applies filters, runs all expressions — entirely server-side</td>
+<td>Server</td>
+<td>Query results, parameter values</td>
+<td>Medium — data source connectivity and query compatibility must be validated</td>
+</tr>
+<tr>
+<td><strong>Render</strong></td>
+<td>Output generated server-side in requested format: HTML5, PDF, Excel, Word, CSV, XML</td>
+<td>Server</td>
+<td>Rendered output (HTML, PDF, etc.)</td>
+<td>Medium for pixel-perfect layouts — Databricks SQL / Lakeview don't replicate fixed-layout rendering</td>
+</tr>
+<tr>
+<td><strong>Deliver</strong></td>
+<td>Output reaches consumer via portal, URL, email subscription, file share, or ReportViewer</td>
+<td>Server → Client</td>
+<td>Rendered output</td>
+<td>High for data-driven subscriptions and ReportViewer integrations</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Everything in SSRS is server-side. The client browser or embedded app never touches the underlying data. This is a key selling point for security-conscious customers — and a key constraint to explain when proposing self-service alternatives.</p>
+</blockquote>
+<hr />
+<h2 id="4-data-sources-and-dataset-model">4. Data Sources and Dataset Model<a class="headerlink" href="#4-data-sources-and-dataset-model" title="Permanent link">&para;</a></h2>
+<h3 id="data-sources">Data Sources<a class="headerlink" href="#data-sources" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Migration Path</th>
+<th>Risk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Shared Data Source (.rds)</strong></td>
+<td>Centrally defined connection reused across reports; stored in catalog</td>
+<td>Replace with Databricks SQL warehouse connection or Unity Catalog external location</td>
+<td>Low — one change propagates to all reports using it</td>
+</tr>
+<tr>
+<td><strong>Embedded Data Source</strong></td>
+<td>Connection string baked into a single report's RDL</td>
+<td>Must be found by parsing RDL XML — not visible in the portal</td>
+<td>Medium — no central inventory; requires XML parsing at scale</td>
+</tr>
+</tbody>
+</table>
+<h3 id="datasets">Datasets<a class="headerlink" href="#datasets" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Migration Path</th>
+<th>Risk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Shared Dataset (.rsd)</strong></td>
+<td>Reusable SQL or MDX query with parameters; stored separately in catalog</td>
+<td>Migrate to Databricks SQL named queries or dbt models</td>
+<td>Low-Medium</td>
+</tr>
+<tr>
+<td><strong>Embedded Dataset</strong></td>
+<td>Query defined inside the report RDL — most common pattern</td>
+<td>Extract and migrate per-report</td>
+<td>Medium at scale</td>
+</tr>
+</tbody>
+</table>
+<h3 id="data-source-types">Data Source Types<a class="headerlink" href="#data-source-types" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Data Source Type</th>
+<th>Frequency</th>
+<th>Migration Path</th>
+<th>Risk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SQL Server</td>
+<td>Very high</td>
+<td>Databricks SQL warehouse (JDBC/ODBC)</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>SSAS MDX (cubes)</td>
+<td>High in older estates</td>
+<td>Flatten cube logic to SQL; rebuild in Databricks AI/BI semantic layer or Unity Catalog</td>
+<td>High — MDX measures, hierarchies, and calculated members don't translate to flat SQL</td>
+</tr>
+<tr>
+<td>SSAS DAX (tabular)</td>
+<td>Power BI Report Server only</td>
+<td>Power BI semantic model (natural fit)</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Oracle / ODBC</td>
+<td>Medium</td>
+<td>Databricks SQL with appropriate JDBC driver</td>
+<td>Medium — connection migration + query dialect adjustments</td>
+</tr>
+<tr>
+<td>SharePoint lists</td>
+<td>Low</td>
+<td>Rebuild as ingested tables in Unity Catalog</td>
+<td>High — rarely maintained, often orphaned</td>
+</tr>
+<tr>
+<td>Flat files (CSV, Excel)</td>
+<td>Low</td>
+<td>Ingest to Unity Catalog</td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<h3 id="parameter-model">Parameter Model<a class="headerlink" href="#parameter-model" title="Permanent link">&para;</a></h3>
+<p>SSRS parameters are defined per-report. They can be <strong>cascading</strong> — one parameter's available values are populated by a query that uses a prior parameter's selected value. Cascading parameters are a complexity signal: they encode data model assumptions (hierarchical relationships) that must be rebuilt in the target BI tool.</p>
+<blockquote>
+<p><strong>SA Tip:</strong> Ask specifically about cascading parameters and data-driven subscriptions. These two patterns are the most common sources of "this will take longer than expected" surprises in SSRS migrations.</p>
+</blockquote>
+<hr />
+<h2 id="5-rendering-and-delivery-model">5. Rendering and Delivery Model<a class="headerlink" href="#5-rendering-and-delivery-model" title="Permanent link">&para;</a></h2>
+<h3 id="rendering-modes">Rendering Modes<a class="headerlink" href="#rendering-modes" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>How It Works</th>
+<th>Migration Consideration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>On-demand</strong></td>
+<td>Report executed at request time against live data source</td>
+<td>Standard; maps to interactive query in Databricks SQL</td>
+</tr>
+<tr>
+<td><strong>Cached</strong></td>
+<td>Output stored for N minutes after first execution; subsequent requests get the cached copy</td>
+<td>Replace with BI tool's own caching / materialized views</td>
+</tr>
+<tr>
+<td><strong>Snapshot</strong></td>
+<td>Report executed on a schedule; output stored permanently; users always see snapshot data</td>
+<td>Requires equivalent scheduled refresh or pre-computation in Databricks Workflows</td>
+</tr>
+</tbody>
+</table>
+<h3 id="delivery-modes">Delivery Modes<a class="headerlink" href="#delivery-modes" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Delivery Mode</th>
+<th>How It Works</th>
+<th>Business Use Case</th>
+<th>Migration Equivalent</th>
+<th>Risk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Portal (interactive)</strong></td>
+<td>User navigates Web Portal, clicks report, sees HTML5 output</td>
+<td>Ad-hoc and self-service consumption</td>
+<td>Databricks SQL / partner BI workspace</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>URL access</strong></td>
+<td>Direct URL with parameters embedded (<code>?rs:Command=Render&amp;rp:Year=2024</code>)</td>
+<td>Bookmarked links, dashboard deep links, app integrations</td>
+<td>Partner BI share links or Databricks SQL embed URLs</td>
+<td>Low-Medium</td>
+</tr>
+<tr>
+<td><strong>Standard subscription</strong></td>
+<td>Fixed schedule, fixed recipient list, email or file share delivery</td>
+<td>Recurring operational reports to known recipients</td>
+<td>Partner BI scheduled delivery, Databricks Workflow + email step</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>Data-driven subscription</strong></td>
+<td>Schedule + recipient list and parameter values come from a database query; each recipient gets a personalized slice</td>
+<td>High-volume personalized distribution (e.g., regional managers each get their region)</td>
+<td>No native equivalent — must rebuild as Workflow that queries recipient DB and loops</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>ReportViewer control</strong></td>
+<td>.NET WinForms or WebForms control renders SSRS report inside a custom application via HTTP to Report Server Web Service</td>
+<td>Reports embedded in LOB applications</td>
+<td>Power BI Embedded, Tableau Embedded, or custom app rebuild</td>
+<td>High — requires both report migration and application re-architecture</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Data-driven subscriptions are invisible to portal users and often invisible to IT — they're set up by analysts years ago and just run. Ask whether any business process depends on "the system just emails me my numbers every Monday" — that's a data-driven subscription waiting to be discovered.</p>
+</blockquote>
+<hr />
+<h2 id="6-project-structure-and-version-control">6. Project Structure and Version Control<a class="headerlink" href="#6-project-structure-and-version-control" title="Permanent link">&para;</a></h2>
+<p>SSRS has <strong>no native version control</strong>. The Report Server stores one live version per item — redeploy overwrites silently.</p>
+<p><strong>SSDT Report Project (<code>.rptproj</code>):</strong> A Visual Studio project containing <code>.rdl</code>, <code>.rds</code>, and <code>.rsd</code> files with a deployment configuration pointing at a Report Server URL. These projects <em>can</em> be in Git but frequently aren't in older estates.</p>
+<p><strong>Multi-environment promotion:</strong> Entirely manual — deploy the same SSDT project to Dev, QA, and Prod Report Servers with different data source connection strings configured per environment. No built-in promotion pipeline or change tracking.</p>
+<p><strong><code>rs.exe</code> scripting tool:</strong> Command-line utility for scripted deployment and catalog content migration. Key tool for extracting artifacts from a live server when no SSDT project exists.</p>
+<blockquote>
+<p><strong>SA Tip:</strong> One of the most important discovery questions is: "Is your SSDT project in source control, or is the Report Server catalog your source of truth?" In most organizations, the answer is the Report Server. This means you must extract all content from a live running server before decommissioning — and you need DBA access to do it.</p>
+</blockquote>
+<hr />
+<h2 id="7-orchestration-and-scheduling">7. Orchestration and Scheduling<a class="headerlink" href="#7-orchestration-and-scheduling" title="Permanent link">&para;</a></h2>
+<p>SSRS's built-in scheduler is backed by <strong>SQL Server Agent</strong> on the same SQL Server instance that hosts the ReportServer database. If SQL Agent is stopped, no subscriptions fire and no snapshots generate — customers often don't know this dependency exists until it becomes an incident.</p>
+<table>
+<thead>
+<tr>
+<th>Trigger</th>
+<th>Mechanism</th>
+<th>Migration Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Standard subscription</td>
+<td>SQL Server Agent job fires on schedule; Report Server generates and delivers output</td>
+<td>Databricks Workflows scheduled job, partner BI native scheduling</td>
+</tr>
+<tr>
+<td>Snapshot schedule</td>
+<td>SQL Server Agent job fires; Report Server executes report and stores output</td>
+<td>Databricks Workflows + pre-computed table refresh</td>
+</tr>
+<tr>
+<td>Data-driven subscription</td>
+<td>SQL Server Agent job fires; Report Server queries recipient DB, loops, and delivers</td>
+<td>Databricks Workflows (loop over recipient query, call BI API or generate files)</td>
+</tr>
+<tr>
+<td>External API trigger</td>
+<td>External system calls SSRS REST/SOAP API to execute a report on demand</td>
+<td>Partner BI REST API call from ADF pipeline, Databricks Workflow, or application code</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Ask whether report generation is wired into ETL or application workflows via the SSRS REST/SOAP API. This pattern is common in custom portals and finance applications — migrating the report isn't enough; the calling application also needs to be updated.</p>
+</blockquote>
+<hr />
+<h2 id="8-metadata-lineage-and-impact-analysis">8. Metadata, Lineage, and Impact Analysis<a class="headerlink" href="#8-metadata-lineage-and-impact-analysis" title="Permanent link">&para;</a></h2>
+<p>The <strong>ReportServer database</strong> is the authoritative inventory. Query it directly — don't rely on the Web Portal, which hides system reports and dataset items.</p>
+<h3 id="key-tables-and-views">Key Tables and Views<a class="headerlink" href="#key-tables-and-views" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th>What It Contains</th>
+<th>SA Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dbo.Catalog</code></td>
+<td>Every item: reports, folders, data sources, datasets — Name, Path, Type, CreatedBy, ModifiedDate, and <code>Content</code> column (RDL XML as a blob)</td>
+<td>Primary inventory source; parse <code>Content</code> XML to extract queries and data source references</td>
+</tr>
+<tr>
+<td><code>dbo.ExecutionLogStorage</code></td>
+<td>One row per execution: ReportPath, UserName, TimeStart, TimeEnd, Status, Format, Parameters</td>
+<td>Scope the migration — identify unused reports and heavy users</td>
+</tr>
+<tr>
+<td><code>dbo.Subscriptions</code> + <code>dbo.ReportSchedule</code></td>
+<td>All scheduled subscriptions with delivery settings and schedules</td>
+<td>Identify delivery automation that must be rebuilt</td>
+</tr>
+<tr>
+<td><code>dbo.DataSource</code></td>
+<td>All data source definitions with (encrypted) connection strings</td>
+<td>Inventory all source systems</td>
+</tr>
+<tr>
+<td><code>dbo.Users</code> + <code>dbo.Policies</code></td>
+<td>Security assignments — who can see/run what folders and reports</td>
+<td>Map to target platform permissions</td>
+</tr>
+</tbody>
+</table>
+<h3 id="lineage">Lineage<a class="headerlink" href="#lineage" title="Permanent link">&para;</a></h3>
+<p>SSRS has <strong>no built-in lineage</strong>. Lineage must be inferred by parsing the <code>Content</code> XML column in <code>dbo.Catalog</code> to extract dataset queries and data source references using SQL XML functions.</p>
+<blockquote>
+<p><strong>SA Tip:</strong> The ExecutionLog is the single most valuable artifact for scoping a migration. Pull 90-day usage data before counting reports — most estates have 60–80% of catalog items with zero recent executions. Presenting this to a customer is often the moment they realize the migration is smaller (and more achievable) than they feared.</p>
+</blockquote>
+<h3 id="sample-sql-queries">Sample SQL Queries<a class="headerlink" href="#sample-sql-queries" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">-- Count reports by type</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">SELECT</span><span class="w"> </span><span class="k">Type</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">       </span><span class="k">CASE</span><span class="w"> </span><span class="k">Type</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;Report&#39;</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;Data Source&#39;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">                 </span><span class="k">WHEN</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;Report Part&#39;</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;Shared Dataset&#39;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">                 </span><span class="k">ELSE</span><span class="w"> </span><span class="k">CAST</span><span class="p">(</span><span class="k">Type</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">)</span><span class="w"> </span><span class="k">END</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">TypeName</span><span class="p">,</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">       </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">ItemCount</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">FROM</span><span class="w"> </span><span class="n">ReportServer</span><span class="p">.</span><span class="n">dbo</span><span class="p">.</span><span class="k">Catalog</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">Type</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">ItemCount</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1">-- Reports with zero executions in last 90 days</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">SELECT</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">CreatedByID</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">ModifiedDate</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">FROM</span><span class="w"> </span><span class="n">ReportServer</span><span class="p">.</span><span class="n">dbo</span><span class="p">.</span><span class="k">Catalog</span><span class="w"> </span><span class="k">c</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">WHERE</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="k">Type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">Path</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;/%DataSources%&#39;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">ReportServer</span><span class="p">.</span><span class="n">dbo</span><span class="p">.</span><span class="n">ExecutionLogStorage</span><span class="w"> </span><span class="n">e</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">ReportPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">Path</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">      </span><span class="k">AND</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">TimeStart</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">DATEADD</span><span class="p">(</span><span class="k">DAY</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="w"> </span><span class="n">GETDATE</span><span class="p">())</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span><span class="p">);</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="c1">-- All data sources in use</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">Name</span><span class="p">,</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">       </span><span class="k">CAST</span><span class="p">(</span><span class="k">CAST</span><span class="p">(</span><span class="n">Content</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">VARBINARY</span><span class="p">(</span><span class="k">MAX</span><span class="p">))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">XML</span><span class="p">)</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">           </span><span class="p">.</span><span class="n">value</span><span class="p">(</span><span class="s1">&#39;(/DataSourceDefinition/ConnectString)[1]&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;NVARCHAR(1000)&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">ConnectString</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="k">FROM</span><span class="w"> </span><span class="n">ReportServer</span><span class="p">.</span><span class="n">dbo</span><span class="p">.</span><span class="k">Catalog</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="k">WHERE</span><span class="w"> </span><span class="k">Type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="c1">-- All active subscriptions</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="k">SELECT</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">Path</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">ReportPath</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">Description</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">DeliveryExtension</span><span class="p">,</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">       </span><span class="n">s</span><span class="p">.</span><span class="n">LastStatus</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">LastRunTime</span><span class="p">,</span><span class="w"> </span><span class="n">rs</span><span class="p">.</span><span class="n">ScheduleID</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="k">FROM</span><span class="w"> </span><span class="n">ReportServer</span><span class="p">.</span><span class="n">dbo</span><span class="p">.</span><span class="n">Subscriptions</span><span class="w"> </span><span class="n">s</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="k">JOIN</span><span class="w"> </span><span class="n">ReportServer</span><span class="p">.</span><span class="n">dbo</span><span class="p">.</span><span class="k">Catalog</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">Report_OID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">ItemID</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">ReportServer</span><span class="p">.</span><span class="n">dbo</span><span class="p">.</span><span class="n">ReportSchedule</span><span class="w"> </span><span class="n">rs</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">SubscriptionID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rs</span><span class="p">.</span><span class="n">SubscriptionID</span><span class="p">;</span>
+</code></pre></div>
+<hr />
+<h2 id="9-data-quality-and-governance">9. Data Quality and Governance<a class="headerlink" href="#9-data-quality-and-governance" title="Permanent link">&para;</a></h2>
+<h3 id="row-level-security">Row-Level Security<a class="headerlink" href="#row-level-security" title="Permanent link">&para;</a></h3>
+<p>SSRS implements RLS via <strong>dataset query parameters</strong> — the built-in field <code>=User!UserID</code> (the authenticated Windows username) is passed into a SQL <code>WHERE</code> clause or stored procedure parameter. There is no declarative RLS layer — it's invisible in the report UI and must be found by reading dataset query definitions inside the RDL XML.</p>
+<p><strong>Migration target:</strong> Unity Catalog row filters replace embedded RLS logic. The username-based filter becomes a row filter function on the Unity Catalog table.</p>
+<h3 id="column-level-security">Column-Level Security<a class="headerlink" href="#column-level-security" title="Permanent link">&para;</a></h3>
+<p>Not natively supported. Achieved by simply excluding columns from dataset queries — must be inferred from RDL parsing, not from any SSRS security configuration.</p>
+<p><strong>Migration target:</strong> Unity Catalog column masks.</p>
+<h3 id="data-freshness">Data Freshness<a class="headerlink" href="#data-freshness" title="Permanent link">&para;</a></h3>
+<p>Controlled by snapshot schedule or subscription schedule — no SLA enforcement, just configuration. Consumers often don't know whether they're viewing live or cached/snapshot data.</p>
+<h3 id="custom-code">Custom Code<a class="headerlink" href="#custom-code" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Custom Code Type</th>
+<th>Risk Level</th>
+<th>Migration Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Standard VB.NET expressions in RDL (<code>=Fields!Name.Value</code>, <code>=IIF(...)</code>)</td>
+<td>Low-Medium</td>
+<td>Rewrite as SQL expressions or BI tool calculated fields</td>
+</tr>
+<tr>
+<td>Embedded VB.NET code blocks in RDL (<code>&lt;Code&gt;</code> section)</td>
+<td>High</td>
+<td>Rewrite as SQL UDFs in Unity Catalog or Python UDFs</td>
+</tr>
+<tr>
+<td>External .NET assembly (<code>.dll</code> deployed to Report Server)</td>
+<td>Critical</td>
+<td>No direct migration path — must be rewritten as UDFs or pipeline logic</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Ask the customer whether their Report Server has any custom assemblies. This is a showstopper discovery: you need to find out what those assemblies do (often encryption, formatting, or business logic) and redesign the solution from scratch. The RDL XML's <code>&lt;CodeModules&gt;</code> element references any assemblies used.</p>
+</blockquote>
+<hr />
+<h2 id="10-file-formats-and-artifact-reference">10. File Formats and Artifact Reference<a class="headerlink" href="#10-file-formats-and-artifact-reference" title="Permanent link">&para;</a></h2>
+<h3 id="rdl-report-definition-language">RDL (Report Definition Language)<a class="headerlink" href="#rdl-report-definition-language" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Created by</td>
+<td>Report Builder (self-service), SSDT/Visual Studio (developer)</td>
+</tr>
+<tr>
+<td>Stored in</td>
+<td><code>ReportServer.dbo.Catalog.Content</code> column (XML blob); <code>.rdl</code> file on disk in SSDT projects</td>
+</tr>
+<tr>
+<td>Contains</td>
+<td>Layout, data sources, datasets, parameters, expressions, embedded code, subreport references</td>
+</tr>
+<tr>
+<td>Human-readable</td>
+<td>Yes — it's XML, but verbose</td>
+</tr>
+<tr>
+<td>Migration target</td>
+<td>Power BI paginated reports (direct RDL lift for simple reports); Databricks SQL / Lakeview / Tableau for interactive reports</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example snippet:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">&lt;DataSets&gt;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&lt;DataSet</span><span class="w"> </span><span class="na">Name=</span><span class="s">&quot;SalesData&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">&lt;Query&gt;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">      </span><span class="nt">&lt;DataSourceName&gt;</span>SharedSalesDB<span class="nt">&lt;/DataSourceName&gt;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">      </span><span class="nt">&lt;CommandText&gt;</span>SELECT<span class="w"> </span>Region,<span class="w"> </span>SUM(Revenue)<span class="w"> </span>FROM<span class="w"> </span>Sales<span class="w"> </span>WHERE<span class="w"> </span>SalesRep<span class="w"> </span>=<span class="w"> </span>@UserID<span class="w"> </span>GROUP<span class="w"> </span>BY<span class="w"> </span>Region<span class="nt">&lt;/CommandText&gt;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nt">&lt;/Query&gt;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="nt">&lt;/DataSet&gt;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nt">&lt;/DataSets&gt;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nt">&lt;Code&gt;</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span>Public<span class="w"> </span>Function<span class="w"> </span>FormatCurrency(val<span class="w"> </span>As<span class="w"> </span>Decimal)<span class="w"> </span>As<span class="w"> </span>String
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span>Return<span class="w"> </span>String.Format(&quot;{0:C}&quot;,<span class="w"> </span>val)
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span>End<span class="w"> </span>Function
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="nt">&lt;/Code&gt;</span>
+</code></pre></div></p>
+<blockquote>
+<p><strong>SA Tip:</strong> The <code>&lt;Code&gt;</code> block and <code>&lt;CodeModules&gt;</code> elements in RDL are the first things to scan when assessing migration complexity. A report with neither is far simpler to migrate than one with embedded VB.NET logic.</p>
+</blockquote>
+<hr />
+<h3 id="rsdl-report-definition-language-for-mobile">RSDL (Report Definition Language for Mobile)<a class="headerlink" href="#rsdl-report-definition-language-for-mobile" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Created by</td>
+<td>SQL Server Mobile Report Publisher</td>
+</tr>
+<tr>
+<td>Stored in</td>
+<td>Report Server catalog</td>
+</tr>
+<tr>
+<td>Contains</td>
+<td>Mobile-optimized report layout</td>
+</tr>
+<tr>
+<td>Human-readable</td>
+<td>Yes (XML)</td>
+</tr>
+<tr>
+<td>Migration target</td>
+<td>Effectively deprecated — migrate to Power BI or Databricks SQL dashboards</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> If the customer has RSDL reports, treat them as low-hanging fruit — they're almost certainly unused given that Mobile Report Publisher was deprecated in 2024.</p>
+</blockquote>
+<hr />
+<h3 id="rsd-shared-dataset-definition">RSD (Shared Dataset Definition)<a class="headerlink" href="#rsd-shared-dataset-definition" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Created by</td>
+<td>Report Builder, SSDT</td>
+</tr>
+<tr>
+<td>Stored in</td>
+<td><code>ReportServer.dbo.Catalog</code> (Type = 8); <code>.rsd</code> file on disk</td>
+</tr>
+<tr>
+<td>Contains</td>
+<td>SQL or MDX query, parameters, field list</td>
+</tr>
+<tr>
+<td>Human-readable</td>
+<td>Yes (XML)</td>
+</tr>
+<tr>
+<td>Migration target</td>
+<td>Databricks SQL named queries, dbt models</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="rds-shared-data-source">RDS (Shared Data Source)<a class="headerlink" href="#rds-shared-data-source" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Created by</td>
+<td>Report Builder, SSDT, Web Portal</td>
+</tr>
+<tr>
+<td>Stored in</td>
+<td><code>ReportServer.dbo.Catalog</code> (Type = 5); <code>.rds</code> file on disk</td>
+</tr>
+<tr>
+<td>Contains</td>
+<td>Connection string, data source type, credentials type</td>
+</tr>
+<tr>
+<td>Human-readable</td>
+<td>Yes (XML)</td>
+</tr>
+<tr>
+<td>Migration target</td>
+<td>Databricks SQL warehouse connection, Unity Catalog external location</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Connection strings in the live ReportServer DB (<code>dbo.DataSource</code>) are encrypted. Extracting them requires DBA access and the Report Server encryption key. Plan for this access in the discovery phase.</p>
+</blockquote>
+<hr />
+<h3 id="rptproj-ssdt-report-project">RPTPROJ (SSDT Report Project)<a class="headerlink" href="#rptproj-ssdt-report-project" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Created by</td>
+<td>SQL Server Data Tools / Visual Studio</td>
+</tr>
+<tr>
+<td>Stored in</td>
+<td>Source control (if the customer is disciplined) or developer workstations</td>
+</tr>
+<tr>
+<td>Contains</td>
+<td>Collection of <code>.rdl</code>, <code>.rds</code>, <code>.rsd</code> files + deployment configuration (target server URL, folder, data source overrides per environment)</td>
+</tr>
+<tr>
+<td>Human-readable</td>
+<td>Yes (XML project file)</td>
+</tr>
+<tr>
+<td>Migration target</td>
+<td>Not directly — contents (RDL/RSD/RDS) migrate; the project structure is build tooling</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="reportserver-db-catalog-table">ReportServer DB Catalog Table<a class="headerlink" href="#reportserver-db-catalog-table" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Created by</td>
+<td>SSRS deployment process</td>
+</tr>
+<tr>
+<td>Stored in</td>
+<td><code>ReportServer</code> SQL Server database, <code>dbo.Catalog</code> table</td>
+</tr>
+<tr>
+<td>Contains</td>
+<td>All deployed artifacts as binary/XML blobs; full metadata (path, owner, dates, permissions)</td>
+</tr>
+<tr>
+<td>Human-readable</td>
+<td>Queryable via SQL; Content column is XML</td>
+</tr>
+<tr>
+<td>Migration target</td>
+<td>This IS the source of truth — extract all content before decommissioning the server</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="executionlogstorage-view">ExecutionLogStorage View<a class="headerlink" href="#executionlogstorage-view" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Created by</td>
+<td>SSRS runtime (auto-populated on every execution)</td>
+</tr>
+<tr>
+<td>Stored in</td>
+<td><code>ReportServer.dbo.ExecutionLogStorage</code> view (backed by <code>ExecutionLog3</code> table)</td>
+</tr>
+<tr>
+<td>Contains</td>
+<td>ReportPath, UserName, TimeStart, TimeEnd, RowCount, ByteCount, Format, Parameters, Status</td>
+</tr>
+<tr>
+<td>Human-readable</td>
+<td>Queryable via SQL</td>
+</tr>
+<tr>
+<td>Migration target</td>
+<td>Not a migration target — a discovery tool</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="custom-assembly-dll">Custom Assembly (.dll)<a class="headerlink" href="#custom-assembly-dll" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Created by</td>
+<td>.NET developer</td>
+</tr>
+<tr>
+<td>Stored in</td>
+<td>Report Server file system (<code>ReportServer\bin\</code> folder) + referenced in RDL <code>&lt;CodeModules&gt;</code></td>
+</tr>
+<tr>
+<td>Contains</td>
+<td>Custom .NET business logic, formatting functions, encryption/decryption routines</td>
+</tr>
+<tr>
+<td>Human-readable</td>
+<td>No — compiled binary</td>
+</tr>
+<tr>
+<td>Migration target</td>
+<td>No direct equivalent; must be rewritten as SQL UDFs, Python UDFs in Unity Catalog, or logic moved into data pipelines</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="artifact-quick-reference-summary">Artifact Quick-Reference Summary<a class="headerlink" href="#artifact-quick-reference-summary" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Artifact</th>
+<th>Extension</th>
+<th>Human-readable</th>
+<th>Where Stored</th>
+<th>Migration Target</th>
+<th>Risk Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Report Definition</td>
+<td><code>.rdl</code></td>
+<td>Yes (XML)</td>
+<td>ReportServer DB + disk (SSDT)</td>
+<td>Power BI paginated / Databricks SQL / Tableau</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Mobile Report</td>
+<td><code>.rsdl</code></td>
+<td>Yes (XML)</td>
+<td>ReportServer DB</td>
+<td>Deprecate → Power BI / Databricks SQL</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Shared Dataset</td>
+<td><code>.rsd</code></td>
+<td>Yes (XML)</td>
+<td>ReportServer DB + disk</td>
+<td>Databricks SQL queries / dbt</td>
+<td>Low-Medium</td>
+</tr>
+<tr>
+<td>Shared Data Source</td>
+<td><code>.rds</code></td>
+<td>Yes (XML)</td>
+<td>ReportServer DB + disk</td>
+<td>Databricks SQL warehouse</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>SSDT Project</td>
+<td><code>.rptproj</code></td>
+<td>Yes (XML)</td>
+<td>Source control / developer workstation</td>
+<td>Not directly — extract contents</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Catalog table</td>
+<td>—</td>
+<td>Queryable SQL</td>
+<td>ReportServer DB</td>
+<td>Extract before decommission</td>
+<td>Critical</td>
+</tr>
+<tr>
+<td>Execution log</td>
+<td>—</td>
+<td>Queryable SQL</td>
+<td>ReportServer DB</td>
+<td>Discovery tool only</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Custom assembly</td>
+<td><code>.dll</code></td>
+<td>No (binary)</td>
+<td>Report Server <code>bin/</code> folder</td>
+<td>Rewrite as UDF / pipeline logic</td>
+<td>Critical</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11-migration-assessment-and-artifact-inventory">11. Migration Assessment and Artifact Inventory<a class="headerlink" href="#11-migration-assessment-and-artifact-inventory" title="Permanent link">&para;</a></h2>
+<h3 id="inventory-approach">Inventory Approach<a class="headerlink" href="#inventory-approach" title="Permanent link">&para;</a></h3>
+<p>Query <code>ReportServer.dbo.Catalog</code> directly — do not use the Web Portal to count reports. The portal hides:
+- System-level items (data sources, datasets stored as catalog items)
+- Reports in hidden folders
+- Items the current user doesn't have permission to see</p>
+<p>Preferred: connect directly to the ReportServer SQL database with DBA credentials and run inventory queries.
+Alternative: use <code>rs.exe</code> to script and export catalog contents to the file system.</p>
+<h3 id="complexity-scoring">Complexity Scoring<a class="headerlink" href="#complexity-scoring" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Low</th>
+<th>Medium</th>
+<th>High</th>
+<th>Critical</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data source type</td>
+<td>SQL Server</td>
+<td>Oracle / ODBC</td>
+<td>SSAS MDX, SharePoint</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Dataset type</td>
+<td>Simple SQL SELECT</td>
+<td>Stored procedures with logic</td>
+<td>MDX queries</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Parameter complexity</td>
+<td>None / simple</td>
+<td>Cascading parameters</td>
+<td>Data-driven subscription parameters</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Custom code</td>
+<td>None</td>
+<td>Standard VB.NET expressions</td>
+<td>Embedded code blocks (<code>&lt;Code&gt;</code>)</td>
+<td>External <code>.dll</code> assemblies</td>
+</tr>
+<tr>
+<td>Subreports</td>
+<td>None</td>
+<td>1–2 subreports</td>
+<td>Deeply nested subreports</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Delivery</td>
+<td>Portal only</td>
+<td>Email subscription</td>
+<td>Data-driven subscription</td>
+<td>ReportViewer embedded</td>
+</tr>
+<tr>
+<td>Row-level security</td>
+<td>None</td>
+<td>Username parameter filtering</td>
+<td>Assembly-based RLS</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-risk-areas">Key Risk Areas<a class="headerlink" href="#key-risk-areas" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Why It's Hard</th>
+<th>What to Do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>External .NET assemblies</td>
+<td>No migration path — compiled business logic</td>
+<td>Inventory via <code>&lt;CodeModules&gt;</code> in RDL XML; scope rewrite effort as separate workstream</td>
+</tr>
+<tr>
+<td>SSAS MDX datasets</td>
+<td>Cube semantics don't translate to flat SQL</td>
+<td>Identify all MDX datasets; plan semantic layer redesign</td>
+</tr>
+<tr>
+<td>Data-driven subscriptions</td>
+<td>Distribution logic encoded in DB queries; no native Databricks equivalent</td>
+<td>Inventory all subscriptions; map each to a Workflow pattern</td>
+</tr>
+<tr>
+<td>ReportViewer embedded controls</td>
+<td>Requires application re-architecture, not just report migration</td>
+<td>Identify all applications calling SSRS Web Service; scope app changes separately</td>
+</tr>
+<tr>
+<td>No source control</td>
+<td>Report Server catalog IS source of truth</td>
+<td>Extract full catalog before any decommission activity</td>
+</tr>
+<tr>
+<td>Encrypted connection strings</td>
+<td>DBA access and encryption key required to read DataSource table</td>
+<td>Confirm DBA access early; include in discovery prerequisites</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sample-inventory-query">Sample Inventory Query<a class="headerlink" href="#sample-inventory-query" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">SELECT</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">c</span><span class="p">.</span><span class="n">Path</span><span class="w">                          </span><span class="k">AS</span><span class="w"> </span><span class="n">ReportPath</span><span class="p">,</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="k">c</span><span class="p">.</span><span class="n">Name</span><span class="w">                          </span><span class="k">AS</span><span class="w"> </span><span class="n">ReportName</span><span class="p">,</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="k">CASE</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="k">Type</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;Report&#39;</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;DataSource&#39;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">                </span><span class="k">WHEN</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;SharedDataset&#39;</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="k">CAST</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="k">Type</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">)</span><span class="w"> </span><span class="k">END</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">ReportType</span><span class="p">,</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="k">c</span><span class="p">.</span><span class="n">ModifiedDate</span><span class="p">,</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="k">MAX</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">TimeStart</span><span class="p">)</span><span class="w">                </span><span class="k">AS</span><span class="w"> </span><span class="n">LastExecuted</span><span class="p">,</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">TimeStart</span><span class="p">)</span><span class="w">              </span><span class="k">AS</span><span class="w"> </span><span class="n">ExecutionCount90d</span><span class="p">,</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="c1">-- Data source type from embedded DataSource element in RDL</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="k">CAST</span><span class="p">(</span><span class="k">CAST</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">Content</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">VARBINARY</span><span class="p">(</span><span class="k">MAX</span><span class="p">))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">XML</span><span class="p">)</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="p">.</span><span class="n">value</span><span class="p">(</span><span class="s1">&#39;(/*[local-name()=&quot;Report&quot;]/*[local-name()=&quot;DataSources&quot;]</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="s1">                  /*[local-name()=&quot;DataSource&quot;]/*[local-name()=&quot;ConnectionProperties&quot;]</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="s1">                  /*[local-name()=&quot;DataProvider&quot;])[1]&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;NVARCHAR(100)&#39;</span><span class="p">)</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">                                    </span><span class="k">AS</span><span class="w"> </span><span class="n">DataSourceType</span><span class="p">,</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="c1">-- Has parameters?</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="k">CAST</span><span class="p">(</span><span class="k">CAST</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">Content</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">VARBINARY</span><span class="p">(</span><span class="k">MAX</span><span class="p">))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">XML</span><span class="p">)</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">                 </span><span class="p">.</span><span class="n">exist</span><span class="p">(</span><span class="s1">&#39;(/*[local-name()=&quot;Report&quot;]/*[local-name()=&quot;ReportParameters&quot;]</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="s1">                           /*[local-name()=&quot;ReportParameter&quot;])&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">         </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;Yes&#39;</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="s1">&#39;No&#39;</span><span class="w"> </span><span class="k">END</span><span class="w">  </span><span class="k">AS</span><span class="w"> </span><span class="n">HasParameters</span><span class="p">,</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="c1">-- Has subscriptions?</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">ReportServer</span><span class="p">.</span><span class="n">dbo</span><span class="p">.</span><span class="n">Subscriptions</span><span class="w"> </span><span class="n">s</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">                      </span><span class="k">WHERE</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">Report_OID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">ItemID</span><span class="p">)</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;Yes&#39;</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="s1">&#39;No&#39;</span><span class="w"> </span><span class="k">END</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">                                    </span><span class="k">AS</span><span class="w"> </span><span class="n">HasSubscription</span><span class="p">,</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">    </span><span class="c1">-- Has custom code blocks?</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">    </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="k">CAST</span><span class="p">(</span><span class="k">CAST</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">Content</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">VARBINARY</span><span class="p">(</span><span class="k">MAX</span><span class="p">))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">XML</span><span class="p">)</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">                 </span><span class="p">.</span><span class="n">exist</span><span class="p">(</span><span class="s1">&#39;(/*[local-name()=&quot;Report&quot;]/*[local-name()=&quot;Code&quot;])&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">         </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;Yes&#39;</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="s1">&#39;No&#39;</span><span class="w"> </span><span class="k">END</span><span class="w">  </span><span class="k">AS</span><span class="w"> </span><span class="n">HasCustomCode</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="k">FROM</span><span class="w"> </span><span class="n">ReportServer</span><span class="p">.</span><span class="n">dbo</span><span class="p">.</span><span class="k">Catalog</span><span class="w"> </span><span class="k">c</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">ReportServer</span><span class="p">.</span><span class="n">dbo</span><span class="p">.</span><span class="n">ExecutionLogStorage</span><span class="w"> </span><span class="n">e</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">ReportPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">Path</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">TimeStart</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">DATEADD</span><span class="p">(</span><span class="k">DAY</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="w"> </span><span class="n">GETDATE</span><span class="p">())</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="k">WHERE</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="k">Type</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w">   </span><span class="c1">-- Reports, Data Sources, Shared Datasets</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="k">Type</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">ModifiedDate</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">Content</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">ItemID</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">ExecutionCount90d</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div>
+<hr />
+<h2 id="12-migration-mapping-to-databricks">12. Migration Mapping to Databricks<a class="headerlink" href="#12-migration-mapping-to-databricks" title="Permanent link">&para;</a></h2>
+<h3 id="core-mapping">Core Mapping<a class="headerlink" href="#core-mapping" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>SSRS Concept</th>
+<th>Databricks / Modern Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Paginated report (RDL, pixel-perfect)</td>
+<td><strong>Power BI paginated reports</strong> (same RDL format — direct lift for simple reports); Azure Paginated Reports (Power BI Premium)</td>
+</tr>
+<tr>
+<td>Interactive/operational report</td>
+<td>Databricks SQL dashboard, Lakeview dashboard, Power BI Desktop report, Tableau workbook</td>
+</tr>
+<tr>
+<td>Shared Data Source (.rds)</td>
+<td>Databricks SQL warehouse (JDBC/ODBC); Unity Catalog external location</td>
+</tr>
+<tr>
+<td>Embedded data source</td>
+<td>Per-report connection in target BI tool</td>
+</tr>
+<tr>
+<td>Shared Dataset (.rsd)</td>
+<td>Databricks SQL named query, dbt model, Unity Catalog view</td>
+</tr>
+<tr>
+<td>Embedded dataset SQL</td>
+<td>Databricks SQL query in dashboard tile or BI tool dataset</td>
+</tr>
+<tr>
+<td>RLS (username parameter filtering)</td>
+<td>Unity Catalog row filter function; partner BI row-level security</td>
+</tr>
+<tr>
+<td>Column exclusion security</td>
+<td>Unity Catalog column mask</td>
+</tr>
+<tr>
+<td>Standard subscription (email/file)</td>
+<td>Partner BI scheduled delivery; Databricks Workflow + notification step</td>
+</tr>
+<tr>
+<td>Data-driven subscription</td>
+<td>Databricks Workflow (query recipient DB → loop → call BI API or generate files)</td>
+</tr>
+<tr>
+<td>Web Portal</td>
+<td>Databricks SQL workspace; Power BI Service workspace; Tableau Server</td>
+</tr>
+<tr>
+<td>URL access with parameters</td>
+<td>Databricks SQL share URL; Power BI embed URL with filters</td>
+</tr>
+<tr>
+<td>ReportViewer embedded control</td>
+<td>Power BI Embedded; Tableau Embedded; custom app with partner BI SDK</td>
+</tr>
+<tr>
+<td>SSRS folder security (AD groups)</td>
+<td>Databricks workspace groups + Unity Catalog grants</td>
+</tr>
+<tr>
+<td>SQL Server Agent scheduling</td>
+<td>Databricks Workflows</td>
+</tr>
+<tr>
+<td>Snapshot reports</td>
+<td>Databricks Workflow → pre-computed table → BI dashboard on top</td>
+</tr>
+<tr>
+<td>Execution log</td>
+<td>Databricks audit logs; partner BI usage analytics</td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-doesnt-map-cleanly">What Doesn't Map Cleanly<a class="headerlink" href="#what-doesnt-map-cleanly" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>SSRS Capability</th>
+<th>Why It Doesn't Map</th>
+<th>Recommended Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pixel-perfect paginated output</strong></td>
+<td>Databricks SQL and Lakeview are interactive BI tools, not paginated report engines — they don't support fixed-layout, print-ready formatting</td>
+<td>Migrate to Power BI paginated reports (direct RDL lift for most reports) or Azure Paginated Reports; keep pixel-perfect reports in the Microsoft stack</td>
+</tr>
+<tr>
+<td><strong>External .NET assemblies</strong></td>
+<td>Compiled business logic with no cloud BI equivalent</td>
+<td>Rewrite as SQL UDFs or Python UDFs in Unity Catalog; or move logic upstream into the data pipeline (dbt, Spark)</td>
+</tr>
+<tr>
+<td><strong>SSAS MDX datasets</strong></td>
+<td>MDX measures, hierarchies, and calculated members don't translate to flat SQL</td>
+<td>Redesign using Databricks AI/BI semantic layer or a Unity Catalog-backed semantic model; this is a data model redesign project, not a migration</td>
+</tr>
+<tr>
+<td><strong>Data-driven subscriptions</strong></td>
+<td>No native equivalent in any modern BI platform</td>
+<td>Rebuild as Databricks Workflow: query recipient DB → generate personalized output → deliver via email/API step</td>
+</tr>
+<tr>
+<td><strong>ReportViewer embedded control</strong></td>
+<td>Requires application-level re-architecture — both the report and the application integration point must change</td>
+<td>Replace with Power BI Embedded or Tableau Embedded; requires app development work, not just report migration</td>
+</tr>
+<tr>
+<td><strong>SSRS folder security mapped to AD groups</strong></td>
+<td>The SSRS permission model (folder-level, inherited, AD group-based) doesn't lift-and-shift to Databricks</td>
+<td>Re-map security to Databricks workspace groups and Unity Catalog grants; this requires intentional design, not automation</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> The cleanest migration path for pixel-perfect paginated reports is Power BI paginated reports — both use RDL, so simple reports can sometimes be directly imported. But "simple" is the key word. Any report with embedded VB.NET code, MDX data sources, or external assemblies still requires significant rework.</p>
+</blockquote>
+<hr />
+<h2 id="13-quick-reference-cheat-sheet">13. Quick-Reference Cheat Sheet<a class="headerlink" href="#13-quick-reference-cheat-sheet" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Key Fact</th>
+<th>SA Question to Ask</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Report count heuristic</strong></td>
+<td>60–80% of SSRS catalogs have reports with zero executions in the past 90 days — don't scope on total catalog size</td>
+<td>"Can you give me 90-day execution data from ExecutionLogStorage before we count reports?"</td>
+</tr>
+<tr>
+<td><strong>Usage data location</strong></td>
+<td><code>ReportServer.dbo.ExecutionLogStorage</code> — query directly; portal won't show you this</td>
+<td>"Do you have DBA access to the ReportServer database?"</td>
+</tr>
+<tr>
+<td><strong>Custom code risk</strong></td>
+<td>Embedded VB.NET code blocks and external <code>.dll</code> assemblies are the highest-risk artifacts — no direct migration path</td>
+<td>"Have you checked RDL files for <code>&lt;Code&gt;</code> blocks or <code>&lt;CodeModules&gt;</code> references to external assemblies?"</td>
+</tr>
+<tr>
+<td><strong>MDX risk</strong></td>
+<td>SSAS MDX datasets require a full semantic model redesign — they don't translate to SQL</td>
+<td>"Which reports pull from SSAS cubes? How many use MDX vs. DAX?"</td>
+</tr>
+<tr>
+<td><strong>ReportViewer risk</strong></td>
+<td>ReportViewer is an application integration, not just a report — migration requires app re-architecture</td>
+<td>"Are any reports embedded in .NET applications via ReportViewer? Who owns those apps?"</td>
+</tr>
+<tr>
+<td><strong>Data-driven subscription risk</strong></td>
+<td>No native equivalent anywhere — must be rebuilt as an orchestration workflow; often encodes critical business distribution logic</td>
+<td>"Do you have data-driven subscriptions? Who gets what data, and does that logic live in a database query?"</td>
+</tr>
+<tr>
+<td><strong>Source control gap</strong></td>
+<td>SSRS has no version control — the live Report Server catalog IS the source of truth</td>
+<td>"Is your SSDT project in Git, or do we need to extract everything from the live server?"</td>
+</tr>
+<tr>
+<td><strong>Encryption blocker</strong></td>
+<td>Connection strings in <code>ReportServer.dbo.DataSource</code> are encrypted — DBA access + encryption key required to read them</td>
+<td>"Do you have the Report Server encryption key, and can we get DBA access to the ReportServer database before the discovery phase?"</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.highlight", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/tts.js"></script>
+      
+    
+  </body>
+</html>

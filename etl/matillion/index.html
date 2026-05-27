@@ -1,0 +1,9003 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A multi-agent AI system that generates technical training courses for  Solution Architects — powered by LangGraph and local LLM inference">
+      
+      
+        <meta name="author" content="Tech Ramp Up">
+      
+      
+        <link rel="canonical" href="https://datechbridge-projects.github.io/sa-ramp-up/etl/matillion/">
+      
+      
+        <link rel="prev" href="../informatica_bdm/">
+      
+      
+        <link rel="next" href="../ssis/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Matillion - Tech Ramp Up</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#matillion-sa-migration-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Tech Ramp Up" class="md-header__button md-logo" aria-label="Tech Ramp Up" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tech Ramp Up
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Matillion
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../gcp/" class="md-tabs__link">
+          
+  
+  
+  Google
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../snowflake/" class="md-tabs__link">
+          
+  
+  
+  Snowflake
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../azure/" class="md-tabs__link">
+          
+  
+  
+  Azure
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../databricks/" class="md-tabs__link">
+          
+  
+  
+  Databricks
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../aws/" class="md-tabs__link">
+          
+  
+  
+  AWS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  ETL Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../bi/" class="md-tabs__link">
+          
+  
+  
+  BI Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../otf/" class="md-tabs__link">
+          
+  
+  
+  OTF
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../data-ref/" class="md-tabs__link">
+          
+  
+  
+  Data Solutions & Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../glossary/aws/" class="md-tabs__link">
+          
+  
+  
+  Glossary
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tech Ramp Up" class="md-nav__button md-logo" aria-label="Tech Ramp Up" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Tech Ramp Up
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Google
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Google
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_01_gcp_fundamentals_and_resource_hierarchy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. GCP Fundamentals and Resource Hierarchy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_02_security_identity_and_access_management_iam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Security, Identity, and Access Management (IAM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_03_cloud_storage_and_data_lake_architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Cloud Storage and Data Lake Architectures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_04_relational_databases_cloud_sql_and_spanner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Relational Databases: Cloud SQL and Spanner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_05_nosql_and_widecolumn_stores_bigtable_and_firestore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. NoSQL and Wide-Column Stores: Bigtable and Firestore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_06_bigquery_scalable_data_warehousing_and_analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. BigQuery: Scalable Data Warehousing and Analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_07_realtime_data_ingestion_with_pubsub/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Real-time Data Ingestion with Pub/Sub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_08_stream_and_batch_processing_with_dataflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Stream and Batch Processing with Dataflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_09_managed_hadoop_and_spark_with_cloud_dataproc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Managed Hadoop and Spark with Cloud Dataproc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_10_workflow_orchestration_with_cloud_composer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Workflow Orchestration with Cloud Composer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_11_data_migration_and_modernization_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Data Migration and Modernization Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_12_monitoring_logging_and_observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Monitoring, Logging, and Observability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_13_cost_management_and_billing_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Cost Management and Billing Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_14_machine_learning_integration_with_vertex_ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Machine Learning Integration with Vertex AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_15_competitive_positioning_and_industry_use_cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Competitive Positioning and Industry Use Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_16_certification_exam_readiness_and_capstone_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Certification Exam Readiness and Capstone Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_18" id="__nav_2_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SA Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_18">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SA Quick Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_01_gcp_fundamentals_and_resource_hierarchy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GCP Fundamentals and Resource Hierarchy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_02_security_identity_and_access_management_iam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security, Identity, and Access Management (IAM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_03_cloud_storage_and_data_lake_architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cloud Storage and Data Lake Architectures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_04_relational_databases_cloud_sql_and_spanner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relational Databases: Cloud SQL and Spanner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_05_nosql_and_widecolumn_stores_bigtable_and_firestore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NoSQL and Wide-Column Stores: Bigtable and Firestore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_06_bigquery_scalable_data_warehousing_and_analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BigQuery: Scalable Data Warehousing and Analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_07_realtime_data_ingestion_with_pubsub/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-time Data Ingestion with Pub/Sub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_08_stream_and_batch_processing_with_dataflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stream and Batch Processing with Dataflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_09_managed_hadoop_and_spark_with_cloud_dataproc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Managed Hadoop and Spark with Cloud Dataproc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_10_workflow_orchestration_with_cloud_composer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Orchestration with Cloud Composer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_11_data_migration_and_modernization_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Migration and Modernization Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_12_monitoring_logging_and_observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoring, Logging, and Observability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_13_cost_management_and_billing_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost Management and Billing Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_14_machine_learning_integration_with_vertex_ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Machine Learning Integration with Vertex AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_15_competitive_positioning_and_industry_use_cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Competitive Positioning and Industry Use Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_16_certification_exam_readiness_and_capstone_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certification Exam Readiness and Capstone Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowflake
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Snowflake
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_01_snowflake_architecture_and_core_components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Snowflake Architecture and Core Components
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_02_data_storage_and_semistructured_data_handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Data Storage and Semi-Structured Data Handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_03_virtual_warehouse_management_and_scaling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Virtual Warehouse Management and Scaling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_04_data_ingestion_techniques_and_snowpipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Data Ingestion Techniques and Snowpipe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_05_time_travel_failsafe_and_zerocopy_cloning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Time Travel, Fail-safe, and Zero-Copy Cloning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_06_security_identity_and_access_control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Security, Identity, and Access Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_07_data_sharing_and_the_snowflake_marketplace/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Data Sharing and the Snowflake Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_08_snowpark_and_programmable_data_engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Snowpark and Programmable Data Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_09_query_optimization_and_performance_tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Query Optimization and Performance Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_10_monitoring_auditing_and_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Monitoring, Auditing, and Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_11_cost_management_and_billing_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Cost Management and Billing Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_12_migration_and_adoption_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Migration and Adoption Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_13_snowflake_use_cases_and_competitive_positioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Snowflake Use Cases and Competitive Positioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_14_certification_exam_preparation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Certification Exam Preparation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_16" id="__nav_3_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SA Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SA Quick Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_01_snowflake_architecture_and_core_components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowflake Architecture and Core Components
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_02_data_storage_and_semistructured_data_handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Storage and Semi-Structured Data Handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_03_virtual_warehouse_management_and_scaling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Virtual Warehouse Management and Scaling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_04_data_ingestion_techniques_and_snowpipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Ingestion Techniques and Snowpipe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_05_time_travel_failsafe_and_zerocopy_cloning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Time Travel, Fail-safe, and Zero-Copy Cloning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_06_security_identity_and_access_control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security, Identity, and Access Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_07_data_sharing_and_the_snowflake_marketplace/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Sharing and the Snowflake Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_08_snowpark_and_programmable_data_engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowpark and Programmable Data Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_09_query_optimization_and_performance_tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Query Optimization and Performance Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_10_monitoring_auditing_and_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoring, Auditing, and Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_11_cost_management_and_billing_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost Management and Billing Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_12_migration_and_adoption_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration and Adoption Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_13_snowflake_use_cases_and_competitive_positioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowflake Use Cases and Competitive Positioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_14_certification_exam_preparation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certification Exam Preparation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Azure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Azure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_01_course_introduction_and_dp203_exam_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Course Introduction and DP-203 Exam Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_02_designing_and_implementing_azure_storage_solutions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Designing and Implementing Azure Storage Solutions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_03_implementing_relational_data_stores_with_azure_sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Implementing Relational Data Stores with Azure SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_04_implementing_nosql_solutions_with_azure_cosmos_db/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Implementing NoSQL Solutions with Azure Cosmos DB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_05_data_integration_and_orchestration_with_azure_data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Data Integration and Orchestration with Azure Data Factory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_06_largescale_data_processing_with_azure_synapse_anal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Large-Scale Data Processing with Azure Synapse Analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_07_stream_processing_with_azure_stream_analytics_and_/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Stream Processing with Azure Stream Analytics and Event Hubs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_08_distributed_data_processing_with_azure_databricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Distributed Data Processing with Azure Databricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_09_implementing_security_identity_and_access_control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Implementing Security, Identity, and Access Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_10_monitoring_logging_and_operations_for_data_pipelin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Monitoring, Logging, and Operations for Data Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_11_data_migration_and_cloud_adoption_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Data Migration and Cloud Adoption Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_12_managing_cost_performance_and_billing_for_azure_da/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Managing Cost, Performance, and Billing for Azure Data Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_13_data_governance_and_metadata_management_with_azure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Data Governance and Metadata Management with Azure Purview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_14_exam_readiness_final_review_and_practice_scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Exam Readiness: Final Review and Practice Scenarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_16" id="__nav_4_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SA Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SA Quick Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Databricks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Databricks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_01_introduction_to_databricks_architecture_on_aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introduction to Databricks Architecture on AWS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_02_databricks_compute_and_cluster_configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Databricks Compute and Cluster Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_03_deep_dive_into_delta_lake_acid_versioning_and_opti/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Deep Dive into Delta Lake: ACID, Versioning, and Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_04_implementing_medallion_architecture_bronze_silver_/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Implementing Medallion Architecture: Bronze, Silver, and Gold Layers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_05_efficient_data_ingestion_with_auto_loader_and_copy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Efficient Data Ingestion with Auto Loader and COPY INTO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_06_data_transformation_with_spark_sql_and_pyspark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Data Transformation with Spark SQL and PySpark
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_07_stream_processing_with_structured_streaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Stream Processing with Structured Streaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_08_building_declarable_pipelines_with_delta_live_tabl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Building Declarable Pipelines with Delta Live Tables (DLT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_09_data_governance_and_security_with_unity_catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Data Governance and Security with Unity Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_10_monitoring_logging_and_observability_in_databricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Monitoring, Logging, and Observability in Databricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_11_cost_management_and_aws_resource_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Cost Management and AWS Resource Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_12_migration_strategies_transitioning_from_aws_glue_t/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Migration Strategies: Transitioning from AWS Glue to Databricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_13_orchestration_and_automation_with_databricks_workf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Orchestration and Automation with Databricks Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_14_exam_readiness_and_final_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Exam Readiness and Final Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_16" id="__nav_5_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SA Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SA Quick Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_01_introduction_to_databricks_architecture_on_aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Databricks Architecture on AWS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_02_databricks_compute_and_cluster_configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Databricks Compute and Cluster Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_03_deep_dive_into_delta_lake_acid_versioning_and_opti/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deep Dive into Delta Lake: ACID, Versioning, and Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_04_implementing_medallion_architecture_bronze_silver_/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementing Medallion Architecture: Bronze, Silver, and Gold Layers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_05_efficient_data_ingestion_with_auto_loader_and_copy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Efficient Data Ingestion with Auto Loader and COPY INTO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_06_data_transformation_with_spark_sql_and_pyspark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Transformation with Spark SQL and PySpark
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_07_stream_processing_with_structured_streaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stream Processing with Structured Streaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_08_building_declarable_pipelines_with_delta_live_tabl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building Declarable Pipelines with Delta Live Tables (DLT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_09_data_governance_and_security_with_unity_catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Governance and Security with Unity Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_10_monitoring_logging_and_observability_in_databricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoring, Logging, and Observability in Databricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_11_cost_management_and_aws_resource_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost Management and AWS Resource Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_12_migration_strategies_transitioning_from_aws_glue_t/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration Strategies: Transitioning from AWS Glue to Databricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_13_orchestration_and_automation_with_databricks_workf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestration and Automation with Databricks Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_14_exam_readiness_and_final_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Readiness and Final Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AWS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_01_course_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Course Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_02_exam_overview_and_strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Exam Overview and Strategy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_03_aws_data_architecture_foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. AWS Data Architecture Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_04_data_ingestion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Data Ingestion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_05_aws_glue_deep_dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. AWS Glue Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_06_amazon_s3_and_data_lake_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Amazon S3 and Data Lake Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_07_amazon_athena/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Amazon Athena
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_08_amazon_redshift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Amazon Redshift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_09_streaming_data_with_kinesis_and_msk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Streaming Data with Kinesis and MSK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_10_nosql_and_purposebuilt_databases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. NoSQL and Purpose-Built Databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_11_aws_lake_formation_and_data_governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. AWS Lake Formation and Data Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_12_data_orchestration_and_pipelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Data Orchestration and Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_13_performance_cost_optimization_and_monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Performance, Cost Optimization, and Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_14_security_compliance_and_networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Security, Compliance, and Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_15_capstone_and_exam_readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Capstone and Exam Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_17" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_17" id="__nav_6_17_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SA Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SA Quick Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_01_course_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_02_exam_overview_and_strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Overview and Strategy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_03_aws_data_architecture_foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Data Architecture Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_04_data_ingestion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Ingestion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_05_aws_glue_deep_dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Glue Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_06_amazon_s3_and_data_lake_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Amazon S3 and Data Lake Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_07_amazon_athena/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Amazon Athena
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_08_amazon_redshift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Amazon Redshift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_09_streaming_data_with_kinesis_and_msk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Streaming Data with Kinesis and MSK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_10_nosql_and_purposebuilt_databases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NoSQL and Purpose-Built Databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_11_aws_lake_formation_and_data_governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Lake Formation and Data Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_12_data_orchestration_and_pipelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Orchestration and Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_13_performance_cost_optimization_and_monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Performance, Cost Optimization, and Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_14_security_compliance_and_networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security, Compliance, and Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_15_capstone_and_exam_readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capstone and Exam Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETL Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETL Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ab_initio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ab Initio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../talend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Talend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../datastage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IBM DataStage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../informatica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Informatica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../informatica_bdm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Informatica BDM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matillion
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matillion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagrams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Diagrams
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture Diagrams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#matillion-platform-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Matillion Platform Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matillion-as-etl-data-flow-between-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Matillion as ETL — Data Flow Between Systems
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sections
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-ecosystem-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ecosystem Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Ecosystem Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-matillion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Is Matillion?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-matillion-product-suite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Matillion Product Suite
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-customers-want-to-migrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Customers Want to Migrate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-discovery-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Discovery Questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-pipelines-and-components-the-core-building-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Pipelines and Components — The Core Building Block
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Pipelines and Components — The Core Building Block">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-transformation-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Transformation Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pipeline-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipeline Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Components
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-data-formats-and-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Data Formats and Schema
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Data Formats and Schema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-matillion-represents-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Matillion Represents Schema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#staging-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Staging Tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-movement-load-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Movement: Load Components
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-parallelism-and-scaling-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Parallelism and Scaling Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Parallelism and Scaling Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#push-down-execution-the-core-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Push-Down Execution — The Core Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-matillion-achieves-concurrency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Matillion Achieves Concurrency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-matillion-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Matillion Agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-project-structure-and-version-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Project Structure and Version Control
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Project Structure and Version Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#project-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project Organization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shared-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared Pipelines
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Orchestration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Orchestration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#orchestration-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orchestration Pipelines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scheduling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scheduling
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-metadata-lineage-and-impact-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Metadata, Lineage, and Impact Analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Metadata, Lineage, and Impact Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-matillion-tracks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Matillion Tracks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency Mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lineage-gaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lineage Gaps
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-data-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Data Quality
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Data Quality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-quality-in-matillion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Quality in Matillion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quality-report-artifacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quality Report Artifacts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-matillion-file-formats-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Matillion File Formats Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Matillion File Formats Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json-job-definition-matillion-etl-legacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .json — Job Definition (Matillion ETL Legacy)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yaml-yml-pipeline-definition-matillion-dpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .yaml / .yml — Pipeline Definition (Matillion DPC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mp-project-snapshot-version-export-matillion-etl-legacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .mp / Project Snapshot — Version Export (Matillion ETL Legacy)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-configuration-connection-profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment Configuration (Connection Profiles)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-formats-quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Formats Quick Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-migration-assessment-and-artifact-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Migration Assessment and Artifact Inventory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Migration Assessment and Artifact Inventory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inventory-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inventory Approach
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complexity-scoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complexity Scoring
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#risk-areas-specific-to-matillion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Risk Areas Specific to Matillion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-migration-mapping-to-databricks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Migration Mapping to Databricks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Migration Mapping to Databricks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#building-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building Blocks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#components-and-transforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Components and Transforms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orchestration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#governance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Governance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Quality
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-doesnt-map-cleanly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Doesn't Map Cleanly
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ssis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pentaho/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pentaho
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../odi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Oracle Data Integrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snaplogic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SnapLogic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../alteryx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Alteryx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BI Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    BI Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/ssrs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSRS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/cognos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IBM Cognos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/quicksight/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Amazon QuickSight
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/power-bi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Power BI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/tableau/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tableau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/obiee/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Oracle OBIEE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/sap-bo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAP BusinessObjects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OTF
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OTF
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../otf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../otf/delta-lake/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Delta Lake
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../otf/hudi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apache Hudi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../otf/iceberg.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apache Iceberg
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Solutions & Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data Solutions & Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data-architecture-patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Architecture Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data-ingestion-pipelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Ingestion & Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data-storage-layers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Storage Layers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data-governance-cataloging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Governance & Cataloging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/real-time-streaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-Time & Streaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data-serving-consumption/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Serving & Consumption
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data_design_patterns_exhaustive.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design Patterns Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Glossary
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/azure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Azure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/gcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/data-architect-glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Architect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagrams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Diagrams
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture Diagrams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#matillion-platform-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Matillion Platform Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matillion-as-etl-data-flow-between-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Matillion as ETL — Data Flow Between Systems
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sections
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-ecosystem-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ecosystem Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Ecosystem Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-matillion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Is Matillion?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-matillion-product-suite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Matillion Product Suite
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-customers-want-to-migrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Customers Want to Migrate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-discovery-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Discovery Questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-pipelines-and-components-the-core-building-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Pipelines and Components — The Core Building Block
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Pipelines and Components — The Core Building Block">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-transformation-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Transformation Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pipeline-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipeline Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Components
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-data-formats-and-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Data Formats and Schema
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Data Formats and Schema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-matillion-represents-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Matillion Represents Schema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#staging-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Staging Tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-movement-load-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Movement: Load Components
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-parallelism-and-scaling-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Parallelism and Scaling Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Parallelism and Scaling Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#push-down-execution-the-core-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Push-Down Execution — The Core Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-matillion-achieves-concurrency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Matillion Achieves Concurrency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-matillion-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Matillion Agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-project-structure-and-version-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Project Structure and Version Control
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Project Structure and Version Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#project-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project Organization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shared-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared Pipelines
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Orchestration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Orchestration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#orchestration-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orchestration Pipelines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scheduling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scheduling
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-metadata-lineage-and-impact-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Metadata, Lineage, and Impact Analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Metadata, Lineage, and Impact Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-matillion-tracks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Matillion Tracks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency Mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lineage-gaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lineage Gaps
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-data-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Data Quality
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Data Quality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-quality-in-matillion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Quality in Matillion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quality-report-artifacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quality Report Artifacts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-matillion-file-formats-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Matillion File Formats Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Matillion File Formats Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json-job-definition-matillion-etl-legacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .json — Job Definition (Matillion ETL Legacy)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yaml-yml-pipeline-definition-matillion-dpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .yaml / .yml — Pipeline Definition (Matillion DPC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mp-project-snapshot-version-export-matillion-etl-legacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .mp / Project Snapshot — Version Export (Matillion ETL Legacy)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-configuration-connection-profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment Configuration (Connection Profiles)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-formats-quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Formats Quick Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-migration-assessment-and-artifact-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Migration Assessment and Artifact Inventory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Migration Assessment and Artifact Inventory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inventory-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inventory Approach
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complexity-scoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complexity Scoring
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#risk-areas-specific-to-matillion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Risk Areas Specific to Matillion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-migration-mapping-to-databricks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Migration Mapping to Databricks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Migration Mapping to Databricks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#building-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building Blocks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#components-and-transforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Components and Transforms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orchestration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#governance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Governance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Quality
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-doesnt-map-cleanly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Doesn't Map Cleanly
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="matillion-sa-migration-guide">Matillion — SA Migration Guide<a class="headerlink" href="#matillion-sa-migration-guide" title="Permanent link">&para;</a></h1>
+<p><strong>Purpose:</strong> Give a Solution Architect enough depth to assess a Matillion estate, understand its moving parts, and map a migration path to Databricks.</p>
+<p>This is not a developer guide. You won't be building Matillion jobs. You will be walking customer sites, reviewing pipeline catalogs, asking the right questions, and scoping what it takes to move to a modern lakehouse platform.</p>
+<hr />
+<h2 id="architecture-diagrams">Architecture Diagrams<a class="headerlink" href="#architecture-diagrams" title="Permanent link">&para;</a></h2>
+<h3 id="matillion-platform-architecture">Matillion Platform Architecture<a class="headerlink" href="#matillion-platform-architecture" title="Permanent link">&para;</a></h3>
+<p>How the Matillion product suite fits together — from developer tooling through execution to orchestration and observability.</p>
+<div class="zd-wrapper" id="mat-arch-zoom" style="position:relative; border:1px solid #ddd; border-radius:6px; overflow:hidden; background:#fafafa;">
+<div style="position:absolute; top:8px; right:10px; z-index:10; display:flex; align-items:center; gap:8px; font-size:0.78rem; color:#666;">
+  <span>Scroll to zoom · Drag to pan</span>
+  <button onclick="zdReset('mat-arch-zoom')" style="padding:2px 8px; font-size:0.75rem; border:1px solid #ccc; border-radius:4px; background:#fff; cursor:pointer;">Reset</button>
+</div>
+<div class="zd-canvas" style="cursor:grab; user-select:none;">
+
+<pre class="mermaid"><code>flowchart TD
+    subgraph DEV["Developer Layer"]
+        ETLD["Matillion ETL\n(Legacy per-warehouse UI)\nVisual job builder per DB engine"]
+        DATD["Matillion Data Productivity Cloud\n(DPC / Designer)\nUnified multi-cloud designer"]
+        ETLD -. migrates to .-&gt; DATD
+    end
+
+    subgraph META["Metadata &amp; Version Control"]
+        GIT["Git Integration\n(GitHub / GitLab / Bitbucket)\nNative branch/PR support in DPC"]
+        PROJ["Project Repository\nVersioned job + pipeline definitions"]
+        DATD -- push/pull --&gt; GIT
+        GIT -- stores --&gt; PROJ
+    end
+
+    subgraph RUNTIME["Execution Layer"]
+        AGENT["Matillion Agent\n(Docker / K8s)\nStandalone execution engine"]
+        PUSH["Push-Down Execution\nSQL generated and run\nin the target warehouse"]
+        AGENT -- submits SQL --&gt; PUSH
+    end
+
+    subgraph ORCH["Orchestration &amp; Scheduling"]
+        SCHED["Built-in Scheduler\nCron-based job triggers"]
+        ORCT["Orchestration Pipelines\nSequence + conditional logic"]
+        EXT["External Schedulers\nAirflow / dbt Cloud / Control-M"]
+        SCHED --&gt; ORCT
+        EXT -. triggers .-&gt; AGENT
+    end
+
+    subgraph TARGETS["Warehouse / Lakehouse Targets"]
+        SF["Snowflake"]
+        RS["Redshift"]
+        BQ["BigQuery"]
+        DBX["Databricks"]
+        SF &amp; RS &amp; BQ &amp; DBX
+    end
+
+    DATD -- deploys to --&gt; AGENT
+    ORCT -- executes via --&gt; AGENT
+    PUSH --&gt; TARGETS</code></pre>
+
+</div>
+</div>
+
+<hr />
+<h3 id="matillion-as-etl-data-flow-between-systems">Matillion as ETL — Data Flow Between Systems<a class="headerlink" href="#matillion-as-etl-data-flow-between-systems" title="Permanent link">&para;</a></h3>
+<p>How Matillion sits between source systems and cloud targets in a typical enterprise data pipeline.</p>
+<div class="zd-wrapper" id="mat-flow-zoom" style="position:relative; border:1px solid #ddd; border-radius:6px; overflow:hidden; background:#fafafa;">
+<div style="position:absolute; top:8px; right:10px; z-index:10; display:flex; align-items:center; gap:8px; font-size:0.78rem; color:#666;">
+  <span>Scroll to zoom · Drag to pan</span>
+  <button onclick="zdReset('mat-flow-zoom')" style="padding:2px 8px; font-size:0.75rem; border:1px solid #ccc; border-radius:4px; background:#fff; cursor:pointer;">Reset</button>
+</div>
+<div class="zd-canvas" style="cursor:grab; user-select:none;">
+
+<pre class="mermaid"><code>flowchart LR
+    subgraph SOURCES["Source Systems"]
+        DB[("Relational DB\nSQL Server / Oracle / MySQL")]
+        FILES["Cloud Storage\nS3 / GCS / ADLS"]
+        SAAS["SaaS Apps\nSalesforce / HubSpot / Workday"]
+        STREAM["Event Streams\nKafka / Kinesis"]
+    end
+
+    subgraph MATILLION["Matillion ETL Layer"]
+        direction TB
+        INGEST["Input Components\nQuery, S3 Load, Connector"]
+        STAGE["Staging Zone\nWarehouse-native temp tables"]
+        TRANSFORM["Transformation Jobs\nSQL push-down · Join · Aggregate\nFilter · Pivot · Custom SQL"]
+        OUTPUT["Output Components\nRemodel, Update, Create/Replace"]
+
+        INGEST --&gt; STAGE
+        STAGE --&gt; TRANSFORM
+        TRANSFORM --&gt; OUTPUT
+    end
+
+    subgraph TARGETS["Target Systems"]
+        DW[("Cloud DW\nSnowflake / Redshift / BigQuery")]
+        DBX_T[("Databricks Lakehouse\nDelta / Unity Catalog")]
+        BI["BI Layer\nTableau / Power BI / Looker"]
+    end
+
+    subgraph ORCH["Orchestration"]
+        OPIPE["Orchestration Pipeline\nSequences Transformation Jobs\nwith branching + looping"]
+    end
+
+    SOURCES --&gt; INGEST
+    OUTPUT --&gt; TARGETS
+    OPIPE -. schedules .-&gt; MATILLION</code></pre>
+
+</div>
+</div>
+
+<script>
+(function(){
+  window.zdReset=window.zdReset||function(id){var w=document.getElementById(id);if(!w)return;var c=w.querySelector('.zd-canvas');if(c){c._s=1;c._tx=0;c._ty=0;}var s=w.querySelector('svg');if(s){s.style.transform='translate(0,0) scale(1)';s.style.transformOrigin='0 0';}};
+  function initC(c){if(c._zdInit)return;c._zdInit=true;c._s=1;c._tx=0;c._ty=0;var dr=false,sx,sy,stx,sty;function ap(sv){sv.style.transform='translate('+c._tx+'px,'+c._ty+'px) scale('+c._s+')';sv.style.transformOrigin='0 0';sv.style.display='block';}c.addEventListener('wheel',function(e){var sv=c.querySelector('svg');if(!sv)return;e.preventDefault();var r=c.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top,d=e.deltaY<0?1.12:1/1.12,ns=Math.min(5,Math.max(0.4,c._s*d));c._tx=mx-(mx-c._tx)*(ns/c._s);c._ty=my-(my-c._ty)*(ns/c._s);c._s=ns;ap(sv);},{passive:false});c.addEventListener('mousedown',function(e){if(e.button)return;dr=true;sx=e.clientX;sy=e.clientY;stx=c._tx;sty=c._ty;c.style.cursor='grabbing';e.preventDefault();});window.addEventListener('mousemove',function(e){if(!dr)return;c._tx=stx+(e.clientX-sx);c._ty=sty+(e.clientY-sy);var sv=c.querySelector('svg');if(sv)ap(sv);});window.addEventListener('mouseup',function(){if(dr){dr=false;c.style.cursor='grab';}});c.addEventListener('touchstart',function(e){if(e.touches.length===1){dr=true;sx=e.touches[0].clientX;sy=e.touches[0].clientY;stx=c._tx;sty=c._ty;}},{passive:true});c.addEventListener('touchmove',function(e){if(dr&&e.touches.length===1){c._tx=stx+(e.touches[0].clientX-sx);c._ty=sty+(e.touches[0].clientY-sy);var sv=c.querySelector('svg');if(sv)ap(sv);}},{passive:true});c.addEventListener('touchend',function(){dr=false;});}
+  function tryW(w){var c=w.querySelector('.zd-canvas');if(!c)return;var sv=c.querySelector('svg');if(!sv){setTimeout(function(){tryW(w);},200);return;}initC(c);}
+  function initAll(){document.querySelectorAll('.zd-wrapper').forEach(function(w){tryW(w);});}
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){setTimeout(initAll,600);});}else{setTimeout(initAll,600);}
+})();
+</script>
+
+<hr />
+<h2 id="sections">Sections<a class="headerlink" href="#sections" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#1-ecosystem-overview">Ecosystem Overview</a></li>
+<li><a href="#2-pipelines-and-components--the-core-building-block">Pipelines and Components — The Core Building Block</a></li>
+<li><a href="#3-data-formats-and-schema">Data Formats and Schema</a></li>
+<li><a href="#4-parallelism-and-scaling-model">Parallelism and Scaling Model</a></li>
+<li><a href="#5-project-structure-and-version-control">Project Structure and Version Control</a></li>
+<li><a href="#6-orchestration">Orchestration</a></li>
+<li><a href="#7-metadata-lineage-and-impact-analysis">Metadata, Lineage, and Impact Analysis</a></li>
+<li><a href="#8-data-quality">Data Quality</a></li>
+<li><a href="#9-matillion-file-formats-reference">Matillion File Formats Reference</a></li>
+<li><a href="#10-migration-assessment-and-artifact-inventory">Migration Assessment and Artifact Inventory</a></li>
+<li><a href="#11-migration-mapping-to-databricks">Migration Mapping to Databricks</a></li>
+</ol>
+<hr />
+<h2 id="1-ecosystem-overview">1. Ecosystem Overview<a class="headerlink" href="#1-ecosystem-overview" title="Permanent link">&para;</a></h2>
+<h3 id="what-is-matillion">What Is Matillion?<a class="headerlink" href="#what-is-matillion" title="Permanent link">&para;</a></h3>
+<p>Matillion is a <strong>cloud-native ELT platform</strong> designed to load data into cloud data warehouses and transform it there using push-down execution — meaning Matillion generates SQL and runs it inside the target warehouse rather than moving data through its own engine. This distinguishes it from traditional ETL tools like Ab Initio or Informatica that process data on a dedicated transform server.</p>
+<p>Matillion targets <strong>mid-market to enterprise</strong> customers who have already moved to the cloud and want a low-code, visual way to build data pipelines without managing Spark clusters or writing raw dbt models. The tool has broad adoption in Snowflake shops, but also runs against Redshift, BigQuery, and Databricks.</p>
+<p>Unlike heavyweight enterprise ETL tools, Matillion is:</p>
+<ul>
+<li><strong>Cloud-native and SaaS</strong> — no on-premises servers to maintain; execution happens in the warehouse</li>
+<li><strong>Visual and low-code</strong> — drag-and-drop component canvas, SQL expressions, no Java/C compilation</li>
+<li><strong>Push-down first</strong> — transformation logic runs as SQL in the warehouse; Matillion is essentially a SQL code generator with a GUI</li>
+<li><strong>Multi-warehouse</strong> — one platform, connectors to multiple engines; customers often have Matillion jobs targeting Snowflake today, and want to move to Databricks</li>
+</ul>
+<h3 id="the-matillion-product-suite">The Matillion Product Suite<a class="headerlink" href="#the-matillion-product-suite" title="Permanent link">&para;</a></h3>
+<p>Matillion has two product lines — understanding which one a customer is on is the first question to ask.</p>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>What It Is</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Matillion ETL</strong> (Legacy)</td>
+<td>Per-warehouse SaaS product — separate instances for Snowflake, Redshift, BigQuery</td>
+<td>Older architecture; customers on this path are often in a forced migration to DPC</td>
+</tr>
+<tr>
+<td><strong>Matillion Data Productivity Cloud (DPC)</strong></td>
+<td>Unified multi-cloud platform — single designer, multi-target deployment</td>
+<td>Current strategic product; includes Designer, Agent, Hub</td>
+</tr>
+<tr>
+<td><strong>Designer</strong></td>
+<td>The visual pipeline authoring UI inside DPC</td>
+<td>Where all new development happens</td>
+</tr>
+<tr>
+<td><strong>Matillion Agent</strong></td>
+<td>Lightweight Docker/K8s runtime that executes pipelines</td>
+<td>Deployed by the customer; connects to warehouses</td>
+</tr>
+<tr>
+<td><strong>Hub</strong></td>
+<td>Marketplace of pre-built connector templates and pipeline patterns</td>
+<td>Accelerates connector setup</td>
+</tr>
+<tr>
+<td><strong>Matillion Copilot</strong></td>
+<td>AI-assisted SQL generation and pipeline building</td>
+<td>Relevant for DPC customers, mostly demo-ware today</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Many Matillion customers are mid-migration between ETL (legacy) and DPC themselves. Ask which product version they're on before assessing complexity — ETL and DPC have different artifact formats, project structures, and migration paths to Databricks.</p>
+</blockquote>
+<h3 id="why-customers-want-to-migrate">Why Customers Want to Migrate<a class="headerlink" href="#why-customers-want-to-migrate" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Driver</th>
+<th>What It Means for the Engagement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Warehouse consolidation</strong></td>
+<td>Customer is moving from Snowflake/Redshift to Databricks; Matillion has no first-class Databricks support at parity with Snowflake</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Matillion licensing plus warehouse compute is a significant combined cost; Databricks + dbt or Workflows can be lower TCO</td>
+</tr>
+<tr>
+<td><strong>Developer experience</strong></td>
+<td>Engineering teams prefer code-first tools (dbt, Spark, SQL notebooks) over a GUI-only tool</td>
+</tr>
+<tr>
+<td><strong>Vendor concern</strong></td>
+<td>Matillion's roadmap and pricing have been volatile; some customers are hedging by moving to open platforms</td>
+</tr>
+<tr>
+<td><strong>dbt consolidation</strong></td>
+<td>Many customers have dbt running alongside Matillion; the goal is to collapse onto one tool</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Matillion customers moving to Databricks are often simultaneously evaluating dbt Core on Databricks as the replacement for the transformation layer. Position Databricks Workflows as the orchestration replacement and dbt or Delta Live Tables as the transform replacement — this resonates with their existing mental model.</p>
+</blockquote>
+<h3 id="key-discovery-questions">Key Discovery Questions<a class="headerlink" href="#key-discovery-questions" title="Permanent link">&para;</a></h3>
+<p>Before scoping a migration, ask:</p>
+<ol>
+<li>Are they on <strong>Matillion ETL (legacy)</strong> or <strong>Matillion DPC</strong>? This determines the artifact format.</li>
+<li>Which <strong>warehouse is the current target</strong> — Snowflake, Redshift, BigQuery? This affects SQL dialect translation work.</li>
+<li>How many <strong>Transformation Pipelines</strong> are in active production use vs. total in the project?</li>
+<li>How many <strong>Orchestration Pipelines</strong> exist, and do they use looping, branching, or variable-passing?</li>
+<li>Are there <strong>Python Script components</strong> or <strong>Custom SQL components</strong> with complex bespoke logic?</li>
+<li>How is <strong>version control</strong> managed — native Git integration in DPC, or manual export/import in legacy ETL?</li>
+<li>Does the customer use <strong>Matillion's built-in scheduler</strong>, or does an external tool (Airflow, Control-M) trigger jobs?</li>
+<li>Are there <strong>Shared Jobs</strong> (reusable pipeline components) that multiple pipelines depend on?</li>
+</ol>
+<hr />
+<h2 id="2-pipelines-and-components-the-core-building-block">2. Pipelines and Components — The Core Building Block<a class="headerlink" href="#2-pipelines-and-components-the-core-building-block" title="Permanent link">&para;</a></h2>
+<h3 id="the-transformation-pipeline">The Transformation Pipeline<a class="headerlink" href="#the-transformation-pipeline" title="Permanent link">&para;</a></h3>
+<p>In Matillion, the <strong>Transformation Pipeline</strong> (called a <strong>Transformation Job</strong> in legacy ETL) is the fundamental unit of work — it is the equivalent of an Ab Initio graph, an Informatica mapping, or a dbt model set. It is a directed visual dataflow: data enters from a source component, passes through transformation components, and exits to target components.</p>
+<p>All transformation logic in Matillion runs as <strong>push-down SQL</strong> — Matillion compiles the component canvas into SQL statements that execute in the warehouse. There is no Matillion-side data movement for transformation work.</p>
+<blockquote>
+<p><strong>SA Tip:</strong> Because Matillion is a SQL code generator, the migration artifact is effectively SQL logic embedded in a GUI. The challenge isn't porting a proprietary binary — it's extracting the SQL intent from the visual canvas and restructuring it as dbt models or Databricks notebooks. For skilled SQL engineers, this is often faster than migrating Ab Initio or DataStage.</p>
+</blockquote>
+<h3 id="pipeline-types">Pipeline Types<a class="headerlink" href="#pipeline-types" title="Permanent link">&para;</a></h3>
+<p>Matillion has two distinct pipeline types — both need to be inventoried.</p>
+<table>
+<thead>
+<tr>
+<th>Pipeline Type</th>
+<th>What It Does</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Transformation Pipeline</strong></td>
+<td>Reads data, applies SQL-based transforms, writes to target</td>
+<td>dbt model / Delta Live Tables pipeline / Databricks notebook</td>
+</tr>
+<tr>
+<td><strong>Orchestration Pipeline</strong></td>
+<td>Sequences Transformation Pipelines; handles branching, looping, variable passing</td>
+<td>Databricks Workflow / Airflow DAG</td>
+</tr>
+</tbody>
+</table>
+<h3 id="components">Components<a class="headerlink" href="#components" title="Permanent link">&para;</a></h3>
+<p>A <strong>component</strong> is a single processing step on the canvas. Matillion ships a large library of built-in components per warehouse engine, plus generic ones.</p>
+<p><strong>Core component categories:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Examples</th>
+<th>What They Do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Input</strong></td>
+<td><code>Query</code>, <code>S3 Load</code>, <code>Salesforce Query</code>, <code>Fixed Connector</code></td>
+<td>Read from sources into staging tables</td>
+</tr>
+<tr>
+<td><strong>Transform</strong></td>
+<td><code>Join</code>, <code>Aggregate</code>, <code>Filter</code>, <code>Calculator</code>, <code>Pivot</code>, <code>Unpivot</code></td>
+<td>Push-down SQL transformations</td>
+</tr>
+<tr>
+<td><strong>Custom SQL</strong></td>
+<td><code>SQL</code>, <code>Custom Query</code></td>
+<td>Arbitrary SQL or Jinja-templated SQL run in the warehouse</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td><code>Remodel</code>, <code>Update</code>, <code>Merge</code>, <code>Create/Replace Table</code></td>
+<td>Write results to target tables</td>
+</tr>
+<tr>
+<td><strong>Scripting</strong></td>
+<td><code>Python Script</code>, <code>Bash Script</code></td>
+<td>Custom code execution (runs on agent, not in warehouse)</td>
+</tr>
+<tr>
+<td><strong>Orchestration</strong></td>
+<td><code>Run Transformation</code>, <code>If</code>, <code>Case</code>, <code>Iterator</code>, <code>While Loop</code></td>
+<td>Control flow within Orchestration Pipelines</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> <code>Python Script</code> and <code>Bash Script</code> components are the migration risk area in Matillion. All other logic compiles to SQL and is predictable to port. Scripting components run arbitrary code on the Matillion Agent and may contain complex business logic, API calls, or file manipulation that doesn't have a simple SQL equivalent.</p>
+</blockquote>
+<h3 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h3>
+<p>Matillion supports <strong>pipeline variables</strong> — typed values that can be set, passed between pipelines, and used in SQL expressions or component parameters. Variables are the primary mechanism for parameterizing pipelines (e.g., date ranges, environment names, schema overrides).</p>
+<table>
+<thead>
+<tr>
+<th>Variable Type</th>
+<th>Scope</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pipeline Variable</strong></td>
+<td>Local to a single pipeline</td>
+<td>Databricks Workflow task parameter / widget</td>
+</tr>
+<tr>
+<td><strong>Environment Variable</strong></td>
+<td>Shared across all pipelines in an environment</td>
+<td>Databricks secret / environment-level parameter</td>
+</tr>
+<tr>
+<td><strong>Grid Variable</strong></td>
+<td>A tabular variable — multiple rows, used with iterators</td>
+<td>Passed as JSON array to a foreach task</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-data-formats-and-schema">3. Data Formats and Schema<a class="headerlink" href="#3-data-formats-and-schema" title="Permanent link">&para;</a></h2>
+<h3 id="how-matillion-represents-schema">How Matillion Represents Schema<a class="headerlink" href="#how-matillion-represents-schema" title="Permanent link">&para;</a></h3>
+<p>Matillion does not have a proprietary schema definition language like Ab Initio's DML. Schema in Matillion is <strong>warehouse-native</strong> — it is defined by the actual table structures in Snowflake, Redshift, BigQuery, or Databricks. When a component reads from a table, Matillion introspects the warehouse schema at design time to populate the column list.</p>
+<p>This is a significant difference from legacy ETL tools: there are no standalone schema files to inventory or migrate. The schema lives in the warehouse, and Matillion reflects it.</p>
+<p><strong>What this means for migration:</strong></p>
+<ul>
+<li>No DML/schema files to translate</li>
+<li>Schema mapping effort is focused on <strong>SQL dialect differences</strong> between the source warehouse (e.g., Snowflake) and Databricks</li>
+<li>Column expressions inside components use <strong>warehouse-native SQL functions</strong> — these need dialect translation (e.g., <code>DATEADD</code> in Snowflake → <code>DATE_ADD</code> in Spark SQL)</li>
+</ul>
+<blockquote>
+<p><strong>SA Tip:</strong> The SQL dialect gap is the single biggest technical challenge in a Matillion → Databricks migration when the source warehouse is Snowflake or Redshift. Many Matillion jobs contain inline SQL with warehouse-specific functions. Inventory <code>Custom SQL</code> and <code>Calculator</code> component expressions during assessment — these are where dialect issues concentrate.</p>
+</blockquote>
+<h3 id="staging-tables">Staging Tables<a class="headerlink" href="#staging-tables" title="Permanent link">&para;</a></h3>
+<p>Matillion's execution model relies on <strong>staging tables</strong> in the warehouse — temporary or persistent tables that hold intermediate results between pipeline steps. Unlike Ab Initio's MFS files, these are real tables visible in the warehouse schema.</p>
+<table>
+<thead>
+<tr>
+<th>Staging Pattern</th>
+<th>Description</th>
+<th>Migration Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Temp tables</strong></td>
+<td>Created at runtime, dropped after job completion</td>
+<td>Map to <code>CREATE OR REPLACE TEMP VIEW</code> or Delta temp tables</td>
+</tr>
+<tr>
+<td><strong>Persistent staging tables</strong></td>
+<td>Named tables in a dedicated staging schema</td>
+<td>May need to be replicated as Delta tables in Databricks</td>
+</tr>
+<tr>
+<td><strong>Workbook tables</strong></td>
+<td>Matillion-managed transient tables used within a job</td>
+<td>Treated as intermediate compute; restructure as CTEs or temp views</td>
+</tr>
+</tbody>
+</table>
+<h3 id="data-movement-load-components">Data Movement: Load Components<a class="headerlink" href="#data-movement-load-components" title="Permanent link">&para;</a></h3>
+<p>For ingestion (landing data into the warehouse before transformation), Matillion uses <strong>Load components</strong> that call the warehouse's native bulk-load mechanism:</p>
+<table>
+<thead>
+<tr>
+<th>Load Component</th>
+<th>Mechanism</th>
+<th>Migration Consideration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S3 Load / GCS Load / ADLS Load</strong></td>
+<td>Warehouse COPY command from cloud storage</td>
+<td>Can be replaced by Databricks Auto Loader or COPY INTO</td>
+</tr>
+<tr>
+<td><strong>Database Query</strong></td>
+<td>JDBC extraction from source DB into warehouse</td>
+<td>Replace with Databricks ingestion (JDBC notebook, DLT, or Airbyte)</td>
+</tr>
+<tr>
+<td><strong>SaaS Connectors</strong> (Salesforce, HubSpot, etc.)</td>
+<td>Matillion-managed API extraction</td>
+<td>Replace with Fivetran / Airbyte / Databricks Partner Connect connectors</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-parallelism-and-scaling-model">4. Parallelism and Scaling Model<a class="headerlink" href="#4-parallelism-and-scaling-model" title="Permanent link">&para;</a></h2>
+<h3 id="push-down-execution-the-core-model">Push-Down Execution — The Core Model<a class="headerlink" href="#push-down-execution-the-core-model" title="Permanent link">&para;</a></h3>
+<p>Matillion's performance model is fundamentally different from traditional ETL tools. There is no Matillion-managed parallel execution engine. <strong>All performance comes from the warehouse executing the SQL that Matillion generates.</strong></p>
+<p>When a customer asks "does Matillion scale?" — the answer is "as well as the warehouse scales." If they're on Snowflake with a large warehouse, Matillion jobs are fast. The Matillion Agent itself is lightweight and stateless.</p>
+<h3 id="how-matillion-achieves-concurrency">How Matillion Achieves Concurrency<a class="headerlink" href="#how-matillion-achieves-concurrency" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>How It Works</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Parallel components in Orchestration Pipeline</strong></td>
+<td>Multiple Transformation Pipelines run concurrently in a single Orchestration Pipeline</td>
+<td>Databricks Workflow tasks with no dependency (fan-out)</td>
+</tr>
+<tr>
+<td><strong>Iterator / While Loop</strong></td>
+<td>Loops over a set of values, running a sub-pipeline per iteration</td>
+<td><code>foreach</code> construct or dynamic task mapping in Databricks Workflows</td>
+</tr>
+<tr>
+<td><strong>Warehouse concurrency</strong></td>
+<td>Snowflake multi-cluster warehouse or Redshift concurrency scaling handles query parallelism</td>
+<td>Databricks cluster auto-scaling / serverless SQL warehouse</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Customers often mistake Matillion's Orchestration Pipeline parallelism for true ETL parallelism. The actual data processing parallelism is the warehouse's responsibility. When moving to Databricks, the right question is: "What cluster size and configuration replicates the warehouse compute the Matillion jobs were using?"</p>
+</blockquote>
+<h3 id="the-matillion-agent">The Matillion Agent<a class="headerlink" href="#the-matillion-agent" title="Permanent link">&para;</a></h3>
+<p>The <strong>Matillion Agent</strong> is a Docker container (or K8s pod) that orchestrates job execution — it submits SQL to the warehouse, manages variable state, and handles control flow. It is <strong>not</strong> a data-processing engine.</p>
+<p>In practice, a customer typically runs one or a small number of Agents. Agent sizing is rarely a bottleneck; warehouse compute is.</p>
+<blockquote>
+<p><strong>SA Tip:</strong> When a customer says their Matillion jobs are "slow," the root cause is almost always warehouse concurrency limits or query performance, not the Matillion Agent. This framing helps set realistic expectations for Databricks migration performance.</p>
+</blockquote>
+<hr />
+<h2 id="5-project-structure-and-version-control">5. Project Structure and Version Control<a class="headerlink" href="#5-project-structure-and-version-control" title="Permanent link">&para;</a></h2>
+<h3 id="project-organization">Project Organization<a class="headerlink" href="#project-organization" title="Permanent link">&para;</a></h3>
+<p>In <strong>Matillion DPC</strong>, the hierarchy is:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Organization
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a> └── Project
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>       ├── Environment (DEV / QA / PROD)
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>       │     ├── Transformation Pipelines
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>       │     ├── Orchestration Pipelines
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>       │     └── Shared Pipelines
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>       └── Git Repository (branch-per-environment or PR-based)
+</code></pre></div>
+<p>In <strong>Matillion ETL (legacy)</strong>, the hierarchy is:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Matillion Instance (per warehouse)
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a> └── Project
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>       ├── Job Groups (folders)
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>       │     ├── Transformation Jobs
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>       │     ├── Orchestration Jobs
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>       │     └── Shared Jobs
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>       └── Version Export (manual ZIP export — no native Git in legacy)
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Matillion ETL (Legacy)</th>
+<th>Matillion DPC</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Primary artifact</strong></td>
+<td>Job (<code>.json</code> or proprietary export)</td>
+<td>Pipeline (YAML in Git)</td>
+<td>Notebook / dbt model / Workflow YAML</td>
+</tr>
+<tr>
+<td><strong>Version control</strong></td>
+<td>Manual export/import or proprietary snapshot</td>
+<td>Native Git integration</td>
+<td>Git-backed Databricks Repos / DABs</td>
+</tr>
+<tr>
+<td><strong>Environment promotion</strong></td>
+<td>Manual re-import to each instance</td>
+<td>Git branch per environment</td>
+<td>Databricks Asset Bundles CI/CD</td>
+</tr>
+<tr>
+<td><strong>Reusable logic</strong></td>
+<td>Shared Job</td>
+<td>Shared Pipeline</td>
+<td>dbt macro / reusable notebook / DLT function</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> DPC customers with mature Git integration are significantly easier to migrate than legacy ETL customers. Legacy ETL customers often have no reliable version history — their "source of truth" is whatever is deployed in production. Plan for a discovery sprint to catalog what's actually running before scoping migration work.</p>
+</blockquote>
+<h3 id="shared-pipelines">Shared Pipelines<a class="headerlink" href="#shared-pipelines" title="Permanent link">&para;</a></h3>
+<p><strong>Shared Pipelines</strong> (called <strong>Shared Jobs</strong> in legacy ETL) are reusable pipelines that can be called from multiple Orchestration Pipelines. They are the Matillion equivalent of Ab Initio's wrapped graphs or Informatica's reusable mapplets.</p>
+<p>Inventory Shared Pipelines carefully — they are dependencies for everything that calls them. A Shared Pipeline used by 20 Orchestration Pipelines must be migrated first, before any of its callers.</p>
+<hr />
+<h2 id="6-orchestration">6. Orchestration<a class="headerlink" href="#6-orchestration" title="Permanent link">&para;</a></h2>
+<h3 id="orchestration-pipelines">Orchestration Pipelines<a class="headerlink" href="#orchestration-pipelines" title="Permanent link">&para;</a></h3>
+<p><strong>Orchestration Pipelines</strong> (called <strong>Orchestration Jobs</strong> in legacy ETL) are the sequencing layer — they call Transformation Pipelines in order, handle branching, looping, and variable passing. An Orchestration Pipeline is the Matillion equivalent of a Conduct&gt;It plan or an Airflow DAG.</p>
+<p><strong>Key orchestration constructs:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Construct</th>
+<th>Description</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Run Transformation</strong></td>
+<td>Calls a Transformation Pipeline as a step</td>
+<td>Databricks Workflow task (notebook/pipeline)</td>
+</tr>
+<tr>
+<td><strong>If / Else</strong></td>
+<td>Conditional branching based on variable values</td>
+<td><code>if_else</code> condition in Databricks Workflow</td>
+</tr>
+<tr>
+<td><strong>Case</strong></td>
+<td>Multi-branch conditional</td>
+<td>Workflow task with conditional runs</td>
+</tr>
+<tr>
+<td><strong>Iterator</strong></td>
+<td>Loops over a Grid Variable, running a sub-pipeline per row</td>
+<td>Dynamic task mapping or <code>foreach</code> in Databricks Workflows</td>
+</tr>
+<tr>
+<td><strong>While Loop</strong></td>
+<td>Loops until a condition is met</td>
+<td>Not natively supported in Workflows — implement as a recursive notebook call or Airflow loop</td>
+</tr>
+<tr>
+<td><strong>And Component</strong></td>
+<td>Joins parallel branches — waits for all to complete</td>
+<td>Workflow task with multiple upstream dependencies</td>
+</tr>
+<tr>
+<td><strong>Failure / Success handling</strong></td>
+<td>Routes to different steps on success vs. failure</td>
+<td><code>on_failure</code> and <code>on_success</code> task dependencies</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> The <code>While Loop</code> and <code>Iterator</code> components with dynamic variable passing are the hardest orchestration patterns to migrate to Databricks Workflows natively. Identify these upfront — they may require Airflow or a custom looping pattern in notebooks. Ask specifically: "Do any of your Orchestration Pipelines use loops over a variable-length list?"</p>
+</blockquote>
+<h3 id="scheduling">Scheduling<a class="headerlink" href="#scheduling" title="Permanent link">&para;</a></h3>
+<p>Matillion has a <strong>built-in cron-based scheduler</strong> that can trigger individual pipelines or top-level Orchestration Pipelines on a schedule. In DPC, schedules are defined per pipeline. In legacy ETL, schedules are set per job.</p>
+<p>Many enterprise customers <strong>supplement or replace</strong> the built-in scheduler with an external tool:</p>
+<table>
+<thead>
+<tr>
+<th>Scheduler</th>
+<th>Integration Method</th>
+<th>Migration Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Built-in scheduler</strong></td>
+<td>Native — triggers Matillion Agent directly</td>
+<td>Replace with Databricks Workflow schedule</td>
+</tr>
+<tr>
+<td><strong>Apache Airflow</strong></td>
+<td>Matillion operator or REST API call</td>
+<td>Retain Airflow, replace Matillion task with Databricks operator</td>
+</tr>
+<tr>
+<td><strong>AWS Step Functions</strong></td>
+<td>REST API trigger</td>
+<td>Replace with Databricks Workflow or Step Functions → Databricks</td>
+</tr>
+<tr>
+<td><strong>Control-M / TWS</strong></td>
+<td>REST API trigger or CLI</td>
+<td>Replace Matillion REST call with Databricks REST API or CLI</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-metadata-lineage-and-impact-analysis">7. Metadata, Lineage, and Impact Analysis<a class="headerlink" href="#7-metadata-lineage-and-impact-analysis" title="Permanent link">&para;</a></h2>
+<h3 id="what-matillion-tracks">What Matillion Tracks<a class="headerlink" href="#what-matillion-tracks" title="Permanent link">&para;</a></h3>
+<p>Matillion's metadata story is weaker than legacy enterprise ETL tools. It does not have a deep metadata repository like Ab Initio's EME.</p>
+<p><strong>In Matillion ETL (legacy):</strong>
+- Job definitions are stored inside the Matillion instance — accessible via the UI or API export
+- No native lineage tracking; dependency relationships must be inferred from Orchestration Job structures
+- No impact analysis tooling built-in</p>
+<p><strong>In Matillion DPC:</strong>
+- Pipeline definitions are stored as YAML in Git — the Git history is the version record
+- Matillion has introduced <strong>lineage integration with data catalog tools</strong> (Alation, Collibra) via API
+- Column-level lineage is partial and depends on component type — <code>Custom SQL</code> components break automated lineage tracing</p>
+<blockquote>
+<p><strong>SA Tip:</strong> For Matillion ETL (legacy) customers, the Git integration is absent or minimal. The only reliable inventory source is the <strong>Matillion API</strong> — it can export all Job definitions as JSON. During assessment, run an API export of all Jobs across all environments; this is your estate inventory.</p>
+</blockquote>
+<h3 id="dependency-mapping">Dependency Mapping<a class="headerlink" href="#dependency-mapping" title="Permanent link">&para;</a></h3>
+<p>Since Matillion has no built-in impact analysis UI, dependency mapping must be done manually or via scripting:</p>
+<table>
+<thead>
+<tr>
+<th>Analysis Needed</th>
+<th>How to Get It</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Which Orchestration Pipelines call a given Transformation Pipeline</td>
+<td>Search pipeline YAML/JSON for <code>Run Transformation</code> references</td>
+</tr>
+<tr>
+<td>Which Shared Pipelines are called from multiple parents</td>
+<td>Search all Orchestration Pipelines for <code>Run Shared Job</code> references</td>
+</tr>
+<tr>
+<td>What tables a pipeline reads/writes</td>
+<td>Review Input/Output component configurations in exported JSON</td>
+</tr>
+<tr>
+<td>External scheduler dependencies</td>
+<td>Interview ops team and review scheduler configs separately</td>
+</tr>
+</tbody>
+</table>
+<h3 id="lineage-gaps">Lineage Gaps<a class="headerlink" href="#lineage-gaps" title="Permanent link">&para;</a></h3>
+<p>Lineage in Matillion breaks in predictable places:</p>
+<ul>
+<li><strong>Custom SQL components</strong> — Matillion cannot parse arbitrary SQL for lineage</li>
+<li><strong>Python Script components</strong> — logic and data flow are opaque to Matillion's catalog integration</li>
+<li><strong>External data loads</strong> done outside Matillion (direct COPY, Fivetran loads) that Matillion jobs read from</li>
+</ul>
+<hr />
+<h2 id="8-data-quality">8. Data Quality<a class="headerlink" href="#8-data-quality" title="Permanent link">&para;</a></h2>
+<h3 id="data-quality-in-matillion">Data Quality in Matillion<a class="headerlink" href="#data-quality-in-matillion" title="Permanent link">&para;</a></h3>
+<p>Matillion does not have a dedicated data quality product. Quality checks are implemented directly inside pipelines using standard transformation components or custom SQL.</p>
+<p><strong>Common patterns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>How It's Implemented</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Row count validation</strong></td>
+<td><code>SQL</code> component that queries COUNT and fails the pipeline if below threshold</td>
+<td>Delta Live Tables <code>expect_or_fail()</code> / Great Expectations</td>
+</tr>
+<tr>
+<td><strong>Null / type checks</strong></td>
+<td><code>Filter</code> component routing invalid rows to a separate error table</td>
+<td>DLT <code>expect()</code> with quarantine pattern</td>
+</tr>
+<tr>
+<td><strong>Referential integrity</strong></td>
+<td><code>Join</code> to lookup table with <code>Filter</code> to catch unmatched rows</td>
+<td>DLT expectation or custom CHECK constraint</td>
+</tr>
+<tr>
+<td><strong>Duplicate detection</strong></td>
+<td><code>Aggregate</code> or <code>SQL</code> dedup logic</td>
+<td>Delta <code>MERGE</code> dedup or DLT quality rule</td>
+</tr>
+<tr>
+<td><strong>Custom business rules</strong></td>
+<td><code>Custom SQL</code> or <code>Calculator</code> component with CASE expressions</td>
+<td>dbt test or custom DLT expectation</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Unlike Informatica IDQ or Ab Initio Analyze, Matillion has no standalone data quality product. Quality logic is embedded invisibly inside pipelines as regular SQL components. Ask customers how they verify pipeline output correctness — the answer is often "we look at row counts in a dashboard" rather than formal DQ rules. This means migrating quality checks requires interrogating each pipeline, not pulling from a central DQ catalog.</p>
+</blockquote>
+<h3 id="quality-report-artifacts">Quality Report Artifacts<a class="headerlink" href="#quality-report-artifacts" title="Permanent link">&para;</a></h3>
+<p>Matillion does not generate standalone quality reports. If a customer has data quality documentation, it was likely built outside Matillion — in a BI tool, a custom query, or a separate DQ tool like Monte Carlo or dbt tests. These external artifacts should be inventoried separately.</p>
+<hr />
+<h2 id="9-matillion-file-formats-reference">9. Matillion File Formats Reference<a class="headerlink" href="#9-matillion-file-formats-reference" title="Permanent link">&para;</a></h2>
+<p>When inventorying a Matillion estate, the artifacts you encounter depend on whether the customer is on legacy ETL or DPC. Both formats are covered below.</p>
+<hr />
+<h3 id="json-job-definition-matillion-etl-legacy"><code>.json</code> — Job Definition (Matillion ETL Legacy)<a class="headerlink" href="#json-job-definition-matillion-etl-legacy" title="Permanent link">&para;</a></h3>
+<p>The primary artifact in Matillion ETL legacy is a <strong>Job definition exported as JSON</strong>. Each job (Transformation or Orchestration) is exported as a structured JSON document containing the component canvas — every component, its configuration, its connections, and its SQL expressions.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Created by</strong></td>
+<td>Matillion ETL UI — developers build jobs visually, export via UI or API</td>
+</tr>
+<tr>
+<td><strong>Stored in</strong></td>
+<td>Matillion ETL instance database; exported to filesystem via API or manual export</td>
+</tr>
+<tr>
+<td><strong>Contains</strong></td>
+<td>Component type, parameters, SQL expressions, port connections, variable definitions, scheduling metadata</td>
+</tr>
+<tr>
+<td><strong>Human-readable?</strong></td>
+<td>Yes — standard JSON, but verbose and deeply nested; not intended for manual editing</td>
+</tr>
+<tr>
+<td><strong>Migration target</strong></td>
+<td>Each Transformation Job maps to a dbt model set or Databricks notebook; each Orchestration Job maps to a Databricks Workflow</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example snippet (Transformation Job component):</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;filter&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;filter_active_customers&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nt">&quot;filterExpression&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;status = &#39;ACTIVE&#39; AND balance &gt; 0&quot;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="nt">&quot;inputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;customers_stage&quot;</span><span class="p">],</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="nt">&quot;outputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;active_customers&quot;</span><span class="p">]</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="p">}</span>
+</code></pre></div></p>
+<blockquote>
+<p><strong>SA Tip:</strong> Request a full JSON export via the Matillion API (<code>GET /v1/project/exportjob</code>) for every job in production. This is the most efficient way to inventory the estate without needing GUI access. The JSON is parseable with standard tooling — write a script to count jobs, extract SQL expressions, and identify Python Script components in one pass.</p>
+</blockquote>
+<hr />
+<h3 id="yaml-yml-pipeline-definition-matillion-dpc"><code>.yaml</code> / <code>.yml</code> — Pipeline Definition (Matillion DPC)<a class="headerlink" href="#yaml-yml-pipeline-definition-matillion-dpc" title="Permanent link">&para;</a></h3>
+<p>In Matillion DPC, pipeline definitions are stored as <strong>YAML files in Git</strong>. This is a fundamentally different artifact model from legacy ETL — the pipeline is a code artifact with version history, branch support, and PR workflows.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Created by</strong></td>
+<td>Matillion Designer UI — committed to Git automatically or via explicit push</td>
+</tr>
+<tr>
+<td><strong>Stored in</strong></td>
+<td>Git repository (GitHub / GitLab / Bitbucket) in the connected project</td>
+</tr>
+<tr>
+<td><strong>Contains</strong></td>
+<td>Pipeline metadata, component list with parameters, connector references, variable declarations, schedule configuration</td>
+</tr>
+<tr>
+<td><strong>Human-readable?</strong></td>
+<td>Yes — structured YAML; reviewable in any text editor or Git diff tool</td>
+</tr>
+<tr>
+<td><strong>Migration target</strong></td>
+<td>Transformation pipelines → dbt models or DLT pipelines; Orchestration pipelines → Databricks Workflow YAML</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example snippet (DPC pipeline YAML):</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">pipeline</span><span class="p">:</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">transform_orders</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">transformation</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">run_date</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">text</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">      </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2024-01-01&quot;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span><span class="nt">components</span><span class="p">:</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">query_orders</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">table-input</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">      </span><span class="nt">table</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">raw.orders</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">      </span><span class="nt">filter</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;order_date</span><span class="nv"> </span><span class="s">&gt;=</span><span class="nv"> </span><span class="s">&#39;{{</span><span class="nv"> </span><span class="s">run_date</span><span class="nv"> </span><span class="s">}}&#39;&quot;</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aggregate_by_customer</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aggregate</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">      </span><span class="nt">groupBy</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">customer_id</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">      </span><span class="nt">measures</span><span class="p">:</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">field</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">order_value</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">          </span><span class="nt">aggregation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SUM</span>
+</code></pre></div></p>
+<blockquote>
+<p><strong>SA Tip:</strong> DPC customers with mature Git workflows are much easier to inventory — clone the repo, run <code>find . -name '*.yaml'</code> to count pipelines, and grep for <code>type: python-script</code> to identify scripted components needing review. This is significantly faster than legacy ETL assessment.</p>
+</blockquote>
+<hr />
+<h3 id="mp-project-snapshot-version-export-matillion-etl-legacy"><code>.mp</code> / Project Snapshot — Version Export (Matillion ETL Legacy)<a class="headerlink" href="#mp-project-snapshot-version-export-matillion-etl-legacy" title="Permanent link">&para;</a></h3>
+<p>Legacy Matillion ETL supports a <strong>project export</strong> — a snapshot of all jobs in a project exported as a <code>.mp</code> (Matillion Project) ZIP archive or via the API as a bulk JSON export. This is the mechanism for environment promotion and backup.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Created by</strong></td>
+<td>Matillion ETL UI — via "Export Project" or via REST API</td>
+</tr>
+<tr>
+<td><strong>Stored in</strong></td>
+<td>Filesystem or object storage; not natively version-controlled without external tooling</td>
+</tr>
+<tr>
+<td><strong>Contains</strong></td>
+<td>All jobs in the project, variable definitions, environment settings, schedule configurations</td>
+</tr>
+<tr>
+<td><strong>Human-readable?</strong></td>
+<td>Partially — ZIP contains JSON files; top-level structure is readable, nested expressions are verbose</td>
+</tr>
+<tr>
+<td><strong>Migration target</strong></td>
+<td>Used as the source inventory for migration — parse to extract all job definitions</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Some legacy ETL customers have set up basic Git versioning by scripting nightly exports and committing the ZIP. Even this minimal version history is valuable — it shows which jobs changed recently and which have been stable for years. Ask for both the current export and any historical exports available.</p>
+</blockquote>
+<hr />
+<h3 id="environment-configuration-connection-profiles">Environment Configuration (Connection Profiles)<a class="headerlink" href="#environment-configuration-connection-profiles" title="Permanent link">&para;</a></h3>
+<p>Both Matillion ETL and DPC store <strong>environment-specific configuration</strong> — warehouse credentials, schema names, file paths — as named connection profiles or environment variables. These are the parameters that change between DEV, QA, and PROD.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Created by</strong></td>
+<td>Admins — configured in Matillion UI or DPC settings</td>
+</tr>
+<tr>
+<td><strong>Stored in</strong></td>
+<td>Matillion instance (legacy) or DPC project settings; secrets in a connected vault</td>
+</tr>
+<tr>
+<td><strong>Contains</strong></td>
+<td>Warehouse hostname, credentials, database/schema names, S3 bucket paths, environment-specific variable overrides</td>
+</tr>
+<tr>
+<td><strong>Human-readable?</strong></td>
+<td>Yes — visible in UI; credentials are masked</td>
+</tr>
+<tr>
+<td><strong>Migration target</strong></td>
+<td>Maps to Databricks cluster environment variables, secrets in Databricks Secrets, or Databricks Asset Bundle target configurations</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Connection profiles reveal the customer's warehouse topology — how many databases, schemas, and cloud storage buckets Matillion touches. Inventory these during assessment; they define the scope of Unity Catalog setup needed on the Databricks side.</p>
+</blockquote>
+<hr />
+<h3 id="file-formats-quick-reference">File Formats Quick Reference<a class="headerlink" href="#file-formats-quick-reference" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Tool Version</th>
+<th>Primary Content</th>
+<th>Human-Readable?</th>
+<th>Migration Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.json</code> Job Export</td>
+<td>ETL Legacy</td>
+<td>Transformation/Orchestration Job definition</td>
+<td>Yes (verbose)</td>
+<td>Databricks notebook / Workflow</td>
+</tr>
+<tr>
+<td><code>.yaml</code> Pipeline</td>
+<td>DPC</td>
+<td>Pipeline definition in Git</td>
+<td>Yes</td>
+<td>dbt model / DLT / Workflow YAML</td>
+</tr>
+<tr>
+<td><code>.mp</code> Project Export</td>
+<td>ETL Legacy</td>
+<td>Full project snapshot (ZIP of JSONs)</td>
+<td>Partially</td>
+<td>Inventory source</td>
+</tr>
+<tr>
+<td>Connection Profiles</td>
+<td>Both</td>
+<td>Warehouse credentials + schema config</td>
+<td>Yes (masked)</td>
+<td>Databricks Secrets + DAB target config</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-migration-assessment-and-artifact-inventory">10. Migration Assessment and Artifact Inventory<a class="headerlink" href="#10-migration-assessment-and-artifact-inventory" title="Permanent link">&para;</a></h2>
+<h3 id="inventory-approach">Inventory Approach<a class="headerlink" href="#inventory-approach" title="Permanent link">&para;</a></h3>
+<p>The first step in any Matillion migration is establishing an accurate estate inventory. The method depends on which product the customer is running.</p>
+<p><strong>For Matillion ETL (Legacy):</strong></p>
+<ol>
+<li>Use the Matillion REST API to export all Job definitions as JSON across all environments</li>
+<li>Parse the JSON to count Transformation Jobs, Orchestration Jobs, and Shared Jobs</li>
+<li>Grep for <code>python-script</code> and <code>bash-script</code> component types — these are high-effort migration items</li>
+<li>Extract all <code>Custom SQL</code> expressions and review for Snowflake/Redshift-specific functions</li>
+<li>Identify Shared Jobs and map which Orchestration Jobs call them (dependency graph)</li>
+</ol>
+<p><strong>For Matillion DPC:</strong></p>
+<ol>
+<li>Clone the Git repository and count <code>.yaml</code> pipeline files by type</li>
+<li>Search for <code>type: python-script</code> in all YAML files</li>
+<li>Extract all SQL expressions from <code>custom-sql</code> and <code>calculator</code> components</li>
+<li>Review Git commit history to identify active vs. stale pipelines (last commit date)</li>
+</ol>
+<h3 id="complexity-scoring">Complexity Scoring<a class="headerlink" href="#complexity-scoring" title="Permanent link">&para;</a></h3>
+<p>Score each pipeline on migration effort using these dimensions:</p>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Low (1)</th>
+<th>Medium (2)</th>
+<th>High (3)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Component types</strong></td>
+<td>Standard transforms only</td>
+<td>Mix of standard + Custom SQL</td>
+<td>Python/Bash script components</td>
+</tr>
+<tr>
+<td><strong>SQL dialect complexity</strong></td>
+<td>Simple SELECT / JOIN / AGG</td>
+<td>Multi-step CTEs, window functions</td>
+<td>Warehouse-specific UDFs, stored proc calls</td>
+</tr>
+<tr>
+<td><strong>Variable usage</strong></td>
+<td>Static parameters</td>
+<td>Pipeline variables with runtime logic</td>
+<td>Grid Variables + Iterator patterns</td>
+</tr>
+<tr>
+<td><strong>Orchestration complexity</strong></td>
+<td>Linear sequence</td>
+<td>Branching (If/Case)</td>
+<td>Loops (Iterator / While Loop)</td>
+</tr>
+<tr>
+<td><strong>External dependencies</strong></td>
+<td>Warehouse tables only</td>
+<td>SaaS connectors, S3</td>
+<td>Mainframe feeds, API calls in scripts</td>
+</tr>
+<tr>
+<td><strong>Shared Pipeline usage</strong></td>
+<td>Not a shared dependency</td>
+<td>Called by 2–5 pipelines</td>
+<td>Called by 6+ pipelines</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Focus complexity scoring on the <strong>Orchestration Pipelines</strong> first — they reveal the workflow complexity and external dependencies. The individual Transformation Pipelines are almost always straightforward SQL; it's the looping, branching, and variable-passing patterns in Orchestration Pipelines that drive migration effort.</p>
+</blockquote>
+<h3 id="risk-areas-specific-to-matillion">Risk Areas Specific to Matillion<a class="headerlink" href="#risk-areas-specific-to-matillion" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Risk Area</th>
+<th>Why It's Risky</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Python/Bash Script components</strong></td>
+<td>Arbitrary code with unknown dependencies; not SQL push-down</td>
+<td>Inventory all scripts; treat each as a custom code port</td>
+</tr>
+<tr>
+<td><strong>SQL dialect functions</strong></td>
+<td>Snowflake/Redshift-specific functions don't run on Databricks SQL</td>
+<td>Extract all Custom SQL during assessment; map to Spark SQL equivalents</td>
+</tr>
+<tr>
+<td><strong>Iterator over large Grid Variables</strong></td>
+<td>May rely on row-level looping that Databricks Workflows handles differently</td>
+<td>Identify loop patterns early; evaluate Airflow as alternative</td>
+</tr>
+<tr>
+<td><strong>External SaaS connectors</strong></td>
+<td>Matillion-bundled connectors (Salesforce, HubSpot) not available on Databricks</td>
+<td>Map each connector to a Fivetran / Airbyte / Partner Connect equivalent</td>
+</tr>
+<tr>
+<td><strong>Staging table dependencies</strong></td>
+<td>Downstream Matillion jobs read staging tables created by earlier jobs</td>
+<td>Map staging table lineage; ensure Databricks pipelines reproduce the same intermediate tables</td>
+</tr>
+<tr>
+<td><strong>No Git history (legacy ETL)</strong></td>
+<td>Can't determine which jobs are active or when they last changed</td>
+<td>Use Matillion's job run history API to identify active jobs by last execution date</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11-migration-mapping-to-databricks">11. Migration Mapping to Databricks<a class="headerlink" href="#11-migration-mapping-to-databricks" title="Permanent link">&para;</a></h2>
+<h3 id="building-blocks">Building Blocks<a class="headerlink" href="#building-blocks" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Matillion Concept</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transformation Pipeline / Job</td>
+<td>Databricks notebook (PySpark or SQL) / dbt model / Delta Live Tables pipeline</td>
+</tr>
+<tr>
+<td>Orchestration Pipeline / Job</td>
+<td>Databricks Workflow</td>
+</tr>
+<tr>
+<td>Shared Pipeline / Shared Job</td>
+<td>Reusable notebook (called as a task) / dbt macro / DLT function</td>
+</tr>
+<tr>
+<td>Variable (Pipeline)</td>
+<td>Databricks Workflow task parameter / notebook widget</td>
+</tr>
+<tr>
+<td>Variable (Environment)</td>
+<td>Databricks secret + cluster environment variable</td>
+</tr>
+<tr>
+<td>Grid Variable + Iterator</td>
+<td>Databricks Workflow foreach task / dynamic task mapping</td>
+</tr>
+</tbody>
+</table>
+<h3 id="components-and-transforms">Components and Transforms<a class="headerlink" href="#components-and-transforms" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Matillion Component</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Query</code> (table input)</td>
+<td><code>spark.read.table()</code> / Delta table read</td>
+</tr>
+<tr>
+<td><code>S3 Load</code> / <code>ADLS Load</code></td>
+<td>Databricks Auto Loader / <code>COPY INTO</code></td>
+</tr>
+<tr>
+<td><code>SaaS Connector</code> (Salesforce, HubSpot)</td>
+<td>Fivetran / Airbyte / Databricks Partner Connect</td>
+</tr>
+<tr>
+<td><code>Join</code></td>
+<td>Spark <code>join()</code> / SQL <code>JOIN</code></td>
+</tr>
+<tr>
+<td><code>Aggregate</code></td>
+<td>Spark <code>groupBy().agg()</code> / SQL <code>GROUP BY</code></td>
+</tr>
+<tr>
+<td><code>Filter</code></td>
+<td>Spark <code>filter()</code> / SQL <code>WHERE</code></td>
+</tr>
+<tr>
+<td><code>Pivot</code> / <code>Unpivot</code></td>
+<td>Spark <code>groupBy().pivot()</code> / SQL <code>PIVOT</code></td>
+</tr>
+<tr>
+<td><code>Calculator</code> (expression)</td>
+<td><code>withColumn()</code> expression / SQL <code>SELECT</code> expression</td>
+</tr>
+<tr>
+<td><code>Custom SQL</code></td>
+<td>Databricks SQL notebook cell / dbt model SQL</td>
+</tr>
+<tr>
+<td><code>Python Script</code></td>
+<td>Databricks notebook (Python) / Databricks task (Python file)</td>
+</tr>
+<tr>
+<td><code>Remodel</code> (output)</td>
+<td>Delta <code>CREATE OR REPLACE TABLE AS SELECT</code></td>
+</tr>
+<tr>
+<td><code>Merge</code> (output)</td>
+<td>Delta <code>MERGE INTO</code></td>
+</tr>
+<tr>
+<td><code>Update</code> (output)</td>
+<td>Delta <code>UPDATE</code> / <code>MERGE INTO</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="orchestration">Orchestration<a class="headerlink" href="#orchestration" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Matillion Orchestration</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Orchestration Pipeline / Job</td>
+<td>Databricks Workflow</td>
+</tr>
+<tr>
+<td>Run Transformation component</td>
+<td>Workflow task (notebook or DLT pipeline)</td>
+</tr>
+<tr>
+<td><code>If</code> / <code>Case</code> component</td>
+<td>Workflow task with <code>if_else</code> or <code>run_if</code> conditions</td>
+</tr>
+<tr>
+<td><code>Iterator</code> over Grid Variable</td>
+<td>Workflow foreach task (dynamic task mapping)</td>
+</tr>
+<tr>
+<td><code>While Loop</code></td>
+<td>Recursive notebook pattern or Airflow <code>while</code> sensor</td>
+</tr>
+<tr>
+<td><code>And</code> component (join parallel branches)</td>
+<td>Workflow task with multiple upstream dependencies</td>
+</tr>
+<tr>
+<td>Built-in scheduler</td>
+<td>Databricks Workflow schedule (cron)</td>
+</tr>
+<tr>
+<td>Airflow-triggered Matillion</td>
+<td>Airflow <code>DatabricksRunNowOperator</code></td>
+</tr>
+<tr>
+<td>Control-M triggered Matillion</td>
+<td>Control-M Databricks integration / REST API call</td>
+</tr>
+</tbody>
+</table>
+<h3 id="governance">Governance<a class="headerlink" href="#governance" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Matillion Concept</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Environment (DEV / QA / PROD)</td>
+<td>Databricks workspace per environment / Unity Catalog catalog per environment</td>
+</tr>
+<tr>
+<td>Connection Profile (warehouse credentials)</td>
+<td>Databricks Secret Scope + cluster environment variable</td>
+</tr>
+<tr>
+<td>Git repository (DPC)</td>
+<td>Databricks Repos / Git-backed Databricks Asset Bundles</td>
+</tr>
+<tr>
+<td>Environment promotion (Git branch/PR)</td>
+<td>Databricks Asset Bundle CI/CD pipeline</td>
+</tr>
+<tr>
+<td>Hub (connector marketplace)</td>
+<td>Databricks Partner Connect / Marketplace</td>
+</tr>
+</tbody>
+</table>
+<h3 id="data-quality">Data Quality<a class="headerlink" href="#data-quality" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Matillion DQ Pattern</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Row count check (<code>SQL</code> component)</td>
+<td>Delta Live Tables <code>expect_or_fail()</code> / Great Expectations</td>
+</tr>
+<tr>
+<td>Null / type filter (<code>Filter</code> component to error table)</td>
+<td>DLT <code>expect()</code> with quarantine table</td>
+</tr>
+<tr>
+<td>Referential integrity join</td>
+<td>DLT expectation or Delta <code>CHECK</code> constraint</td>
+</tr>
+<tr>
+<td>Custom business rule (<code>Custom SQL</code>)</td>
+<td>dbt test / custom DLT expectation</td>
+</tr>
+<tr>
+<td>No standalone DQ product</td>
+<td>Databricks Lakehouse Monitoring / dbt tests / Great Expectations</td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-doesnt-map-cleanly">What Doesn't Map Cleanly<a class="headerlink" href="#what-doesnt-map-cleanly" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Matillion Pattern</th>
+<th>Why It's Hard</th>
+<th>Recommended Approach</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>While Loop with dynamic condition</strong></td>
+<td>Databricks Workflows doesn't natively support condition-based looping</td>
+<td>Implement loop logic inside a notebook (Python while loop) or move orchestration to Airflow</td>
+</tr>
+<tr>
+<td><strong>Iterator over large Grid Variables</strong></td>
+<td>Dynamic task mapping in Databricks Workflows has limits on fan-out; behavior differs for variable-length lists</td>
+<td>Test foreach task limits early; consider Airflow for high-fan-out iteration</td>
+</tr>
+<tr>
+<td><strong>Python Script components with file I/O</strong></td>
+<td>Scripts that read/write local files on the Matillion Agent have no equivalent on serverless Databricks</td>
+<td>Refactor to use cloud storage (S3/ADLS) via <code>dbutils.fs</code> or Pandas/PySpark</td>
+</tr>
+<tr>
+<td><strong>SaaS connector logic embedded in pipelines</strong></td>
+<td>Matillion bundles connectors that run inside the pipeline; Databricks doesn't</td>
+<td>Move ingestion to Fivetran/Airbyte (separate pipeline stage); Matillion-to-Databricks is a two-layer migration</td>
+</tr>
+<tr>
+<td><strong>Warehouse-specific SQL UDFs called from Custom SQL</strong></td>
+<td>Snowflake/Redshift UDFs don't exist in Databricks SQL</td>
+<td>Identify and rewrite as Spark SQL UDFs registered in Unity Catalog</td>
+</tr>
+<tr>
+<td><strong>Matillion-managed staging table lifecycle</strong></td>
+<td>Matillion creates and drops staging tables automatically; Databricks pipelines must manage this explicitly</td>
+<td>Map staging table lifecycle into Delta temp views or explicit CREATE/DROP in notebook logic</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.highlight", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/tts.js"></script>
+      
+    
+  </body>
+</html>

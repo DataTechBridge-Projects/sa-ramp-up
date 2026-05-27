@@ -1,0 +1,9472 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A multi-agent AI system that generates technical training courses for  Solution Architects — powered by LangGraph and local LLM inference">
+      
+      
+        <meta name="author" content="Tech Ramp Up">
+      
+      
+        <link rel="canonical" href="https://datechbridge-projects.github.io/sa-ramp-up/etl/informatica/">
+      
+      
+        <link rel="prev" href="../datastage/">
+      
+      
+        <link rel="next" href="../informatica_bdm/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Informatica - Tech Ramp Up</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#informatica-sa-migration-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Tech Ramp Up" class="md-header__button md-logo" aria-label="Tech Ramp Up" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tech Ramp Up
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Informatica
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../gcp/" class="md-tabs__link">
+          
+  
+  
+  Google
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../snowflake/" class="md-tabs__link">
+          
+  
+  
+  Snowflake
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../azure/" class="md-tabs__link">
+          
+  
+  
+  Azure
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../databricks/" class="md-tabs__link">
+          
+  
+  
+  Databricks
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../aws/" class="md-tabs__link">
+          
+  
+  
+  AWS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  ETL Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../bi/" class="md-tabs__link">
+          
+  
+  
+  BI Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../otf/" class="md-tabs__link">
+          
+  
+  
+  OTF
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../data-ref/" class="md-tabs__link">
+          
+  
+  
+  Data Solutions & Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../glossary/aws/" class="md-tabs__link">
+          
+  
+  
+  Glossary
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tech Ramp Up" class="md-nav__button md-logo" aria-label="Tech Ramp Up" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Tech Ramp Up
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Google
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Google
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_01_gcp_fundamentals_and_resource_hierarchy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. GCP Fundamentals and Resource Hierarchy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_02_security_identity_and_access_management_iam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Security, Identity, and Access Management (IAM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_03_cloud_storage_and_data_lake_architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Cloud Storage and Data Lake Architectures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_04_relational_databases_cloud_sql_and_spanner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Relational Databases: Cloud SQL and Spanner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_05_nosql_and_widecolumn_stores_bigtable_and_firestore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. NoSQL and Wide-Column Stores: Bigtable and Firestore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_06_bigquery_scalable_data_warehousing_and_analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. BigQuery: Scalable Data Warehousing and Analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_07_realtime_data_ingestion_with_pubsub/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Real-time Data Ingestion with Pub/Sub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_08_stream_and_batch_processing_with_dataflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Stream and Batch Processing with Dataflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_09_managed_hadoop_and_spark_with_cloud_dataproc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Managed Hadoop and Spark with Cloud Dataproc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_10_workflow_orchestration_with_cloud_composer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Workflow Orchestration with Cloud Composer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_11_data_migration_and_modernization_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Data Migration and Modernization Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_12_monitoring_logging_and_observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Monitoring, Logging, and Observability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_13_cost_management_and_billing_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Cost Management and Billing Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_14_machine_learning_integration_with_vertex_ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Machine Learning Integration with Vertex AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_15_competitive_positioning_and_industry_use_cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Competitive Positioning and Industry Use Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_16_certification_exam_readiness_and_capstone_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Certification Exam Readiness and Capstone Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_18" id="__nav_2_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SA Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_18">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SA Quick Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_01_gcp_fundamentals_and_resource_hierarchy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GCP Fundamentals and Resource Hierarchy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_02_security_identity_and_access_management_iam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security, Identity, and Access Management (IAM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_03_cloud_storage_and_data_lake_architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cloud Storage and Data Lake Architectures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_04_relational_databases_cloud_sql_and_spanner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relational Databases: Cloud SQL and Spanner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_05_nosql_and_widecolumn_stores_bigtable_and_firestore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NoSQL and Wide-Column Stores: Bigtable and Firestore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_06_bigquery_scalable_data_warehousing_and_analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BigQuery: Scalable Data Warehousing and Analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_07_realtime_data_ingestion_with_pubsub/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-time Data Ingestion with Pub/Sub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_08_stream_and_batch_processing_with_dataflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stream and Batch Processing with Dataflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_09_managed_hadoop_and_spark_with_cloud_dataproc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Managed Hadoop and Spark with Cloud Dataproc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_10_workflow_orchestration_with_cloud_composer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Orchestration with Cloud Composer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_11_data_migration_and_modernization_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Migration and Modernization Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_12_monitoring_logging_and_observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoring, Logging, and Observability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_13_cost_management_and_billing_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost Management and Billing Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_14_machine_learning_integration_with_vertex_ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Machine Learning Integration with Vertex AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_15_competitive_positioning_and_industry_use_cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Competitive Positioning and Industry Use Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_16_certification_exam_readiness_and_capstone_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certification Exam Readiness and Capstone Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowflake
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Snowflake
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_01_snowflake_architecture_and_core_components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Snowflake Architecture and Core Components
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_02_data_storage_and_semistructured_data_handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Data Storage and Semi-Structured Data Handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_03_virtual_warehouse_management_and_scaling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Virtual Warehouse Management and Scaling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_04_data_ingestion_techniques_and_snowpipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Data Ingestion Techniques and Snowpipe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_05_time_travel_failsafe_and_zerocopy_cloning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Time Travel, Fail-safe, and Zero-Copy Cloning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_06_security_identity_and_access_control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Security, Identity, and Access Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_07_data_sharing_and_the_snowflake_marketplace/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Data Sharing and the Snowflake Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_08_snowpark_and_programmable_data_engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Snowpark and Programmable Data Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_09_query_optimization_and_performance_tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Query Optimization and Performance Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_10_monitoring_auditing_and_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Monitoring, Auditing, and Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_11_cost_management_and_billing_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Cost Management and Billing Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_12_migration_and_adoption_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Migration and Adoption Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_13_snowflake_use_cases_and_competitive_positioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Snowflake Use Cases and Competitive Positioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_14_certification_exam_preparation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Certification Exam Preparation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_16" id="__nav_3_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SA Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SA Quick Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_01_snowflake_architecture_and_core_components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowflake Architecture and Core Components
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_02_data_storage_and_semistructured_data_handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Storage and Semi-Structured Data Handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_03_virtual_warehouse_management_and_scaling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Virtual Warehouse Management and Scaling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_04_data_ingestion_techniques_and_snowpipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Ingestion Techniques and Snowpipe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_05_time_travel_failsafe_and_zerocopy_cloning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Time Travel, Fail-safe, and Zero-Copy Cloning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_06_security_identity_and_access_control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security, Identity, and Access Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_07_data_sharing_and_the_snowflake_marketplace/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Sharing and the Snowflake Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_08_snowpark_and_programmable_data_engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowpark and Programmable Data Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_09_query_optimization_and_performance_tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Query Optimization and Performance Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_10_monitoring_auditing_and_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoring, Auditing, and Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_11_cost_management_and_billing_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost Management and Billing Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_12_migration_and_adoption_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration and Adoption Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_13_snowflake_use_cases_and_competitive_positioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowflake Use Cases and Competitive Positioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_14_certification_exam_preparation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certification Exam Preparation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Azure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Azure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_01_course_introduction_and_dp203_exam_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Course Introduction and DP-203 Exam Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_02_designing_and_implementing_azure_storage_solutions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Designing and Implementing Azure Storage Solutions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_03_implementing_relational_data_stores_with_azure_sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Implementing Relational Data Stores with Azure SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_04_implementing_nosql_solutions_with_azure_cosmos_db/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Implementing NoSQL Solutions with Azure Cosmos DB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_05_data_integration_and_orchestration_with_azure_data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Data Integration and Orchestration with Azure Data Factory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_06_largescale_data_processing_with_azure_synapse_anal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Large-Scale Data Processing with Azure Synapse Analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_07_stream_processing_with_azure_stream_analytics_and_/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Stream Processing with Azure Stream Analytics and Event Hubs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_08_distributed_data_processing_with_azure_databricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Distributed Data Processing with Azure Databricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_09_implementing_security_identity_and_access_control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Implementing Security, Identity, and Access Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_10_monitoring_logging_and_operations_for_data_pipelin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Monitoring, Logging, and Operations for Data Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_11_data_migration_and_cloud_adoption_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Data Migration and Cloud Adoption Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_12_managing_cost_performance_and_billing_for_azure_da/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Managing Cost, Performance, and Billing for Azure Data Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_13_data_governance_and_metadata_management_with_azure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Data Governance and Metadata Management with Azure Purview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_14_exam_readiness_final_review_and_practice_scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Exam Readiness: Final Review and Practice Scenarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_16" id="__nav_4_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SA Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SA Quick Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Databricks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Databricks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_01_introduction_to_databricks_architecture_on_aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introduction to Databricks Architecture on AWS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_02_databricks_compute_and_cluster_configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Databricks Compute and Cluster Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_03_deep_dive_into_delta_lake_acid_versioning_and_opti/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Deep Dive into Delta Lake: ACID, Versioning, and Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_04_implementing_medallion_architecture_bronze_silver_/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Implementing Medallion Architecture: Bronze, Silver, and Gold Layers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_05_efficient_data_ingestion_with_auto_loader_and_copy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Efficient Data Ingestion with Auto Loader and COPY INTO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_06_data_transformation_with_spark_sql_and_pyspark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Data Transformation with Spark SQL and PySpark
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_07_stream_processing_with_structured_streaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Stream Processing with Structured Streaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_08_building_declarable_pipelines_with_delta_live_tabl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Building Declarable Pipelines with Delta Live Tables (DLT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_09_data_governance_and_security_with_unity_catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Data Governance and Security with Unity Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_10_monitoring_logging_and_observability_in_databricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Monitoring, Logging, and Observability in Databricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_11_cost_management_and_aws_resource_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Cost Management and AWS Resource Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_12_migration_strategies_transitioning_from_aws_glue_t/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Migration Strategies: Transitioning from AWS Glue to Databricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_13_orchestration_and_automation_with_databricks_workf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Orchestration and Automation with Databricks Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_14_exam_readiness_and_final_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Exam Readiness and Final Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_16" id="__nav_5_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SA Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SA Quick Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_01_introduction_to_databricks_architecture_on_aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Databricks Architecture on AWS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_02_databricks_compute_and_cluster_configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Databricks Compute and Cluster Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_03_deep_dive_into_delta_lake_acid_versioning_and_opti/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deep Dive into Delta Lake: ACID, Versioning, and Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_04_implementing_medallion_architecture_bronze_silver_/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementing Medallion Architecture: Bronze, Silver, and Gold Layers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_05_efficient_data_ingestion_with_auto_loader_and_copy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Efficient Data Ingestion with Auto Loader and COPY INTO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_06_data_transformation_with_spark_sql_and_pyspark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Transformation with Spark SQL and PySpark
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_07_stream_processing_with_structured_streaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stream Processing with Structured Streaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_08_building_declarable_pipelines_with_delta_live_tabl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building Declarable Pipelines with Delta Live Tables (DLT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_09_data_governance_and_security_with_unity_catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Governance and Security with Unity Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_10_monitoring_logging_and_observability_in_databricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoring, Logging, and Observability in Databricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_11_cost_management_and_aws_resource_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost Management and AWS Resource Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_12_migration_strategies_transitioning_from_aws_glue_t/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration Strategies: Transitioning from AWS Glue to Databricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_13_orchestration_and_automation_with_databricks_workf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestration and Automation with Databricks Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_14_exam_readiness_and_final_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Readiness and Final Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AWS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_01_course_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Course Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_02_exam_overview_and_strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Exam Overview and Strategy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_03_aws_data_architecture_foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. AWS Data Architecture Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_04_data_ingestion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Data Ingestion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_05_aws_glue_deep_dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. AWS Glue Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_06_amazon_s3_and_data_lake_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Amazon S3 and Data Lake Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_07_amazon_athena/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Amazon Athena
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_08_amazon_redshift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Amazon Redshift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_09_streaming_data_with_kinesis_and_msk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Streaming Data with Kinesis and MSK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_10_nosql_and_purposebuilt_databases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. NoSQL and Purpose-Built Databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_11_aws_lake_formation_and_data_governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. AWS Lake Formation and Data Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_12_data_orchestration_and_pipelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Data Orchestration and Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_13_performance_cost_optimization_and_monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Performance, Cost Optimization, and Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_14_security_compliance_and_networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Security, Compliance, and Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_15_capstone_and_exam_readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Capstone and Exam Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_17" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_17" id="__nav_6_17_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SA Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SA Quick Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_01_course_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_02_exam_overview_and_strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Overview and Strategy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_03_aws_data_architecture_foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Data Architecture Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_04_data_ingestion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Ingestion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_05_aws_glue_deep_dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Glue Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_06_amazon_s3_and_data_lake_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Amazon S3 and Data Lake Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_07_amazon_athena/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Amazon Athena
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_08_amazon_redshift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Amazon Redshift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_09_streaming_data_with_kinesis_and_msk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Streaming Data with Kinesis and MSK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_10_nosql_and_purposebuilt_databases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NoSQL and Purpose-Built Databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_11_aws_lake_formation_and_data_governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Lake Formation and Data Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_12_data_orchestration_and_pipelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Orchestration and Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_13_performance_cost_optimization_and_monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Performance, Cost Optimization, and Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_14_security_compliance_and_networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security, Compliance, and Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_15_capstone_and_exam_readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capstone and Exam Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETL Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETL Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ab_initio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ab Initio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../talend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Talend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../datastage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IBM DataStage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Informatica
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Informatica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagrams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Diagrams
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture Diagrams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#informatica-platform-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Informatica Platform Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#informatica-as-etl-data-flow-between-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Informatica as ETL — Data Flow Between Systems
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sections
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-ecosystem-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ecosystem Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Ecosystem Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-informatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Is Informatica?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-informatica-product-suite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Informatica Product Suite
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-customers-want-to-migrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Customers Want to Migrate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-discovery-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Discovery Questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-mappings-and-transformations-the-core-building-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Mappings and Transformations — The Core Building Block
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Mappings and Transformations — The Core Building Block">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transformations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapplets-reusable-sub-mappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapplets — Reusable Sub-Mappings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sessions-and-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sessions and Workflows
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-data-formats-and-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Data Formats and Schema
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Data Formats and Schema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-informatica-defines-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Informatica Defines Schema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flat-file-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flat File Handling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameter Files
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-parallelism-and-session-partitioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Parallelism and Session Partitioning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Parallelism and Session Partitioning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-informatica-achieves-parallelism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Informatica Achieves Parallelism
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partition-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partition Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#informatica-grid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Informatica Grid
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lookup-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lookup Caching
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-project-structure-and-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Project Structure and Repository
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Project Structure and Repository">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Repository
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#folder-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Folder Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-control-and-promotion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version Control and Promotion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-orchestration-workflows-and-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Orchestration: Workflows and Sessions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Orchestration: Workflows and Sessions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-orchestration-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Orchestration Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-types-in-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task Types in Workflows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Session Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-schedulers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        External Schedulers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-metadata-lineage-and-impact-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Metadata, Lineage, and Impact Analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Metadata, Lineage, and Impact Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-repository-as-a-metadata-store" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Repository as a Metadata Store
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metadata Manager
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field-level-lineage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Field-Level Lineage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-data-quality-with-idq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Data Quality with IDQ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Data Quality with IDQ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-informatica-data-quality-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Informatica Data Quality Does
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idq-components-in-mappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IDQ Components in Mappings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Profiling
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-informatica-file-formats-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Informatica File Formats Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Informatica File Formats Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xml-repository-export-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .xml — Repository Export File
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#par-parameter-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .par — Parameter File
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wf-workflow-and-session-definitions-in-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .wf / Workflow and Session Definitions (in Repository)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bad-bad-record-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .bad — Bad Record File
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lookup-cache-files-idx-dat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lookup Cache Files (.idx / .dat)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-log-and-workflow-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Session Log and Workflow Log
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quick-reference-informatica-fileartifact-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Reference — Informatica File/Artifact Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-migration-assessment-and-artifact-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Migration Assessment and Artifact Inventory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Migration Assessment and Artifact Inventory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-build-the-estate-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Build the Estate Inventory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complexity-scoring-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complexity Scoring Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#risk-areas-specific-to-informatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Risk Areas Specific to Informatica
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-migration-mapping-to-databricks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Migration Mapping to Databricks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Migration Mapping to Databricks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#building-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building Blocks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transformations-to-databricks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transformations to Databricks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orchestration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#governance-and-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Governance and Metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Quality
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-doesnt-map-cleanly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Doesn't Map Cleanly
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../informatica_bdm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Informatica BDM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matillion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matillion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ssis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pentaho/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pentaho
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../odi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Oracle Data Integrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snaplogic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SnapLogic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../alteryx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Alteryx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BI Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    BI Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/ssrs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSRS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/cognos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IBM Cognos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/quicksight/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Amazon QuickSight
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/power-bi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Power BI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/tableau/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tableau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/obiee/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Oracle OBIEE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/sap-bo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAP BusinessObjects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OTF
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OTF
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../otf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../otf/delta-lake/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Delta Lake
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../otf/hudi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apache Hudi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../otf/iceberg.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apache Iceberg
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Solutions & Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data Solutions & Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data-architecture-patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Architecture Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data-ingestion-pipelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Ingestion & Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data-storage-layers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Storage Layers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data-governance-cataloging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Governance & Cataloging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/real-time-streaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-Time & Streaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data-serving-consumption/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Serving & Consumption
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data_design_patterns_exhaustive.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design Patterns Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Glossary
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/azure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Azure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/gcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/data-architect-glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Architect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagrams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Diagrams
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture Diagrams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#informatica-platform-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Informatica Platform Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#informatica-as-etl-data-flow-between-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Informatica as ETL — Data Flow Between Systems
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sections
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-ecosystem-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ecosystem Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Ecosystem Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-informatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Is Informatica?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-informatica-product-suite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Informatica Product Suite
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-customers-want-to-migrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Customers Want to Migrate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-discovery-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Discovery Questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-mappings-and-transformations-the-core-building-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Mappings and Transformations — The Core Building Block
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Mappings and Transformations — The Core Building Block">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transformations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapplets-reusable-sub-mappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapplets — Reusable Sub-Mappings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sessions-and-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sessions and Workflows
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-data-formats-and-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Data Formats and Schema
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Data Formats and Schema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-informatica-defines-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Informatica Defines Schema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flat-file-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flat File Handling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameter Files
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-parallelism-and-session-partitioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Parallelism and Session Partitioning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Parallelism and Session Partitioning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-informatica-achieves-parallelism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Informatica Achieves Parallelism
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partition-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partition Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#informatica-grid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Informatica Grid
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lookup-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lookup Caching
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-project-structure-and-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Project Structure and Repository
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Project Structure and Repository">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Repository
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#folder-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Folder Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-control-and-promotion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version Control and Promotion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-orchestration-workflows-and-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Orchestration: Workflows and Sessions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Orchestration: Workflows and Sessions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-orchestration-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Orchestration Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-types-in-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task Types in Workflows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Session Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-schedulers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        External Schedulers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-metadata-lineage-and-impact-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Metadata, Lineage, and Impact Analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Metadata, Lineage, and Impact Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-repository-as-a-metadata-store" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Repository as a Metadata Store
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metadata Manager
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field-level-lineage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Field-Level Lineage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-data-quality-with-idq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Data Quality with IDQ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Data Quality with IDQ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-informatica-data-quality-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Informatica Data Quality Does
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idq-components-in-mappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IDQ Components in Mappings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Profiling
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-informatica-file-formats-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Informatica File Formats Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Informatica File Formats Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xml-repository-export-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .xml — Repository Export File
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#par-parameter-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .par — Parameter File
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wf-workflow-and-session-definitions-in-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .wf / Workflow and Session Definitions (in Repository)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bad-bad-record-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .bad — Bad Record File
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lookup-cache-files-idx-dat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lookup Cache Files (.idx / .dat)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-log-and-workflow-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Session Log and Workflow Log
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quick-reference-informatica-fileartifact-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Reference — Informatica File/Artifact Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-migration-assessment-and-artifact-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Migration Assessment and Artifact Inventory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Migration Assessment and Artifact Inventory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-build-the-estate-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Build the Estate Inventory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complexity-scoring-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complexity Scoring Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#risk-areas-specific-to-informatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Risk Areas Specific to Informatica
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-migration-mapping-to-databricks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Migration Mapping to Databricks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Migration Mapping to Databricks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#building-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building Blocks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transformations-to-databricks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transformations to Databricks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orchestration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#governance-and-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Governance and Metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Quality
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-doesnt-map-cleanly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Doesn't Map Cleanly
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="informatica-sa-migration-guide">Informatica — SA Migration Guide<a class="headerlink" href="#informatica-sa-migration-guide" title="Permanent link">&para;</a></h1>
+<p><strong>Purpose:</strong> Give a Solution Architect enough depth to assess an Informatica estate, understand its moving parts, and map a migration path to Databricks.</p>
+<p>This is not a developer guide. You won't be building Informatica mappings. You will be walking customer sites, reviewing architecture diagrams, asking the right questions, and scoping what it takes to move to a modern lakehouse platform.</p>
+<hr />
+<h2 id="architecture-diagrams">Architecture Diagrams<a class="headerlink" href="#architecture-diagrams" title="Permanent link">&para;</a></h2>
+<h3 id="informatica-platform-architecture">Informatica Platform Architecture<a class="headerlink" href="#informatica-platform-architecture" title="Permanent link">&para;</a></h3>
+<p>How the Informatica product suite fits together — from developer tooling through runtime execution to governance.</p>
+<div class="zd-wrapper" id="infa-arch-zoom" style="position:relative; border:1px solid #ddd; border-radius:6px; overflow:hidden; background:#fafafa;">
+<div style="position:absolute; top:8px; right:10px; z-index:10; display:flex; align-items:center; gap:8px; font-size:0.78rem; color:#666;">
+  <span>Scroll to zoom · Drag to pan</span>
+  <button onclick="zdReset('infa-arch-zoom')" style="padding:2px 8px; font-size:0.75rem; border:1px solid #ccc; border-radius:4px; background:#fff; cursor:pointer;">Reset</button>
+</div>
+<div class="zd-canvas" style="cursor:grab; user-select:none;">
+
+<pre class="mermaid"><code>flowchart TD
+    subgraph DEV["Developer Layer"]
+        PC_CLIENT["PowerCenter Designer\nBuild mappings visually"]
+        IDMC_UI["IDMC Designer\n(Cloud) — browser-based mapping editor"]
+        WF_MGR["Workflow Manager\nDefine sessions, workflows, worklets"]
+    end
+
+    subgraph REPO["Repository Layer"]
+        REP_SVC["Repository Service\nCentral metadata store — mappings,\nsessions, workflows, connections"]
+        VERSION["Version Control\n(optional SVN/Perforce integration)"]
+        REP_SVC &lt;--&gt; VERSION
+    end
+
+    DEV -- check in / check out --&gt; REP_SVC
+
+    subgraph RUNTIME["Runtime Layer"]
+        IS["Integration Service\n(DTM — Data Transformation Manager)\nExecutes sessions in parallel partitions"]
+        GRID["Informatica Grid\nScale-out across multiple IS nodes"]
+        IS --&gt; GRID
+    end
+
+    REP_SVC -- deploys session configs --&gt; RUNTIME
+
+    subgraph ORCH["Orchestration Layer"]
+        WF_SVC["Workflow Service\nExecutes workflows, chains sessions"]
+        MONITOR["Workflow Monitor\nReal-time job status and history UI"]
+        EXTERNAL["External Scheduler\nControl-M / Autosys / UC4"]
+        EXTERNAL -- triggers workflow --&gt; WF_SVC
+        WF_SVC --&gt; MONITOR
+    end
+
+    WF_SVC -- triggers sessions via --&gt; RUNTIME
+
+    subgraph GOV["Governance &amp; Quality"]
+        IDQ["Informatica Data Quality (IDQ)\nProfiling, rules, scorecards"]
+        MM["Metadata Manager\nLineage, impact analysis, catalog"]
+        MDM["MDM Hub\nMaster data management"]
+    end
+
+    RUNTIME -- dataset samples --&gt; IDQ
+    REP_SVC -- metadata feed --&gt; MM
+
+    subgraph CLOUD["Cloud (IDMC)"]
+        CAI["Cloud Application Integration"]
+        CDI["Cloud Data Integration\n(CDI) — replaces PowerCenter SaaS"]
+        CDGC["Cloud Data Governance &amp; Catalog\n(CDGC) — replaces Metadata Manager"]
+    end</code></pre>
+
+</div>
+</div>
+
+<hr />
+<h3 id="informatica-as-etl-data-flow-between-systems">Informatica as ETL — Data Flow Between Systems<a class="headerlink" href="#informatica-as-etl-data-flow-between-systems" title="Permanent link">&para;</a></h3>
+<p>How Informatica sits between source systems and targets in a typical enterprise data pipeline.</p>
+<div class="zd-wrapper" id="infa-flow-zoom" style="position:relative; border:1px solid #ddd; border-radius:6px; overflow:hidden; background:#fafafa;">
+<div style="position:absolute; top:8px; right:10px; z-index:10; display:flex; align-items:center; gap:8px; font-size:0.78rem; color:#666;">
+  <span>Scroll to zoom · Drag to pan</span>
+  <button onclick="zdReset('infa-flow-zoom')" style="padding:2px 8px; font-size:0.75rem; border:1px solid #ccc; border-radius:4px; background:#fff; cursor:pointer;">Reset</button>
+</div>
+<div class="zd-canvas" style="cursor:grab; user-select:none;">
+
+<pre class="mermaid"><code>flowchart LR
+    subgraph SOURCES["Source Systems"]
+        DB[("Relational DB\nOracle / SQL Server / DB2")]
+        MF["Mainframe / VSAM\nvia PowerExchange CDC"]
+        FILES["Flat Files\nDelimited / Fixed-width"]
+        SAAS["SaaS Apps\nSalesforce / SAP / Workday"]
+    end
+
+    subgraph INFA["Informatica ETL Layer"]
+        direction TB
+        SRC_QUAL["Source Qualifier\nSQL override, filter, join at source"]
+        TRANSFORMS["Transformation Logic\nExpression · Lookup · Joiner · Router\nAggregator · Sorter · Update Strategy"]
+        STAGING[("Staging / Cache\nLookup cache files\nSorter temp files")]
+        TGT["Target Definition\nRelational / File / Cloud"]
+
+        SRC_QUAL --&gt; TRANSFORMS
+        TRANSFORMS -- cache/temp --&gt; STAGING
+        STAGING --&gt; TRANSFORMS
+        TRANSFORMS --&gt; TGT
+    end
+
+    subgraph TARGETS["Target Systems"]
+        DW[("Data Warehouse\nTeradata / Netezza / Snowflake")]
+        DATALAKE["Data Lake\nS3 / ADLS / HDFS"]
+        RPTDB[("Reporting DB\nSQL Server / Oracle")]
+        DOWNSTREAM["Downstream Apps\nvia file or DB write"]
+    end
+
+    subgraph ORCH["Orchestration"]
+        WF["Workflow\nSessions chained with\ndependencies and decisions"]
+    end
+
+    SOURCES --&gt; SRC_QUAL
+    TGT --&gt; TARGETS
+    WF -. schedules .-&gt; INFA</code></pre>
+
+</div>
+</div>
+
+<script>
+(function(){
+  window.zdReset=window.zdReset||function(id){var w=document.getElementById(id);if(!w)return;var c=w.querySelector('.zd-canvas');if(c){c._s=1;c._tx=0;c._ty=0;}var s=w.querySelector('svg');if(s){s.style.transform='translate(0,0) scale(1)';s.style.transformOrigin='0 0';}};
+  function initC(c){if(c._zdInit)return;c._zdInit=true;c._s=1;c._tx=0;c._ty=0;var dr=false,sx,sy,stx,sty;function ap(sv){sv.style.transform='translate('+c._tx+'px,'+c._ty+'px) scale('+c._s+')';sv.style.transformOrigin='0 0';sv.style.display='block';}c.addEventListener('wheel',function(e){var sv=c.querySelector('svg');if(!sv)return;e.preventDefault();var r=c.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top,d=e.deltaY<0?1.12:1/1.12,ns=Math.min(5,Math.max(0.4,c._s*d));c._tx=mx-(mx-c._tx)*(ns/c._s);c._ty=my-(my-c._ty)*(ns/c._s);c._s=ns;ap(sv);},{passive:false});c.addEventListener('mousedown',function(e){if(e.button)return;dr=true;sx=e.clientX;sy=e.clientY;stx=c._tx;sty=c._ty;c.style.cursor='grabbing';e.preventDefault();});window.addEventListener('mousemove',function(e){if(!dr)return;c._tx=stx+(e.clientX-sx);c._ty=sty+(e.clientY-sy);var sv=c.querySelector('svg');if(sv)ap(sv);});window.addEventListener('mouseup',function(){if(dr){dr=false;c.style.cursor='grab';}});c.addEventListener('touchstart',function(e){if(e.touches.length===1){dr=true;sx=e.touches[0].clientX;sy=e.touches[0].clientY;stx=c._tx;sty=c._ty;}},{passive:true});c.addEventListener('touchmove',function(e){if(dr&&e.touches.length===1){c._tx=stx+(e.touches[0].clientX-sx);c._ty=sty+(e.touches[0].clientY-sy);var sv=c.querySelector('svg');if(sv)ap(sv);}},{passive:true});c.addEventListener('touchend',function(){dr=false;});}
+  function tryW(w){var c=w.querySelector('.zd-canvas');if(!c)return;var sv=c.querySelector('svg');if(!sv){setTimeout(function(){tryW(w);},200);return;}initC(c);}
+  function initAll(){document.querySelectorAll('.zd-wrapper').forEach(function(w){tryW(w);});}
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){setTimeout(initAll,600);});}else{setTimeout(initAll,600);}
+})();
+</script>
+
+<hr />
+<h2 id="sections">Sections<a class="headerlink" href="#sections" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#1-ecosystem-overview">Ecosystem Overview</a></li>
+<li><a href="#2-mappings-and-transformations--the-core-building-block">Mappings and Transformations — The Core Building Block</a></li>
+<li><a href="#3-data-formats-and-schema">Data Formats and Schema</a></li>
+<li><a href="#4-parallelism-and-session-partitioning">Parallelism and Session Partitioning</a></li>
+<li><a href="#5-project-structure-and-repository">Project Structure and Repository</a></li>
+<li><a href="#6-orchestration-workflows-and-sessions">Orchestration: Workflows and Sessions</a></li>
+<li><a href="#7-metadata-lineage-and-impact-analysis">Metadata, Lineage, and Impact Analysis</a></li>
+<li><a href="#8-data-quality-with-idq">Data Quality with IDQ</a></li>
+<li><a href="#9-informatica-file-formats-reference">Informatica File Formats Reference</a></li>
+<li><a href="#10-migration-assessment-and-artifact-inventory">Migration Assessment and Artifact Inventory</a></li>
+<li><a href="#11-migration-mapping-to-databricks">Migration Mapping to Databricks</a></li>
+</ol>
+<hr />
+<h2 id="1-ecosystem-overview">1. Ecosystem Overview<a class="headerlink" href="#1-ecosystem-overview" title="Permanent link">&para;</a></h2>
+<h3 id="what-is-informatica">What Is Informatica?<a class="headerlink" href="#what-is-informatica" title="Permanent link">&para;</a></h3>
+<p>Informatica is the market-leading enterprise data integration platform. It has been the de facto standard for large-enterprise ETL since the late 1990s and is embedded in financial services, healthcare, retail, and government organizations globally. Customers choose it because it covers an enormous range of data integration scenarios — batch ETL, CDC, data quality, MDM, and API integration — from a single vendor.</p>
+<p>Unlike cloud-native tools, Informatica PowerCenter is:</p>
+<ul>
+<li><strong>On-premises first</strong> — designed for dedicated server deployments, increasingly run on cloud VMs or hybrid</li>
+<li><strong>License-heavy and expensive</strong> — PowerCenter licenses are sold by core, connector pack, and product module; large customers pay millions annually</li>
+<li><strong>Broad but complex</strong> — the product suite is vast, which means configuration sprawl and steep learning curves for new developers</li>
+<li><strong>Transitioning to IDMC</strong> — Informatica is actively pushing customers from PowerCenter (on-prem) to its cloud SaaS platform, IDMC (Intelligent Data Management Cloud)</li>
+</ul>
+<h3 id="the-informatica-product-suite">The Informatica Product Suite<a class="headerlink" href="#the-informatica-product-suite" title="Permanent link">&para;</a></h3>
+<p>Informatica is a suite of products. Knowing which ones a customer uses determines migration scope.</p>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>What It Does</th>
+<th>Migration Relevance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PowerCenter</strong></td>
+<td>Core on-premises ETL engine — the primary migration target for most enterprises</td>
+<td>High — all transformation logic, sessions, workflows live here</td>
+</tr>
+<tr>
+<td><strong>IDMC / CDI</strong></td>
+<td>Cloud SaaS replacement for PowerCenter — browser-based, serverless</td>
+<td>Medium — customers partially migrated may have assets in both</td>
+</tr>
+<tr>
+<td><strong>PowerExchange</strong></td>
+<td>CDC and bulk-load connector for mainframe, SAP, databases</td>
+<td>High — real-time/CDC pipelines require special migration handling</td>
+</tr>
+<tr>
+<td><strong>Informatica Data Quality (IDQ)</strong></td>
+<td>Profiling, cleansing rules, scorecards, address validation</td>
+<td>Medium — quality rules embedded in pipelines must be migrated</td>
+</tr>
+<tr>
+<td><strong>Metadata Manager</strong></td>
+<td>Enterprise lineage, data catalog, impact analysis</td>
+<td>High — primary tool for inventory and dependency mapping</td>
+</tr>
+<tr>
+<td><strong>MDM Hub</strong></td>
+<td>Master data management — golden record creation</td>
+<td>Low-to-medium — usually out of scope for lakehouse migration</td>
+</tr>
+<tr>
+<td><strong>Axon / CDGC</strong></td>
+<td>Cloud data governance and catalog (successor to Metadata Manager)</td>
+<td>Medium — lineage and catalog metadata relevant to migration planning</td>
+</tr>
+<tr>
+<td><strong>Data Replication / CDC</strong></td>
+<td>Real-time change data capture between systems</td>
+<td>High if customer uses it — maps to Databricks DLT + CDC</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Many customers use PowerCenter for batch ETL and PowerExchange for CDC, but treat them as separate teams. Ask explicitly whether there is a CDC workstream — it often has different owners and a longer migration timeline than batch pipelines.</p>
+</blockquote>
+<h3 id="why-customers-want-to-migrate">Why Customers Want to Migrate<a class="headerlink" href="#why-customers-want-to-migrate" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Driver</th>
+<th>What It Means for the Engagement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>License cost</strong></td>
+<td>PowerCenter license + maintenance + connector packs represent one of the largest data platform line items</td>
+</tr>
+<tr>
+<td><strong>Vendor push to IDMC</strong></td>
+<td>Informatica is end-of-lifing PowerCenter support — some customers are migrating to Databricks instead of IDMC</td>
+</tr>
+<tr>
+<td><strong>Talent scarcity</strong></td>
+<td>Informatica developers are increasingly rare; customers want Python/SQL-native platforms</td>
+</tr>
+<tr>
+<td><strong>Cloud strategy</strong></td>
+<td>Board mandate to exit on-prem data centers</td>
+</tr>
+<tr>
+<td><strong>Performance limits</strong></td>
+<td>PowerCenter scales vertically or via grid — customers hitting ceiling on large volumes</td>
+</tr>
+<tr>
+<td><strong>Modern architecture</strong></td>
+<td>Customers want streaming, Delta Lake, and unified batch/streaming — capabilities PowerCenter lacks natively</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> "Informatica is pushing us to IDMC and we don't want to pay for it twice" is one of the most common migration triggers in 2025–2026. Databricks becomes the alternative to IDMC — position it as the open, Python-native path rather than another proprietary SaaS lock-in.</p>
+</blockquote>
+<h3 id="key-discovery-questions">Key Discovery Questions<a class="headerlink" href="#key-discovery-questions" title="Permanent link">&para;</a></h3>
+<p>Before scoping a migration, ask:</p>
+<ol>
+<li>How many mappings are in <strong>active production</strong> use? (vs. total mappings in the repository — there is always dead code)</li>
+<li>Is this PowerCenter, IDMC, or both? Which version of PowerCenter?</li>
+<li>What <strong>connector packs</strong> are in use? (Oracle, SAP, Salesforce, mainframe via PowerExchange?)</li>
+<li>Is <strong>PowerExchange / CDC</strong> in scope? Which sources?</li>
+<li>How is orchestration done — Informatica Workflows, external scheduler (Control-M, Autosys), or both?</li>
+<li>Are there <strong>reusable mapplets</strong> or <strong>shared Lookup caches</strong> that many mappings depend on?</li>
+<li>Is <strong>IDQ</strong> integrated into pipelines, or is data quality handled separately?</li>
+<li>What does the repository look like — one central repository or multiple folder-per-team structures?</li>
+<li>Are there <strong>custom transformations</strong> written in Java or C (Custom / External Procedure transformations)?</li>
+<li>What are the <strong>SLAs</strong> for critical pipelines and what are the batch window constraints?</li>
+</ol>
+<hr />
+<h2 id="2-mappings-and-transformations-the-core-building-block">2. Mappings and Transformations — The Core Building Block<a class="headerlink" href="#2-mappings-and-transformations-the-core-building-block" title="Permanent link">&para;</a></h2>
+<h3 id="the-mapping">The Mapping<a class="headerlink" href="#the-mapping" title="Permanent link">&para;</a></h3>
+<p>In Informatica, the <strong>mapping</strong> is the fundamental unit of transformation logic — equivalent to a pipeline or ETL job. A mapping is a directed dataflow: data enters from one or more source definitions, passes through a series of transformation objects, and exits to one or more target definitions.</p>
+<p>Developers build mappings visually in the <strong>PowerCenter Designer</strong> by dragging transformation objects onto a canvas and connecting them with links. Each link carries a row stream between transformations.</p>
+<p>A single Informatica estate can have <strong>thousands of mappings</strong> — many of them legacy, redundant, or cloned from each other with minor differences.</p>
+<h3 id="transformations">Transformations<a class="headerlink" href="#transformations" title="Permanent link">&para;</a></h3>
+<p>A <strong>transformation</strong> is a single processing step within a mapping. Informatica ships with a large library of built-in transformations, and customers can write custom ones. Transformations are the Informatica equivalent of Spark DataFrame operations.</p>
+<p><strong>Core transformation categories:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Transformation</th>
+<th>What It Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Source</strong></td>
+<td>Source Qualifier</td>
+<td>Reads from source; SQL override for filtering/joining at DB level</td>
+</tr>
+<tr>
+<td><strong>Expression</strong></td>
+<td>Expression</td>
+<td>Field-level calculations, conditionals, type conversions</td>
+</tr>
+<tr>
+<td><strong>Filter</strong></td>
+<td>Filter</td>
+<td>Drops rows that don't meet a condition</td>
+</tr>
+<tr>
+<td><strong>Routing</strong></td>
+<td>Router</td>
+<td>Splits rows into multiple output groups by condition</td>
+</tr>
+<tr>
+<td><strong>Join</strong></td>
+<td>Joiner</td>
+<td>Joins two row streams (one must be a master, one detail)</td>
+</tr>
+<tr>
+<td><strong>Lookup</strong></td>
+<td>Lookup</td>
+<td>Enriches rows by looking up values from a DB table or flat file</td>
+</tr>
+<tr>
+<td><strong>Aggregate</strong></td>
+<td>Aggregator</td>
+<td>Group-by aggregations — sum, count, avg, max, min</td>
+</tr>
+<tr>
+<td><strong>Sort</strong></td>
+<td>Sorter</td>
+<td>Orders rows; requires significant temp disk for large volumes</td>
+</tr>
+<tr>
+<td><strong>Deduplicate</strong></td>
+<td>n/a (done via Sorter + Expression logic)</td>
+<td>No native dedup transform — customers implement manually</td>
+</tr>
+<tr>
+<td><strong>Update logic</strong></td>
+<td>Update Strategy</td>
+<td>Marks rows as insert / update / delete / reject for target write</td>
+</tr>
+<tr>
+<td><strong>Sequence</strong></td>
+<td>Sequence Generator</td>
+<td>Generates surrogate keys</td>
+</tr>
+<tr>
+<td><strong>Stored Proc</strong></td>
+<td>Stored Procedure</td>
+<td>Calls a DB stored procedure inline</td>
+</tr>
+<tr>
+<td><strong>Custom</strong></td>
+<td>Custom / External Procedure</td>
+<td>User-written C or Java logic — high migration risk</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mapplets-reusable-sub-mappings">Mapplets — Reusable Sub-Mappings<a class="headerlink" href="#mapplets-reusable-sub-mappings" title="Permanent link">&para;</a></h3>
+<p>A <strong>mapplet</strong> is a reusable transformation subgraph — a group of transformations packaged as a single reusable object. Mapplets are the Informatica equivalent of a shared library or helper function.</p>
+<blockquote>
+<p><strong>SA Tip:</strong> Mapplets that are used across many mappings are high-priority migration dependencies — the Databricks equivalent (a shared PySpark function or Unity Catalog SQL function) must be built and validated before any downstream mappings can be migrated.</p>
+</blockquote>
+<h3 id="sessions-and-workflows">Sessions and Workflows<a class="headerlink" href="#sessions-and-workflows" title="Permanent link">&para;</a></h3>
+<p>A <strong>mapping</strong> is pure transformation logic with no execution context. To run a mapping, you wrap it in a <strong>Session</strong> task, which provides runtime configuration: connections, parameter files, partitioning, error handling. Sessions are then chained inside <strong>Workflows</strong> — see Section 6.</p>
+<hr />
+<h2 id="3-data-formats-and-schema">3. Data Formats and Schema<a class="headerlink" href="#3-data-formats-and-schema" title="Permanent link">&para;</a></h2>
+<h3 id="how-informatica-defines-schema">How Informatica Defines Schema<a class="headerlink" href="#how-informatica-defines-schema" title="Permanent link">&para;</a></h3>
+<p>Informatica uses <strong>source and target definitions</strong> stored in the repository to describe schema. Unlike Ab Initio's file-based DML, Informatica schema is stored relationally in the repository database and surfaced through the Designer UI.</p>
+<p><strong>Key schema objects:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th>What It Represents</th>
+<th>Migration Relevance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Source Definition</strong></td>
+<td>Schema of the input — DB table, flat file, XML, WSDL</td>
+<td>Must be mapped to a Databricks source (Delta table, file, API)</td>
+</tr>
+<tr>
+<td><strong>Target Definition</strong></td>
+<td>Schema of the output</td>
+<td>Must be mapped to a Databricks target table or file</td>
+</tr>
+<tr>
+<td><strong>Transformation port</strong></td>
+<td>A column in a transformation's input or output</td>
+<td>Maps to a DataFrame column in PySpark</td>
+</tr>
+<tr>
+<td><strong>Metadata Extension</strong></td>
+<td>Custom annotations on objects</td>
+<td>Useful for tagging migration status</td>
+</tr>
+</tbody>
+</table>
+<h3 id="flat-file-handling">Flat File Handling<a class="headerlink" href="#flat-file-handling" title="Permanent link">&para;</a></h3>
+<p>Informatica handles flat files through the <strong>Flat File Definition</strong> — a schema descriptor stored in the repository that defines delimiter, row format, field order, and data types.</p>
+<table>
+<thead>
+<tr>
+<th>File Type</th>
+<th>Informatica Handling</th>
+<th>Migration Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Delimited (CSV, pipe)</strong></td>
+<td>Flat File Source/Target with delimiter config</td>
+<td>Directly readable in Databricks with <code>spark.read.csv</code></td>
+</tr>
+<tr>
+<td><strong>Fixed-width</strong></td>
+<td>Flat File Definition with field positions</td>
+<td>Requires schema definition in PySpark — more effort</td>
+</tr>
+<tr>
+<td><strong>XML</strong></td>
+<td>XML Source Qualifier with XPath</td>
+<td>Maps to <code>spark.read.xml</code> or custom parsing</td>
+</tr>
+<tr>
+<td><strong>JSON</strong></td>
+<td>Supported in newer versions / IDMC</td>
+<td>Maps to <code>spark.read.json</code></td>
+</tr>
+<tr>
+<td><strong>COBOL copybook</strong></td>
+<td>Via PowerExchange or flat file with copybook schema</td>
+<td>Requires mainframe offload — high effort</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Fixed-width files with complex COBOL-style layouts are common in financial services Informatica estates. These require explicit schema definition in PySpark and are among the highest-effort individual sources to migrate. Count them during inventory.</p>
+</blockquote>
+<h3 id="parameter-files">Parameter Files<a class="headerlink" href="#parameter-files" title="Permanent link">&para;</a></h3>
+<p>Informatica uses <strong>parameter files</strong> (<code>.par</code>) to externalize runtime values — database connection strings, file paths, date ranges, environment flags. These are flat text files read at session startup.</p>
+<p>Parameters are used at three scopes:</p>
+<table>
+<thead>
+<tr>
+<th>Scope</th>
+<th>Syntax</th>
+<th>What It Controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mapping parameter</strong></td>
+<td><code>$$PARAM_NAME</code></td>
+<td>Values used inside transformation expressions</td>
+</tr>
+<tr>
+<td><strong>Session parameter</strong></td>
+<td><code>$DBConnection</code>, <code>$InputFile</code></td>
+<td>Connection objects, file paths</td>
+</tr>
+<tr>
+<td><strong>Workflow variable</strong></td>
+<td><code>$$WF_VAR</code></td>
+<td>Values passed between tasks in a workflow</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Migration relevance:</strong> Parameter files are the Informatica equivalent of configuration — they must be translated to Databricks job parameters, Databricks Secrets, or environment-specific configs in Databricks Asset Bundles. Customers often have dozens of environment-specific parameter files (dev, QA, prod) that must all be accounted for.</p>
+</blockquote>
+<hr />
+<h2 id="4-parallelism-and-session-partitioning">4. Parallelism and Session Partitioning<a class="headerlink" href="#4-parallelism-and-session-partitioning" title="Permanent link">&para;</a></h2>
+<h3 id="how-informatica-achieves-parallelism">How Informatica Achieves Parallelism<a class="headerlink" href="#how-informatica-achieves-parallelism" title="Permanent link">&para;</a></h3>
+<p>Informatica's runtime engine — the <strong>DTM (Data Transformation Manager)</strong> — executes mappings as sessions. Parallelism is achieved through <strong>session partitioning</strong>: the DTM splits input data into partitions and processes them concurrently across threads (or across nodes on an Informatica Grid).</p>
+<p>Unlike Spark, partitioning in Informatica is <strong>manually configured per session</strong> — the developer or DBA must specify partition type, partition count, and partition key for each session.</p>
+<h3 id="partition-types">Partition Types<a class="headerlink" href="#partition-types" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Partition Type</th>
+<th>What It Does</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pass-through</strong></td>
+<td>Rows flow as-is, no redistribution</td>
+<td>No shuffle — default Spark behavior</td>
+</tr>
+<tr>
+<td><strong>Round-robin</strong></td>
+<td>Distributes rows evenly across partitions</td>
+<td><code>repartition(n)</code></td>
+</tr>
+<tr>
+<td><strong>Hash</strong></td>
+<td>Routes rows with matching key to same partition</td>
+<td><code>repartition(col)</code></td>
+</tr>
+<tr>
+<td><strong>Key range</strong></td>
+<td>Splits rows by value range</td>
+<td>Range partitioning</td>
+</tr>
+<tr>
+<td><strong>Database partitioning</strong></td>
+<td>Uses DB-native partitioning (Oracle partition pruning)</td>
+<td>Spark partition pushdown</td>
+</tr>
+</tbody>
+</table>
+<h3 id="informatica-grid">Informatica Grid<a class="headerlink" href="#informatica-grid" title="Permanent link">&para;</a></h3>
+<p>The <strong>Informatica Grid</strong> distributes session processing across multiple Integration Service nodes. Each node handles a subset of partitions. Grid is the scale-out mechanism for very large volumes.</p>
+<blockquote>
+<p><strong>Migration relevance:</strong> Customers running Grid configurations are processing at significant scale. When migrating to Databricks, the cluster size and auto-scaling configuration must be sized to match or exceed the throughput of the Grid setup. Ask for session statistics (rows/sec, peak throughput) from the Workflow Monitor to establish a baseline.</p>
+</blockquote>
+<h3 id="lookup-caching">Lookup Caching<a class="headerlink" href="#lookup-caching" title="Permanent link">&para;</a></h3>
+<p>The <strong>Lookup transformation</strong> is one of Informatica's most-used and most-expensive transforms. It can operate in two modes:</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Behavior</th>
+<th>Migration Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cached lookup</strong></td>
+<td>Reads the entire lookup table into memory at session start</td>
+<td>Maps to Spark broadcast join — must check lookup table size</td>
+</tr>
+<tr>
+<td><strong>Uncached lookup</strong></td>
+<td>Issues a DB query per row — extremely slow at scale</td>
+<td>Should be rewritten as a join in Databricks, not replicated as-is</td>
+</tr>
+<tr>
+<td><strong>Dynamic cache</strong></td>
+<td>Cache is updated as new records are inserted</td>
+<td>Complex — maps to Delta merge pattern with stateful logic</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Uncached lookups in production are a performance antipattern in Informatica — but they exist in nearly every large estate. When you find them, don't replicate the pattern; flag them as optimization opportunities in the migration. Rewriting as joins on Databricks almost always yields a 10–100x speedup.</p>
+</blockquote>
+<hr />
+<h2 id="5-project-structure-and-repository">5. Project Structure and Repository<a class="headerlink" href="#5-project-structure-and-repository" title="Permanent link">&para;</a></h2>
+<h3 id="the-repository">The Repository<a class="headerlink" href="#the-repository" title="Permanent link">&para;</a></h3>
+<p>The <strong>PowerCenter Repository</strong> is a relational database (Oracle, SQL Server, or DB2) that stores all metadata: source/target definitions, mappings, mapplets, sessions, workflows, connections, and version history. It is the authoritative inventory of the Informatica estate.</p>
+<p>Access the repository through the <strong>Repository Service</strong> — a managed service that brokers all client connections. Direct database queries to the repository are possible (and useful for inventory scripting) but officially unsupported by Informatica.</p>
+<h3 id="folder-structure">Folder Structure<a class="headerlink" href="#folder-structure" title="Permanent link">&para;</a></h3>
+<p>Within the repository, artifacts are organized into <strong>folders</strong> — the primary organizational unit. Teams typically own one or more folders.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Repository: PROD_REPO
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a> ├── Folder: Finance_ETL
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a> │     ├── Sources
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a> │     ├── Targets
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a> │     ├── Transformations (including Mapplets)
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a> │     ├── Mappings
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a> │     └── Workflows / Sessions
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a> ├── Folder: HR_Integration
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a> └── Folder: Shared_Objects      ← cross-team reusable objects
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>What It Is</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Repository</strong></td>
+<td>Central metadata store for all artifacts</td>
+<td>Databricks workspace (Unity Catalog as metadata store)</td>
+</tr>
+<tr>
+<td><strong>Folder</strong></td>
+<td>Team or domain grouping of all related artifacts</td>
+<td>Databricks workspace folder / catalog schema</td>
+</tr>
+<tr>
+<td><strong>Shared folder</strong></td>
+<td>Common reusable objects (Lookups, Mapplets) referenced cross-folder</td>
+<td>Unity Catalog shared schema</td>
+</tr>
+<tr>
+<td><strong>Label</strong></td>
+<td>Version tag applied to a folder snapshot</td>
+<td>Git tag</td>
+</tr>
+<tr>
+<td><strong>Deployment group</strong></td>
+<td>A set of objects exported together for promotion</td>
+<td>CI/CD artifact bundle</td>
+</tr>
+</tbody>
+</table>
+<h3 id="version-control-and-promotion">Version Control and Promotion<a class="headerlink" href="#version-control-and-promotion" title="Permanent link">&para;</a></h3>
+<p>PowerCenter has a built-in <strong>version control</strong> capability (check-in/check-out of objects with history). However, it does not integrate natively with Git — version history lives in the repository, not in source code.</p>
+<p>Promotion across environments (DEV → QA → PROD) is done via:</p>
+<ol>
+<li><strong>Export/Import</strong> — objects exported as XML (<code>.xml</code> export files) and imported into the target environment repository</li>
+<li><strong>Deployment groups</strong> — a named set of objects that can be promoted together</li>
+</ol>
+<blockquote>
+<p><strong>SA Tip:</strong> Many customers have informal or ad-hoc promotion processes — "export this mapping, email it to the QA team." Ask specifically how promotion is done and who controls it. If the answer is not a repeatable automated process, migration to Databricks Asset Bundles with proper CI/CD is an immediate win to highlight.</p>
+</blockquote>
+<hr />
+<h2 id="6-orchestration-workflows-and-sessions">6. Orchestration: Workflows and Sessions<a class="headerlink" href="#6-orchestration-workflows-and-sessions" title="Permanent link">&para;</a></h2>
+<h3 id="the-orchestration-model">The Orchestration Model<a class="headerlink" href="#the-orchestration-model" title="Permanent link">&para;</a></h3>
+<p>Informatica orchestration has three layers:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Object</th>
+<th>What It Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Workflow</strong></td>
+<td>Workflow</td>
+<td>Top-level container — chains tasks (sessions, decisions, emails, commands) with dependencies</td>
+</tr>
+<tr>
+<td><strong>Worklet</strong></td>
+<td>Worklet</td>
+<td>Reusable sub-workflow — a group of tasks packaged for reuse across workflows</td>
+</tr>
+<tr>
+<td><strong>Session</strong></td>
+<td>Session task</td>
+<td>Executes a single mapping with runtime configuration</td>
+</tr>
+</tbody>
+</table>
+<p>A <strong>Workflow</strong> is the Informatica equivalent of a Databricks Workflow or an Airflow DAG.</p>
+<h3 id="task-types-in-workflows">Task Types in Workflows<a class="headerlink" href="#task-types-in-workflows" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Task Type</th>
+<th>What It Does</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Session</strong></td>
+<td>Runs a mapping (the main work unit)</td>
+<td>Databricks Workflow notebook/JAR task</td>
+</tr>
+<tr>
+<td><strong>Command</strong></td>
+<td>Runs a shell command or script</td>
+<td>Databricks Workflow notebook task or shell script task</td>
+</tr>
+<tr>
+<td><strong>Decision</strong></td>
+<td>Evaluates a condition and branches</td>
+<td>Conditional task dependency in Workflow</td>
+</tr>
+<tr>
+<td><strong>Email</strong></td>
+<td>Sends an email notification</td>
+<td>Databricks Workflow alert / webhook</td>
+</tr>
+<tr>
+<td><strong>Event Wait</strong></td>
+<td>Pauses until a file or event arrives</td>
+<td>Databricks file-arrival trigger</td>
+</tr>
+<tr>
+<td><strong>Timer</strong></td>
+<td>Waits a fixed time interval</td>
+<td>Databricks schedule with offset</td>
+</tr>
+<tr>
+<td><strong>Assignment</strong></td>
+<td>Sets a workflow variable</td>
+<td>Passing parameters between Workflow tasks</td>
+</tr>
+<tr>
+<td><strong>Worklet</strong></td>
+<td>Embeds a reusable sub-workflow</td>
+<td>Databricks Workflow with nested task groups</td>
+</tr>
+</tbody>
+</table>
+<h3 id="session-configuration">Session Configuration<a class="headerlink" href="#session-configuration" title="Permanent link">&para;</a></h3>
+<p>A session wraps a mapping with:
+- <strong>Connection objects</strong> — named database or file connections (connection details externalized from mapping logic)
+- <strong>Parameter file</strong> — runtime values for this execution
+- <strong>Partition configuration</strong> — how many partitions, which partition type, which key
+- <strong>Error handling</strong> — stop-on-error thresholds, bad file output path
+- <strong>Pre/post session SQL</strong> — SQL commands run before/after the session (often used for truncate, index rebuild, stats update)</p>
+<blockquote>
+<p><strong>SA Tip:</strong> Pre/post session SQL is frequently where critical logic hides — table truncates, index drops, statistics updates, audit inserts. These must be inventoried as part of session migration, not just the mapping logic. A session that "just loads data" often has five SQL commands doing equally important work around it.</p>
+</blockquote>
+<h3 id="external-schedulers">External Schedulers<a class="headerlink" href="#external-schedulers" title="Permanent link">&para;</a></h3>
+<p>Many Informatica environments delegate top-level scheduling to an <strong>enterprise scheduler</strong> — BMC Control-M, Tidal, Autosys, or IBM Workload Scheduler. In this pattern:</p>
+<ul>
+<li>The external scheduler handles <strong>time-based triggers and cross-system dependencies</strong> (e.g., "wait for the SAP extract file to land in the FTP folder")</li>
+<li>Informatica Workflows handle <strong>intra-pipeline sequencing</strong></li>
+</ul>
+<blockquote>
+<p><strong>Migration relevance:</strong> If an external scheduler is in scope, the migration involves two integration points: replacing Informatica Workflows with Databricks Workflows, and integrating Databricks with the external scheduler (or replacing it with Databricks' built-in scheduling). Confirm with the customer which schedulers are in play — they may have different owners and different migration timelines.</p>
+</blockquote>
+<hr />
+<h2 id="7-metadata-lineage-and-impact-analysis">7. Metadata, Lineage, and Impact Analysis<a class="headerlink" href="#7-metadata-lineage-and-impact-analysis" title="Permanent link">&para;</a></h2>
+<h3 id="the-repository-as-a-metadata-store">The Repository as a Metadata Store<a class="headerlink" href="#the-repository-as-a-metadata-store" title="Permanent link">&para;</a></h3>
+<p>The PowerCenter repository is the richest metadata source available during assessment. Because it stores all mapping logic relationally, it can be queried directly via SQL to produce inventory reports. Informatica also ships a set of <strong>repository views</strong> (tables prefixed with <code>REP_</code>) that expose metadata in a structured form.</p>
+<p><strong>Key repository views for migration inventory:</strong></p>
+<table>
+<thead>
+<tr>
+<th>View</th>
+<th>What It Contains</th>
+<th>Use During Migration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>REP_ALL_MAPPINGS</code></td>
+<td>All mappings with folder, name, description, last-modified</td>
+<td>Top-level migration scope inventory</td>
+</tr>
+<tr>
+<td><code>REP_ALL_TRANSFORMS</code></td>
+<td>All transformation instances and their types</td>
+<td>Identify complex transforms and custom objects</td>
+</tr>
+<tr>
+<td><code>REP_SESS_LOG</code></td>
+<td>Session run history with row counts and durations</td>
+<td>Identify active pipelines, volume sizing</td>
+</tr>
+<tr>
+<td><code>REP_WORKFLOWS</code></td>
+<td>All workflows and their status</td>
+<td>Orchestration scope inventory</td>
+</tr>
+<tr>
+<td><code>REP_SUBJECT_AREA</code></td>
+<td>Folder definitions</td>
+<td>Organize inventory by team/domain</td>
+</tr>
+<tr>
+<td><code>REP_SRC_FILES</code></td>
+<td>Source file definitions</td>
+<td>Identify flat file sources</td>
+</tr>
+<tr>
+<td><code>REP_TGT_FILES</code></td>
+<td>Target file definitions</td>
+<td>Identify flat file targets</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Query <code>REP_SESS_LOG</code> filtered to the last 90 days to distinguish <strong>active</strong> mappings from the full repository. Many Informatica estates have 50% or more legacy mappings that haven't run in years. Migrating only active pipelines dramatically reduces scope.</p>
+</blockquote>
+<h3 id="metadata-manager">Metadata Manager<a class="headerlink" href="#metadata-manager" title="Permanent link">&para;</a></h3>
+<p><strong>Informatica Metadata Manager</strong> is a separate product that sits above the repository. It scans metadata from multiple sources (PowerCenter, databases, BI tools, Hadoop) and builds an enterprise lineage graph.</p>
+<table>
+<thead>
+<tr>
+<th>Metadata Manager Feature</th>
+<th>Migration Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cross-system lineage</td>
+<td>Trace a field from source DB → Informatica mapping → target DW → BI report</td>
+</tr>
+<tr>
+<td>Impact analysis</td>
+<td>"What breaks if I change this source table column?"</td>
+</tr>
+<tr>
+<td>Technical lineage</td>
+<td>Field-level lineage within PowerCenter mappings</td>
+</tr>
+<tr>
+<td>Business glossary</td>
+<td>Link technical assets to business terms</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Metadata Manager is often licensed but underused. Ask whether it's active and whether lineage has been scanned recently. If it is current, export the lineage graph — it is the fastest way to identify cross-system dependencies and scope the migration boundary.</p>
+</blockquote>
+<h3 id="field-level-lineage">Field-Level Lineage<a class="headerlink" href="#field-level-lineage" title="Permanent link">&para;</a></h3>
+<p>Within a mapping, field-level lineage can be traced manually or via repository queries: which source field, through which transformation expression, produces which target field. This is essential for validating that migrated pipelines produce identical output.</p>
+<p><strong>Common lineage gaps:</strong></p>
+<ul>
+<li>Mappings that call <strong>Command tasks</strong> (shell scripts) — lineage breaks at the script boundary</li>
+<li><strong>Pre/post session SQL</strong> — not captured in mapping lineage at all</li>
+<li><strong>Dynamic connections</strong> where source/target is determined at runtime from parameter values</li>
+<li>Mappings that write to intermediate files read by other sessions (file-based handoffs between sessions within a workflow)</li>
+</ul>
+<hr />
+<h2 id="8-data-quality-with-idq">8. Data Quality with IDQ<a class="headerlink" href="#8-data-quality-with-idq" title="Permanent link">&para;</a></h2>
+<h3 id="what-informatica-data-quality-does">What Informatica Data Quality Does<a class="headerlink" href="#what-informatica-data-quality-does" title="Permanent link">&para;</a></h3>
+<p><strong>Informatica Data Quality (IDQ)</strong> is a separate product suite for profiling, cleansing, standardization, and matching. In enterprises that use it, IDQ rules are often embedded directly inside PowerCenter mappings via <strong>IDQ transformations</strong>, making data quality part of the ETL pipeline rather than a separate system.</p>
+<h3 id="idq-components-in-mappings">IDQ Components in Mappings<a class="headerlink" href="#idq-components-in-mappings" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>IDQ Component</th>
+<th>What It Does</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data Processor</strong></td>
+<td>Parses and transforms complex formats (XML, SWIFT, EDI, COBOL)</td>
+<td>Custom parsing logic / Databricks <code>from_xml</code> / external library</td>
+</tr>
+<tr>
+<td><strong>Parser</strong></td>
+<td>Breaks unstructured text into structured fields</td>
+<td>Custom NLP/regex UDF</td>
+</tr>
+<tr>
+<td><strong>Standardizer</strong></td>
+<td>Normalizes values to canonical form (address, name)</td>
+<td>Custom lookup/regex expression or Databricks partner DQ tool</td>
+</tr>
+<tr>
+<td><strong>Matcher</strong></td>
+<td>Fuzzy matching for deduplication</td>
+<td>Databricks ML-based entity resolution or partner tool</td>
+</tr>
+<tr>
+<td><strong>Labeler</strong></td>
+<td>Classifies records by pattern (email, phone, SSN)</td>
+<td>Custom regex classifier / Unity Catalog data classification</td>
+</tr>
+<tr>
+<td><strong>Exception</strong></td>
+<td>Routes bad records to an exceptions queue</td>
+<td>Delta Live Tables <code>expect()</code> with quarantine</td>
+</tr>
+<tr>
+<td><strong>Scorecards</strong></td>
+<td>Aggregate DQ metrics across pipelines</td>
+<td>Databricks DQ dashboards / Lakehouse Monitoring</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> IDQ embedded in production mappings is business logic, not optional decoration. If a customer has IDQ transformations in their critical path, ask for the ruleset definitions — they must be migrated to Databricks (as DLT expectations, Great Expectations, or Soda) before the pipeline is considered equivalent. This is commonly underestimated in migration scoping.</p>
+</blockquote>
+<h3 id="profiling">Profiling<a class="headerlink" href="#profiling" title="Permanent link">&para;</a></h3>
+<p>IDQ includes a <strong>Profiling</strong> workbench that analyzes datasets and generates statistics — null rates, value distributions, pattern frequencies, PK/FK violations. Use existing profiling outputs to:</p>
+<ul>
+<li>Establish a <strong>data quality baseline</strong> before migration begins</li>
+<li>Define acceptance criteria for post-migration validation</li>
+<li>Identify columns with high null rates or format inconsistencies that may cause issues during migration</li>
+</ul>
+<hr />
+<h2 id="9-informatica-file-formats-reference">9. Informatica File Formats Reference<a class="headerlink" href="#9-informatica-file-formats-reference" title="Permanent link">&para;</a></h2>
+<p>When you walk into a customer's Informatica environment, you will encounter a specific set of file types. Knowing what each file is and what it means for migration is essential for artifact inventory.</p>
+<hr />
+<h3 id="xml-repository-export-file"><code>.xml</code> — Repository Export File<a class="headerlink" href="#xml-repository-export-file" title="Permanent link">&para;</a></h3>
+<p>The <code>.xml</code> export file is the primary <strong>portability format</strong> for Informatica artifacts. When objects are exported from the repository (for backup, promotion, or migration), they are serialized as XML. This is the format used to move objects between repositories and environments.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Created by</strong></td>
+<td>Informatica Repository Manager — developers export objects manually or via <code>pmrep</code> CLI</td>
+</tr>
+<tr>
+<td><strong>Stored in</strong></td>
+<td>File system (not in repository) — typically on a shared drive or version control system</td>
+</tr>
+<tr>
+<td><strong>Contains</strong></td>
+<td>Complete definitions of mappings, sessions, workflows, source/target definitions, connections — everything needed to reconstruct objects in another repository</td>
+</tr>
+<tr>
+<td><strong>Human-readable?</strong></td>
+<td>Yes — XML text, but verbose and not intended for hand-editing</td>
+</tr>
+<tr>
+<td><strong>Migration target</strong></td>
+<td>The <code>.xml</code> export is the starting point for automated parsing during migration inventory — tools can extract mapping logic, transformation lists, and lineage from these files without needing live repository access</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Ask the customer to export all production folder XML files as a first deliverable. These files give you a complete offline inventory of the estate without needing direct repository database access — and they can be parsed programmatically to count transformation types, identify custom objects, and scope effort.</p>
+</blockquote>
+<hr />
+<h3 id="par-parameter-file"><code>.par</code> — Parameter File<a class="headerlink" href="#par-parameter-file" title="Permanent link">&para;</a></h3>
+<p>The parameter file is a flat text file that externalizes runtime configuration values. Sessions read these files at startup to resolve <code>$$PARAMETER</code> and <code>$SessionVariable</code> references.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Created by</strong></td>
+<td>Developers or operations teams — hand-authored text files</td>
+</tr>
+<tr>
+<td><strong>Stored in</strong></td>
+<td>File system, typically in an environment-specific directory (e.g., <code>/infa/params/prod/</code>)</td>
+</tr>
+<tr>
+<td><strong>Contains</strong></td>
+<td>Name=value pairs for mapping parameters, session parameters, workflow variables, and connection overrides</td>
+</tr>
+<tr>
+<td><strong>Human-readable?</strong></td>
+<td>Yes — plain text key-value format</td>
+</tr>
+<tr>
+<td><strong>Migration target</strong></td>
+<td>Maps to Databricks job parameters, Databricks Secrets (for credentials), or environment-specific config files in Databricks Asset Bundles</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example parameter file:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>[session_name.mapping_name]
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>$$START_DATE=2024-01-01
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>$$END_DATE=2024-01-31
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>$DBConnection_Source=Oracle_Prod
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>$InputFile=/data/inbound/customers_20240101.csv
+</code></pre></div></p>
+<blockquote>
+<p><strong>SA Tip:</strong> Count how many unique parameter files exist across environments and how they differ. Customers with a disciplined parameter file structure (one file per environment, clearly named) migrate cleanly to DAB configs. Customers with ad-hoc parameter files scattered across server directories are a significant configuration management risk.</p>
+</blockquote>
+<hr />
+<h3 id="wf-workflow-and-session-definitions-in-repository"><code>.wf</code> / Workflow and Session Definitions (in Repository)<a class="headerlink" href="#wf-workflow-and-session-definitions-in-repository" title="Permanent link">&para;</a></h3>
+<p>Workflows and sessions are stored in the repository (not as standalone files) but are exported as part of the <code>.xml</code> export. They can also be inspected via the <code>pmrep</code> command-line interface.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Created by</strong></td>
+<td>Workflow Manager — developers configure sessions and wire them into workflows visually</td>
+</tr>
+<tr>
+<td><strong>Stored in</strong></td>
+<td>Repository database (exported as part of <code>.xml</code>)</td>
+</tr>
+<tr>
+<td><strong>Contains</strong></td>
+<td>Task definitions (sessions, commands, decisions), task dependencies, event triggers, scheduling, partition settings per session</td>
+</tr>
+<tr>
+<td><strong>Human-readable?</strong></td>
+<td>Via <code>.xml</code> export — yes, but verbose</td>
+</tr>
+<tr>
+<td><strong>Migration target</strong></td>
+<td>Each workflow maps to a Databricks Workflow; each session maps to a Databricks task (notebook or DLT pipeline)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Workflows with many branching Decision tasks and Assignment tasks are complex orchestration logic — not just "run these sessions in order." These must be carefully mapped to Databricks Workflow conditional dependencies. A workflow with 50+ tasks is a significant migration effort unit on its own.</p>
+</blockquote>
+<hr />
+<h3 id="bad-bad-record-file"><code>.bad</code> — Bad Record File<a class="headerlink" href="#bad-bad-record-file" title="Permanent link">&para;</a></h3>
+<p>The bad record file captures rows that fail a session's error threshold — records rejected at the target write stage. It is a flat file written by the DTM during session execution.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Created by</strong></td>
+<td>Integration Service — written automatically during session execution</td>
+</tr>
+<tr>
+<td><strong>Stored in</strong></td>
+<td>File system, path configured in session properties</td>
+</tr>
+<tr>
+<td><strong>Contains</strong></td>
+<td>Rejected rows in original format plus an indicator code</td>
+</tr>
+<tr>
+<td><strong>Human-readable?</strong></td>
+<td>Yes — same delimited format as the input</td>
+</tr>
+<tr>
+<td><strong>Migration target</strong></td>
+<td>Maps to a DLT quarantine table or a Delta "bad records" table with rejection reason column</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="lookup-cache-files-idx-dat">Lookup Cache Files (<code>.idx</code> / <code>.dat</code>)<a class="headerlink" href="#lookup-cache-files-idx-dat" title="Permanent link">&para;</a></h3>
+<p>When a Lookup transformation runs in cached mode, it writes the lookup table to disk as cache files (an index file <code>.idx</code> and a data file <code>.dat</code>) in the cache directory.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Created by</strong></td>
+<td>Integration Service at session runtime</td>
+</tr>
+<tr>
+<td><strong>Stored in</strong></td>
+<td>Cache directory on the Integration Service server (configured per session)</td>
+</tr>
+<tr>
+<td><strong>Contains</strong></td>
+<td>In-memory snapshot of the lookup table, serialized to disk for reuse across sessions</td>
+</tr>
+<tr>
+<td><strong>Human-readable?</strong></td>
+<td>No — binary format</td>
+</tr>
+<tr>
+<td><strong>Migration target</strong></td>
+<td>No direct migration — in Databricks, lookups become broadcast joins or Delta table lookups. Shared/persistent caches map to Delta tables cached in memory via <code>cache()</code> or DBIO cache</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Customers with large shared lookup caches (gigabytes of reference data loaded into memory) are tuning around Informatica's limitation that each session must load its own lookup copy. In Databricks, a single broadcast join or Delta cache serves all parallel tasks — this is an automatic performance improvement, not an additional engineering task.</p>
+</blockquote>
+<hr />
+<h3 id="session-log-and-workflow-log">Session Log and Workflow Log<a class="headerlink" href="#session-log-and-workflow-log" title="Permanent link">&para;</a></h3>
+<p>Informatica writes detailed run logs for every session and workflow execution to the file system.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Created by</strong></td>
+<td>Integration Service / Workflow Service at runtime</td>
+</tr>
+<tr>
+<td><strong>Stored in</strong></td>
+<td>Log directory on the server, configurable path</td>
+</tr>
+<tr>
+<td><strong>Contains</strong></td>
+<td>Row counts (sourced, inserted, updated, rejected, deleted), timestamps, SQL statements, error messages</td>
+</tr>
+<tr>
+<td><strong>Human-readable?</strong></td>
+<td>Yes — plain text with timestamps</td>
+</tr>
+<tr>
+<td><strong>Migration target</strong></td>
+<td>Not migrated — but use historical logs during assessment to identify run frequency, volumes, and SLA compliance of each pipeline</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="quick-reference-informatica-fileartifact-types">Quick Reference — Informatica File/Artifact Types<a class="headerlink" href="#quick-reference-informatica-fileartifact-types" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Artifact</th>
+<th>Format</th>
+<th>Human-Readable</th>
+<th>Migration Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Repository export</td>
+<td><code>.xml</code></td>
+<td>Yes (verbose)</td>
+<td>Starting point for offline inventory and parsing</td>
+</tr>
+<tr>
+<td>Parameter file</td>
+<td><code>.par</code></td>
+<td>Yes (key-value)</td>
+<td>Databricks job params / Secrets / DAB config</td>
+</tr>
+<tr>
+<td>Workflow + Session</td>
+<td><code>.xml</code> (exported)</td>
+<td>Yes</td>
+<td>Databricks Workflow</td>
+</tr>
+<tr>
+<td>Bad record file</td>
+<td><code>.bad</code></td>
+<td>Yes (delimited)</td>
+<td>DLT quarantine table / Delta bad records table</td>
+</tr>
+<tr>
+<td>Lookup cache index</td>
+<td><code>.idx</code></td>
+<td>No (binary)</td>
+<td>Not migrated — replaced by broadcast join</td>
+</tr>
+<tr>
+<td>Lookup cache data</td>
+<td><code>.dat</code></td>
+<td>No (binary)</td>
+<td>Not migrated — replaced by broadcast join</td>
+</tr>
+<tr>
+<td>Session log</td>
+<td><code>.log</code></td>
+<td>Yes</td>
+<td>Assessment only — not migrated</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-migration-assessment-and-artifact-inventory">10. Migration Assessment and Artifact Inventory<a class="headerlink" href="#10-migration-assessment-and-artifact-inventory" title="Permanent link">&para;</a></h2>
+<h3 id="how-to-build-the-estate-inventory">How to Build the Estate Inventory<a class="headerlink" href="#how-to-build-the-estate-inventory" title="Permanent link">&para;</a></h3>
+<p>The richest inventory source is the <strong>PowerCenter repository</strong>. If you have read-only access to the repository database, run SQL queries against the <code>REP_*</code> views to extract:</p>
+<ol>
+<li><strong>Mapping count by folder</strong> — total scope, organized by team/domain</li>
+<li><strong>Last run date per session</strong> — filter to 90-day active window to identify live pipelines</li>
+<li><strong>Transformation type distribution</strong> — count of each transformation type across all mappings (identifies custom transform exposure)</li>
+<li><strong>Session run statistics</strong> — rows processed, duration, partition count — for volume sizing</li>
+<li><strong>Workflow task counts</strong> — number of sessions per workflow (identifies orchestration complexity)</li>
+</ol>
+<p>If repository access is not available, request an <strong>XML export of all production folders</strong> — this gives you everything needed for offline parsing.</p>
+<h3 id="complexity-scoring-model">Complexity Scoring Model<a class="headerlink" href="#complexity-scoring-model" title="Permanent link">&para;</a></h3>
+<p>Score each mapping for migration effort using these factors:</p>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Low (1 pt)</th>
+<th>Medium (2 pts)</th>
+<th>High (3 pts)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Transformation count</strong></td>
+<td>&lt; 10</td>
+<td>10–30</td>
+<td>&gt; 30</td>
+</tr>
+<tr>
+<td><strong>Custom transformations</strong></td>
+<td>None</td>
+<td>1–2 Java/C transforms</td>
+<td>3+ custom transforms</td>
+</tr>
+<tr>
+<td><strong>Lookup count</strong></td>
+<td>0–2</td>
+<td>3–6</td>
+<td>7+</td>
+</tr>
+<tr>
+<td><strong>Uncached lookups</strong></td>
+<td>None</td>
+<td>1–2</td>
+<td>3+</td>
+</tr>
+<tr>
+<td><strong>IDQ components</strong></td>
+<td>None</td>
+<td>1–2 rules</td>
+<td>Complex ruleset</td>
+</tr>
+<tr>
+<td><strong>Source types</strong></td>
+<td>DB table / delimited file</td>
+<td>Fixed-width / XML</td>
+<td>COBOL / PowerExchange / SAP</td>
+</tr>
+<tr>
+<td><strong>Pre/post session SQL</strong></td>
+<td>None</td>
+<td>Simple truncate/insert</td>
+<td>Complex procedural SQL</td>
+</tr>
+<tr>
+<td><strong>Parameter complexity</strong></td>
+<td>Simple date/path params</td>
+<td>Multi-scope params</td>
+<td>Dynamic connection switching</td>
+</tr>
+<tr>
+<td><strong>Workflow complexity</strong></td>
+<td>Linear session chain</td>
+<td>Decision branches</td>
+<td>Complex worklet nesting</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Scoring bands:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Total Score</th>
+<th>Classification</th>
+<th>Typical Migration Approach</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–5</td>
+<td>Simple</td>
+<td>Direct translation to PySpark/SQL notebook</td>
+</tr>
+<tr>
+<td>6–12</td>
+<td>Moderate</td>
+<td>PySpark notebook with careful port-by-port validation</td>
+</tr>
+<tr>
+<td>13–20</td>
+<td>Complex</td>
+<td>DLT pipeline with incremental migration and parallel run</td>
+</tr>
+<tr>
+<td>21+</td>
+<td>High</td>
+<td>Architect-led redesign — likely a rewrite, not a lift-and-shift</td>
+</tr>
+</tbody>
+</table>
+<h3 id="risk-areas-specific-to-informatica">Risk Areas Specific to Informatica<a class="headerlink" href="#risk-areas-specific-to-informatica" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Risk Area</th>
+<th>What to Look For</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Custom Java/C transformations</strong></td>
+<td><code>Custom Transformation</code> or <code>External Procedure</code> objects in mappings</td>
+<td>Requires porting logic to PySpark UDFs — must find/review source code</td>
+</tr>
+<tr>
+<td><strong>PowerExchange CDC</strong></td>
+<td>Real-time change capture from mainframe, Oracle, DB2</td>
+<td>Different migration path — maps to Databricks DLT + CDC connectors</td>
+</tr>
+<tr>
+<td><strong>Dynamic connections</strong></td>
+<td>Session parameters override source/target connections at runtime</td>
+<td>Complex config management — must be translated to Databricks multi-environment patterns</td>
+</tr>
+<tr>
+<td><strong>Stored procedure calls</strong></td>
+<td>Inline <code>Stored Procedure</code> transformations or heavy pre/post SQL</td>
+<td>DB-side logic must be ported or DB retained as dependency</td>
+</tr>
+<tr>
+<td><strong>Large Sorter usage</strong></td>
+<td>Sorter transformations on multi-billion-row datasets</td>
+<td>Sorter uses temp disk in Informatica — verify Databricks cluster has enough shuffle space</td>
+</tr>
+<tr>
+<td><strong>IDQ embedded in critical pipelines</strong></td>
+<td><code>Data Processor</code>, <code>Standardizer</code>, <code>Matcher</code> in production mappings</td>
+<td>Must build equivalent DQ layer before pipeline is considered migrated</td>
+</tr>
+<tr>
+<td><strong>Shared Lookup across sessions</strong></td>
+<td>Persistent caches shared across multiple sessions</td>
+<td>Translate to Delta lookup table with appropriate caching strategy</td>
+</tr>
+<tr>
+<td><strong>File-based session handoffs</strong></td>
+<td>Session A writes a file; Session B reads it within same workflow</td>
+<td>Intermediate files must become Delta tables in the Databricks version</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11-migration-mapping-to-databricks">11. Migration Mapping to Databricks<a class="headerlink" href="#11-migration-mapping-to-databricks" title="Permanent link">&para;</a></h2>
+<h3 id="building-blocks">Building Blocks<a class="headerlink" href="#building-blocks" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Informatica Concept</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mapping</td>
+<td>Databricks notebook (PySpark / SQL) or DLT pipeline</td>
+</tr>
+<tr>
+<td>Mapplet</td>
+<td>Shared PySpark function / Unity Catalog SQL function</td>
+</tr>
+<tr>
+<td>Session</td>
+<td>Databricks Workflow task (wraps a notebook or DLT pipeline)</td>
+</tr>
+<tr>
+<td>Workflow</td>
+<td>Databricks Workflow</td>
+</tr>
+<tr>
+<td>Worklet</td>
+<td>Databricks Workflow task cluster / reusable task group</td>
+</tr>
+<tr>
+<td>Repository</td>
+<td>Databricks workspace + Unity Catalog (metadata) + Git (code)</td>
+</tr>
+<tr>
+<td>Folder</td>
+<td>Databricks workspace folder / Unity Catalog schema</td>
+</tr>
+<tr>
+<td>Parameter file</td>
+<td>Databricks job parameters + Databricks Secrets + DAB config</td>
+</tr>
+<tr>
+<td>Integration Service (DTM)</td>
+<td>Databricks cluster (driver + workers)</td>
+</tr>
+<tr>
+<td>Informatica Grid</td>
+<td>Databricks cluster auto-scaling</td>
+</tr>
+</tbody>
+</table>
+<h3 id="transformations-to-databricks">Transformations to Databricks<a class="headerlink" href="#transformations-to-databricks" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Informatica Transformation</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source Qualifier</td>
+<td><code>spark.read.jdbc()</code> / <code>spark.read.format()</code> with pushdown filters</td>
+</tr>
+<tr>
+<td>Expression</td>
+<td><code>withColumn()</code> / SQL <code>SELECT</code> expressions</td>
+</tr>
+<tr>
+<td>Filter</td>
+<td><code>filter()</code> / <code>WHERE</code> clause</td>
+</tr>
+<tr>
+<td>Router</td>
+<td><code>filter()</code> per branch / <code>CASE WHEN</code> with multiple writes</td>
+</tr>
+<tr>
+<td>Joiner</td>
+<td><code>join()</code> / SQL <code>JOIN</code></td>
+</tr>
+<tr>
+<td>Lookup (cached)</td>
+<td>Broadcast join (<code>broadcast()</code> hint) / Delta table join</td>
+</tr>
+<tr>
+<td>Lookup (uncached)</td>
+<td>Rewrite as join — do not replicate row-by-row lookup pattern</td>
+</tr>
+<tr>
+<td>Aggregator</td>
+<td><code>groupBy().agg()</code> / SQL <code>GROUP BY</code></td>
+</tr>
+<tr>
+<td>Sorter</td>
+<td><code>orderBy()</code> / <code>sort()</code> — use only where required (output ordering)</td>
+</tr>
+<tr>
+<td>Update Strategy</td>
+<td>Delta Lake <code>MERGE INTO</code> (upsert)</td>
+</tr>
+<tr>
+<td>Sequence Generator</td>
+<td><code>monotonically_increasing_id()</code> or Delta sequence table</td>
+</tr>
+<tr>
+<td>Stored Procedure</td>
+<td>PySpark JDBC call or migrate stored proc logic to Spark</td>
+</tr>
+<tr>
+<td>Custom / External Procedure</td>
+<td>PySpark UDF (Python or Scala) — requires source code review</td>
+</tr>
+<tr>
+<td>Data Processor (IDQ)</td>
+<td>Custom parsing + <code>from_xml()</code> / external library</td>
+</tr>
+<tr>
+<td>Standardizer (IDQ)</td>
+<td>Custom UDF / Databricks partner DQ tool</td>
+</tr>
+<tr>
+<td>Matcher (IDQ)</td>
+<td>Databricks ML entity resolution / partner tool</td>
+</tr>
+</tbody>
+</table>
+<h3 id="orchestration">Orchestration<a class="headerlink" href="#orchestration" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Informatica Concept</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Workflow</td>
+<td>Databricks Workflow</td>
+</tr>
+<tr>
+<td>Session task</td>
+<td>Databricks Workflow notebook task / DLT pipeline task</td>
+</tr>
+<tr>
+<td>Command task</td>
+<td>Databricks Workflow notebook task (Python script)</td>
+</tr>
+<tr>
+<td>Decision task</td>
+<td>Conditional task dependency (<code>on_success</code> / <code>on_failure</code> branches)</td>
+</tr>
+<tr>
+<td>Worklet</td>
+<td>Reusable Databricks Workflow task cluster or modular DAG</td>
+</tr>
+<tr>
+<td>Event Wait (file arrival)</td>
+<td>Databricks file-arrival trigger</td>
+</tr>
+<tr>
+<td>External scheduler trigger</td>
+<td>Databricks REST API job trigger from Control-M/Autosys</td>
+</tr>
+<tr>
+<td>Scheduling</td>
+<td>Databricks Workflow schedule (cron or continuous)</td>
+</tr>
+<tr>
+<td>Parameter passing</td>
+<td>Databricks Workflow job parameters + <code>dbutils.widgets</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="governance-and-metadata">Governance and Metadata<a class="headerlink" href="#governance-and-metadata" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Informatica Concept</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Repository</td>
+<td>Unity Catalog (metadata) + Git repo (code)</td>
+</tr>
+<tr>
+<td>Metadata Manager lineage</td>
+<td>Unity Catalog automated lineage</td>
+</tr>
+<tr>
+<td>Source/Target definitions</td>
+<td>Unity Catalog table definitions</td>
+</tr>
+<tr>
+<td>Metadata extensions (tags)</td>
+<td>Unity Catalog tags</td>
+</tr>
+<tr>
+<td>Version control (check-in/out)</td>
+<td>Git + Databricks Repos / Workspace Git integration</td>
+</tr>
+<tr>
+<td>Deployment group promotion</td>
+<td>Databricks Asset Bundles (DAB) with CI/CD pipeline</td>
+</tr>
+<tr>
+<td>Folder security</td>
+<td>Unity Catalog schema-level permissions</td>
+</tr>
+</tbody>
+</table>
+<h3 id="data-quality">Data Quality<a class="headerlink" href="#data-quality" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Informatica IDQ Concept</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Profile / scorecard</td>
+<td>Databricks Lakehouse Monitoring</td>
+</tr>
+<tr>
+<td><code>Validate</code> / <code>Exception</code></td>
+<td>Delta Live Tables <code>expect()</code> with quarantine table</td>
+</tr>
+<tr>
+<td><code>Standardizer</code></td>
+<td>PySpark UDF / Databricks partner (Soda, Great Expectations)</td>
+</tr>
+<tr>
+<td><code>Matcher</code></td>
+<td>Databricks ML entity resolution</td>
+</tr>
+<tr>
+<td>Bad record file (<code>.bad</code>)</td>
+<td>DLT quarantine Delta table</td>
+</tr>
+<tr>
+<td>DQ rules embedded in mapping</td>
+<td>DLT expectations co-located with transformation logic</td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-doesnt-map-cleanly">What Doesn't Map Cleanly<a class="headerlink" href="#what-doesnt-map-cleanly" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Informatica Capability</th>
+<th>Why It's Hard</th>
+<th>Recommended Approach</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Uncached Lookup (row-by-row)</strong></td>
+<td>Anti-pattern that hides in thousands of mappings; replicating it in Spark would be equally slow</td>
+<td>Rewrite as a broadcast join or Delta table lookup during migration</td>
+</tr>
+<tr>
+<td><strong>PowerExchange real-time CDC</strong></td>
+<td>Fundamentally different architecture — reads DB transaction logs at low level</td>
+<td>Use Databricks DLT + Debezium/Qlik/Fivetran CDC connectors as the new source layer</td>
+</tr>
+<tr>
+<td><strong>Custom C transformations</strong></td>
+<td>Compiled binary — no source visibility; logic not in the repository</td>
+<td>Locate C source files, port to PySpark UDF — may require original developer</td>
+</tr>
+<tr>
+<td><strong>Dynamic connection switching</strong></td>
+<td>Session-level parameter overrides connection objects at runtime</td>
+<td>Translate to Databricks multi-environment config; complex if connections switch per row</td>
+</tr>
+<tr>
+<td><strong>Pre/post session SQL with DDL</strong></td>
+<td><code>DROP INDEX</code> / <code>TRUNCATE TABLE</code> / <code>ANALYZE TABLE</code> before/after load</td>
+<td>Migrate as notebook cells preceding/following the main load logic in a Workflow task</td>
+</tr>
+<tr>
+<td><strong>Sorter on very large datasets</strong></td>
+<td>Informatica Sorter uses unlimited disk temp space; Spark shuffle has different constraints</td>
+<td>Right-size cluster shuffle storage; push ORDER BY to the consuming query where possible</td>
+</tr>
+<tr>
+<td><strong>MDM Hub integration</strong></td>
+<td>MDM is a separate product with its own data model and survivorship rules</td>
+<td>Out of scope for lakehouse migration — must be addressed as a separate MDM track</td>
+</tr>
+<tr>
+<td><strong>Worklet reuse across many workflows</strong></td>
+<td>Worklets are shared objects; changes affect all consumers</td>
+<td>Translate to Unity Catalog functions or shared DLT pipeline modules with explicit versioning</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.highlight", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/tts.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,9326 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A multi-agent AI system that generates technical training courses for  Solution Architects — powered by LangGraph and local LLM inference">
+      
+      
+        <meta name="author" content="Tech Ramp Up">
+      
+      
+        <link rel="canonical" href="https://datechbridge-projects.github.io/sa-ramp-up/etl/alteryx/">
+      
+      
+        <link rel="prev" href="../snaplogic/">
+      
+      
+        <link rel="next" href="../../bi/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Alteryx - Tech Ramp Up</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#alteryx-sa-migration-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Tech Ramp Up" class="md-header__button md-logo" aria-label="Tech Ramp Up" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tech Ramp Up
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Alteryx
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../gcp/" class="md-tabs__link">
+          
+  
+  
+  Google
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../snowflake/" class="md-tabs__link">
+          
+  
+  
+  Snowflake
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../azure/" class="md-tabs__link">
+          
+  
+  
+  Azure
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../databricks/" class="md-tabs__link">
+          
+  
+  
+  Databricks
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../aws/" class="md-tabs__link">
+          
+  
+  
+  AWS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  ETL Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../bi/" class="md-tabs__link">
+          
+  
+  
+  BI Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../otf/" class="md-tabs__link">
+          
+  
+  
+  OTF
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../data-ref/" class="md-tabs__link">
+          
+  
+  
+  Data Solutions & Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../glossary/aws/" class="md-tabs__link">
+          
+  
+  
+  Glossary
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tech Ramp Up" class="md-nav__button md-logo" aria-label="Tech Ramp Up" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Tech Ramp Up
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Google
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Google
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_01_gcp_fundamentals_and_resource_hierarchy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. GCP Fundamentals and Resource Hierarchy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_02_security_identity_and_access_management_iam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Security, Identity, and Access Management (IAM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_03_cloud_storage_and_data_lake_architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Cloud Storage and Data Lake Architectures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_04_relational_databases_cloud_sql_and_spanner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Relational Databases: Cloud SQL and Spanner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_05_nosql_and_widecolumn_stores_bigtable_and_firestore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. NoSQL and Wide-Column Stores: Bigtable and Firestore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_06_bigquery_scalable_data_warehousing_and_analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. BigQuery: Scalable Data Warehousing and Analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_07_realtime_data_ingestion_with_pubsub/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Real-time Data Ingestion with Pub/Sub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_08_stream_and_batch_processing_with_dataflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Stream and Batch Processing with Dataflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_09_managed_hadoop_and_spark_with_cloud_dataproc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Managed Hadoop and Spark with Cloud Dataproc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_10_workflow_orchestration_with_cloud_composer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Workflow Orchestration with Cloud Composer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_11_data_migration_and_modernization_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Data Migration and Modernization Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_12_monitoring_logging_and_observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Monitoring, Logging, and Observability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_13_cost_management_and_billing_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Cost Management and Billing Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_14_machine_learning_integration_with_vertex_ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Machine Learning Integration with Vertex AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_15_competitive_positioning_and_industry_use_cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Competitive Positioning and Industry Use Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_16_certification_exam_readiness_and_capstone_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Certification Exam Readiness and Capstone Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_18" id="__nav_2_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SA Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_18">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SA Quick Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_01_gcp_fundamentals_and_resource_hierarchy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GCP Fundamentals and Resource Hierarchy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_02_security_identity_and_access_management_iam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security, Identity, and Access Management (IAM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_03_cloud_storage_and_data_lake_architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cloud Storage and Data Lake Architectures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_04_relational_databases_cloud_sql_and_spanner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relational Databases: Cloud SQL and Spanner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_05_nosql_and_widecolumn_stores_bigtable_and_firestore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NoSQL and Wide-Column Stores: Bigtable and Firestore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_06_bigquery_scalable_data_warehousing_and_analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BigQuery: Scalable Data Warehousing and Analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_07_realtime_data_ingestion_with_pubsub/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-time Data Ingestion with Pub/Sub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_08_stream_and_batch_processing_with_dataflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stream and Batch Processing with Dataflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_09_managed_hadoop_and_spark_with_cloud_dataproc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Managed Hadoop and Spark with Cloud Dataproc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_10_workflow_orchestration_with_cloud_composer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Orchestration with Cloud Composer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_11_data_migration_and_modernization_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Migration and Modernization Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_12_monitoring_logging_and_observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoring, Logging, and Observability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_13_cost_management_and_billing_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost Management and Billing Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_14_machine_learning_integration_with_vertex_ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Machine Learning Integration with Vertex AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_15_competitive_positioning_and_industry_use_cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Competitive Positioning and Industry Use Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_16_certification_exam_readiness_and_capstone_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certification Exam Readiness and Capstone Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowflake
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Snowflake
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_01_snowflake_architecture_and_core_components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Snowflake Architecture and Core Components
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_02_data_storage_and_semistructured_data_handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Data Storage and Semi-Structured Data Handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_03_virtual_warehouse_management_and_scaling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Virtual Warehouse Management and Scaling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_04_data_ingestion_techniques_and_snowpipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Data Ingestion Techniques and Snowpipe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_05_time_travel_failsafe_and_zerocopy_cloning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Time Travel, Fail-safe, and Zero-Copy Cloning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_06_security_identity_and_access_control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Security, Identity, and Access Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_07_data_sharing_and_the_snowflake_marketplace/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Data Sharing and the Snowflake Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_08_snowpark_and_programmable_data_engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Snowpark and Programmable Data Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_09_query_optimization_and_performance_tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Query Optimization and Performance Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_10_monitoring_auditing_and_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Monitoring, Auditing, and Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_11_cost_management_and_billing_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Cost Management and Billing Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_12_migration_and_adoption_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Migration and Adoption Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_13_snowflake_use_cases_and_competitive_positioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Snowflake Use Cases and Competitive Positioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_14_certification_exam_preparation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Certification Exam Preparation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_16" id="__nav_3_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SA Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SA Quick Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_01_snowflake_architecture_and_core_components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowflake Architecture and Core Components
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_02_data_storage_and_semistructured_data_handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Storage and Semi-Structured Data Handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_03_virtual_warehouse_management_and_scaling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Virtual Warehouse Management and Scaling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_04_data_ingestion_techniques_and_snowpipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Ingestion Techniques and Snowpipe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_05_time_travel_failsafe_and_zerocopy_cloning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Time Travel, Fail-safe, and Zero-Copy Cloning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_06_security_identity_and_access_control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security, Identity, and Access Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_07_data_sharing_and_the_snowflake_marketplace/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Sharing and the Snowflake Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_08_snowpark_and_programmable_data_engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowpark and Programmable Data Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_09_query_optimization_and_performance_tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Query Optimization and Performance Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_10_monitoring_auditing_and_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoring, Auditing, and Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_11_cost_management_and_billing_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost Management and Billing Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_12_migration_and_adoption_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration and Adoption Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_13_snowflake_use_cases_and_competitive_positioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowflake Use Cases and Competitive Positioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_14_certification_exam_preparation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certification Exam Preparation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Azure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Azure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_01_course_introduction_and_dp203_exam_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Course Introduction and DP-203 Exam Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_02_designing_and_implementing_azure_storage_solutions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Designing and Implementing Azure Storage Solutions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_03_implementing_relational_data_stores_with_azure_sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Implementing Relational Data Stores with Azure SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_04_implementing_nosql_solutions_with_azure_cosmos_db/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Implementing NoSQL Solutions with Azure Cosmos DB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_05_data_integration_and_orchestration_with_azure_data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Data Integration and Orchestration with Azure Data Factory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_06_largescale_data_processing_with_azure_synapse_anal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Large-Scale Data Processing with Azure Synapse Analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_07_stream_processing_with_azure_stream_analytics_and_/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Stream Processing with Azure Stream Analytics and Event Hubs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_08_distributed_data_processing_with_azure_databricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Distributed Data Processing with Azure Databricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_09_implementing_security_identity_and_access_control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Implementing Security, Identity, and Access Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_10_monitoring_logging_and_operations_for_data_pipelin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Monitoring, Logging, and Operations for Data Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_11_data_migration_and_cloud_adoption_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Data Migration and Cloud Adoption Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_12_managing_cost_performance_and_billing_for_azure_da/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Managing Cost, Performance, and Billing for Azure Data Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_13_data_governance_and_metadata_management_with_azure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Data Governance and Metadata Management with Azure Purview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_14_exam_readiness_final_review_and_practice_scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Exam Readiness: Final Review and Practice Scenarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_16" id="__nav_4_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SA Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SA Quick Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Databricks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Databricks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_01_introduction_to_databricks_architecture_on_aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introduction to Databricks Architecture on AWS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_02_databricks_compute_and_cluster_configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Databricks Compute and Cluster Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_03_deep_dive_into_delta_lake_acid_versioning_and_opti/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Deep Dive into Delta Lake: ACID, Versioning, and Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_04_implementing_medallion_architecture_bronze_silver_/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Implementing Medallion Architecture: Bronze, Silver, and Gold Layers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_05_efficient_data_ingestion_with_auto_loader_and_copy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Efficient Data Ingestion with Auto Loader and COPY INTO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_06_data_transformation_with_spark_sql_and_pyspark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Data Transformation with Spark SQL and PySpark
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_07_stream_processing_with_structured_streaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Stream Processing with Structured Streaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_08_building_declarable_pipelines_with_delta_live_tabl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Building Declarable Pipelines with Delta Live Tables (DLT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_09_data_governance_and_security_with_unity_catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Data Governance and Security with Unity Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_10_monitoring_logging_and_observability_in_databricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Monitoring, Logging, and Observability in Databricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_11_cost_management_and_aws_resource_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Cost Management and AWS Resource Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_12_migration_strategies_transitioning_from_aws_glue_t/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Migration Strategies: Transitioning from AWS Glue to Databricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_13_orchestration_and_automation_with_databricks_workf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Orchestration and Automation with Databricks Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_14_exam_readiness_and_final_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Exam Readiness and Final Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_16" id="__nav_5_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SA Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SA Quick Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_01_introduction_to_databricks_architecture_on_aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Databricks Architecture on AWS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_02_databricks_compute_and_cluster_configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Databricks Compute and Cluster Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_03_deep_dive_into_delta_lake_acid_versioning_and_opti/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deep Dive into Delta Lake: ACID, Versioning, and Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_04_implementing_medallion_architecture_bronze_silver_/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementing Medallion Architecture: Bronze, Silver, and Gold Layers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_05_efficient_data_ingestion_with_auto_loader_and_copy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Efficient Data Ingestion with Auto Loader and COPY INTO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_06_data_transformation_with_spark_sql_and_pyspark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Transformation with Spark SQL and PySpark
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_07_stream_processing_with_structured_streaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stream Processing with Structured Streaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_08_building_declarable_pipelines_with_delta_live_tabl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building Declarable Pipelines with Delta Live Tables (DLT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_09_data_governance_and_security_with_unity_catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Governance and Security with Unity Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_10_monitoring_logging_and_observability_in_databricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoring, Logging, and Observability in Databricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_11_cost_management_and_aws_resource_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost Management and AWS Resource Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_12_migration_strategies_transitioning_from_aws_glue_t/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration Strategies: Transitioning from AWS Glue to Databricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_13_orchestration_and_automation_with_databricks_workf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestration and Automation with Databricks Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_14_exam_readiness_and_final_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Readiness and Final Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AWS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_01_course_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Course Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_02_exam_overview_and_strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Exam Overview and Strategy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_03_aws_data_architecture_foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. AWS Data Architecture Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_04_data_ingestion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Data Ingestion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_05_aws_glue_deep_dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. AWS Glue Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_06_amazon_s3_and_data_lake_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Amazon S3 and Data Lake Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_07_amazon_athena/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Amazon Athena
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_08_amazon_redshift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Amazon Redshift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_09_streaming_data_with_kinesis_and_msk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Streaming Data with Kinesis and MSK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_10_nosql_and_purposebuilt_databases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. NoSQL and Purpose-Built Databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_11_aws_lake_formation_and_data_governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. AWS Lake Formation and Data Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_12_data_orchestration_and_pipelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Data Orchestration and Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_13_performance_cost_optimization_and_monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Performance, Cost Optimization, and Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_14_security_compliance_and_networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Security, Compliance, and Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_15_capstone_and_exam_readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Capstone and Exam Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_17" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_17" id="__nav_6_17_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SA Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SA Quick Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_01_course_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_02_exam_overview_and_strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Overview and Strategy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_03_aws_data_architecture_foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Data Architecture Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_04_data_ingestion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Ingestion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_05_aws_glue_deep_dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Glue Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_06_amazon_s3_and_data_lake_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Amazon S3 and Data Lake Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_07_amazon_athena/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Amazon Athena
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_08_amazon_redshift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Amazon Redshift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_09_streaming_data_with_kinesis_and_msk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Streaming Data with Kinesis and MSK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_10_nosql_and_purposebuilt_databases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NoSQL and Purpose-Built Databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_11_aws_lake_formation_and_data_governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Lake Formation and Data Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_12_data_orchestration_and_pipelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Orchestration and Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_13_performance_cost_optimization_and_monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Performance, Cost Optimization, and Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_14_security_compliance_and_networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security, Compliance, and Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_15_capstone_and_exam_readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capstone and Exam Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETL Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETL Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ab_initio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ab Initio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../talend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Talend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../datastage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IBM DataStage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../informatica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Informatica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../informatica_bdm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Informatica BDM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matillion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matillion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ssis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pentaho/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pentaho
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../odi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Oracle Data Integrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snaplogic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SnapLogic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Alteryx
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Alteryx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagrams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Diagrams
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture Diagrams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alteryx-platform-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alteryx Platform Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alteryx-as-etl-data-flow-between-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alteryx as ETL — Data Flow Between Systems
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sections
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-ecosystem-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ecosystem Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Ecosystem Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-alteryx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Is Alteryx?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-alteryx-product-suite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Alteryx Product Suite
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-customers-want-to-migrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Customers Want to Migrate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-discovery-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Discovery Questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-workflows-and-tools-the-core-building-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Workflows and Tools — The Core Building Blocks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Workflows and Tools — The Core Building Blocks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#macros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Macros
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analytic-apps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analytic Apps
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-data-formats-and-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Data Formats and Schema
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Data Formats and Schema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-alteryx-represents-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Alteryx Represents Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-alteryx-database-yxdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Alteryx Database (.yxdb)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-database-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In-Database Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-parallelism-and-scaling-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Parallelism and Scaling Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Parallelism and Scaling Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-alteryx-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Alteryx Engine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scaling-on-alteryx-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scaling on Alteryx Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-fundamental-architecture-difference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Fundamental Architecture Difference
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-project-structure-and-version-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Project Structure and Version Control
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Project Structure and Version Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-workflows-live" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where Workflows Live
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version Control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-across-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency Across Workflows
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Orchestration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Orchestration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scheduling-on-alteryx-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scheduling on Alteryx Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-schedulers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        External Schedulers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orchestration-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orchestration Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-metadata-lineage-and-impact-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Metadata, Lineage, and Impact Analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Metadata, Lineage, and Impact Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-alteryx-tracks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Alteryx Tracks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency Mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lineage-gaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lineage Gaps
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-data-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Data Quality
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Data Quality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-quality-in-alteryx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Quality in Alteryx
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analytic-app-data-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analytic App Data Validation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-alteryx-file-formats-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Alteryx File Formats Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Alteryx File Formats Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yxmd-workflow-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .yxmd — Workflow Definition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yxmc-macro-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .yxmc — Macro Definition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yxwz-analytic-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .yxwz — Analytic App
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yxdb-alteryx-database-intermediate-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .yxdb — Alteryx Database (Intermediate Format)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yxzp-packaged-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .yxzp — Packaged Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-formats-quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Formats Quick Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-migration-assessment-and-artifact-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Migration Assessment and Artifact Inventory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Migration Assessment and Artifact Inventory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inventory-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inventory Approach
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complexity-scoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complexity Scoring
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#risk-areas-specific-to-alteryx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Risk Areas Specific to Alteryx
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-migration-mapping-to-databricks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Migration Mapping to Databricks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Migration Mapping to Databricks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#building-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building Blocks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tools_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orchestration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Quality
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-doesnt-map-cleanly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Doesn't Map Cleanly
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BI Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    BI Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/ssrs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSRS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/cognos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IBM Cognos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/quicksight/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Amazon QuickSight
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/power-bi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Power BI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/tableau/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tableau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/obiee/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Oracle OBIEE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/sap-bo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAP BusinessObjects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OTF
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OTF
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../otf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../otf/delta-lake/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Delta Lake
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../otf/hudi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apache Hudi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../otf/iceberg.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apache Iceberg
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Solutions & Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data Solutions & Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data-architecture-patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Architecture Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data-ingestion-pipelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Ingestion & Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data-storage-layers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Storage Layers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data-governance-cataloging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Governance & Cataloging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/real-time-streaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-Time & Streaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data-serving-consumption/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Serving & Consumption
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data_design_patterns_exhaustive.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design Patterns Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Glossary
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/azure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Azure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/gcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/data-architect-glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Architect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagrams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Diagrams
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture Diagrams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alteryx-platform-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alteryx Platform Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alteryx-as-etl-data-flow-between-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alteryx as ETL — Data Flow Between Systems
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sections
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-ecosystem-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ecosystem Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Ecosystem Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-alteryx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Is Alteryx?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-alteryx-product-suite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Alteryx Product Suite
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-customers-want-to-migrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Customers Want to Migrate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-discovery-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Discovery Questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-workflows-and-tools-the-core-building-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Workflows and Tools — The Core Building Blocks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Workflows and Tools — The Core Building Blocks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#macros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Macros
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analytic-apps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analytic Apps
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-data-formats-and-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Data Formats and Schema
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Data Formats and Schema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-alteryx-represents-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Alteryx Represents Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-alteryx-database-yxdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Alteryx Database (.yxdb)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-database-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In-Database Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-parallelism-and-scaling-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Parallelism and Scaling Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Parallelism and Scaling Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-alteryx-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Alteryx Engine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scaling-on-alteryx-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scaling on Alteryx Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-fundamental-architecture-difference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Fundamental Architecture Difference
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-project-structure-and-version-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Project Structure and Version Control
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Project Structure and Version Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-workflows-live" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where Workflows Live
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version Control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-across-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency Across Workflows
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Orchestration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Orchestration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scheduling-on-alteryx-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scheduling on Alteryx Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-schedulers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        External Schedulers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orchestration-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orchestration Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-metadata-lineage-and-impact-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Metadata, Lineage, and Impact Analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Metadata, Lineage, and Impact Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-alteryx-tracks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Alteryx Tracks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency Mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lineage-gaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lineage Gaps
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-data-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Data Quality
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Data Quality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-quality-in-alteryx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Quality in Alteryx
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analytic-app-data-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analytic App Data Validation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-alteryx-file-formats-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Alteryx File Formats Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Alteryx File Formats Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yxmd-workflow-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .yxmd — Workflow Definition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yxmc-macro-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .yxmc — Macro Definition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yxwz-analytic-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .yxwz — Analytic App
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yxdb-alteryx-database-intermediate-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .yxdb — Alteryx Database (Intermediate Format)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yxzp-packaged-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .yxzp — Packaged Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-formats-quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Formats Quick Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-migration-assessment-and-artifact-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Migration Assessment and Artifact Inventory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Migration Assessment and Artifact Inventory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inventory-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inventory Approach
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complexity-scoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complexity Scoring
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#risk-areas-specific-to-alteryx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Risk Areas Specific to Alteryx
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-migration-mapping-to-databricks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Migration Mapping to Databricks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Migration Mapping to Databricks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#building-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building Blocks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tools_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orchestration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Quality
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-doesnt-map-cleanly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Doesn't Map Cleanly
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="alteryx-sa-migration-guide">Alteryx — SA Migration Guide<a class="headerlink" href="#alteryx-sa-migration-guide" title="Permanent link">&para;</a></h1>
+<p><strong>Purpose:</strong> Give a Solution Architect enough depth to assess an Alteryx estate, understand its moving parts, and map a migration path to Databricks.</p>
+<p>This is not a developer guide. You won't be building Alteryx workflows. You will be walking customer sites, reviewing workflow catalogs, asking the right questions, and scoping what it takes to move to a modern lakehouse platform.</p>
+<hr />
+<h2 id="architecture-diagrams">Architecture Diagrams<a class="headerlink" href="#architecture-diagrams" title="Permanent link">&para;</a></h2>
+<h3 id="alteryx-platform-architecture">Alteryx Platform Architecture<a class="headerlink" href="#alteryx-platform-architecture" title="Permanent link">&para;</a></h3>
+<p>How the Alteryx platform fits together — from the desktop authoring tool through server execution to governance and scheduling.</p>
+<div class="zd-wrapper" id="alx-arch-zoom" style="position:relative; border:1px solid #ddd; border-radius:6px; overflow:hidden; background:#fafafa;">
+<div style="position:absolute; top:8px; right:10px; z-index:10; display:flex; align-items:center; gap:8px; font-size:0.78rem; color:#666;">
+  <span>Scroll to zoom · Drag to pan</span>
+  <button onclick="zdReset('alx-arch-zoom')" style="padding:2px 8px; font-size:0.75rem; border:1px solid #ccc; border-radius:4px; background:#fff; cursor:pointer;">Reset</button>
+</div>
+<div class="zd-canvas" style="cursor:grab; user-select:none;">
+
+<pre class="mermaid"><code>flowchart TD
+    subgraph DEV["Developer Layer"]
+        DESIGNER["Alteryx Designer\n(Windows Desktop)\nVisual drag-and-drop workflow builder\nRuns workflows locally"]
+        DESIGNER_CLOUD["Alteryx Designer Cloud\n(Browser-based)\nCloud-hosted equivalent of Desktop Designer"]
+    end
+
+    subgraph ARTIFACTS["Workflow Artifacts"]
+        YXMD[".yxmd — Workflow\nXML-based directed graph of Tools"]
+        YXMC[".yxmc — Macro\nReusable workflow packaged as a single Tool"]
+        YXWZ[".yxwz — Analytic App\nWorkflow + UI for business users"]
+        YXDB[".yxdb — Alteryx Database\nNative columnar intermediate data format"]
+    end
+
+    DEV --&gt; ARTIFACTS
+
+    subgraph SERVER["Alteryx Server (Gallery)"]
+        GALLERY_UI["Gallery Web UI\nPublish, share, and run workflows\nBusiness user self-service"]
+        SCHEDULER["Server Scheduler\nCron-based workflow scheduling"]
+        CONDUCTOR["Conductor Node\nJob queuing and assignment"]
+        WORKER["Worker Node(s)\nExecute workflows (Alteryx Engine)\nScalable — add nodes for throughput"]
+        CONDUCTOR --&gt; WORKER
+    end
+
+    ARTIFACTS -- publish to --&gt; SERVER
+
+    subgraph ENGINE["Alteryx Engine"]
+        AMP["AMP Engine\n(Alteryx Multi-threaded Processing)\nModern parallel execution — default since v2021"]
+        ORIG["Original Engine\nLegacy single-threaded execution\nStill needed for some older Tools"]
+    end
+
+    WORKER --&gt; ENGINE
+
+    subgraph ADDONS["Add-Ons &amp; Extensions"]
+        IS["Intelligence Suite\nAutoML · NLP · Computer Vision\nML-focused Tools"]
+        CONNECT["Alteryx Connect\n(Deprecated — catalog/lineage)"]
+        PROMOTE["Alteryx Promote\nML model deployment (now in IS)"]
+    end</code></pre>
+
+</div>
+</div>
+
+<hr />
+<h3 id="alteryx-as-etl-data-flow-between-systems">Alteryx as ETL — Data Flow Between Systems<a class="headerlink" href="#alteryx-as-etl-data-flow-between-systems" title="Permanent link">&para;</a></h3>
+<p>How Alteryx sits between source systems and outputs in a typical data preparation or analytics pipeline.</p>
+<div class="zd-wrapper" id="alx-flow-zoom" style="position:relative; border:1px solid #ddd; border-radius:6px; overflow:hidden; background:#fafafa;">
+<div style="position:absolute; top:8px; right:10px; z-index:10; display:flex; align-items:center; gap:8px; font-size:0.78rem; color:#666;">
+  <span>Scroll to zoom · Drag to pan</span>
+  <button onclick="zdReset('alx-flow-zoom')" style="padding:2px 8px; font-size:0.75rem; border:1px solid #ccc; border-radius:4px; background:#fff; cursor:pointer;">Reset</button>
+</div>
+<div class="zd-canvas" style="cursor:grab; user-select:none;">
+
+<pre class="mermaid"><code>flowchart LR
+    subgraph SOURCES["Source Systems"]
+        DB[("Databases\nSQL Server / Oracle / Snowflake\nvia ODBC / JDBC / In-DB")]
+        FILES["Files\nExcel · CSV · JSON · Parquet\nLocal or network drive"]
+        CLOUD_S["Cloud Storage\nS3 / SharePoint / OneDrive"]
+        API["APIs &amp; Web Data\nREST / OData connectors"]
+    end
+
+    subgraph ALTERYX["Alteryx Workflow Engine"]
+        direction TB
+        INPUT["Input Tools\nInput Data · Database · File\nDownload (REST)"]
+        PREP["Preparation Tools\nFilter · Select · Formula\nSort · Unique · Sample"]
+        JOIN_BLEND["Join &amp; Blend Tools\nJoin · Union · Fuzzy Match\nAppend Fields · Find &amp; Replace"]
+        TRANSFORM["Transform Tools\nSummarize · Transpose\nCross-Tab · Running Total"]
+        ANALYTICS["Analytics Tools\nPredictive (R) · Spatial\nTime Series · ML (Intelligence Suite)"]
+        OUTPUT["Output Tools\nOutput Data · Render (report)\nData Stream Out"]
+
+        INPUT --&gt; PREP --&gt; JOIN_BLEND --&gt; TRANSFORM --&gt; ANALYTICS --&gt; OUTPUT
+    end
+
+    subgraph INDB["In-Database Mode (Optional)"]
+        INDB_T["In-DB Tools\nPush SQL down to database\nAvoids data movement for large tables"]
+    end
+
+    subgraph TARGETS["Target Systems"]
+        DW[("Cloud DW / Database\nSnowflake · SQL Server · Redshift")]
+        DBX_T[("Databricks\nDelta Tables")]
+        FILES_T["Files / Reports\nExcel · CSV · PDF · Tableau Extract"]
+        BI["BI Layers\nTableau · Power BI · Qlik"]
+    end
+
+    SOURCES --&gt; INPUT
+    DB --&gt; INDB --&gt; TRANSFORM
+    OUTPUT --&gt; TARGETS</code></pre>
+
+</div>
+</div>
+
+<script>
+(function(){
+  window.zdReset=window.zdReset||function(id){var w=document.getElementById(id);if(!w)return;var c=w.querySelector('.zd-canvas');if(c){c._s=1;c._tx=0;c._ty=0;}var s=w.querySelector('svg');if(s){s.style.transform='translate(0,0) scale(1)';s.style.transformOrigin='0 0';}};
+  function initC(c){if(c._zdInit)return;c._zdInit=true;c._s=1;c._tx=0;c._ty=0;var dr=false,sx,sy,stx,sty;function ap(sv){sv.style.transform='translate('+c._tx+'px,'+c._ty+'px) scale('+c._s+')';sv.style.transformOrigin='0 0';sv.style.display='block';}c.addEventListener('wheel',function(e){var sv=c.querySelector('svg');if(!sv)return;e.preventDefault();var r=c.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top,d=e.deltaY<0?1.12:1/1.12,ns=Math.min(5,Math.max(0.4,c._s*d));c._tx=mx-(mx-c._tx)*(ns/c._s);c._ty=my-(my-c._ty)*(ns/c._s);c._s=ns;ap(sv);},{passive:false});c.addEventListener('mousedown',function(e){if(e.button)return;dr=true;sx=e.clientX;sy=e.clientY;stx=c._tx;sty=c._ty;c.style.cursor='grabbing';e.preventDefault();});window.addEventListener('mousemove',function(e){if(!dr)return;c._tx=stx+(e.clientX-sx);c._ty=sty+(e.clientY-sy);var sv=c.querySelector('svg');if(sv)ap(sv);});window.addEventListener('mouseup',function(){if(dr){dr=false;c.style.cursor='grab';}});c.addEventListener('touchstart',function(e){if(e.touches.length===1){dr=true;sx=e.touches[0].clientX;sy=e.touches[0].clientY;stx=c._tx;sty=c._ty;}},{passive:true});c.addEventListener('touchmove',function(e){if(dr&&e.touches.length===1){c._tx=stx+(e.touches[0].clientX-sx);c._ty=sty+(e.touches[0].clientY-sy);var sv=c.querySelector('svg');if(sv)ap(sv);}},{passive:true});c.addEventListener('touchend',function(){dr=false;});}
+  function tryW(w){var c=w.querySelector('.zd-canvas');if(!c)return;var sv=c.querySelector('svg');if(!sv){setTimeout(function(){tryW(w);},200);return;}initC(c);}
+  function initAll(){document.querySelectorAll('.zd-wrapper').forEach(function(w){tryW(w);});}
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){setTimeout(initAll,600);});}else{setTimeout(initAll,600);}
+})();
+</script>
+
+<hr />
+<h2 id="sections">Sections<a class="headerlink" href="#sections" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#1-ecosystem-overview">Ecosystem Overview</a></li>
+<li><a href="#2-workflows-and-tools--the-core-building-blocks">Workflows and Tools — The Core Building Blocks</a></li>
+<li><a href="#3-data-formats-and-schema">Data Formats and Schema</a></li>
+<li><a href="#4-parallelism-and-scaling-model">Parallelism and Scaling Model</a></li>
+<li><a href="#5-project-structure-and-version-control">Project Structure and Version Control</a></li>
+<li><a href="#6-orchestration">Orchestration</a></li>
+<li><a href="#7-metadata-lineage-and-impact-analysis">Metadata, Lineage, and Impact Analysis</a></li>
+<li><a href="#8-data-quality">Data Quality</a></li>
+<li><a href="#9-alteryx-file-formats-reference">Alteryx File Formats Reference</a></li>
+<li><a href="#10-migration-assessment-and-artifact-inventory">Migration Assessment and Artifact Inventory</a></li>
+<li><a href="#11-migration-mapping-to-databricks">Migration Mapping to Databricks</a></li>
+</ol>
+<hr />
+<h2 id="1-ecosystem-overview">1. Ecosystem Overview<a class="headerlink" href="#1-ecosystem-overview" title="Permanent link">&para;</a></h2>
+<h3 id="what-is-alteryx">What Is Alteryx?<a class="headerlink" href="#what-is-alteryx" title="Permanent link">&para;</a></h3>
+<p>Alteryx is a <strong>self-service analytics automation</strong> platform that allows business analysts and data engineers to build drag-and-drop data preparation, blending, and analytics workflows without writing code. Its core product is <strong>Alteryx Designer</strong> — a Windows desktop application where users build visual workflows by chaining together pre-built Tools.</p>
+<p>Unlike traditional ETL tools (Informatica, Ab Initio) designed for IT-owned batch pipelines, Alteryx targets <strong>business analysts and power users</strong> who need to prepare and analyze data themselves. This distinction shapes the migration challenge: Alteryx estates often contain hundreds of analyst-authored workflows that are business-critical but lack formal version control, documentation, or engineering oversight.</p>
+<p>Key differentiators:
+- <strong>Desktop-first</strong> — Alteryx Designer runs on Windows; workflows are built and tested locally before publishing to Server
+- <strong>Business-user audience</strong> — non-programmers build complex data transformations visually; the barrier to workflow creation is low, creating large, sprawling estates
+- <strong>Proprietary engine</strong> — Alteryx processes data through its own in-memory engine; unlike Matillion (push-down SQL) or SnapLogic (Snaplex JVM), Alteryx pulls data into its engine and processes it row-by-row or in parallel via AMP
+- <strong>Rich analytics</strong> — built-in spatial analysis, predictive analytics (R-based), and ML tools (Intelligence Suite) are part of the platform
+- <strong>In-Database mode</strong> — optional push-down SQL execution mode for large-volume tables, bypassing the Alteryx engine</p>
+<h3 id="the-alteryx-product-suite">The Alteryx Product Suite<a class="headerlink" href="#the-alteryx-product-suite" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>What It Is</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Alteryx Designer</strong> (Desktop)</td>
+<td>Windows desktop IDE — the primary workflow authoring tool</td>
+<td>Where all workflow development happens; local execution</td>
+</tr>
+<tr>
+<td><strong>Alteryx Designer Cloud</strong></td>
+<td>Browser-based equivalent of Desktop Designer</td>
+<td>Newer; feature parity with desktop is incomplete</td>
+</tr>
+<tr>
+<td><strong>Alteryx Server</strong></td>
+<td>Enterprise platform — publishes, schedules, and runs workflows; web Gallery UI</td>
+<td>Required for automated/scheduled execution and sharing</td>
+</tr>
+<tr>
+<td><strong>Alteryx Analytics Cloud (AAC)</strong></td>
+<td>Unified cloud platform combining Designer Cloud, Machine Learning, and Auto Insights</td>
+<td>Alteryx's strategic cloud direction; replaces some on-prem products</td>
+</tr>
+<tr>
+<td><strong>Intelligence Suite</strong></td>
+<td>Add-on Tools for ML, NLP, computer vision, AutoML</td>
+<td>Requires separate license; builds on R/Python internally</td>
+</tr>
+<tr>
+<td><strong>Alteryx Auto Insights</strong></td>
+<td>Automated natural-language insights on data</td>
+<td>Analytics consumption layer; separate from ETL workflows</td>
+</tr>
+<tr>
+<td><strong>Alteryx Connect</strong></td>
+<td>Data catalog and lineage product</td>
+<td>Largely deprecated; most customers don't use it</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Ask which version of Alteryx the customer is running — <strong>Desktop only</strong>, <strong>Desktop + Server</strong>, or <strong>Analytics Cloud</strong>. Desktop-only customers have no centralized inventory; their workflows live on individual user laptops. Desktop + Server customers have a central Gallery; workflows published there can be inventoried via the Server API. Analytics Cloud customers are already in Alteryx's SaaS direction, so the migration conversation is different.</p>
+</blockquote>
+<h3 id="why-customers-want-to-migrate">Why Customers Want to Migrate<a class="headerlink" href="#why-customers-want-to-migrate" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Driver</th>
+<th>What It Means for the Engagement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Scalability limits</strong></td>
+<td>Alteryx Designer runs on a single Windows machine; large datasets cause out-of-memory failures; Databricks scales elastically</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Alteryx Designer licenses are expensive per seat; Server adds infrastructure cost; Databricks can be lower TCO for large teams</td>
+</tr>
+<tr>
+<td><strong>Code-first preference</strong></td>
+<td>Engineering teams want Python/SQL, not a drag-and-drop GUI; Databricks notebooks are more comfortable</td>
+</tr>
+<tr>
+<td><strong>Cloud migration</strong></td>
+<td>Customers moving from on-prem to cloud want to eliminate Windows-based desktop tooling</td>
+</tr>
+<tr>
+<td><strong>Governance and auditability</strong></td>
+<td>Analyst-authored Alteryx workflows lack version control, lineage, and access governance; Databricks with Unity Catalog addresses this</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Alteryx engine hits limits on large datasets; Databricks Spark handles multi-TB datasets natively</td>
+</tr>
+<tr>
+<td><strong>Vendor uncertainty</strong></td>
+<td>Alteryx was acquired by Clearlake Capital (2023); some customers are hedging by moving to open platforms</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Alteryx migrations are often driven by <strong>analyst empowerment</strong>, not just IT cost reduction. The business users who built the Alteryx workflows are often the hardest stakeholders to win over — they built something that works and don't want to learn Python. Position Databricks AI/BI and notebooks as the destination, not just the migration target. Showing analysts how Databricks notebooks + AI Assistant lower the learning curve is often more persuasive than TCO math.</p>
+</blockquote>
+<h3 id="key-discovery-questions">Key Discovery Questions<a class="headerlink" href="#key-discovery-questions" title="Permanent link">&para;</a></h3>
+<p>Before scoping a migration, ask:</p>
+<ol>
+<li>Are they using <strong>Designer Desktop only</strong>, <strong>Designer + Server</strong>, or <strong>Alteryx Analytics Cloud</strong>?</li>
+<li>How many <strong>workflows</strong> are in active production use (run on Server) vs. living on individual user laptops?</li>
+<li>How many <strong>unique users</strong> author workflows — is this analyst-led (hundreds of casual users) or IT-led (small team of power users)?</li>
+<li>Are there workflows using <strong>R or Python Tools</strong> (Intelligence Suite, Custom R/Python Tools)? These are the most code-intensive migration items.</li>
+<li>Are there <strong>Macros</strong> (<code>.yxmc</code>) — reusable workflows used as building blocks across many other workflows?</li>
+<li>Are there <strong>Analytic Apps</strong> (<code>.yxwz</code>) — workflows with business-user UIs that non-technical users run interactively?</li>
+<li>Does the customer use <strong>In-Database Tools</strong>? These push SQL to databases; migration is more straightforward for these than engine-processed workflows.</li>
+<li>How is <strong>version control</strong> managed — Git, shared network drive, or no version control at all?</li>
+</ol>
+<hr />
+<h2 id="2-workflows-and-tools-the-core-building-blocks">2. Workflows and Tools — The Core Building Blocks<a class="headerlink" href="#2-workflows-and-tools-the-core-building-blocks" title="Permanent link">&para;</a></h2>
+<h3 id="the-workflow">The Workflow<a class="headerlink" href="#the-workflow" title="Permanent link">&para;</a></h3>
+<p>A <strong>Workflow</strong> (<code>.yxmd</code>) is the primary artifact in Alteryx — an XML-encoded directed acyclic graph of <strong>Tools</strong> connected by data streams. Workflows define the sequence of data transformations from input to output. A workflow is to Alteryx what a mapping is to Informatica, a graph is to Ab Initio, or a pipeline is to Matillion.</p>
+<p>Workflows run on either:
+- <strong>Alteryx Designer</strong> — local desktop execution; user triggers the run manually or via command line
+- <strong>Alteryx Server</strong> — centralized execution; workflows are scheduled or run by users through the Gallery web UI</p>
+<h3 id="tools">Tools<a class="headerlink" href="#tools" title="Permanent link">&para;</a></h3>
+<p>A <strong>Tool</strong> is an individual processing step in the workflow — Alteryx ships 250+ built-in Tools. Every Tool has typed input and output anchors that connect to adjacent Tools via <strong>data streams</strong>.</p>
+<p><strong>Core Tool categories:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Examples</th>
+<th>What They Do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Input</strong></td>
+<td><code>Input Data</code>, <code>Directory</code>, <code>Connect In-DB</code>, <code>Download</code></td>
+<td>Read data from files, databases, S3, APIs</td>
+</tr>
+<tr>
+<td><strong>Preparation</strong></td>
+<td><code>Filter</code>, <code>Select</code>, <code>Formula</code>, <code>Sort</code>, <code>Sample</code>, <code>Unique</code>, <code>Data Cleansing</code></td>
+<td>Clean, reshape, and filter data</td>
+</tr>
+<tr>
+<td><strong>Join</strong></td>
+<td><code>Join</code>, <code>Union</code>, <code>Append Fields</code>, <code>Find &amp; Replace</code>, <code>Fuzzy Match</code></td>
+<td>Combine datasets</td>
+</tr>
+<tr>
+<td><strong>Transform</strong></td>
+<td><code>Summarize</code>, <code>Transpose</code>, <code>Cross-Tab</code>, <code>Running Total</code>, <code>Multi-Row Formula</code></td>
+<td>Aggregate, pivot, and reshape</td>
+</tr>
+<tr>
+<td><strong>Spatial</strong></td>
+<td><code>Spatial Match</code>, <code>Trade Area</code>, <code>Distance</code>, <code>Map Input</code></td>
+<td>Geographic analysis</td>
+</tr>
+<tr>
+<td><strong>Predictive</strong></td>
+<td><code>Linear Regression</code>, <code>Decision Tree</code>, <code>Random Forest</code>, <code>Score</code> (R-based)</td>
+<td>Statistical and ML modeling</td>
+</tr>
+<tr>
+<td><strong>Developer</strong></td>
+<td><code>Formula</code>, <code>Multi-Row Formula</code>, <code>Python Tool</code>, <code>R Tool</code>, <code>Run Command</code></td>
+<td>Custom code execution</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td><code>Output Data</code>, <code>Render</code>, <code>Data Stream Out</code></td>
+<td>Write to files, databases, reports</td>
+</tr>
+<tr>
+<td><strong>In-Database</strong></td>
+<td><code>Connect In-DB</code>, <code>Filter In-DB</code>, <code>Join In-DB</code>, <code>Data Stream In/Out</code></td>
+<td>Push-down SQL execution in the source database</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> The <strong>R Tool</strong> and <strong>Python Tool</strong> are the highest-migration-effort items in Alteryx. These run arbitrary R or Python code inside the workflow — not as a black box, but as fully custom logic that may include ML models, complex statistical calculations, or API calls. Inventory all R and Python Tools during assessment; each is a custom code port, not a Tool-to-Tool mapping.</p>
+</blockquote>
+<h3 id="macros">Macros<a class="headerlink" href="#macros" title="Permanent link">&para;</a></h3>
+<p>A <strong>Macro</strong> (<code>.yxmc</code>) is a workflow packaged as a reusable Tool — it appears on the canvas as a single Tool but contains its own workflow logic internally. Macros are the abstraction mechanism in Alteryx.</p>
+<table>
+<thead>
+<tr>
+<th>Macro Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Standard Macro</strong></td>
+<td>Reusable workflow called as a Tool</td>
+<td>Most common; equivalent to Informatica reusable mapplet</td>
+</tr>
+<tr>
+<td><strong>Batch Macro</strong></td>
+<td>Loops over input data, running the macro logic once per record or group</td>
+<td>Used for parameterized iteration — similar to Matillion's Iterator</td>
+</tr>
+<tr>
+<td><strong>Iterative Macro</strong></td>
+<td>Loops until a condition is met</td>
+<td>Used for recursive logic — similar to a <code>while</code> loop</td>
+</tr>
+<tr>
+<td><strong>Location Optimizer Macro</strong></td>
+<td>Spatial optimization; specialized use case</td>
+<td>Niche; primarily in retail/logistics use cases</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Macros are dependency anchors — a Macro used by 50 workflows must be migrated before any of its callers. Inventory all Macros and build a dependency graph: which Macros are used by which workflows. The most-referenced Macros should be migrated first, as reusable functions or dbt macros.</p>
+</blockquote>
+<h3 id="analytic-apps">Analytic Apps<a class="headerlink" href="#analytic-apps" title="Permanent link">&para;</a></h3>
+<p>An <strong>Analytic App</strong> (<code>.yxwz</code>) is an Alteryx workflow wrapped with a user interface (text inputs, dropdowns, file browsers) so that business users can run parameterized analyses without using Designer. The UI is configured in Designer but presented to end users through the Alteryx Server Gallery.</p>
+<blockquote>
+<p><strong>SA Tip:</strong> Analytic Apps represent <strong>self-service analytics functionality</strong> — not just ETL pipelines. When a customer says they need to "migrate their Alteryx Apps," they mean they need to replace the combination of workflow logic + user-facing UI. In Databricks, this translates to a combination of notebooks (logic) + Databricks AI/BI dashboards or a simple Streamlit/Gradio app (UI layer). Apps are often higher business-visibility than batch workflows and require stakeholder buy-in before migration.</p>
+</blockquote>
+<hr />
+<h2 id="3-data-formats-and-schema">3. Data Formats and Schema<a class="headerlink" href="#3-data-formats-and-schema" title="Permanent link">&para;</a></h2>
+<h3 id="how-alteryx-represents-data">How Alteryx Represents Data<a class="headerlink" href="#how-alteryx-represents-data" title="Permanent link">&para;</a></h3>
+<p>Alteryx processes data through its proprietary in-memory engine as <strong>record streams</strong> — rows of typed fields flowing between Tools. Unlike SQL-based tools, Alteryx does not use a SQL schema language or push SQL to a database (unless In-Database Tools are used).</p>
+<p><strong>Alteryx field types:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Alteryx Type</th>
+<th>Description</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>String</code></td>
+<td>Fixed-length string</td>
+<td><code>STRING</code></td>
+</tr>
+<tr>
+<td><code>WString</code></td>
+<td>Wide (Unicode) string</td>
+<td><code>STRING</code></td>
+</tr>
+<tr>
+<td><code>V_String</code></td>
+<td>Variable-length string</td>
+<td><code>STRING</code></td>
+</tr>
+<tr>
+<td><code>Int16</code>, <code>Int32</code>, <code>Int64</code></td>
+<td>Integer types</td>
+<td><code>SMALLINT</code>, <code>INT</code>, <code>BIGINT</code></td>
+</tr>
+<tr>
+<td><code>Float</code>, <code>Double</code></td>
+<td>Floating-point numeric</td>
+<td><code>FLOAT</code>, <code>DOUBLE</code></td>
+</tr>
+<tr>
+<td><code>Fixed Decimal</code></td>
+<td>Precision decimal</td>
+<td><code>DECIMAL(p, s)</code></td>
+</tr>
+<tr>
+<td><code>Date</code>, <code>Time</code>, <code>DateTime</code></td>
+<td>Date/time types</td>
+<td><code>DATE</code>, <code>TIMESTAMP</code></td>
+</tr>
+<tr>
+<td><code>Bool</code></td>
+<td>Boolean</td>
+<td><code>BOOLEAN</code></td>
+</tr>
+<tr>
+<td><code>Blob</code>, <code>SpatialObj</code></td>
+<td>Binary and spatial objects</td>
+<td><code>BINARY</code> / custom geometry type</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Alteryx's <code>Fixed Decimal</code> type is often used for financial calculations requiring exact precision. When migrating to Databricks, ensure these fields are mapped to <code>DECIMAL(p, s)</code> with matching precision and scale — a silent conversion to <code>DOUBLE</code> will introduce floating-point rounding errors that may not surface until reconciliation.</p>
+</blockquote>
+<h3 id="the-alteryx-database-yxdb">The Alteryx Database (.yxdb)<a class="headerlink" href="#the-alteryx-database-yxdb" title="Permanent link">&para;</a></h3>
+<p>The <strong>Alteryx Database</strong> format (<code>.yxdb</code>) is Alteryx's proprietary columnar file format used for intermediate data storage and caching. It is significantly faster to read and write than CSV or Excel, and supports Alteryx's full field type set including spatial objects.</p>
+<p><code>.yxdb</code> files appear in Alteryx estates as:
+- <strong>Intermediate caches</strong> — saved between workflow runs to avoid re-reading slow sources
+- <strong>Input data files</strong> — pre-prepared datasets published to Server for workflows to read
+- <strong>Output files</strong> — when a workflow saves results for consumption by another workflow</p>
+<blockquote>
+<p><strong>SA Tip:</strong> <code>.yxdb</code> files are not readable by any tool outside Alteryx. If a customer's workflows chain together via <code>.yxdb</code> intermediate files, those files must be replaced with a shared Delta table or cloud storage format (Parquet, CSV) in the migrated architecture. Identify <code>.yxdb</code> handoffs between workflows during assessment — these represent cross-workflow data dependencies that must be redesigned.</p>
+</blockquote>
+<h3 id="in-database-mode">In-Database Mode<a class="headerlink" href="#in-database-mode" title="Permanent link">&para;</a></h3>
+<p><strong>In-Database (In-DB) Tools</strong> are a special category that push transformation logic down to the source database as SQL, bypassing the Alteryx engine. Workflows using In-DB Tools connect to a database (Snowflake, SQL Server, Redshift), build a SQL query via visual tools, and run it in the database.</p>
+<p>In-DB workflows are much closer to SQL than to standard Alteryx engine workflows:</p>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>In-DB Tools</th>
+<th>Standard Engine Tools</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Where logic runs</td>
+<td>Source database (SQL)</td>
+<td>Alteryx engine (in-memory)</td>
+</tr>
+<tr>
+<td>Scale</td>
+<td>Bounded by database</td>
+<td>Bounded by Designer machine RAM</td>
+</tr>
+<tr>
+<td>Migration path</td>
+<td>Extract SQL, run in Databricks</td>
+<td>Rewrite logic as PySpark / dbt</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> In-DB workflows are the <strong>easiest Alteryx workflows to migrate</strong> — the logic is already SQL. Ask customers to export the generated SQL from their In-DB workflows (Alteryx Designer shows the SQL it generates). That SQL can often be run directly in Databricks SQL or dbt with minor dialect adjustments.</p>
+</blockquote>
+<hr />
+<h2 id="4-parallelism-and-scaling-model">4. Parallelism and Scaling Model<a class="headerlink" href="#4-parallelism-and-scaling-model" title="Permanent link">&para;</a></h2>
+<h3 id="the-alteryx-engine">The Alteryx Engine<a class="headerlink" href="#the-alteryx-engine" title="Permanent link">&para;</a></h3>
+<p>Alteryx Designer runs on a <strong>single Windows machine</strong>. The Alteryx engine processes data in-memory — Tools receive record streams, apply logic, and pass results to the next Tool. This is the fundamental scaling limit: everything fits in RAM on one machine.</p>
+<p>Alteryx has two engine modes:</p>
+<table>
+<thead>
+<tr>
+<th>Engine</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AMP (Alteryx Multi-threaded Processing)</strong></td>
+<td>Modern parallel engine — distributes Tool execution across CPU cores; default since v2021.4</td>
+<td>Faster for most workflows; some older Tools not AMP-compatible</td>
+</tr>
+<tr>
+<td><strong>Original Engine</strong></td>
+<td>Legacy single-threaded engine</td>
+<td>Still required for Tools incompatible with AMP; used as fallback</td>
+</tr>
+</tbody>
+</table>
+<h3 id="scaling-on-alteryx-server">Scaling on Alteryx Server<a class="headerlink" href="#scaling-on-alteryx-server" title="Permanent link">&para;</a></h3>
+<p>Alteryx Server scales throughput by adding <strong>Worker nodes</strong> — each Worker is a machine that runs the Alteryx engine. Multiple workflows can run in parallel across Workers, but each individual workflow still runs on a single Worker node. A single Alteryx workflow cannot span multiple Worker nodes.</p>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>How It Works</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Multiple Worker nodes</strong></td>
+<td>Server distributes queued workflow jobs to available Workers</td>
+<td>Horizontal throughput scaling — more workflows in parallel, not faster single workflows</td>
+</tr>
+<tr>
+<td><strong>AMP within a single Worker</strong></td>
+<td>AMP uses all CPU cores on the Worker node</td>
+<td>Vertical scaling per workflow</td>
+</tr>
+<tr>
+<td><strong>Chained workflows</strong></td>
+<td>One workflow writes output; another reads it</td>
+<td>Sequential, not parallel; total runtime is additive</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> When a customer says "our Alteryx workflow is slow," the root cause is almost always <strong>dataset size exceeding Worker node RAM</strong>. Workflows that work fine on small samples fail or thrash on full production volumes. Ask: "What is the typical record count for this workflow, and how much RAM does the Worker node have?" — this determines whether the migration to Databricks Spark is primarily a scale fix or a code migration.</p>
+</blockquote>
+<h3 id="the-fundamental-architecture-difference">The Fundamental Architecture Difference<a class="headerlink" href="#the-fundamental-architecture-difference" title="Permanent link">&para;</a></h3>
+<p>This is the most important concept for SAs to understand in Alteryx migrations:</p>
+<table>
+<thead>
+<tr>
+<th>Alteryx</th>
+<th>Databricks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Processes data <strong>through its own engine</strong> — pulls data to the machine</td>
+<td>Processes data <strong>in place</strong> on distributed Spark cluster</td>
+</tr>
+<tr>
+<td>Single-machine execution (per workflow)</td>
+<td>Distributed execution across many nodes</td>
+</tr>
+<tr>
+<td>Logic expressed as <strong>visual Tool chains</strong></td>
+<td>Logic expressed as <strong>PySpark / SQL</strong></td>
+</tr>
+<tr>
+<td>Schema is <strong>inferred at runtime</strong> from source</td>
+<td>Schema is <strong>declared</strong> in Delta table definition</td>
+</tr>
+<tr>
+<td>Scales by buying bigger machines or more Server nodes</td>
+<td>Scales by adding Spark worker nodes dynamically</td>
+</tr>
+</tbody>
+</table>
+<p>There is <strong>no automated translation</strong> from Alteryx Tool chains to PySpark or SQL — each workflow must be analyzed and rewritten. This is the core effort driver in Alteryx migrations.</p>
+<hr />
+<h2 id="5-project-structure-and-version-control">5. Project Structure and Version Control<a class="headerlink" href="#5-project-structure-and-version-control" title="Permanent link">&para;</a></h2>
+<h3 id="where-workflows-live">Where Workflows Live<a class="headerlink" href="#where-workflows-live" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Location</th>
+<th>Who Owns It</th>
+<th>How to Inventory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Designer Desktop (local)</strong></td>
+<td>Individual users — analyst-owned workflows on laptops</td>
+<td>No central inventory; must survey users</td>
+</tr>
+<tr>
+<td><strong>Alteryx Server Gallery</strong></td>
+<td>Published workflows — shared and scheduled</td>
+<td>Server API — enumerate all published workflows</td>
+</tr>
+<tr>
+<td><strong>Network file share</strong></td>
+<td>Common in enterprise environments — shared <code>.yxmd</code> files on a drive</td>
+<td>Scan the file share; count <code>.yxmd</code>, <code>.yxmc</code>, <code>.yxwz</code> files</td>
+</tr>
+<tr>
+<td><strong>Git repository</strong></td>
+<td>Uncommon; some IT-managed customers have Git for workflows</td>
+<td>If Git is used, clone and count files by type</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> The biggest discovery challenge in Alteryx migrations is <strong>hidden inventory</strong>. Analyst-authored workflows on personal laptops are business-critical but invisible to IT. Ask: "Are there workflows that only live on specific users' machines that would break the business if that person left?" — this is almost always yes, and surfacing this is often the most valuable thing you do in the assessment.</p>
+</blockquote>
+<h3 id="version-control">Version Control<a class="headerlink" href="#version-control" title="Permanent link">&para;</a></h3>
+<p>Alteryx has <strong>no native version control</strong>. Workflows are XML files — they can be stored in Git, but this requires discipline from users. Most Alteryx estates have little or no version history.</p>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Prevalence</th>
+<th>Migration Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Git integration (manual)</strong></td>
+<td>Rare — IT-managed workflows only</td>
+<td>Clone repo; version history available</td>
+</tr>
+<tr>
+<td><strong>File share / network drive</strong></td>
+<td>Common</td>
+<td>No version history; current files only</td>
+</tr>
+<tr>
+<td><strong>Local desktop only</strong></td>
+<td>Very common for analyst workflows</td>
+<td>Must survey users to build inventory</td>
+</tr>
+<tr>
+<td><strong>Server as archive</strong></td>
+<td>Moderate — published workflows versioned in Server</td>
+<td>Server API can retrieve last-published version</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dependency-across-workflows">Dependency Across Workflows<a class="headerlink" href="#dependency-across-workflows" title="Permanent link">&para;</a></h3>
+<p>Workflows can depend on each other via:
+- <strong><code>.yxdb</code> intermediate files</strong> — Workflow A writes a <code>.yxdb</code>; Workflow B reads it as input
+- <strong>Batch Macros</strong> — reusable logic called from multiple parent workflows
+- <strong>Chained scheduling</strong> — Workflow B is scheduled to run after Workflow A completes</p>
+<blockquote>
+<p><strong>SA Tip:</strong> <code>.yxdb</code> inter-workflow dependencies are invisible in the Server Gallery — the dependency only becomes apparent when you read the Input Tool configuration inside the workflow XML. Always open and parse the XML of workflows that read <code>.yxdb</code> files to identify their upstream producer. This is a common source of migration scope surprises.</p>
+</blockquote>
+<hr />
+<h2 id="6-orchestration">6. Orchestration<a class="headerlink" href="#6-orchestration" title="Permanent link">&para;</a></h2>
+<h3 id="scheduling-on-alteryx-server">Scheduling on Alteryx Server<a class="headerlink" href="#scheduling-on-alteryx-server" title="Permanent link">&para;</a></h3>
+<p>Alteryx Server provides a <strong>built-in cron-based scheduler</strong> accessible through the Gallery web UI. Admins and users with scheduling permissions can set a workflow to run on a time-based schedule.</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Description</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Scheduled workflow</strong></td>
+<td>Cron-based trigger on Alteryx Server</td>
+<td>Databricks Workflow (scheduled)</td>
+</tr>
+<tr>
+<td><strong>Priority queuing</strong></td>
+<td>Workflows assigned priority levels for the Worker queue</td>
+<td>Databricks cluster priority / job queue settings</td>
+</tr>
+<tr>
+<td><strong>Concurrent run limit</strong></td>
+<td>Limit concurrent instances of the same workflow</td>
+<td>Databricks Workflow max concurrent runs setting</td>
+</tr>
+<tr>
+<td><strong>Run on demand (Gallery)</strong></td>
+<td>Business users trigger workflow manually from Gallery UI</td>
+<td>Databricks Workflow REST API trigger / Databricks Apps</td>
+</tr>
+</tbody>
+</table>
+<h3 id="external-schedulers">External Schedulers<a class="headerlink" href="#external-schedulers" title="Permanent link">&para;</a></h3>
+<p>Many enterprise Alteryx customers trigger workflows from external schedulers rather than using the built-in scheduler:</p>
+<table>
+<thead>
+<tr>
+<th>Scheduler</th>
+<th>Integration Method</th>
+<th>Migration Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Built-in Alteryx Scheduler</strong></td>
+<td>Native — configured in Gallery UI</td>
+<td>Replace with Databricks Workflow schedule</td>
+</tr>
+<tr>
+<td><strong>Control-M / TWS</strong></td>
+<td><code>AlteryxEngineCmd.exe</code> command-line trigger or REST API</td>
+<td>Replace with Databricks Workflow REST API call</td>
+</tr>
+<tr>
+<td><strong>Windows Task Scheduler</strong></td>
+<td><code>AlteryxEngineCmd.exe</code> scheduled task</td>
+<td>Replace with Databricks Workflow schedule or REST trigger</td>
+</tr>
+<tr>
+<td><strong>Apache Airflow</strong></td>
+<td><code>BashOperator</code> calling <code>AlteryxEngineCmd.exe</code> or REST API</td>
+<td>Replace with <code>DatabricksRunNowOperator</code></td>
+</tr>
+<tr>
+<td><strong>PowerShell / batch scripts</strong></td>
+<td>Command-line invocation of Alteryx Engine</td>
+<td>Replace with Databricks CLI or REST API call</td>
+</tr>
+</tbody>
+</table>
+<h3 id="orchestration-patterns">Orchestration Patterns<a class="headerlink" href="#orchestration-patterns" title="Permanent link">&para;</a></h3>
+<p>Alteryx has no native multi-workflow orchestration construct. Complex pipelines are orchestrated through:</p>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>How It Works</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Chained scheduling</strong></td>
+<td>Workflow B scheduled to start 30 min after Workflow A</td>
+<td>Databricks Workflow with task dependency</td>
+</tr>
+<tr>
+<td><strong><code>.yxdb</code> handoff</strong></td>
+<td>Workflow A writes a <code>.yxdb</code>; Workflow B reads it on next run</td>
+<td>Databricks Workflow — Task A writes Delta table; Task B reads it</td>
+</tr>
+<tr>
+<td><strong><code>Run Command</code> Tool</strong></td>
+<td>Workflow A calls a command that triggers Workflow B</td>
+<td>Databricks Workflow task with <code>DatabricksRunNowOperator</code> or REST call</td>
+</tr>
+<tr>
+<td><strong>Batch Macro iteration</strong></td>
+<td>Single workflow iterates over a dataset via Batch Macro</td>
+<td>Databricks Workflow <code>foreach</code> task / <code>for</code> loop in notebook</td>
+</tr>
+<tr>
+<td><strong>Iterative Macro loop</strong></td>
+<td>Workflow loops until convergence condition</td>
+<td>Recursive notebook call or Airflow sensor</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Alteryx orchestration is often <strong>informal and implicit</strong> — time-offset scheduling ("Workflow B runs 30 minutes after Workflow A") rather than formal dependency tracking. When migrating, this is an opportunity to make dependencies explicit: build a Databricks Workflow that chains these jobs with true task dependencies, eliminating the fragile time-offset pattern. Customers are usually receptive once you show them that time-offset scheduling is the root cause of their occasional "Workflow B ran before Workflow A finished" failures.</p>
+</blockquote>
+<hr />
+<h2 id="7-metadata-lineage-and-impact-analysis">7. Metadata, Lineage, and Impact Analysis<a class="headerlink" href="#7-metadata-lineage-and-impact-analysis" title="Permanent link">&para;</a></h2>
+<h3 id="what-alteryx-tracks">What Alteryx Tracks<a class="headerlink" href="#what-alteryx-tracks" title="Permanent link">&para;</a></h3>
+<p>Alteryx has weak native metadata and lineage capabilities. Alteryx Connect (the catalog product) is largely deprecated. Most lineage analysis must be done by parsing workflow XML files directly.</p>
+<table>
+<thead>
+<tr>
+<th>Metadata Type</th>
+<th>Where It Lives</th>
+<th>How to Access</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Workflow definitions</td>
+<td><code>.yxmd</code> XML files on disk/Server</td>
+<td>Parse XML directly or via Server API</td>
+</tr>
+<tr>
+<td>Run history and logs</td>
+<td>Alteryx Server database</td>
+<td>Server API — <code>GET /jobs</code> and <code>GET /workflow/&lt;id&gt;/jobs</code></td>
+</tr>
+<tr>
+<td>Macro definitions</td>
+<td><code>.yxmc</code> XML files</td>
+<td>Same as workflow XML</td>
+</tr>
+<tr>
+<td>Published workflow list</td>
+<td>Alteryx Server Gallery</td>
+<td>Server API — <code>GET /workflows</code></td>
+</tr>
+<tr>
+<td>User-workflow access</td>
+<td>Alteryx Server Gallery</td>
+<td>Server API — permissions model</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dependency-mapping">Dependency Mapping<a class="headerlink" href="#dependency-mapping" title="Permanent link">&para;</a></h3>
+<p>Since Alteryx has no built-in impact analysis, dependency mapping requires parsing workflow XML:</p>
+<table>
+<thead>
+<tr>
+<th>Analysis Needed</th>
+<th>How to Get It</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What inputs a workflow reads</td>
+<td>Parse <code>&lt;Node&gt;</code> elements with <code>ToolId="InputData"</code> in workflow XML — extract <code>File</code> attribute</td>
+</tr>
+<tr>
+<td>What outputs a workflow writes</td>
+<td>Parse <code>&lt;Node&gt;</code> elements with <code>ToolId="OutputData"</code> — extract <code>File</code> or connection string</td>
+</tr>
+<tr>
+<td>Which workflows use a given Macro</td>
+<td>Grep all <code>.yxmd</code> XML for the Macro filename</td>
+</tr>
+<tr>
+<td><code>.yxdb</code> inter-workflow dependencies</td>
+<td>Find all Input Tools reading <code>.yxdb</code> files; match to Output Tools writing same filename</td>
+</tr>
+<tr>
+<td>Database connections used</td>
+<td>Extract <code>&lt;Connection&gt;</code> blocks from Input/Output Tool XML</td>
+</tr>
+<tr>
+<td>R Tool and Python Tool presence</td>
+<td>Grep XML for <code>ToolId="RScript"</code> and <code>ToolId="Python"</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Write a simple Python or PowerShell script to parse all <code>.yxmd</code> files in the Server export and build a dependency matrix. The XML structure is well-documented and consistent. This script is your most valuable assessment tool — it gives you: (1) total workflow count, (2) active vs. stale (cross-reference with Server run history API), (3) Tool type inventory, (4) Macro dependency graph, (5) database connection map. Build this in the first week of the engagement.</p>
+</blockquote>
+<h3 id="lineage-gaps">Lineage Gaps<a class="headerlink" href="#lineage-gaps" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Why It Exists</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Laptop-resident workflows</strong></td>
+<td>No visibility into workflows that were never published to Server</td>
+<td>User survey + file share scan</td>
+</tr>
+<tr>
+<td><strong>R Tool / Python Tool contents</strong></td>
+<td>Custom code in these Tools is opaque — Alteryx cannot analyze it</td>
+<td>Manual code review of each R/Python Tool block</td>
+</tr>
+<tr>
+<td><strong>External file dependencies</strong></td>
+<td>Workflows reading Excel/CSV from network shares have implicit dependencies</td>
+<td>Extract file paths from Input Tool configs during XML parse</td>
+</tr>
+<tr>
+<td><strong><code>.yxdb</code> chain breaks</strong></td>
+<td>If the producing workflow fails, consuming workflows silently read stale data</td>
+<td>Map <code>.yxdb</code> chains explicitly; replace with Delta tables + freshness checks</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-data-quality">8. Data Quality<a class="headerlink" href="#8-data-quality" title="Permanent link">&para;</a></h2>
+<h3 id="data-quality-in-alteryx">Data Quality in Alteryx<a class="headerlink" href="#data-quality-in-alteryx" title="Permanent link">&para;</a></h3>
+<p>Alteryx does not have a dedicated data quality product (Alteryx Connect had some DQ features but is deprecated). Data quality is implemented inside workflows using standard Tools.</p>
+<p><strong>Common patterns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>How It's Implemented</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Row count validation</strong></td>
+<td><code>Summarize</code> Tool counting rows → <code>Filter</code> Tool checking against threshold → <code>Message</code> Tool on failure</td>
+<td>DLT <code>expect_or_fail()</code> / Great Expectations</td>
+</tr>
+<tr>
+<td><strong>Null / blank checks</strong></td>
+<td><code>Filter</code> Tool routing null-field records to a separate output or error file</td>
+<td>DLT <code>expect()</code> with quarantine pattern</td>
+</tr>
+<tr>
+<td><strong>Duplicate detection</strong></td>
+<td><code>Unique</code> Tool separating unique and duplicate records</td>
+<td>Delta <code>MERGE INTO</code> dedup / DLT expectation</td>
+</tr>
+<tr>
+<td><strong>Data profiling</strong></td>
+<td><code>Field Summary</code> Tool generating column statistics</td>
+<td>Databricks Lakehouse Monitoring / <code>dbutils.data.summarize()</code></td>
+</tr>
+<tr>
+<td><strong>Custom business rules</strong></td>
+<td><code>Formula</code> Tool with conditional expressions; <code>Filter</code> Tool routing failures</td>
+<td>dbt test / custom DLT expectation</td>
+</tr>
+<tr>
+<td><strong>Referential integrity</strong></td>
+<td><code>Join</code> Tool with Unmatched Left/Right outputs routing unmatched records</td>
+<td>DLT expectation or Delta <code>CHECK</code> constraint</td>
+</tr>
+<tr>
+<td><strong>Data Cleansing</strong></td>
+<td><code>Data Cleansing</code> Tool standardizing nulls, trimming whitespace, fixing case</td>
+<td>PySpark <code>withColumn()</code> / SQL <code>CASE</code> / dbt model transform</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Alteryx's <strong>error branching</strong> model — where Tools have separate output anchors for passing and failing records — is similar to SnapLogic's error views. Ask customers: "Where do the failing records go?" Often the answer is "an error file on a network share that nobody looks at." This is a governance gap worth flagging — migrating to Databricks with DLT expectations and proper quarantine tables is a quality improvement, not just a technical migration.</p>
+</blockquote>
+<h3 id="analytic-app-data-validation">Analytic App Data Validation<a class="headerlink" href="#analytic-app-data-validation" title="Permanent link">&para;</a></h3>
+<p><strong>Analytic Apps</strong> often include user-input validation logic built into the app interface (required fields, value ranges). This validation logic lives in the App configuration XML and must be replicated in the replacement UI layer (Databricks Apps, Streamlit, or a custom web form).</p>
+<hr />
+<h2 id="9-alteryx-file-formats-reference">9. Alteryx File Formats Reference<a class="headerlink" href="#9-alteryx-file-formats-reference" title="Permanent link">&para;</a></h2>
+<h3 id="yxmd-workflow-definition"><code>.yxmd</code> — Workflow Definition<a class="headerlink" href="#yxmd-workflow-definition" title="Permanent link">&para;</a></h3>
+<p>The primary artifact in Alteryx is the <strong>Workflow</strong> file, stored as XML with a <code>.yxmd</code> extension.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Created by</strong></td>
+<td>Alteryx Designer — saved from the canvas</td>
+</tr>
+<tr>
+<td><strong>Stored in</strong></td>
+<td>Local disk, network file share, or published to Alteryx Server Gallery</td>
+</tr>
+<tr>
+<td><strong>Contains</strong></td>
+<td>Tool list with configuration, connection (wire) definitions between Tools, workflow metadata (engine mode, canvas zoom), macro references</td>
+</tr>
+<tr>
+<td><strong>Human-readable?</strong></td>
+<td>Yes — standard XML; verbose but parseable</td>
+</tr>
+<tr>
+<td><strong>Migration target</strong></td>
+<td>Databricks notebook (PySpark or SQL) / dbt model set; Tool-by-Tool analysis required</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example snippet (Filter Tool in workflow XML):</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">&lt;Node</span><span class="w"> </span><span class="na">ToolID=</span><span class="s">&quot;5&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&lt;GuiSettings</span><span class="w"> </span><span class="na">Plugin=</span><span class="s">&quot;AlteryxBasePluginsGui.Filter.Filter&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">&lt;Position</span><span class="w"> </span><span class="na">x=</span><span class="s">&quot;258&quot;</span><span class="w"> </span><span class="na">y=</span><span class="s">&quot;102&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">&lt;/GuiSettings&gt;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">&lt;Properties&gt;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">&lt;Configuration&gt;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">      </span><span class="nt">&lt;Expression&gt;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span>[Status]<span class="w"> </span>=<span class="w"> </span>&quot;ACTIVE&quot;<span class="w"> </span>AND<span class="w"> </span>[Balance]<span class="w"> </span><span class="ni">&amp;gt;</span><span class="w"> </span>0
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">      </span><span class="nt">&lt;/Expression&gt;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="nt">&lt;/Configuration&gt;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="nt">&lt;/Properties&gt;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="nt">&lt;/Node&gt;</span>
+</code></pre></div></p>
+<blockquote>
+<p><strong>SA Tip:</strong> Parse workflow XML with a standard XML library (Python <code>ElementTree</code>, PowerShell <code>[xml]</code>). The <code>ToolID</code> attribute in each <code>&lt;Node&gt;</code> element identifies the Tool type; the <code>&lt;Configuration&gt;</code> child contains the Tool-specific settings. Write a parser that extracts: Tool types and counts, <code>&lt;Connection&gt;</code> strings in Input/Output Tools, <code>&lt;Expression&gt;</code> content in Formula Tools, and file path references in Input Data Tools. This gives you 80% of the migration scope picture without opening Designer.</p>
+</blockquote>
+<hr />
+<h3 id="yxmc-macro-definition"><code>.yxmc</code> — Macro Definition<a class="headerlink" href="#yxmc-macro-definition" title="Permanent link">&para;</a></h3>
+<p>A <strong>Macro</strong> file has the same XML structure as a workflow, with additional interface Tool definitions for inputs/outputs.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Created by</strong></td>
+<td>Alteryx Designer — same as workflow but saved as <code>.yxmc</code></td>
+</tr>
+<tr>
+<td><strong>Stored in</strong></td>
+<td>Same locations as workflows; often in a shared <code>Macros</code> directory</td>
+</tr>
+<tr>
+<td><strong>Contains</strong></td>
+<td>All workflow XML content + <code>MacroInput</code>/<code>MacroOutput</code> Tool definitions; <code>Interface Designer</code> controls for Batch/Iterative Macros</td>
+</tr>
+<tr>
+<td><strong>Human-readable?</strong></td>
+<td>Yes — same XML format as <code>.yxmd</code></td>
+</tr>
+<tr>
+<td><strong>Migration target</strong></td>
+<td>Reusable dbt macro / PySpark function / utility notebook; depends on complexity</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="yxwz-analytic-app"><code>.yxwz</code> — Analytic App<a class="headerlink" href="#yxwz-analytic-app" title="Permanent link">&para;</a></h3>
+<p>An <strong>Analytic App</strong> wraps a workflow with a user interface for business users.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Created by</strong></td>
+<td>Alteryx Designer — "Convert to App" option on a workflow</td>
+</tr>
+<tr>
+<td><strong>Stored in</strong></td>
+<td>Same as workflows; published to Server Gallery for user access</td>
+</tr>
+<tr>
+<td><strong>Contains</strong></td>
+<td>Workflow XML + Interface Tool definitions (text inputs, dropdowns, file browsers, checkboxes)</td>
+</tr>
+<tr>
+<td><strong>Human-readable?</strong></td>
+<td>Yes — same XML format; Interface Tools describe the UI layer</td>
+</tr>
+<tr>
+<td><strong>Migration target</strong></td>
+<td>Two-part: workflow logic → Databricks notebook / dbt model; UI layer → Databricks Apps / Streamlit / Gradio</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> Analytic Apps require a <strong>two-layer migration</strong> — the data logic and the user interface must both be replaced. Don't underestimate the UI layer; apps are often customer-facing or exec-facing tools with specific UX expectations. Scope the App migration separately from batch workflow migration — it often requires UI/UX effort beyond data engineering.</p>
+</blockquote>
+<hr />
+<h3 id="yxdb-alteryx-database-intermediate-format"><code>.yxdb</code> — Alteryx Database (Intermediate Format)<a class="headerlink" href="#yxdb-alteryx-database-intermediate-format" title="Permanent link">&para;</a></h3>
+<p>The <strong>Alteryx Database</strong> is a proprietary columnar binary format used for intermediate caching and data handoffs.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Created by</strong></td>
+<td>Alteryx workflows via <code>Output Data</code> Tool writing to <code>.yxdb</code></td>
+</tr>
+<tr>
+<td><strong>Stored in</strong></td>
+<td>Local disk, network file share, or Server file store</td>
+</tr>
+<tr>
+<td><strong>Contains</strong></td>
+<td>Typed columnar record data in Alteryx's native format; supports all Alteryx field types including Spatial</td>
+</tr>
+<tr>
+<td><strong>Human-readable?</strong></td>
+<td>No — binary proprietary format; only Alteryx can read it natively</td>
+</tr>
+<tr>
+<td><strong>Migration target</strong></td>
+<td>Delta table (for inter-workflow data sharing) or Parquet/CSV (for file-based handoffs)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>SA Tip:</strong> <code>.yxdb</code> files cannot be read by any external tool. If a customer needs to inspect or migrate the data in a <code>.yxdb</code> file, they must open it in Alteryx Designer and export it to CSV/Parquet. During migration, replace all <code>.yxdb</code> inter-workflow handoffs with <strong>Delta table writes and reads</strong> — this is the primary architectural change in Alteryx migrations.</p>
+</blockquote>
+<hr />
+<h3 id="yxzp-packaged-workflow"><code>.yxzp</code> — Packaged Workflow<a class="headerlink" href="#yxzp-packaged-workflow" title="Permanent link">&para;</a></h3>
+<p>A <strong>Packaged Workflow</strong> bundles a workflow with its data inputs into a single portable ZIP archive.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Created by</strong></td>
+<td>Alteryx Designer — "Save as Packaged Workflow"</td>
+</tr>
+<tr>
+<td><strong>Stored in</strong></td>
+<td>Filesystem; used for sharing self-contained examples</td>
+</tr>
+<tr>
+<td><strong>Contains</strong></td>
+<td><code>.yxmd</code> workflow XML + embedded input data files (CSV, Excel, <code>.yxdb</code>)</td>
+</tr>
+<tr>
+<td><strong>Human-readable?</strong></td>
+<td>After unzipping — workflow XML is readable; embedded data depends on format</td>
+</tr>
+<tr>
+<td><strong>Migration target</strong></td>
+<td>Analysis source — unzip to extract workflow XML and input data</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="file-formats-quick-reference">File Formats Quick Reference<a class="headerlink" href="#file-formats-quick-reference" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Extension</th>
+<th>Primary Content</th>
+<th>Human-Readable?</th>
+<th>Migration Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Workflow</td>
+<td><code>.yxmd</code></td>
+<td>Workflow XML — Tools + connections</td>
+<td>Yes (verbose)</td>
+<td>Databricks notebook / dbt model</td>
+</tr>
+<tr>
+<td>Macro</td>
+<td><code>.yxmc</code></td>
+<td>Reusable workflow XML + interface</td>
+<td>Yes</td>
+<td>dbt macro / PySpark utility function</td>
+</tr>
+<tr>
+<td>Analytic App</td>
+<td><code>.yxwz</code></td>
+<td>Workflow XML + UI interface</td>
+<td>Yes</td>
+<td>Notebook logic + Streamlit/Databricks Apps UI</td>
+</tr>
+<tr>
+<td>Alteryx Database</td>
+<td><code>.yxdb</code></td>
+<td>Proprietary columnar binary</td>
+<td>No</td>
+<td>Delta table / Parquet</td>
+</tr>
+<tr>
+<td>Packaged Workflow</td>
+<td><code>.yxzp</code></td>
+<td>ZIP of workflow + embedded data</td>
+<td>After unzip</td>
+<td>Analysis source</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-migration-assessment-and-artifact-inventory">10. Migration Assessment and Artifact Inventory<a class="headerlink" href="#10-migration-assessment-and-artifact-inventory" title="Permanent link">&para;</a></h2>
+<h3 id="inventory-approach">Inventory Approach<a class="headerlink" href="#inventory-approach" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Server Gallery</strong> — use the Alteryx Server REST API to list all published workflows, their last run dates, and run history. This is the authoritative inventory for scheduled/shared workflows.</li>
+<li><strong>File share scan</strong> — scan shared network drives for <code>.yxmd</code>, <code>.yxmc</code>, <code>.yxwz</code> files. These are workflows that were never published to Server.</li>
+<li><strong>User survey</strong> — identify power users who have critical workflows on their laptops. This is unavoidably manual; ask IT who the top Alteryx users are.</li>
+<li><strong>XML parse</strong> — parse all collected <code>.yxmd</code> files to extract: Tool type inventory, Input/Output connection strings, Formula expressions, Macro references, R/Python Tool presence.</li>
+<li><strong><code>.yxdb</code> dependency map</strong> — identify all workflows that read <code>.yxdb</code> files and trace them back to the producing workflows.</li>
+<li><strong>Run history cross-reference</strong> — use Server API run history to flag stale workflows (not run in 90+ days); exclude these from active migration scope.</li>
+</ol>
+<h3 id="complexity-scoring">Complexity Scoring<a class="headerlink" href="#complexity-scoring" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Low (1)</th>
+<th>Medium (2)</th>
+<th>High (3)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tool types</strong></td>
+<td>Preparation + Join only</td>
+<td>Adds Transform + Spatial</td>
+<td>R Tool / Python Tool / Iterative Macro</td>
+</tr>
+<tr>
+<td><strong>Formula complexity</strong></td>
+<td>Simple field selection</td>
+<td>Date math, string functions, conditionals</td>
+<td>Complex multi-field expressions, regex</td>
+</tr>
+<tr>
+<td><strong>Data volume</strong></td>
+<td>&lt; 500K rows / run</td>
+<td>500K–50M rows</td>
+<td>50M+ rows or <code>.yxdb</code> caching needed for scale</td>
+</tr>
+<tr>
+<td><strong>In-Database usage</strong></td>
+<td>None (all engine)</td>
+<td>Mix of engine + In-DB</td>
+<td>Primarily In-DB (closer to SQL migration)</td>
+</tr>
+<tr>
+<td><strong>Macro dependencies</strong></td>
+<td>No macros used</td>
+<td>References 1–3 shared macros</td>
+<td>References 4+ macros; Iterative/Batch Macros</td>
+</tr>
+<tr>
+<td><strong>App / UI layer</strong></td>
+<td>No Analytic App</td>
+<td>Simple App with parameters</td>
+<td>Complex App with user management and validation</td>
+</tr>
+<tr>
+<td><strong>Orchestration</strong></td>
+<td>Standalone scheduled workflow</td>
+<td>2–3 chained workflows</td>
+<td>External scheduler + complex <code>.yxdb</code> chain</td>
+</tr>
+</tbody>
+</table>
+<h3 id="risk-areas-specific-to-alteryx">Risk Areas Specific to Alteryx<a class="headerlink" href="#risk-areas-specific-to-alteryx" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Risk Area</th>
+<th>Why It's Risky</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>R Tool and Python Tool</strong></td>
+<td>Arbitrary code — may include statistical libraries, ML models, or API calls with no standard mapping</td>
+<td>Inventory all R/Python Tools; treat each as a custom code audit and port</td>
+</tr>
+<tr>
+<td><strong>Laptop-resident critical workflows</strong></td>
+<td>No central inventory; critical business logic lives on individual user machines</td>
+<td>User survey + file share scan; identify single points of failure immediately</td>
+</tr>
+<tr>
+<td><strong><code>.yxdb</code> intermediate files</strong></td>
+<td>Proprietary binary format; inter-workflow dependencies invisible until XML parsed</td>
+<td>Map all <code>.yxdb</code> chains; replace with Delta tables in migrated architecture</td>
+</tr>
+<tr>
+<td><strong>Iterative Macro loops</strong></td>
+<td>Recursive logic that loops until convergence; no direct Databricks Workflows equivalent</td>
+<td>Identify early; implement as Python while loop in notebook or Airflow sensor</td>
+</tr>
+<tr>
+<td><strong>Analytic App UI</strong></td>
+<td>Business-user-facing UI must be rebuilt, not just the data logic</td>
+<td>Scope App UI replacement separately; engage UI/UX and business stakeholders</td>
+</tr>
+<tr>
+<td><strong>AMP vs. Original Engine split</strong></td>
+<td>Some Tools only run on Original Engine; migrating to AMP-compatible logic may change behavior</td>
+<td>Identify Original-Engine-only Tools during XML parse; test behavior differences</td>
+</tr>
+<tr>
+<td><strong>Spatial Tools</strong></td>
+<td>Alteryx spatial analysis uses proprietary SpatialObj type and GIS operations</td>
+<td>Assess whether spatial logic can be replicated in Databricks with H3 indexing or Python geopandas</td>
+</tr>
+<tr>
+<td><strong>Stale workflows re-activated</strong></td>
+<td>Unused workflows that are discovered and "just in case" migrated can double migration scope</td>
+<td>Use run history to define strict "active" criteria; exclude stale workflows unless business confirms they're needed</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11-migration-mapping-to-databricks">11. Migration Mapping to Databricks<a class="headerlink" href="#11-migration-mapping-to-databricks" title="Permanent link">&para;</a></h2>
+<h3 id="building-blocks">Building Blocks<a class="headerlink" href="#building-blocks" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Alteryx Concept</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Workflow (<code>.yxmd</code>)</td>
+<td>Databricks notebook (PySpark or SQL) / dbt model set</td>
+</tr>
+<tr>
+<td>Macro (<code>.yxmc</code>)</td>
+<td>dbt macro / reusable PySpark utility function / shared notebook</td>
+</tr>
+<tr>
+<td>Batch Macro (iteration)</td>
+<td>Databricks Workflow <code>foreach</code> task / Python <code>for</code> loop in notebook</td>
+</tr>
+<tr>
+<td>Iterative Macro (while loop)</td>
+<td>Python <code>while</code> loop in notebook / Airflow sensor</td>
+</tr>
+<tr>
+<td>Analytic App (<code>.yxwz</code>)</td>
+<td>Databricks notebook (logic) + Databricks Apps / Streamlit (UI)</td>
+</tr>
+<tr>
+<td><code>.yxdb</code> intermediate file</td>
+<td>Delta table (for cross-workflow sharing)</td>
+</tr>
+<tr>
+<td>Packaged Workflow (<code>.yxzp</code>)</td>
+<td>Databricks Repo (workflow code + sample data)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tools_1">Tools<a class="headerlink" href="#tools_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Alteryx Tool</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Input Data</code> (file)</td>
+<td><code>spark.read.csv / parquet / json / excel</code> / Auto Loader</td>
+</tr>
+<tr>
+<td><code>Input Data</code> (database)</td>
+<td><code>spark.read.jdbc()</code> / Delta table read</td>
+</tr>
+<tr>
+<td><code>Connect In-DB</code></td>
+<td>Databricks SQL notebook / <code>spark.sql()</code></td>
+</tr>
+<tr>
+<td><code>Filter</code></td>
+<td><code>filter()</code> / SQL <code>WHERE</code></td>
+</tr>
+<tr>
+<td><code>Select</code></td>
+<td><code>select()</code> / SQL <code>SELECT</code> column list</td>
+</tr>
+<tr>
+<td><code>Formula</code></td>
+<td><code>withColumn()</code> / SQL <code>CASE / expression</code></td>
+</tr>
+<tr>
+<td><code>Multi-Row Formula</code></td>
+<td><code>Window</code> function / Spark <code>lag()</code> / <code>lead()</code></td>
+</tr>
+<tr>
+<td><code>Sort</code></td>
+<td><code>orderBy()</code> / SQL <code>ORDER BY</code></td>
+</tr>
+<tr>
+<td><code>Sample</code></td>
+<td><code>limit()</code> / <code>sample()</code></td>
+</tr>
+<tr>
+<td><code>Unique</code></td>
+<td><code>dropDuplicates()</code> / SQL <code>GROUP BY</code> dedup</td>
+</tr>
+<tr>
+<td><code>Data Cleansing</code></td>
+<td>PySpark string functions / SQL <code>TRIM</code>, <code>UPPER</code>, <code>COALESCE</code></td>
+</tr>
+<tr>
+<td><code>Join</code></td>
+<td><code>join()</code> / SQL <code>JOIN</code></td>
+</tr>
+<tr>
+<td><code>Union</code></td>
+<td><code>union()</code> / SQL <code>UNION ALL</code></td>
+</tr>
+<tr>
+<td><code>Append Fields</code></td>
+<td>Cross-join or <code>crossJoin()</code></td>
+</tr>
+<tr>
+<td><code>Fuzzy Match</code></td>
+<td>Databricks ML Fuzzy Match / <code>phonetics</code> library / custom UDF</td>
+</tr>
+<tr>
+<td><code>Summarize</code></td>
+<td><code>groupBy().agg()</code> / SQL <code>GROUP BY</code></td>
+</tr>
+<tr>
+<td><code>Transpose</code></td>
+<td><code>melt()</code> (PySpark) / <code>UNPIVOT</code> (Spark SQL 3.4+)</td>
+</tr>
+<tr>
+<td><code>Cross-Tab</code></td>
+<td><code>groupBy().pivot()</code> / SQL <code>PIVOT</code></td>
+</tr>
+<tr>
+<td><code>Running Total</code></td>
+<td><code>Window</code> function <code>SUM() OVER (... ROWS UNBOUNDED PRECEDING)</code></td>
+</tr>
+<tr>
+<td><code>Find &amp; Replace</code></td>
+<td><code>join()</code> on lookup table + <code>coalesce()</code></td>
+</tr>
+<tr>
+<td><code>R Tool</code></td>
+<td>Databricks notebook (R or Python with SparkR / rpy2)</td>
+</tr>
+<tr>
+<td><code>Python Tool</code></td>
+<td>Databricks notebook (Python)</td>
+</tr>
+<tr>
+<td><code>Run Command</code></td>
+<td>Databricks notebook <code>subprocess</code> / Databricks Task (Python file)</td>
+</tr>
+<tr>
+<td><code>Output Data</code> (file)</td>
+<td><code>spark.write.csv / parquet / delta</code></td>
+</tr>
+<tr>
+<td><code>Output Data</code> (database)</td>
+<td>Delta <code>CREATE OR REPLACE TABLE AS SELECT</code> / <code>MERGE INTO</code></td>
+</tr>
+<tr>
+<td><code>Render</code> (report output)</td>
+<td>Databricks AI/BI dashboard / Lakeview report</td>
+</tr>
+<tr>
+<td><code>Data Stream Out</code></td>
+<td>Delta table write (for downstream workflow reads)</td>
+</tr>
+<tr>
+<td><code>Field Summary</code></td>
+<td><code>dbutils.data.summarize()</code> / Databricks Lakehouse Monitoring</td>
+</tr>
+</tbody>
+</table>
+<h3 id="orchestration">Orchestration<a class="headerlink" href="#orchestration" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Alteryx Orchestration</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alteryx Server Scheduler (cron)</td>
+<td>Databricks Workflow (scheduled with cron)</td>
+</tr>
+<tr>
+<td>Gallery on-demand run</td>
+<td>Databricks Workflow REST API trigger</td>
+</tr>
+<tr>
+<td>Control-M → <code>AlteryxEngineCmd</code></td>
+<td>Control-M Databricks integration / REST API call</td>
+</tr>
+<tr>
+<td>Windows Task Scheduler → <code>AlteryxEngineCmd</code></td>
+<td>Databricks Workflow schedule or REST trigger</td>
+</tr>
+<tr>
+<td>Airflow → <code>BashOperator</code> (Alteryx CLI)</td>
+<td>Airflow <code>DatabricksRunNowOperator</code></td>
+</tr>
+<tr>
+<td>Chained scheduling (time-offset)</td>
+<td>Databricks Workflow task dependency (explicit DAG)</td>
+</tr>
+<tr>
+<td><code>.yxdb</code> handoff chain</td>
+<td>Databricks Workflow — Task A writes Delta; Task B reads Delta</td>
+</tr>
+<tr>
+<td>Batch Macro (per-row iteration)</td>
+<td>Databricks Workflow <code>foreach</code> task</td>
+</tr>
+<tr>
+<td>Iterative Macro (convergence loop)</td>
+<td>Python <code>while</code> loop in notebook</td>
+</tr>
+</tbody>
+</table>
+<h3 id="data-quality">Data Quality<a class="headerlink" href="#data-quality" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Alteryx DQ Pattern</th>
+<th>Databricks Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Filter</code> Tool to error output</td>
+<td>DLT <code>expect()</code> with quarantine table</td>
+</tr>
+<tr>
+<td><code>Unique</code> Tool separating duplicates</td>
+<td>Delta <code>MERGE INTO</code> dedup / DLT expectation</td>
+</tr>
+<tr>
+<td>Row count check (Summarize → Filter)</td>
+<td>DLT <code>expect_or_fail()</code> / Great Expectations</td>
+</tr>
+<tr>
+<td><code>Data Cleansing</code> Tool</td>
+<td>dbt test / PySpark cleaning transforms</td>
+</tr>
+<tr>
+<td><code>Field Summary</code> profiling</td>
+<td>Databricks Lakehouse Monitoring</td>
+</tr>
+<tr>
+<td>No standalone DQ product</td>
+<td>Databricks Lakehouse Monitoring / dbt tests / Great Expectations</td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-doesnt-map-cleanly">What Doesn't Map Cleanly<a class="headerlink" href="#what-doesnt-map-cleanly" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Alteryx Pattern</th>
+<th>Why It's Hard</th>
+<th>Recommended Approach</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>R Tool with custom statistical logic</strong></td>
+<td>Arbitrary R code; may use CRAN packages not available in Spark; SparkR has limited parity with base R</td>
+<td>Port to PySpark with equivalent Python libraries (scikit-learn, scipy, statsmodels); test numerical output parity</td>
+</tr>
+<tr>
+<td><strong>Iterative Macro (convergence loop)</strong></td>
+<td>Databricks Workflows has no native convergence-loop construct</td>
+<td>Implement as Python <code>while</code> loop in a single notebook; for complex cases, use Airflow sensor</td>
+</tr>
+<tr>
+<td><strong>Spatial Tools (SpatialObj, Trade Area)</strong></td>
+<td>Proprietary spatial type and operations; no direct Spark equivalent</td>
+<td>Evaluate H3 indexing in Databricks, Sedona (Apache Spark spatial), or geopandas in Python notebooks</td>
+</tr>
+<tr>
+<td><strong>Analytic App UI</strong></td>
+<td>Alteryx App UI (dropdowns, file pickers) has no Databricks native equivalent</td>
+<td>Rebuild UI in Databricks Apps (Streamlit-based) or a lightweight web app; treat as a separate workstream</td>
+</tr>
+<tr>
+<td><strong><code>.yxdb</code> inter-workflow handoffs</strong></td>
+<td>Proprietary binary format; data in transit between workflows is inaccessible to non-Alteryx tooling</td>
+<td>Replace with Delta tables; update producing and consuming workflows in lockstep</td>
+</tr>
+<tr>
+<td><strong><code>Fuzzy Match</code> Tool</strong></td>
+<td>Proprietary phonetic and edit-distance matching; no exact Spark equivalent</td>
+<td>Implement custom UDF using Python <code>fuzzywuzzy</code>/<code>rapidfuzz</code>; validate match rates against Alteryx output</td>
+</tr>
+<tr>
+<td><strong><code>Render</code> Tool (PDF/Excel reports)</strong></td>
+<td>Produces formatted reports — not tabular data; no Databricks native equivalent</td>
+<td>Replace with Databricks AI/BI dashboard, scheduled PDF export, or a BI tool (Tableau, Power BI)</td>
+</tr>
+<tr>
+<td><strong>Desktop-only analyst workflows</strong></td>
+<td>No central inventory; migration requires user discovery and sign-off</td>
+<td>Prioritize via business impact interview; don't attempt to migrate all analyst workflows — focus on scheduled/shared ones first</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.highlight", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/tts.js"></script>
+      
+    
+  </body>
+</html>

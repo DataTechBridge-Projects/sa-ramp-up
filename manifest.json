@@ -1,0 +1,404 @@
+{
+  "courses": [
+    {
+      "key": "databricks",
+      "title": "AWS Databricks Data Engineer Certification",
+      "audience": "data engineers familiar with Apache Spark and AWS Glue who want to prepare for the Databricks Certified Data Engineer Associate exam on AWS",
+      "sections": [
+        {
+          "index": 0,
+          "title": "Introduction to Databricks Architecture on AWS",
+          "file": "databricks/section_01_introduction_to_databricks_architecture_on_aws.md"
+        },
+        {
+          "index": 1,
+          "title": "Databricks Compute and Cluster Configuration",
+          "file": "databricks/section_02_databricks_compute_and_cluster_configuration.md"
+        },
+        {
+          "index": 2,
+          "title": "Deep Dive into Delta Lake: ACID, Versioning, and Optimization",
+          "file": "databricks/section_03_deep_dive_into_delta_lake_acid_versioning_and_opti.md"
+        },
+        {
+          "index": 3,
+          "title": "Implementing Medallion Architecture: Bronze, Silver, and Gold Layers",
+          "file": "databricks/section_04_implementing_medallion_architecture_bronze_silver_.md"
+        },
+        {
+          "index": 4,
+          "title": "Efficient Data Ingestion with Auto Loader and COPY INTO",
+          "file": "databricks/section_05_efficient_data_ingestion_with_auto_loader_and_copy.md"
+        },
+        {
+          "index": 5,
+          "title": "Data Transformation with Spark SQL and PySpark",
+          "file": "databricks/section_06_data_transformation_with_spark_sql_and_pyspark.md"
+        },
+        {
+          "index": 6,
+          "title": "Stream Processing with Structured Streaming",
+          "file": "databricks/section_07_stream_processing_with_structured_streaming.md"
+        },
+        {
+          "index": 7,
+          "title": "Building Declarable Pipelines with Delta Live Tables (DLT)",
+          "file": "databricks/section_08_building_declarable_pipelines_with_delta_live_tabl.md"
+        },
+        {
+          "index": 8,
+          "title": "Data Governance and Security with Unity Catalog",
+          "file": "databricks/section_09_data_governance_and_security_with_unity_catalog.md"
+        },
+        {
+          "index": 9,
+          "title": "Monitoring, Logging, and Observability in Databricks",
+          "file": "databricks/section_10_monitoring_logging_and_observability_in_databricks.md"
+        },
+        {
+          "index": 10,
+          "title": "Cost Management and AWS Resource Optimization",
+          "file": "databricks/section_11_cost_management_and_aws_resource_optimization.md"
+        },
+        {
+          "index": 11,
+          "title": "Migration Strategies: Transitioning from AWS Glue to Databricks",
+          "file": "databricks/section_12_migration_strategies_transitioning_from_aws_glue_t.md"
+        },
+        {
+          "index": 12,
+          "title": "Orchestration and Automation with Databricks Workflows",
+          "file": "databricks/section_13_orchestration_and_automation_with_databricks_workf.md"
+        },
+        {
+          "index": 13,
+          "title": "Exam Readiness and Final Review",
+          "file": "databricks/section_14_exam_readiness_and_final_review.md"
+        }
+      ]
+    },
+    {
+      "key": "aws",
+      "title": "AWS Certified Data Engineer Associate (DEA-C01)",
+      "audience": "cloud engineers and developers familiar with AWS core services who want to pass the AWS Certified Data Engineer Associate exam",
+      "sections": [
+        {
+          "index": 0,
+          "title": "Course Introduction",
+          "file": "aws/section_01_course_introduction.md"
+        },
+        {
+          "index": 1,
+          "title": "Exam Overview and Strategy",
+          "file": "aws/section_02_exam_overview_and_strategy.md"
+        },
+        {
+          "index": 2,
+          "title": "AWS Data Architecture Foundations",
+          "file": "aws/section_03_aws_data_architecture_foundations.md"
+        },
+        {
+          "index": 3,
+          "title": "Data Ingestion",
+          "file": "aws/section_04_data_ingestion.md"
+        },
+        {
+          "index": 4,
+          "title": "AWS Glue Deep Dive",
+          "file": "aws/section_05_aws_glue_deep_dive.md"
+        },
+        {
+          "index": 5,
+          "title": "Amazon S3 and Data Lake Design",
+          "file": "aws/section_06_amazon_s3_and_data_lake_design.md"
+        },
+        {
+          "index": 6,
+          "title": "Amazon Athena",
+          "file": "aws/section_07_amazon_athena.md"
+        },
+        {
+          "index": 7,
+          "title": "Amazon Redshift",
+          "file": "aws/section_08_amazon_redshift.md"
+        },
+        {
+          "index": 8,
+          "title": "Streaming Data with Kinesis and MSK",
+          "file": "aws/section_09_streaming_data_with_kinesis_and_msk.md"
+        },
+        {
+          "index": 9,
+          "title": "NoSQL and Purpose-Built Databases",
+          "file": "aws/section_10_nosql_and_purposebuilt_databases.md"
+        },
+        {
+          "index": 10,
+          "title": "AWS Lake Formation and Data Governance",
+          "file": "aws/section_11_aws_lake_formation_and_data_governance.md"
+        },
+        {
+          "index": 11,
+          "title": "Data Orchestration and Pipelines",
+          "file": "aws/section_12_data_orchestration_and_pipelines.md"
+        },
+        {
+          "index": 12,
+          "title": "Performance, Cost Optimization, and Monitoring",
+          "file": "aws/section_13_performance_cost_optimization_and_monitoring.md"
+        },
+        {
+          "index": 13,
+          "title": "Security, Compliance, and Networking",
+          "file": "aws/section_14_security_compliance_and_networking.md"
+        },
+        {
+          "index": 14,
+          "title": "Capstone and Exam Readiness",
+          "file": "aws/section_15_capstone_and_exam_readiness.md"
+        }
+      ]
+    },
+    {
+      "key": "azure",
+      "title": "Azure Data Engineer Associate (DP-203)",
+      "audience": "data engineers familiar with SQL and cloud fundamentals who want to pass the Microsoft Azure Data Engineer Associate DP-203 exam",
+      "sections": [
+        {
+          "index": 0,
+          "title": "Course Introduction and DP-203 Exam Overview",
+          "file": "azure/section_01_course_introduction_and_dp203_exam_overview.md"
+        },
+        {
+          "index": 1,
+          "title": "Designing and Implementing Azure Storage Solutions",
+          "file": "azure/section_02_designing_and_implementing_azure_storage_solutions.md"
+        },
+        {
+          "index": 2,
+          "title": "Implementing Relational Data Stores with Azure SQL",
+          "file": "azure/section_03_implementing_relational_data_stores_with_azure_sql.md"
+        },
+        {
+          "index": 3,
+          "title": "Implementing NoSQL Solutions with Azure Cosmos DB",
+          "file": "azure/section_04_implementing_nosql_solutions_with_azure_cosmos_db.md"
+        },
+        {
+          "index": 4,
+          "title": "Data Integration and Orchestration with Azure Data Factory",
+          "file": "azure/section_05_data_integration_and_orchestration_with_azure_data.md"
+        },
+        {
+          "index": 5,
+          "title": "Large-Scale Data Processing with Azure Synapse Analytics",
+          "file": "azure/section_06_largescale_data_processing_with_azure_synapse_anal.md"
+        },
+        {
+          "index": 6,
+          "title": "Stream Processing with Azure Stream Analytics and Event Hubs",
+          "file": "azure/section_07_stream_processing_with_azure_stream_analytics_and_.md"
+        },
+        {
+          "index": 7,
+          "title": "Distributed Data Processing with Azure Databricks",
+          "file": "azure/section_08_distributed_data_processing_with_azure_databricks.md"
+        },
+        {
+          "index": 8,
+          "title": "Implementing Security, Identity, and Access Control",
+          "file": "azure/section_09_implementing_security_identity_and_access_control.md"
+        },
+        {
+          "index": 9,
+          "title": "Monitoring, Logging, and Operations for Data Pipelines",
+          "file": "azure/section_10_monitoring_logging_and_operations_for_data_pipelin.md"
+        },
+        {
+          "index": 10,
+          "title": "Data Migration and Cloud Adoption Strategies",
+          "file": "azure/section_11_data_migration_and_cloud_adoption_strategies.md"
+        },
+        {
+          "index": 11,
+          "title": "Managing Cost, Performance, and Billing for Azure Data Services",
+          "file": "azure/section_12_managing_cost_performance_and_billing_for_azure_da.md"
+        },
+        {
+          "index": 12,
+          "title": "Data Governance and Metadata Management with Azure Purview",
+          "file": "azure/section_13_data_governance_and_metadata_management_with_azure.md"
+        },
+        {
+          "index": 13,
+          "title": "Exam Readiness: Final Review and Practice Scenarios",
+          "file": "azure/section_14_exam_readiness_final_review_and_practice_scenarios.md"
+        }
+      ]
+    },
+    {
+      "key": "snowflake",
+      "title": "Snowflake",
+      "audience": "data engineers familiar with SQL and cloud fundamentals who want to pass the Snowflake certification exam",
+      "sections": [
+        {
+          "index": 0,
+          "title": "Snowflake Architecture and Core Components",
+          "file": "snowflake/section_01_snowflake_architecture_and_core_components.md"
+        },
+        {
+          "index": 1,
+          "title": "Data Storage and Semi-Structured Data Handling",
+          "file": "snowflake/section_02_data_storage_and_semistructured_data_handling.md"
+        },
+        {
+          "index": 2,
+          "title": "Virtual Warehouse Management and Scaling",
+          "file": "snowflake/section_03_virtual_warehouse_management_and_scaling.md"
+        },
+        {
+          "index": 3,
+          "title": "Data Ingestion Techniques and Snowpipe",
+          "file": "snowflake/section_04_data_ingestion_techniques_and_snowpipe.md"
+        },
+        {
+          "index": 4,
+          "title": "Time Travel, Fail-safe, and Zero-Copy Cloning",
+          "file": "snowflake/section_05_time_travel_failsafe_and_zerocopy_cloning.md"
+        },
+        {
+          "index": 5,
+          "title": "Security, Identity, and Access Control",
+          "file": "snowflake/section_06_security_identity_and_access_control.md"
+        },
+        {
+          "index": 6,
+          "title": "Data Sharing and the Snowflake Marketplace",
+          "file": "snowflake/section_07_data_sharing_and_the_snowflake_marketplace.md"
+        },
+        {
+          "index": 7,
+          "title": "Snowpark and Programmable Data Engineering",
+          "file": "snowflake/section_08_snowpark_and_programmable_data_engineering.md"
+        },
+        {
+          "index": 8,
+          "title": "Query Optimization and Performance Tuning",
+          "file": "snowflake/section_09_query_optimization_and_performance_tuning.md"
+        },
+        {
+          "index": 9,
+          "title": "Monitoring, Auditing, and Operations",
+          "file": "snowflake/section_10_monitoring_auditing_and_operations.md"
+        },
+        {
+          "index": 10,
+          "title": "Cost Management and Billing Optimization",
+          "file": "snowflake/section_11_cost_management_and_billing_optimization.md"
+        },
+        {
+          "index": 11,
+          "title": "Migration and Adoption Strategies",
+          "file": "snowflake/section_12_migration_and_adoption_strategies.md"
+        },
+        {
+          "index": 12,
+          "title": "Snowflake Use Cases and Competitive Positioning",
+          "file": "snowflake/section_13_snowflake_use_cases_and_competitive_positioning.md"
+        },
+        {
+          "index": 13,
+          "title": "Certification Exam Preparation",
+          "file": "snowflake/section_14_certification_exam_preparation.md"
+        }
+      ]
+    },
+    {
+      "key": "gcp",
+      "title": "Google Cloud Platform",
+      "audience": "data engineers familiar with SQL and cloud fundamentals who want to pass the Google Cloud Platform certification exam",
+      "sections": [
+        {
+          "index": 0,
+          "title": "GCP Fundamentals and Resource Hierarchy",
+          "file": "gcp/section_01_gcp_fundamentals_and_resource_hierarchy.md"
+        },
+        {
+          "index": 1,
+          "title": "Security, Identity, and Access Management (IAM)",
+          "file": "gcp/section_02_security_identity_and_access_management_iam.md"
+        },
+        {
+          "index": 2,
+          "title": "Cloud Storage and Data Lake Architectures",
+          "file": "gcp/section_03_cloud_storage_and_data_lake_architectures.md"
+        },
+        {
+          "index": 3,
+          "title": "Relational Databases: Cloud SQL and Spanner",
+          "file": "gcp/section_04_relational_databases_cloud_sql_and_spanner.md"
+        },
+        {
+          "index": 4,
+          "title": "NoSQL and Wide-Column Stores: Bigtable and Firestore",
+          "file": "gcp/section_05_nosql_and_widecolumn_stores_bigtable_and_firestore.md"
+        },
+        {
+          "index": 5,
+          "title": "BigQuery: Scalable Data Warehousing and Analytics",
+          "file": "gcp/section_06_bigquery_scalable_data_warehousing_and_analytics.md"
+        },
+        {
+          "index": 6,
+          "title": "Real-time Data Ingestion with Pub/Sub",
+          "file": "gcp/section_07_realtime_data_ingestion_with_pubsub.md"
+        },
+        {
+          "index": 7,
+          "title": "Stream and Batch Processing with Dataflow",
+          "file": "gcp/section_08_stream_and_batch_processing_with_dataflow.md"
+        },
+        {
+          "index": 8,
+          "title": "Managed Hadoop and Spark with Cloud Dataproc",
+          "file": "gcp/section_09_managed_hadoop_and_spark_with_cloud_dataproc.md"
+        },
+        {
+          "index": 9,
+          "title": "Workflow Orchestration with Cloud Composer",
+          "file": "gcp/section_10_workflow_orchestration_with_cloud_composer.md"
+        },
+        {
+          "index": 10,
+          "title": "Data Migration and Modernization Strategies",
+          "file": "gcp/section_11_data_migration_and_modernization_strategies.md"
+        },
+        {
+          "index": 11,
+          "title": "Monitoring, Logging, and Observability",
+          "file": "gcp/section_12_monitoring_logging_and_observability.md"
+        },
+        {
+          "index": 12,
+          "title": "Cost Management and Billing Optimization",
+          "file": "gcp/section_13_cost_management_and_billing_optimization.md"
+        },
+        {
+          "index": 13,
+          "title": "Machine Learning Integration with Vertex AI",
+          "file": "gcp/section_14_machine_learning_integration_with_vertex_ai.md"
+        },
+        {
+          "index": 14,
+          "title": "Competitive Positioning and Industry Use Cases",
+          "file": "gcp/section_15_competitive_positioning_and_industry_use_cases.md"
+        },
+        {
+          "index": 15,
+          "title": "Certification Exam Readiness and Capstone Project",
+          "file": "gcp/section_16_certification_exam_readiness_and_capstone_project.md"
+        }
+      ]
+    }
+  ]
+}

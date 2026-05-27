@@ -1,0 +1,69 @@
+.md-grid {
+  max-width: 100%;
+}
+
+/* ── Text-to-Speech bar ── */
+#tts-bar {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  padding: 0.45rem 0.75rem;
+  border-radius: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  font-size: 0.8rem;
+}
+
+#tts-bar button {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.25rem;
+  white-space: nowrap;
+}
+
+#tts-bar button:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+#tts-status {
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
+/* ── TTS heading click-to-play hint ── */
+.tts-play-hint {
+  font-size: 0.6em;
+  opacity: 0;
+  color: var(--md-primary-fg-color);
+  cursor: pointer;
+  transition: opacity 0.2s;
+  user-select: none;
+  margin-left: 0.4em;
+}
+
+h1:hover .tts-play-hint,
+h2:hover .tts-play-hint,
+h3:hover .tts-play-hint,
+h4:hover .tts-play-hint,
+h5:hover .tts-play-hint,
+h6:hover .tts-play-hint {
+  opacity: 1;
+}
+
+/* ── TTS active section highlight ── */
+.tts-active-section {
+  background: rgba(255, 152, 0, 0.18);
+  border-left: 3px solid var(--md-primary-fg-color);
+  padding-left: 0.5rem;
+  border-radius: 0.2rem;
+  transition: background 0.3s ease;
+}

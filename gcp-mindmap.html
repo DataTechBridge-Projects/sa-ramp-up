@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Cloud Platform — Mind Map</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --border: #2a2d3a;
+    --text: #e2e8f0;
+    --muted: #8892a4;
+    --c0: #4a90d9;
+    --c1: #e8834a;
+    --c2: #7ac47a;
+    --c3: #c47ad4;
+    --c4: #e8c84a;
+    --c5: #475569;
+    --c6: #475569;
+    --c7: #475569;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; overflow: hidden; }
+
+  #header {
+    position: fixed; top: 0; left: 0; right: 0; height: 52px;
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; padding: 0 20px; gap: 12px; z-index: 100;
+  }
+  #header h1 { font-size: 16px; font-weight: 600; color: var(--text); }
+  #header .subtitle { font-size: 12px; color: var(--muted); }
+  #legend { display: flex; gap: 12px; margin-left: auto; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--muted); }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+  #canvas { position: fixed; top: 52px; left: 0; right: 0; bottom: 0; }
+  svg { width: 100%; height: 100%; }
+
+  /* Priority badges */
+  .badge-critical { fill: #ef4444; }
+  .badge-quick    { fill: #f59e0b; }
+  .badge-new      { fill: #10b981; }
+  .badge-skip     { fill: #475569; }
+
+  /* Nodes */
+  .node circle { stroke-width: 2; cursor: pointer; transition: r 0.15s; }
+  .node circle:hover { stroke-width: 3; filter: brightness(1.3); }
+  .node.root circle { stroke-width: 3; }
+  .node text { pointer-events: none; user-select: none; }
+
+  /* Links */
+  .link { stroke: #2a2d3a; stroke-opacity: 0.6; stroke-width: 1.5; fill: none; }
+
+  /* Panel */
+  #panel {
+    position: fixed; right: 0; top: 52px; bottom: 0; width: 340px;
+    background: var(--surface); border-left: 1px solid var(--border);
+    overflow-y: auto; padding: 20px; display: none; z-index: 50;
+  }
+  #panel.open { display: block; }
+  #panel-close {
+    position: absolute; top: 12px; right: 14px;
+    background: none; border: none; color: var(--muted); font-size: 20px; cursor: pointer; line-height: 1;
+  }
+  #panel-close:hover { color: var(--text); }
+  #panel-domain { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+  #panel-title { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+  #panel-priority { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-bottom: 14px; }
+  .pri-critical { background: #7f1d1d; color: #fca5a5; }
+  .pri-quick    { background: #78350f; color: #fcd34d; }
+  .pri-new      { background: #064e3b; color: #6ee7b7; }
+  .pri-skip     { background: #1e293b; color: #94a3b8; }
+  #panel-desc { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
+  #panel-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .chip { background: #1e2535; border: 1px solid var(--border); border-radius: 6px; padding: 3px 10px; font-size: 12px; color: #94a3b8; font-family: monospace; }
+  #panel-links { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; }
+  #panel-links a { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; text-decoration: none; }
+  #panel-links a:hover { text-decoration: underline; }
+  #panel-section-link { color: #60a5fa; }
+  #panel-notes-link   { color: #4ade80; }
+
+  /* Controls */
+  #controls {
+    position: fixed; bottom: 16px; left: 16px;
+    display: flex; gap: 8px; z-index: 100;
+  }
+  .ctrl-btn {
+    background: var(--surface); border: 1px solid var(--border); color: var(--text);
+    width: 32px; height: 32px; border-radius: 8px; cursor: pointer; font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ctrl-btn:hover { background: #252836; }
+
+  #search-wrap {
+    position: fixed; bottom: 16px; left: 120px; z-index: 100;
+  }
+  #search {
+    background: var(--surface); border: 1px solid var(--border); color: var(--text);
+    padding: 6px 12px; border-radius: 8px; font-size: 13px; width: 200px; outline: none;
+  }
+  #search::placeholder { color: var(--muted); }
+  #search:focus { border-color: #4a6fa5; }
+
+  .node.dimmed circle { opacity: 0.15; }
+  .node.dimmed text { opacity: 0.15; }
+  .link.dimmed { opacity: 0.05; }
+</style>
+</head>
+<body>
+
+<div id="header">
+  <h1>Google Cloud Platform</h1>
+  <span class="subtitle">SA Mind Map</span>
+  <div id="legend"></div>
+</div>
+
+<div id="canvas"><svg id="svg"></svg></div>
+
+<div id="panel">
+  <button id="panel-close" onclick="closePanel()">×</button>
+  <div id="panel-domain"></div>
+  <div id="panel-title"></div>
+  <div id="panel-priority"></div>
+  <div id="panel-desc"></div>
+  <div id="panel-chips"></div>
+  <div id="panel-links">
+    <a id="panel-section-link" href="#" target="_blank" style="display:none">📖 Read Course Section</a>
+    <a id="panel-notes-link"   href="#" target="_blank" style="display:none">📋 SA Quick Reference Card</a>
+  </div>
+</div>
+
+<div id="controls">
+  <button class="ctrl-btn" onclick="zoomIn()" title="Zoom in">+</button>
+  <button class="ctrl-btn" onclick="zoomOut()" title="Zoom out">−</button>
+  <button class="ctrl-btn" onclick="resetZoom()" title="Reset">⌖</button>
+</div>
+<div id="search-wrap">
+  <input id="search" type="text" placeholder="Search nodes…" oninput="onSearch(this.value)">
+</div>
+
+<script>
+// ── Data ──────────────────────────────────────────────────────────────────────
+const NOTES_MAP = {
+  'GCP Fundamentals and Resource Hierarchy': 'gcp/notes/notes_section_01_gcp_fundamentals_and_resource_hierarchy/',
+  'Security, Identity, and Access Management (IAM)': 'gcp/notes/notes_section_02_security_identity_and_access_management_iam/',
+  'Cloud Storage and Data Lake Architectures': 'gcp/notes/notes_section_03_cloud_storage_and_data_lake_architectures/',
+  'Relational Databases: Cloud SQL and Spanner': 'gcp/notes/notes_section_04_relational_databases_cloud_sql_and_spanner/',
+  'NoSQL and Wide-Column Stores: Bigtable and Firestore': 'gcp/notes/notes_section_05_nosql_and_widecolumn_stores_bigtable_and_firestore/',
+  'BigQuery: Scalable Data Warehousing and Analytics': 'gcp/notes/notes_section_06_bigquery_scalable_data_warehousing_and_analytics/',
+  'Real-time Data Ingestion with Pub/Sub': 'gcp/notes/notes_section_07_realtime_data_ingestion_with_pubsub/',
+  'Stream and Batch Processing with Dataflow': 'gcp/notes/notes_section_08_stream_and_batch_processing_with_dataflow/',
+  'Managed Hadoop and Spark with Cloud Dataproc': 'gcp/notes/notes_section_09_managed_hadoop_and_spark_with_cloud_dataproc/',
+  'Workflow Orchestration with Cloud Composer': 'gcp/notes/notes_section_10_workflow_orchestration_with_cloud_composer/',
+  'Data Migration and Modernization Strategies': 'gcp/notes/notes_section_11_data_migration_and_modernization_strategies/',
+  'Monitoring, Logging, and Observability': 'gcp/notes/notes_section_12_monitoring_logging_and_observability/',
+  'Cost Management and Billing Optimization': 'gcp/notes/notes_section_13_cost_management_and_billing_optimization/',
+  'Machine Learning Integration with Vertex AI': 'gcp/notes/notes_section_14_machine_learning_integration_with_vertex_ai/',
+  'Competitive Positioning and Industry Use Cases': 'gcp/notes/notes_section_15_competitive_positioning_and_industry_use_cases/',
+  'Certification Exam Readiness and Capstone Project': 'gcp/notes/notes_section_16_certification_exam_readiness_and_capstone_project/'
+};
+const SECTIONS_MAP = {
+  "GCP Fundamentals and Resource Hierarchy": "gcp/section_01_gcp_fundamentals_and_resource_hierarchy/",
+  "Security, Identity, and Access Management (IAM)": "gcp/section_02_security_identity_and_access_management_iam/",
+  "Cloud Storage and Data Lake Architectures": "gcp/section_03_cloud_storage_and_data_lake_architectures/",
+  "Relational Databases: Cloud SQL and Spanner": "gcp/section_04_relational_databases_cloud_sql_and_spanner/",
+  "NoSQL and Wide-Column Stores: Bigtable and Firestore": "gcp/section_05_nosql_and_widecolumn_stores_bigtable_and_firestore/",
+  "BigQuery: Scalable Data Warehousing and Analytics": "gcp/section_06_bigquery_scalable_data_warehousing_and_analytics/",
+  "Real-time Data Ingestion with Pub/Sub": "gcp/section_07_realtime_data_ingestion_with_pubsub/",
+  "Stream and Batch Processing with Dataflow": "gcp/section_08_stream_and_batch_processing_with_dataflow/",
+  "Managed Hadoop and Spark with Cloud Dataproc": "gcp/section_09_managed_hadoop_and_spark_with_cloud_dataproc/",
+  "Workflow Orchestration with Cloud Composer": "gcp/section_10_workflow_orchestration_with_cloud_composer/",
+  "Data Migration and Modernization Strategies": "gcp/section_11_data_migration_and_modernization_strategies/",
+  "Monitoring, Logging, and Observability": "gcp/section_12_monitoring_logging_and_observability/",
+  "Cost Management and Billing Optimization": "gcp/section_13_cost_management_and_billing_optimization/",
+  "Machine Learning Integration with Vertex AI": "gcp/section_14_machine_learning_integration_with_vertex_ai/",
+  "Competitive Positioning and Industry Use Cases": "gcp/section_15_competitive_positioning_and_industry_use_cases/",
+  "Certification Exam Readiness and Capstone Project": "gcp/section_16_certification_exam_readiness_and_capstone_project/"
+};
+
+const RAW = {
+  "title": "GCP for Data Engineers",
+  "domains": [
+    "Core Architecture",
+    "Security & Identity",
+    "Cost & Billing",
+    "Migration & Adoption",
+    "Monitoring & Operations"
+  ],
+  "colors": [
+    "#4a90d9",
+    "#e8834a",
+    "#7ac47a",
+    "#c47ad4",
+    "#e8c84a"
+  ],
+  "children": [
+    {
+      "name": "Core Architecture",
+      "nodes": [
+        {
+          "name": "Resource Hierarchy",
+          "desc": "Understands the GCP resource hierarchy. Customer cares because it aids in organizing and securing cloud resources effectively.",
+          "chips": [
+            "GCP",
+            "hierarchy"
+          ],
+          "priority": "critical",
+          "section_url": "gcp/section_01_gcp_fundamentals_and_resource_hierarchy/"
+        },
+        {
+          "name": "Network Architecture",
+          "desc": "Designs robust VPC networks. Customer cares because it ensures secure, scalable, and reliable connectivity.",
+          "chips": [
+            "VPC",
+            "security",
+            "scalability"
+          ],
+          "priority": "critical",
+          "section_url": "gcp/section_01_gcp_fundamentals_and_resource_hierarchy/"
+        },
+        {
+          "name": "Load Balancers",
+          "desc": "Sets up different types of load balancers. Customer cares because it improves application availability and performance.",
+          "chips": [
+            "load balancing",
+            "performance"
+          ],
+          "priority": "quick",
+          "section_url": "gcp/section_01_gcp_fundamentals_and_resource_hierarchy/"
+        }
+      ]
+    },
+    {
+      "name": "Security & Identity",
+      "nodes": [
+        {
+          "name": "IAM Roles",
+          "desc": "Assigns appropriate IAM roles. Customer cares because it enhances security by controlling access to resources.",
+          "chips": [
+            "IAM",
+            "security"
+          ],
+          "priority": "critical",
+          "section_url": "gcp/section_02_security_identity_and_access_management_iam/"
+        },
+        {
+          "name": "Data Encryption",
+          "desc": "Encrypts data at rest and in transit. Customer cares about protecting sensitive information from unauthorized access.",
+          "chips": [
+            "encryption",
+            "data protection"
+          ],
+          "priority": "quick",
+          "section_url": "gcp/section_02_security_identity_and_access_management_iam/"
+        }
+      ]
+    },
+    {
+      "name": "Cost & Billing",
+      "nodes": [
+        {
+          "name": "Billing Accounts",
+          "desc": "Creates and manages billing accounts. Customer cares to efficiently manage costs across multiple projects.",
+          "chips": [
+            "billing",
+            "cost management"
+          ],
+          "priority": "critical",
+          "section_url": "gcp/section_13_cost_management_and_billing_optimization/"
+        },
+        {
+          "name": "Cost Management Tools",
+          "desc": "Uses tools like Cost Explorer and Budgets. Customer cares because it helps in monitoring and controlling cloud spend.",
+          "chips": [
+            "budgets",
+            "cost explorer"
+          ],
+          "priority": "quick",
+          "section_url": "gcp/section_13_cost_management_and_billing_optimization/"
+        }
+      ]
+    },
+    {
+      "name": "Migration & Adoption",
+      "nodes": [
+        {
+          "name": "Migrate to GCP",
+          "desc": "Uses tools like Migrate for Compute Engine. Customer cares because it simplifies the transition from on-premises.",
+          "chips": [
+            "migration",
+            "compute engine"
+          ],
+          "priority": "critical",
+          "section_url": "gcp/section_11_data_migration_and_modernization_strategies/"
+        },
+        {
+          "name": "Adopt GCP Services",
+          "desc": "Selects and deploys appropriate services. Customer cares because it accelerates the benefits of cloud adoption.",
+          "chips": [
+            "cloud services",
+            "adoption"
+          ],
+          "priority": "quick",
+          "section_url": "gcp/section_11_data_migration_and_modernization_strategies/"
+        }
+      ]
+    },
+    {
+      "name": "Monitoring & Operations",
+      "nodes": [
+        {
+          "name": "Logging and Monitoring",
+          "desc": "Configures Stackdriver Logging and Monitoring. Customer cares because it provides visibility into system health.",
+          "chips": [
+            "logging",
+            "monitoring"
+          ],
+          "priority": "critical",
+          "section_url": "gcp/section_12_monitoring_logging_and_observability/"
+        },
+        {
+          "name": "Alert Policies",
+          "desc": "Sets up alert policies for critical issues. Customer cares to ensure proactive issue resolution and minimize downtime.",
+          "chips": [
+            "alerts",
+            "proactive monitoring"
+          ],
+          "priority": "quick",
+          "section_url": "gcp/section_12_monitoring_logging_and_observability/"
+        }
+      ]
+    },
+    {
+      "name": "Data Engineering & Analytics",
+      "nodes": [
+        {
+          "name": "BigQuery Setup",
+          "desc": "Configures and optimizes BigQuery for analytics. Customer cares because it enables efficient data analysis.",
+          "chips": [
+            "bigquery",
+            "data analysis"
+          ],
+          "priority": "critical",
+          "section_url": "gcp/section_06_bigquery_scalable_data_warehousing_and_analytics/"
+        },
+        {
+          "name": "Data Ingestion with Pub/Sub",
+          "desc": "Uses Pub/Sub for real-time data ingestion. Customer cares because it supports streaming analytics and event-driven architectures.",
+          "chips": [
+            "pub/sub",
+            "streaming"
+          ],
+          "priority": "critical",
+          "section_url": "gcp/section_07_realtime_data_ingestion_with_pubsub/"
+        }
+      ]
+    },
+    {
+      "name": "Machine Learning Integration",
+      "nodes": [
+        {
+          "name": "Vertex AI Setup",
+          "desc": "Configures Vertex AI for ML projects. Customer cares because it enables scalable and efficient machine learning.",
+          "chips": [
+            "vertex ai",
+            "machine learning"
+          ],
+          "priority": "critical",
+          "section_url": "gcp/section_14_machine_learning_integration_with_vertex_ai/"
+        },
+        {
+          "name": "Model Deployment",
+          "desc": "Deploys models using Vertex AI. Customer cares to ensure models are available for real-time predictions.",
+          "chips": [
+            "deployment",
+            "predictions"
+          ],
+          "priority": "quick",
+          "section_url": "gcp/section_14_machine_learning_integration_with_vertex_ai/"
+        }
+      ]
+    }
+  ]
+};
+
+// ── Build flat node/link arrays ───────────────────────────────────────────────
+const DOMAINS = RAW.domains;
+const COLORS  = RAW.colors;
+
+// Build legend
+const legend = document.getElementById('legend');
+DOMAINS.forEach((d, i) => {
+  const item = document.createElement('div');
+  item.className = 'legend-item';
+  item.innerHTML = `<div class="legend-dot" style="background:${COLORS[i]}"></div>${d}`;
+  legend.appendChild(item);
+});
+
+const nodes = [];
+const links = [];
+
+// root node
+nodes.push({ id: 'root', label: RAW.title, type: 'root', domain: -1, r: 28 });
+
+RAW.children.forEach((domain, di) => {
+  const domainId = `domain_${di}`;
+  nodes.push({ id: domainId, label: domain.name, type: 'domain', domain: di, r: 18 });
+  links.push({ source: 'root', target: domainId });
+
+  (domain.nodes || []).forEach((n, ni) => {
+    const nid = `${domainId}_${ni}`;
+    nodes.push({
+      id: nid, label: n.name, type: 'node', domain: di, r: 10,
+      desc: n.desc || '', chips: n.chips || [], priority: n.priority || 'quick',
+      domainName: domain.name, section_url: n.section_url || null,
+    });
+    links.push({ source: domainId, target: nid });
+  });
+});
+
+// ── D3 Setup ──────────────────────────────────────────────────────────────────
+const svg  = d3.select('#svg');
+const root = svg.append('g').attr('class', 'root-g');
+
+const zoom = d3.zoom()
+  .scaleExtent([0.2, 4])
+  .on('zoom', e => root.attr('transform', e.transform));
+svg.call(zoom);
+
+function zoomIn()    { svg.transition().call(zoom.scaleBy, 1.3); }
+function zoomOut()   { svg.transition().call(zoom.scaleBy, 0.77); }
+function resetZoom() { svg.transition().call(zoom.transform, d3.zoomIdentity); }
+
+const W = () => document.getElementById('canvas').offsetWidth;
+const H = () => document.getElementById('canvas').offsetHeight;
+
+// Simulation
+const sim = d3.forceSimulation(nodes)
+  .force('link', d3.forceLink(links).id(d => d.id).distance(d => {
+    if (d.target.type === 'domain') return 160;
+    return 90;
+  }).strength(0.6))
+  .force('charge', d3.forceManyBody().strength(-350))
+  .force('center', d3.forceCenter(W() / 2, H() / 2))
+  .force('collision', d3.forceCollide(d => d.r + 14));
+
+// Links
+const linkSel = root.append('g').selectAll('line')
+  .data(links).join('line').attr('class', 'link');
+
+// Nodes
+const nodeSel = root.append('g').selectAll('g')
+  .data(nodes).join('g')
+  .attr('class', d => `node ${d.type}`)
+  .call(d3.drag()
+    .on('start', (e, d) => { if (!e.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+    .on('drag',  (e, d) => { d.fx = e.x; d.fy = e.y; })
+    .on('end',   (e, d) => { if (!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; })
+  )
+  .on('click', (e, d) => { e.stopPropagation(); openPanel(d); });
+
+nodeSel.append('circle')
+  .attr('r', d => d.r)
+  .attr('fill', d => d.domain >= 0 ? COLORS[d.domain] : '#4a6fa5')
+  .attr('fill-opacity', d => d.type === 'node' ? 0.85 : 1)
+  .attr('stroke', d => d.domain >= 0 ? COLORS[d.domain] : '#6b8cc5')
+  .attr('stroke-opacity', 0.6);
+
+// Priority ring for leaf nodes
+nodeSel.filter(d => d.type === 'node').append('circle')
+  .attr('r', d => d.r + 3)
+  .attr('fill', 'none')
+  .attr('stroke-width', 2)
+  .attr('stroke', d => {
+    const p = d.priority;
+    if (p === 'critical') return '#ef4444';
+    if (p === 'new')      return '#10b981';
+    if (p === 'skip')     return '#475569';
+    return 'transparent';
+  });
+
+nodeSel.append('text')
+  .attr('text-anchor', 'middle')
+  .attr('dy', d => d.type === 'node' ? d.r + 13 : 5)
+  .attr('font-size', d => d.type === 'root' ? 13 : d.type === 'domain' ? 12 : 10)
+  .attr('font-weight', d => d.type === 'root' ? 700 : d.type === 'domain' ? 600 : 400)
+  .attr('fill', d => d.type === 'node' ? '#94a3b8' : '#e2e8f0')
+  .text(d => d.label);
+
+sim.on('tick', () => {
+  linkSel
+    .attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+    .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+  nodeSel.attr('transform', d => `translate(${d.x},${d.y})`);
+});
+
+svg.on('click', closePanel);
+
+// ── Panel ─────────────────────────────────────────────────────────────────────
+function openPanel(d) {
+  if (d.type === 'root' || d.type === 'domain') return;
+  const panel = document.getElementById('panel');
+  panel.classList.add('open');
+
+  document.getElementById('panel-domain').textContent  = d.domainName;
+  document.getElementById('panel-domain').style.color  = COLORS[d.domain];
+  document.getElementById('panel-title').textContent   = d.label;
+
+  const pri = document.getElementById('panel-priority');
+  pri.textContent  = d.priority;
+  pri.className    = `pri-${d.priority}`;
+
+  document.getElementById('panel-desc').textContent = d.desc;
+
+  const chipsEl = document.getElementById('panel-chips');
+  chipsEl.innerHTML = (d.chips || []).map(c => `<span class="chip">${c}</span>`).join('');
+
+  // Read Section link — from section_url baked into node data
+  const sectionLink = document.getElementById('panel-section-link');
+  if (d.section_url) {
+    sectionLink.href = d.section_url;
+    sectionLink.style.display = 'inline-flex';
+  } else {
+    sectionLink.style.display = 'none';
+  }
+
+  // SA Notes link — case-insensitive substring match against NOTES_MAP
+  const notesLink = document.getElementById('panel-notes-link');
+  const matchKey = Object.keys(NOTES_MAP).find(k =>
+    k.toLowerCase().includes(d.label.toLowerCase()) ||
+    d.label.toLowerCase().includes(k.toLowerCase())
+  );
+  if (matchKey) {
+    notesLink.href = NOTES_MAP[matchKey];
+    notesLink.style.display = 'inline-flex';
+  } else {
+    notesLink.style.display = 'none';
+  }
+}
+
+function closePanel() {
+  document.getElementById('panel').classList.remove('open');
+  clearDim();
+}
+
+// ── Search / dim ──────────────────────────────────────────────────────────────
+function onSearch(q) {
+  if (!q) { clearDim(); return; }
+  const lq = q.toLowerCase();
+  nodeSel.classed('dimmed', d => !d.label.toLowerCase().includes(lq));
+  linkSel.classed('dimmed', d => {
+    return !d.source.label?.toLowerCase().includes(lq) &&
+           !d.target.label?.toLowerCase().includes(lq);
+  });
+}
+
+function clearDim() {
+  nodeSel.classed('dimmed', false);
+  linkSel.classed('dimmed', false);
+}
+
+// Resize
+window.addEventListener('resize', () => {
+  sim.force('center', d3.forceCenter(W() / 2, H() / 2)).alpha(0.3).restart();
+});
+</script>
+</body>
+</html>

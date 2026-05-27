@@ -1,0 +1,8996 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A multi-agent AI system that generates technical training courses for  Solution Architects — powered by LangGraph and local LLM inference">
+      
+      
+        <meta name="author" content="Tech Ramp Up">
+      
+      
+        <link rel="canonical" href="https://datechbridge-projects.github.io/sa-ramp-up/glossary/data-architect-glossary/">
+      
+      
+        <link rel="prev" href="../gcp/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Data Architect - Tech Ramp Up</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#data-architect-glossary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Tech Ramp Up" class="md-header__button md-logo" aria-label="Tech Ramp Up" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tech Ramp Up
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Data Architect
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../gcp/" class="md-tabs__link">
+          
+  
+  
+  Google
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../snowflake/" class="md-tabs__link">
+          
+  
+  
+  Snowflake
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../azure/" class="md-tabs__link">
+          
+  
+  
+  Azure
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../databricks/" class="md-tabs__link">
+          
+  
+  
+  Databricks
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../aws/" class="md-tabs__link">
+          
+  
+  
+  AWS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../etl/" class="md-tabs__link">
+          
+  
+  
+  ETL Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../bi/" class="md-tabs__link">
+          
+  
+  
+  BI Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../otf/" class="md-tabs__link">
+          
+  
+  
+  OTF
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../data-ref/" class="md-tabs__link">
+          
+  
+  
+  Data Solutions & Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../aws/" class="md-tabs__link">
+          
+  
+  
+  Glossary
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tech Ramp Up" class="md-nav__button md-logo" aria-label="Tech Ramp Up" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Tech Ramp Up
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Google
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Google
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_01_gcp_fundamentals_and_resource_hierarchy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. GCP Fundamentals and Resource Hierarchy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_02_security_identity_and_access_management_iam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Security, Identity, and Access Management (IAM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_03_cloud_storage_and_data_lake_architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Cloud Storage and Data Lake Architectures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_04_relational_databases_cloud_sql_and_spanner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Relational Databases: Cloud SQL and Spanner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_05_nosql_and_widecolumn_stores_bigtable_and_firestore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. NoSQL and Wide-Column Stores: Bigtable and Firestore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_06_bigquery_scalable_data_warehousing_and_analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. BigQuery: Scalable Data Warehousing and Analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_07_realtime_data_ingestion_with_pubsub/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Real-time Data Ingestion with Pub/Sub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_08_stream_and_batch_processing_with_dataflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Stream and Batch Processing with Dataflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_09_managed_hadoop_and_spark_with_cloud_dataproc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Managed Hadoop and Spark with Cloud Dataproc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_10_workflow_orchestration_with_cloud_composer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Workflow Orchestration with Cloud Composer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_11_data_migration_and_modernization_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Data Migration and Modernization Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_12_monitoring_logging_and_observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Monitoring, Logging, and Observability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_13_cost_management_and_billing_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Cost Management and Billing Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_14_machine_learning_integration_with_vertex_ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Machine Learning Integration with Vertex AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_15_competitive_positioning_and_industry_use_cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Competitive Positioning and Industry Use Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/section_16_certification_exam_readiness_and_capstone_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Certification Exam Readiness and Capstone Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_18" id="__nav_2_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SA Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_18">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SA Quick Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_01_gcp_fundamentals_and_resource_hierarchy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GCP Fundamentals and Resource Hierarchy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_02_security_identity_and_access_management_iam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security, Identity, and Access Management (IAM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_03_cloud_storage_and_data_lake_architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cloud Storage and Data Lake Architectures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_04_relational_databases_cloud_sql_and_spanner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relational Databases: Cloud SQL and Spanner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_05_nosql_and_widecolumn_stores_bigtable_and_firestore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NoSQL and Wide-Column Stores: Bigtable and Firestore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_06_bigquery_scalable_data_warehousing_and_analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BigQuery: Scalable Data Warehousing and Analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_07_realtime_data_ingestion_with_pubsub/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-time Data Ingestion with Pub/Sub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_08_stream_and_batch_processing_with_dataflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stream and Batch Processing with Dataflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_09_managed_hadoop_and_spark_with_cloud_dataproc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Managed Hadoop and Spark with Cloud Dataproc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_10_workflow_orchestration_with_cloud_composer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Orchestration with Cloud Composer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_11_data_migration_and_modernization_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Migration and Modernization Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_12_monitoring_logging_and_observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoring, Logging, and Observability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_13_cost_management_and_billing_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost Management and Billing Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_14_machine_learning_integration_with_vertex_ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Machine Learning Integration with Vertex AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_15_competitive_positioning_and_industry_use_cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Competitive Positioning and Industry Use Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gcp/notes/notes_section_16_certification_exam_readiness_and_capstone_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certification Exam Readiness and Capstone Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowflake
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Snowflake
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_01_snowflake_architecture_and_core_components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Snowflake Architecture and Core Components
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_02_data_storage_and_semistructured_data_handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Data Storage and Semi-Structured Data Handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_03_virtual_warehouse_management_and_scaling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Virtual Warehouse Management and Scaling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_04_data_ingestion_techniques_and_snowpipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Data Ingestion Techniques and Snowpipe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_05_time_travel_failsafe_and_zerocopy_cloning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Time Travel, Fail-safe, and Zero-Copy Cloning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_06_security_identity_and_access_control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Security, Identity, and Access Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_07_data_sharing_and_the_snowflake_marketplace/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Data Sharing and the Snowflake Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_08_snowpark_and_programmable_data_engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Snowpark and Programmable Data Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_09_query_optimization_and_performance_tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Query Optimization and Performance Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_10_monitoring_auditing_and_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Monitoring, Auditing, and Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_11_cost_management_and_billing_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Cost Management and Billing Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_12_migration_and_adoption_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Migration and Adoption Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_13_snowflake_use_cases_and_competitive_positioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Snowflake Use Cases and Competitive Positioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/section_14_certification_exam_preparation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Certification Exam Preparation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_16" id="__nav_3_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SA Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SA Quick Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_01_snowflake_architecture_and_core_components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowflake Architecture and Core Components
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_02_data_storage_and_semistructured_data_handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Storage and Semi-Structured Data Handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_03_virtual_warehouse_management_and_scaling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Virtual Warehouse Management and Scaling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_04_data_ingestion_techniques_and_snowpipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Ingestion Techniques and Snowpipe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_05_time_travel_failsafe_and_zerocopy_cloning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Time Travel, Fail-safe, and Zero-Copy Cloning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_06_security_identity_and_access_control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security, Identity, and Access Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_07_data_sharing_and_the_snowflake_marketplace/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Sharing and the Snowflake Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_08_snowpark_and_programmable_data_engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowpark and Programmable Data Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_09_query_optimization_and_performance_tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Query Optimization and Performance Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_10_monitoring_auditing_and_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoring, Auditing, and Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_11_cost_management_and_billing_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost Management and Billing Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_12_migration_and_adoption_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration and Adoption Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_13_snowflake_use_cases_and_competitive_positioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowflake Use Cases and Competitive Positioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snowflake/notes/notes_section_14_certification_exam_preparation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certification Exam Preparation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Azure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Azure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_01_course_introduction_and_dp203_exam_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Course Introduction and DP-203 Exam Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_02_designing_and_implementing_azure_storage_solutions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Designing and Implementing Azure Storage Solutions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_03_implementing_relational_data_stores_with_azure_sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Implementing Relational Data Stores with Azure SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_04_implementing_nosql_solutions_with_azure_cosmos_db/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Implementing NoSQL Solutions with Azure Cosmos DB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_05_data_integration_and_orchestration_with_azure_data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Data Integration and Orchestration with Azure Data Factory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_06_largescale_data_processing_with_azure_synapse_anal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Large-Scale Data Processing with Azure Synapse Analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_07_stream_processing_with_azure_stream_analytics_and_/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Stream Processing with Azure Stream Analytics and Event Hubs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_08_distributed_data_processing_with_azure_databricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Distributed Data Processing with Azure Databricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_09_implementing_security_identity_and_access_control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Implementing Security, Identity, and Access Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_10_monitoring_logging_and_operations_for_data_pipelin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Monitoring, Logging, and Operations for Data Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_11_data_migration_and_cloud_adoption_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Data Migration and Cloud Adoption Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_12_managing_cost_performance_and_billing_for_azure_da/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Managing Cost, Performance, and Billing for Azure Data Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_13_data_governance_and_metadata_management_with_azure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Data Governance and Metadata Management with Azure Purview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/section_14_exam_readiness_final_review_and_practice_scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Exam Readiness: Final Review and Practice Scenarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_16" id="__nav_4_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SA Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SA Quick Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../azure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Databricks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Databricks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_01_introduction_to_databricks_architecture_on_aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introduction to Databricks Architecture on AWS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_02_databricks_compute_and_cluster_configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Databricks Compute and Cluster Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_03_deep_dive_into_delta_lake_acid_versioning_and_opti/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Deep Dive into Delta Lake: ACID, Versioning, and Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_04_implementing_medallion_architecture_bronze_silver_/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Implementing Medallion Architecture: Bronze, Silver, and Gold Layers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_05_efficient_data_ingestion_with_auto_loader_and_copy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Efficient Data Ingestion with Auto Loader and COPY INTO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_06_data_transformation_with_spark_sql_and_pyspark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Data Transformation with Spark SQL and PySpark
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_07_stream_processing_with_structured_streaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Stream Processing with Structured Streaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_08_building_declarable_pipelines_with_delta_live_tabl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Building Declarable Pipelines with Delta Live Tables (DLT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_09_data_governance_and_security_with_unity_catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Data Governance and Security with Unity Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_10_monitoring_logging_and_observability_in_databricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Monitoring, Logging, and Observability in Databricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_11_cost_management_and_aws_resource_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Cost Management and AWS Resource Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_12_migration_strategies_transitioning_from_aws_glue_t/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Migration Strategies: Transitioning from AWS Glue to Databricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_13_orchestration_and_automation_with_databricks_workf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Orchestration and Automation with Databricks Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/section_14_exam_readiness_and_final_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Exam Readiness and Final Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_16" id="__nav_5_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SA Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SA Quick Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_01_introduction_to_databricks_architecture_on_aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Databricks Architecture on AWS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_02_databricks_compute_and_cluster_configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Databricks Compute and Cluster Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_03_deep_dive_into_delta_lake_acid_versioning_and_opti/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deep Dive into Delta Lake: ACID, Versioning, and Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_04_implementing_medallion_architecture_bronze_silver_/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementing Medallion Architecture: Bronze, Silver, and Gold Layers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_05_efficient_data_ingestion_with_auto_loader_and_copy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Efficient Data Ingestion with Auto Loader and COPY INTO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_06_data_transformation_with_spark_sql_and_pyspark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Transformation with Spark SQL and PySpark
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_07_stream_processing_with_structured_streaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stream Processing with Structured Streaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_08_building_declarable_pipelines_with_delta_live_tabl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building Declarable Pipelines with Delta Live Tables (DLT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_09_data_governance_and_security_with_unity_catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Governance and Security with Unity Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_10_monitoring_logging_and_observability_in_databricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoring, Logging, and Observability in Databricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_11_cost_management_and_aws_resource_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost Management and AWS Resource Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_12_migration_strategies_transitioning_from_aws_glue_t/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration Strategies: Transitioning from AWS Glue to Databricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_13_orchestration_and_automation_with_databricks_workf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestration and Automation with Databricks Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databricks/notes/notes_section_14_exam_readiness_and_final_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Readiness and Final Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AWS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_01_course_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Course Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_02_exam_overview_and_strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Exam Overview and Strategy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_03_aws_data_architecture_foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. AWS Data Architecture Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_04_data_ingestion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Data Ingestion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_05_aws_glue_deep_dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. AWS Glue Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_06_amazon_s3_and_data_lake_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Amazon S3 and Data Lake Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_07_amazon_athena/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Amazon Athena
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_08_amazon_redshift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Amazon Redshift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_09_streaming_data_with_kinesis_and_msk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Streaming Data with Kinesis and MSK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_10_nosql_and_purposebuilt_databases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. NoSQL and Purpose-Built Databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_11_aws_lake_formation_and_data_governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. AWS Lake Formation and Data Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_12_data_orchestration_and_pipelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Data Orchestration and Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_13_performance_cost_optimization_and_monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Performance, Cost Optimization, and Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_14_security_compliance_and_networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Security, Compliance, and Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/section_15_capstone_and_exam_readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Capstone and Exam Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_17" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_17" id="__nav_6_17_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SA Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SA Quick Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_01_course_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_02_exam_overview_and_strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Overview and Strategy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_03_aws_data_architecture_foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Data Architecture Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_04_data_ingestion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Ingestion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_05_aws_glue_deep_dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Glue Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_06_amazon_s3_and_data_lake_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Amazon S3 and Data Lake Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_07_amazon_athena/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Amazon Athena
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_08_amazon_redshift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Amazon Redshift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_09_streaming_data_with_kinesis_and_msk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Streaming Data with Kinesis and MSK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_10_nosql_and_purposebuilt_databases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NoSQL and Purpose-Built Databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_11_aws_lake_formation_and_data_governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Lake Formation and Data Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_12_data_orchestration_and_pipelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Orchestration and Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_13_performance_cost_optimization_and_monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Performance, Cost Optimization, and Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_14_security_compliance_and_networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security, Compliance, and Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/notes/notes_section_15_capstone_and_exam_readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capstone and Exam Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ETL Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ETL Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etl/ab_initio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ab Initio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etl/talend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Talend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etl/datastage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IBM DataStage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etl/informatica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Informatica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etl/informatica_bdm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Informatica BDM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etl/matillion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matillion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etl/ssis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etl/pentaho/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pentaho
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etl/odi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Oracle Data Integrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etl/snaplogic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SnapLogic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../etl/alteryx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Alteryx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BI Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    BI Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/ssrs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSRS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/cognos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IBM Cognos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/quicksight/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Amazon QuickSight
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/power-bi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Power BI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/tableau/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tableau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/obiee/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Oracle OBIEE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bi/sap-bo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAP BusinessObjects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OTF
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OTF
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../otf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../otf/delta-lake/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Delta Lake
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../otf/hudi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apache Hudi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../otf/iceberg.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apache Iceberg
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Solutions & Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data Solutions & Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data-architecture-patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Architecture Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data-ingestion-pipelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Ingestion & Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data-storage-layers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Storage Layers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data-governance-cataloging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Governance & Cataloging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/real-time-streaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-Time & Streaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data-serving-consumption/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Serving & Consumption
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-ref/data_design_patterns_exhaustive.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design Patterns Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Glossary
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Azure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Architect
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Architect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-storage-architecture-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Storage &amp; Architecture Patterns
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-data-modeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Data Modeling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-integration-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Integration &amp; Processing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-metadata-data-governance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Metadata &amp; Data Governance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-semantic-layer-ontology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Semantic Layer &amp; Ontology
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-bi-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. BI &amp; Analytics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-cloud-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Cloud &amp; Infrastructure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-data-quality-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Data Quality &amp; Observability
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-emerging-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Emerging Concepts
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-storage-architecture-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Storage &amp; Architecture Patterns
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-data-modeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Data Modeling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-integration-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Integration &amp; Processing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-metadata-data-governance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Metadata &amp; Data Governance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-semantic-layer-ontology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Semantic Layer &amp; Ontology
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-bi-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. BI &amp; Analytics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-cloud-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Cloud &amp; Infrastructure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-data-quality-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Data Quality &amp; Observability
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-emerging-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Emerging Concepts
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="data-architect-glossary">Data Architect Glossary<a class="headerlink" href="#data-architect-glossary" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>Exhaustive reference of terms, acronyms, and concepts across all Data Architecture domains.</p>
+</blockquote>
+<hr />
+<h2 id="1-storage-architecture-patterns">1. Storage &amp; Architecture Patterns<a class="headerlink" href="#1-storage-architecture-patterns" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Full Form / Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EDW</td>
+<td>Enterprise Data Warehouse — centralized repository for integrated, historical data from across the organization, optimized for reporting and analytics</td>
+</tr>
+<tr>
+<td>ODS</td>
+<td>Operational Data Store — near-real-time integration layer that consolidates data from source systems for operational reporting; not a replacement for EDW</td>
+</tr>
+<tr>
+<td>Data Lake</td>
+<td>Storage repository holding vast amounts of raw data in its native format (structured, semi-structured, unstructured) until needed; schema-on-read</td>
+</tr>
+<tr>
+<td>Data Lakehouse</td>
+<td>Architecture combining the low-cost storage of a data lake with the structure and ACID transactions of a data warehouse (e.g., Delta Lake, Apache Iceberg)</td>
+</tr>
+<tr>
+<td>Data Warehouse</td>
+<td>Subject-oriented, integrated, time-variant, non-volatile collection of data in support of management decisions (Inmon's definition)</td>
+</tr>
+<tr>
+<td>Data Mart</td>
+<td>A subset of a data warehouse focused on a single subject area or business unit (e.g., Sales Mart, Finance Mart)</td>
+</tr>
+<tr>
+<td>Data Hub</td>
+<td>Central integration point for data exchange between systems; often includes a metadata registry and routing logic</td>
+</tr>
+<tr>
+<td>Data Mesh</td>
+<td>Decentralized sociotechnical architecture where domain teams own and serve their data as products, with federated governance</td>
+</tr>
+<tr>
+<td>Data Fabric</td>
+<td>Architecture that provides consistent, automated data management across hybrid and multi-cloud environments using metadata and AI</td>
+</tr>
+<tr>
+<td>Lambda Architecture</td>
+<td>Hybrid batch + speed processing architecture; combines a batch layer (high latency, accurate) with a speed layer (low latency, approximate)</td>
+</tr>
+<tr>
+<td>Kappa Architecture</td>
+<td>Simplified streaming-only architecture that eliminates the batch layer; all data processed as streams</td>
+</tr>
+<tr>
+<td>Medallion Architecture</td>
+<td>Layered data organization: Bronze (raw), Silver (cleaned/conformed), Gold (business-level aggregates); popularized by Databricks</td>
+</tr>
+<tr>
+<td>Bronze Layer</td>
+<td>Raw ingestion layer in medallion architecture; data lands as-is from source systems</td>
+</tr>
+<tr>
+<td>Silver Layer</td>
+<td>Cleaned, deduplicated, and conformed data layer; applies data quality rules and joins</td>
+</tr>
+<tr>
+<td>Gold Layer</td>
+<td>Business-level aggregates and curated datasets ready for BI consumption</td>
+</tr>
+<tr>
+<td>HTAP</td>
+<td>Hybrid Transactional/Analytical Processing — systems that support both OLTP and OLAP workloads simultaneously</td>
+</tr>
+<tr>
+<td>OLTP</td>
+<td>Online Transactional Processing — systems optimized for high-volume, low-latency read/write operations (e.g., order entry systems)</td>
+</tr>
+<tr>
+<td>MPP</td>
+<td>Massively Parallel Processing — distributes query execution across many nodes simultaneously; used in Redshift, Snowflake, BigQuery</td>
+</tr>
+<tr>
+<td>SMP</td>
+<td>Symmetric Multiprocessing — multiple processors sharing a single memory space; limits scalability compared to MPP</td>
+</tr>
+<tr>
+<td>Shared-Nothing Architecture</td>
+<td>Each node in a cluster has its own CPU, memory, and disk; no resource contention; basis for most MPP systems</td>
+</tr>
+<tr>
+<td>Shared-Disk Architecture</td>
+<td>Nodes share storage but have independent CPUs/memory; common in cloud-native warehouses like Snowflake</td>
+</tr>
+<tr>
+<td>Data Vault</td>
+<td>Modeling methodology for enterprise data warehouses; highly scalable, auditable, and adaptable (see Data Modeling section)</td>
+</tr>
+<tr>
+<td>Operational Analytics</td>
+<td>Running analytics directly on operational/transactional data with minimal latency</td>
+</tr>
+<tr>
+<td>Logical Data Warehouse</td>
+<td>Virtual data warehouse layer that federates queries across multiple physical data stores without moving data</td>
+</tr>
+<tr>
+<td>Virtual Data Warehouse</td>
+<td>Query federation layer that presents a unified schema across disparate sources</td>
+</tr>
+<tr>
+<td>Data Virtualization</td>
+<td>Technology that provides real-time, unified data access across disparate systems without physical data movement</td>
+</tr>
+<tr>
+<td>CDP</td>
+<td>Customer Data Platform — system that creates a unified, persistent customer database accessible to other systems</td>
+</tr>
+<tr>
+<td>MDM</td>
+<td>Master Data Management — discipline for defining and managing critical data assets (customers, products, locations) to ensure single authoritative version</td>
+</tr>
+<tr>
+<td>Reference Data</td>
+<td>Data that defines valid values for other data fields (e.g., country codes, currency codes, status values)</td>
+</tr>
+<tr>
+<td>Landing Zone</td>
+<td>Initial staging area where raw data is deposited before processing; often synonymous with Bronze layer</td>
+</tr>
+<tr>
+<td>Staging Area</td>
+<td>Temporary storage area used during ETL for intermediate transformations before loading to target</td>
+</tr>
+<tr>
+<td>Cold Storage</td>
+<td>Low-cost, high-latency storage tier for infrequently accessed archival data</td>
+</tr>
+<tr>
+<td>Hot Storage</td>
+<td>High-cost, low-latency storage tier for frequently accessed, active data</td>
+</tr>
+<tr>
+<td>Warm Storage</td>
+<td>Middle-tier storage with moderate cost and access latency</td>
+</tr>
+<tr>
+<td>Polyglot Persistence</td>
+<td>Using multiple database technologies (relational, document, graph, key-value) best suited to each workload within one system</td>
+</tr>
+<tr>
+<td>Event Store</td>
+<td>Append-only log of all state-changing events in a system; basis for event sourcing pattern</td>
+</tr>
+<tr>
+<td>Time-Series Database</td>
+<td>Optimized for storing and querying timestamped data points (e.g., InfluxDB, TimescaleDB)</td>
+</tr>
+<tr>
+<td>Graph Database</td>
+<td>Stores data as nodes and edges to represent and traverse relationships (e.g., Neo4j, Amazon Neptune)</td>
+</tr>
+<tr>
+<td>Document Store</td>
+<td>Stores data as JSON/BSON documents with flexible schema (e.g., MongoDB, Couchbase)</td>
+</tr>
+<tr>
+<td>Key-Value Store</td>
+<td>Simplest NoSQL model; stores data as key-value pairs (e.g., Redis, DynamoDB)</td>
+</tr>
+<tr>
+<td>Wide-Column Store</td>
+<td>Stores data in rows with dynamic columns; suited for time-series and sparse data (e.g., Cassandra, HBase)</td>
+</tr>
+<tr>
+<td>NewSQL</td>
+<td>Databases providing ACID guarantees of traditional RDBMS with horizontal scalability of NoSQL (e.g., CockroachDB, Spanner)</td>
+</tr>
+<tr>
+<td>In-Memory Database</td>
+<td>Stores data primarily in RAM for ultra-low latency (e.g., Redis, SAP HANA, MemSQL)</td>
+</tr>
+<tr>
+<td>Data Swamp</td>
+<td>A poorly governed data lake where data quality, lineage, and discoverability have broken down</td>
+</tr>
+<tr>
+<td>Unified Namespace</td>
+<td>Single logical namespace that abstracts all data sources for query purposes</td>
+</tr>
+<tr>
+<td>Reverse ETL</td>
+<td>Process of syncing data from a data warehouse back into operational systems (CRM, marketing tools)</td>
+</tr>
+<tr>
+<td>Zero-Copy Cloning</td>
+<td>Creating a metadata-only copy of a dataset without duplicating physical storage (Snowflake feature)</td>
+</tr>
+<tr>
+<td>Data Sharing</td>
+<td>Capability to share live data across accounts or organizations without copying (Snowflake, Databricks Delta Sharing)</td>
+</tr>
+<tr>
+<td>External Table</td>
+<td>Table definition pointing to data stored outside the database (e.g., files in S3)</td>
+</tr>
+<tr>
+<td>Federated Query</td>
+<td>Querying data across multiple heterogeneous systems from a single SQL interface</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-data-modeling">2. Data Modeling<a class="headerlink" href="#2-data-modeling" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Full Form / Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kimball</td>
+<td>Ralph Kimball's dimensional modeling methodology; centers on fact and dimension tables optimized for business user queries</td>
+</tr>
+<tr>
+<td>Inmon</td>
+<td>Bill Inmon's enterprise data warehouse approach; normalized 3NF central warehouse with subject-area data marts fed from it</td>
+</tr>
+<tr>
+<td>Data Vault 2.0</td>
+<td>DV2.0 — Dan Linstedt's hybrid modeling approach with Hubs (business keys), Links (relationships), and Satellites (context); agile and auditable</td>
+</tr>
+<tr>
+<td>Anchor Modeling</td>
+<td>Ultra-normalized modeling approach using anchors, attributes, ties, and knots; handles change well but complex to query</td>
+</tr>
+<tr>
+<td>Activity Schema</td>
+<td>Modern analytics modeling pattern organizing all data around a single entity timeline</td>
+</tr>
+<tr>
+<td>Dimensional Model</td>
+<td>Fact-and-dimension schema design for analytical databases; optimized for query performance and business usability</td>
+</tr>
+<tr>
+<td>Fact Table</td>
+<td>Central table in a dimensional model storing numeric measures and foreign keys to dimensions (e.g., Sales Fact)</td>
+</tr>
+<tr>
+<td>Dimension Table</td>
+<td>Descriptive attributes table providing context for facts (e.g., Date, Customer, Product dimensions)</td>
+</tr>
+<tr>
+<td>Star Schema</td>
+<td>Dimensional model with a central fact table surrounded by denormalized dimension tables; simple and fast to query</td>
+</tr>
+<tr>
+<td>Snowflake Schema</td>
+<td>Normalized variant of star schema where dimension tables are further normalized into sub-dimensions</td>
+</tr>
+<tr>
+<td>Galaxy Schema</td>
+<td>Multiple fact tables sharing dimension tables; also called Fact Constellation</td>
+</tr>
+<tr>
+<td>Bridge Table</td>
+<td>Resolves many-to-many relationships between fact and dimension tables</td>
+</tr>
+<tr>
+<td>Degenerate Dimension</td>
+<td>Dimension attribute stored directly in the fact table rather than a separate dimension table (e.g., invoice number)</td>
+</tr>
+<tr>
+<td>Junk Dimension</td>
+<td>Combines low-cardinality miscellaneous flags/indicators into a single dimension to reduce fact table width</td>
+</tr>
+<tr>
+<td>Role-Playing Dimension</td>
+<td>Single dimension table used multiple times in a fact table for different purposes (e.g., Date as Order Date, Ship Date)</td>
+</tr>
+<tr>
+<td>Outrigger</td>
+<td>Secondary dimension table attached to a primary dimension table (not directly to fact); used sparingly</td>
+</tr>
+<tr>
+<td>Conformed Dimension</td>
+<td>Dimension shared across multiple fact tables or data marts with consistent meaning and values</td>
+</tr>
+<tr>
+<td>Conformed Fact</td>
+<td>Fact measure with consistent definition and granularity across data marts</td>
+</tr>
+<tr>
+<td>Grain</td>
+<td>The level of detail represented by a single row in a fact table; must be declared before design begins</td>
+</tr>
+<tr>
+<td>Factless Fact Table</td>
+<td>Fact table with no numeric measures; captures events or coverage relationships (e.g., student enrollment)</td>
+</tr>
+<tr>
+<td>Accumulating Snapshot</td>
+<td>Fact table pattern tracking the lifecycle of a process with multiple date stamps updated as milestones are reached</td>
+</tr>
+<tr>
+<td>Periodic Snapshot</td>
+<td>Fact table capturing state at regular intervals (daily, weekly, monthly)</td>
+</tr>
+<tr>
+<td>Transaction Fact Table</td>
+<td>Records individual business events or transactions at the lowest grain</td>
+</tr>
+<tr>
+<td>SCD</td>
+<td>Slowly Changing Dimension — technique for managing changes to dimension attributes over time</td>
+</tr>
+<tr>
+<td>SCD Type 0</td>
+<td>Dimension attributes never change; historical value is retained forever</td>
+</tr>
+<tr>
+<td>SCD Type 1</td>
+<td>Overwrite old value; no history kept; current state only</td>
+</tr>
+<tr>
+<td>SCD Type 2</td>
+<td>Add a new row for each change; full history preserved with effective dates and current flag</td>
+</tr>
+<tr>
+<td>SCD Type 3</td>
+<td>Add a new column for the previous value; limited history (typically tracks only one prior value)</td>
+</tr>
+<tr>
+<td>SCD Type 4</td>
+<td>Separate history table; current values in main table, all history in mini-dimension</td>
+</tr>
+<tr>
+<td>SCD Type 6</td>
+<td>Hybrid combining Types 1, 2, and 3; adds current value column to Type 2 rows</td>
+</tr>
+<tr>
+<td>Hub</td>
+<td>Data Vault component storing a unique list of business keys with metadata (load date, source)</td>
+</tr>
+<tr>
+<td>Link</td>
+<td>Data Vault component capturing relationships between two or more Hubs</td>
+</tr>
+<tr>
+<td>Satellite</td>
+<td>Data Vault component storing descriptive context and history for a Hub or Link</td>
+</tr>
+<tr>
+<td>PIT Table</td>
+<td>Point-in-Time table in Data Vault — pre-joins satellites at specific snapshots for query performance</td>
+</tr>
+<tr>
+<td>Bridge Table (DV)</td>
+<td>Data Vault construct that pre-joins a chain of links and hubs for performance</td>
+</tr>
+<tr>
+<td>Business Vault</td>
+<td>Data Vault layer containing business rules and calculations applied to Raw Vault data</td>
+</tr>
+<tr>
+<td>Raw Vault</td>
+<td>Data Vault layer containing data as-received from sources, no business rules applied</td>
+</tr>
+<tr>
+<td>3NF</td>
+<td>Third Normal Form — relational database design where all attributes depend only on the primary key; eliminates redundancy</td>
+</tr>
+<tr>
+<td>1NF</td>
+<td>First Normal Form — all column values are atomic (indivisible), no repeating groups</td>
+</tr>
+<tr>
+<td>2NF</td>
+<td>Second Normal Form — 1NF plus all non-key attributes fully depend on the entire composite primary key</td>
+</tr>
+<tr>
+<td>BCNF</td>
+<td>Boyce-Codd Normal Form — stronger version of 3NF; every determinant is a candidate key</td>
+</tr>
+<tr>
+<td>Denormalization</td>
+<td>Intentionally adding redundancy to a normalized schema to improve read query performance</td>
+</tr>
+<tr>
+<td>ERD</td>
+<td>Entity-Relationship Diagram — visual representation of entities and their relationships in a data model</td>
+</tr>
+<tr>
+<td>Conceptual Model</td>
+<td>High-level model showing key entities and relationships; no technical detail; used for stakeholder communication</td>
+</tr>
+<tr>
+<td>Logical Model</td>
+<td>Detailed data model with entities, attributes, and relationships; technology-agnostic</td>
+</tr>
+<tr>
+<td>Physical Model</td>
+<td>Implementation-specific model with tables, columns, data types, indexes, and constraints</td>
+</tr>
+<tr>
+<td>Surrogate Key</td>
+<td>System-generated artificial primary key (integer or UUID) assigned to dimension rows</td>
+</tr>
+<tr>
+<td>Natural Key</td>
+<td>Business-assigned identifier that has meaning outside the database (e.g., customer ID, SSN)</td>
+</tr>
+<tr>
+<td>Composite Key</td>
+<td>Primary key made up of two or more columns</td>
+</tr>
+<tr>
+<td>Foreign Key</td>
+<td>Column(s) referencing the primary key of another table to enforce referential integrity</td>
+</tr>
+<tr>
+<td>Business Key</td>
+<td>Identifier used in the business domain to uniquely identify an entity; basis for Data Vault Hubs</td>
+</tr>
+<tr>
+<td>Cardinality</td>
+<td>The number of unique values in a column; also describes relationship types (1:1, 1:M, M:N)</td>
+</tr>
+<tr>
+<td>Granularity</td>
+<td>Level of detail in a dataset; fine grain = more rows, each representing a smaller unit of measurement</td>
+</tr>
+<tr>
+<td>Normalization</td>
+<td>Process of organizing data to reduce redundancy and improve data integrity</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>Classification of a column's values (INTEGER, VARCHAR, DATE, BOOLEAN, etc.)</td>
+</tr>
+<tr>
+<td>Null Handling</td>
+<td>How missing/unknown values are represented and treated in queries and aggregations</td>
+</tr>
+<tr>
+<td>Temporal Table</td>
+<td>Table that automatically tracks row history with valid-time or transaction-time columns; ISO SQL:2011 standard</td>
+</tr>
+<tr>
+<td>Bi-Temporal Modeling</td>
+<td>Tracking both valid time (when something was true in reality) and transaction time (when it was recorded)</td>
+</tr>
+<tr>
+<td>Polymorphic Association</td>
+<td>Single table stores relationships to multiple entity types; common anti-pattern in relational modeling</td>
+</tr>
+<tr>
+<td>Anti-Pattern</td>
+<td>A modeling or design choice that seems reasonable but causes problems (e.g., EAV for structured data)</td>
+</tr>
+<tr>
+<td>EAV</td>
+<td>Entity-Attribute-Value — stores data as rows of key-value pairs; flexible but hard to query and validate</td>
+</tr>
+<tr>
+<td>Wide Table</td>
+<td>Denormalized table with many columns; common in analytics/columnar stores for query performance</td>
+</tr>
+<tr>
+<td>Schema Evolution</td>
+<td>The ability to change a data schema (add/remove columns) without breaking existing consumers</td>
+</tr>
+<tr>
+<td>Semantic Key</td>
+<td>A meaningful business key embedded in a surrogate; combines audibility and performance</td>
+</tr>
+<tr>
+<td>Hash Key</td>
+<td>MD5 or SHA-1 hash of business key fields used as surrogate in Data Vault for deterministic, parallel loading</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-integration-processing">3. Integration &amp; Processing<a class="headerlink" href="#3-integration-processing" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Full Form / Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ETL</td>
+<td>Extract, Transform, Load — data integration pattern where transformation occurs before loading into target</td>
+</tr>
+<tr>
+<td>ELT</td>
+<td>Extract, Load, Transform — data is loaded raw into target system and transformed there using its compute power</td>
+</tr>
+<tr>
+<td>CDC</td>
+<td>Change Data Capture — technique for identifying and capturing data changes in source systems (insert, update, delete)</td>
+</tr>
+<tr>
+<td>Log-Based CDC</td>
+<td>CDC using database transaction logs (WAL, binlog) to capture changes without impacting source performance</td>
+</tr>
+<tr>
+<td>Query-Based CDC</td>
+<td>CDC using timestamps or watermarks in SQL queries to detect changed rows; higher source impact</td>
+</tr>
+<tr>
+<td>Trigger-Based CDC</td>
+<td>CDC using database triggers to capture changes; high overhead, generally avoided</td>
+</tr>
+<tr>
+<td>Batch Processing</td>
+<td>Processing data in discrete, scheduled chunks; high latency, high throughput</td>
+</tr>
+<tr>
+<td>Micro-Batch</td>
+<td>Near-real-time processing of small batches at short intervals (e.g., Spark Structured Streaming)</td>
+</tr>
+<tr>
+<td>Stream Processing</td>
+<td>Continuous processing of data as it arrives with very low latency (e.g., Apache Flink, Kafka Streams)</td>
+</tr>
+<tr>
+<td>Real-Time Processing</td>
+<td>Data processing with sub-second latency; used for alerts, fraud detection, live dashboards</td>
+</tr>
+<tr>
+<td>Near-Real-Time</td>
+<td>Processing with latency of seconds to minutes; acceptable for many operational analytics use cases</td>
+</tr>
+<tr>
+<td>Data Pipeline</td>
+<td>Series of processing steps that move and transform data from source to destination</td>
+</tr>
+<tr>
+<td>Ingestion</td>
+<td>Process of bringing data into a storage system from external sources</td>
+</tr>
+<tr>
+<td>Message Queue</td>
+<td>Asynchronous communication buffer between systems (e.g., RabbitMQ, Amazon SQS)</td>
+</tr>
+<tr>
+<td>Event Streaming</td>
+<td>Durable, ordered log of events accessible for replay by multiple consumers (e.g., Apache Kafka)</td>
+</tr>
+<tr>
+<td>Kafka</td>
+<td>Apache Kafka — distributed event streaming platform; uses topics, partitions, producers, and consumers</td>
+</tr>
+<tr>
+<td>Pub/Sub</td>
+<td>Publish-Subscribe messaging pattern where producers publish to topics and consumers subscribe independently</td>
+</tr>
+<tr>
+<td>Topic</td>
+<td>Named channel in a messaging system where events are published and consumed</td>
+</tr>
+<tr>
+<td>Partition</td>
+<td>Subdivision of a Kafka topic for parallelism and ordering guarantees</td>
+</tr>
+<tr>
+<td>Consumer Group</td>
+<td>Set of consumers that collectively read all partitions of a topic; enables parallel consumption</td>
+</tr>
+<tr>
+<td>Exactly-Once Semantics</td>
+<td>Processing guarantee that each message is processed exactly once, even in failure scenarios</td>
+</tr>
+<tr>
+<td>At-Least-Once</td>
+<td>Processing guarantee that a message will be processed at minimum once; duplicates possible</td>
+</tr>
+<tr>
+<td>At-Most-Once</td>
+<td>Processing guarantee that a message is processed no more than once; data loss possible</td>
+</tr>
+<tr>
+<td>Idempotency</td>
+<td>Property of an operation that can be applied multiple times without changing the result beyond the first application</td>
+</tr>
+<tr>
+<td>Backpressure</td>
+<td>Mechanism for a downstream system to signal an upstream system to slow data production</td>
+</tr>
+<tr>
+<td>Watermark</td>
+<td>In stream processing, a threshold indicating how late events can arrive and still be included in a window</td>
+</tr>
+<tr>
+<td>Event Time</td>
+<td>The time when an event actually occurred in the real world</td>
+</tr>
+<tr>
+<td>Processing Time</td>
+<td>The time when an event is processed by the stream processor</td>
+</tr>
+<tr>
+<td>Tumbling Window</td>
+<td>Fixed-size, non-overlapping time window for stream aggregations</td>
+</tr>
+<tr>
+<td>Sliding Window</td>
+<td>Overlapping time windows that advance by a step smaller than the window size</td>
+</tr>
+<tr>
+<td>Session Window</td>
+<td>Dynamic window that groups events within a period of activity, closing after a gap of inactivity</td>
+</tr>
+<tr>
+<td>Late Arriving Data</td>
+<td>Events that arrive after the expected processing window; requires special handling strategies</td>
+</tr>
+<tr>
+<td>Upsert</td>
+<td>Operation that inserts a new record or updates an existing one based on a key match (UPDATE + INSERT)</td>
+</tr>
+<tr>
+<td>Merge</td>
+<td>SQL/DML operation combining INSERT, UPDATE, and DELETE in a single statement based on match conditions</td>
+</tr>
+<tr>
+<td>Full Refresh</td>
+<td>Loading strategy that truncates and reloads an entire table; simple but expensive for large datasets</td>
+</tr>
+<tr>
+<td>Incremental Load</td>
+<td>Loading only new or changed records since the last extraction; requires reliable watermarking</td>
+</tr>
+<tr>
+<td>Delta Load</td>
+<td>Synonym for incremental load; loading only the "delta" (changes) since the last run</td>
+</tr>
+<tr>
+<td>Data Replication</td>
+<td>Copying data from one system to another to ensure availability, redundancy, or geographic distribution</td>
+</tr>
+<tr>
+<td>Webhook</td>
+<td>HTTP callback that pushes data to a URL when an event occurs; event-driven integration pattern</td>
+</tr>
+<tr>
+<td>API Integration</td>
+<td>Connecting systems via REST, SOAP, or GraphQL APIs to exchange data</td>
+</tr>
+<tr>
+<td>REST</td>
+<td>Representational State Transfer — stateless HTTP-based API design style; uses GET, POST, PUT, DELETE</td>
+</tr>
+<tr>
+<td>GraphQL</td>
+<td>Query language for APIs that allows clients to request exactly the data they need</td>
+</tr>
+<tr>
+<td>gRPC</td>
+<td>Google Remote Procedure Call — high-performance RPC framework using Protocol Buffers</td>
+</tr>
+<tr>
+<td>Protocol Buffers</td>
+<td>Protobuf — Google's binary serialization format; more efficient than JSON/XML</td>
+</tr>
+<tr>
+<td>Avro</td>
+<td>Apache Avro — compact binary data serialization format with schema evolution support; common in Kafka</td>
+</tr>
+<tr>
+<td>Parquet</td>
+<td>Apache Parquet — columnar binary storage format; efficient for analytical queries; default in many lake formats</td>
+</tr>
+<tr>
+<td>ORC</td>
+<td>Optimized Row Columnar — columnar format developed for Hive; includes built-in indexes and statistics</td>
+</tr>
+<tr>
+<td>JSON</td>
+<td>JavaScript Object Notation — lightweight, human-readable data interchange format</td>
+</tr>
+<tr>
+<td>CSV</td>
+<td>Comma-Separated Values — plain-text tabular format; ubiquitous but lacks schema enforcement</td>
+</tr>
+<tr>
+<td>XML</td>
+<td>Extensible Markup Language — hierarchical text-based format; verbose but self-describing</td>
+</tr>
+<tr>
+<td>DAG</td>
+<td>Directed Acyclic Graph — representation of pipeline dependencies; used by Airflow, dbt, and other orchestrators</td>
+</tr>
+<tr>
+<td>Orchestration</td>
+<td>Coordinating and scheduling the execution of pipeline tasks and dependencies</td>
+</tr>
+<tr>
+<td>Airflow</td>
+<td>Apache Airflow — open-source workflow orchestration platform using Python DAGs</td>
+</tr>
+<tr>
+<td>Prefect</td>
+<td>Modern Python-native orchestration platform with dynamic workflows</td>
+</tr>
+<tr>
+<td>Dagster</td>
+<td>Data-aware orchestration platform with built-in asset tracking and lineage</td>
+</tr>
+<tr>
+<td>dbt</td>
+<td>Data Build Tool — SQL-based transformation framework for the ELT pattern; version-controls SQL models</td>
+</tr>
+<tr>
+<td>Fivetran</td>
+<td>Managed connector service for automated data ingestion from SaaS and database sources</td>
+</tr>
+<tr>
+<td>Airbyte</td>
+<td>Open-source data integration platform with a large connector catalog</td>
+</tr>
+<tr>
+<td>Singer</td>
+<td>Open-source data integration specification using taps (sources) and targets (destinations)</td>
+</tr>
+<tr>
+<td>Debezium</td>
+<td>Open-source CDC platform that captures database changes via transaction logs</td>
+</tr>
+<tr>
+<td>Flink</td>
+<td>Apache Flink — distributed stream processing framework with exactly-once guarantees</td>
+</tr>
+<tr>
+<td>Spark</td>
+<td>Apache Spark — unified analytics engine for large-scale batch and streaming data processing</td>
+</tr>
+<tr>
+<td>Spark Streaming</td>
+<td>Micro-batch streaming layer on Apache Spark</td>
+</tr>
+<tr>
+<td>Structured Streaming</td>
+<td>Spark's continuous streaming API built on top of Spark SQL</td>
+</tr>
+<tr>
+<td>Beam</td>
+<td>Apache Beam — unified programming model for batch and streaming pipelines; runs on multiple runners</td>
+</tr>
+<tr>
+<td>Dataflow</td>
+<td>Google Cloud Dataflow — managed Apache Beam service</td>
+</tr>
+<tr>
+<td>Kinesis</td>
+<td>Amazon Kinesis — managed real-time data streaming service</td>
+</tr>
+<tr>
+<td>Event Hub</td>
+<td>Azure Event Hubs — fully managed event ingestion service; Kafka-compatible</td>
+</tr>
+<tr>
+<td>Pub/Sub (GCP)</td>
+<td>Google Cloud Pub/Sub — managed messaging and ingestion service</td>
+</tr>
+<tr>
+<td>SQS</td>
+<td>Amazon Simple Queue Service — managed message queuing service</td>
+</tr>
+<tr>
+<td>SNS</td>
+<td>Amazon Simple Notification Service — managed pub/sub messaging for fan-out patterns</td>
+</tr>
+<tr>
+<td>Data Contracts</td>
+<td>Formal agreement between data producers and consumers defining schema, quality, and SLA expectations</td>
+</tr>
+<tr>
+<td>Schema-on-Read</td>
+<td>Schema is applied when data is read, not when it is written; enables flexible ingestion</td>
+</tr>
+<tr>
+<td>Schema-on-Write</td>
+<td>Schema is enforced when data is written; ensures data quality at the point of ingestion</td>
+</tr>
+<tr>
+<td>Data Serialization</td>
+<td>Converting data structures to a format suitable for storage or transmission</td>
+</tr>
+<tr>
+<td>Compression</td>
+<td>Reducing data size using algorithms (GZIP, Snappy, LZ4, ZSTD); critical for storage cost and I/O performance</td>
+</tr>
+<tr>
+<td>Partitioning</td>
+<td>Dividing data into logical segments (by date, region, etc.) to improve query performance and data management</td>
+</tr>
+<tr>
+<td>Bucketing</td>
+<td>Sub-partitioning data into fixed buckets by hash of a column; improves join and aggregation performance</td>
+</tr>
+<tr>
+<td>Z-Ordering</td>
+<td>Multi-dimensional clustering technique (Delta Lake) that co-locates related data to reduce query I/O</td>
+</tr>
+<tr>
+<td>Clustering</td>
+<td>Physically organizing data on disk by one or more columns to improve range query performance</td>
+</tr>
+<tr>
+<td>Pushdown Predicate</td>
+<td>Filtering applied at the storage layer before data is sent to the compute layer; reduces data scan</td>
+</tr>
+<tr>
+<td>Data Skew</td>
+<td>Uneven distribution of data across partitions causing some tasks to run much longer than others</td>
+</tr>
+<tr>
+<td>Shuffle</td>
+<td>Redistribution of data across partitions during operations like joins and aggregations in distributed systems</td>
+</tr>
+<tr>
+<td>Broadcast Join</td>
+<td>Join optimization where a small table is replicated to all nodes to avoid shuffling a large table</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-metadata-data-governance">4. Metadata &amp; Data Governance<a class="headerlink" href="#4-metadata-data-governance" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Full Form / Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DAMA</td>
+<td>Data Management Association — professional organization that publishes the DMBOK framework</td>
+</tr>
+<tr>
+<td>DMBOK</td>
+<td>Data Management Body of Knowledge — DAMA's comprehensive framework for data management disciplines</td>
+</tr>
+<tr>
+<td>Data Governance</td>
+<td>Framework of policies, processes, standards, and roles that ensure data is managed as a strategic asset</td>
+</tr>
+<tr>
+<td>Data Steward</td>
+<td>Person responsible for the quality and fitness of a specific data domain or dataset</td>
+</tr>
+<tr>
+<td>Data Owner</td>
+<td>Business executive accountable for the quality, security, and appropriate use of a data asset</td>
+</tr>
+<tr>
+<td>Data Custodian</td>
+<td>IT role responsible for technical management and storage of data assets</td>
+</tr>
+<tr>
+<td>Data Catalog</td>
+<td>Metadata repository providing searchable inventory of data assets with descriptions, lineage, and quality info</td>
+</tr>
+<tr>
+<td>Business Glossary</td>
+<td>Curated dictionary of business terms with agreed definitions; foundation for data governance</td>
+</tr>
+<tr>
+<td>Data Dictionary</td>
+<td>Technical documentation of datasets, tables, and columns including types, constraints, and descriptions</td>
+</tr>
+<tr>
+<td>Data Lineage</td>
+<td>End-to-end tracking of data origin, movement, transformations, and consumption</td>
+</tr>
+<tr>
+<td>Impact Analysis</td>
+<td>Using lineage to assess downstream effects of a proposed schema or pipeline change</td>
+</tr>
+<tr>
+<td>Active Metadata</td>
+<td>Metadata that drives automated decisions and actions (e.g., triggering quality checks, routing data)</td>
+</tr>
+<tr>
+<td>Passive Metadata</td>
+<td>Metadata used for documentation and discovery but not for automation</td>
+</tr>
+<tr>
+<td>Technical Metadata</td>
+<td>Information about data structure, format, storage, and access (table schemas, file sizes, partitions)</td>
+</tr>
+<tr>
+<td>Business Metadata</td>
+<td>Context describing business meaning, ownership, and usage policies</td>
+</tr>
+<tr>
+<td>Operational Metadata</td>
+<td>Information about data pipelines, job runs, data volumes, and processing history</td>
+</tr>
+<tr>
+<td>Data Classification</td>
+<td>Categorizing data by sensitivity level (Public, Internal, Confidential, Restricted)</td>
+</tr>
+<tr>
+<td>PII</td>
+<td>Personally Identifiable Information — any data that can identify a specific individual (name, SSN, email)</td>
+</tr>
+<tr>
+<td>PHI</td>
+<td>Protected Health Information — health data protected under HIPAA regulations</td>
+</tr>
+<tr>
+<td>PCI DSS</td>
+<td>Payment Card Industry Data Security Standard — security standard for handling cardholder data</td>
+</tr>
+<tr>
+<td>GDPR</td>
+<td>General Data Protection Regulation — EU regulation governing personal data collection and processing</td>
+</tr>
+<tr>
+<td>CCPA</td>
+<td>California Consumer Privacy Act — California law giving consumers rights over personal data</td>
+</tr>
+<tr>
+<td>HIPAA</td>
+<td>Health Insurance Portability and Accountability Act — US law protecting medical information</td>
+</tr>
+<tr>
+<td>Data Residency</td>
+<td>Requirement that data be stored and processed within specific geographic boundaries</td>
+</tr>
+<tr>
+<td>Data Sovereignty</td>
+<td>Legal concept that data is subject to the laws of the country where it is collected or stored</td>
+</tr>
+<tr>
+<td>Right to be Forgotten</td>
+<td>GDPR right allowing individuals to request deletion of their personal data</td>
+</tr>
+<tr>
+<td>Data Minimization</td>
+<td>Principle of collecting only the minimum data necessary for a stated purpose</td>
+</tr>
+<tr>
+<td>Purpose Limitation</td>
+<td>Principle that data collected for one purpose should not be used for a different purpose</td>
+</tr>
+<tr>
+<td>Consent Management</td>
+<td>Systems and processes for capturing, storing, and enforcing user consent for data processing</td>
+</tr>
+<tr>
+<td>Data Retention Policy</td>
+<td>Rules governing how long data is kept before archival or deletion</td>
+</tr>
+<tr>
+<td>Data Lifecycle Management</td>
+<td>DLM — governing data from creation through archival and deletion</td>
+</tr>
+<tr>
+<td>Data Access Control</td>
+<td>Policies and mechanisms controlling who can read, write, or modify specific data assets</td>
+</tr>
+<tr>
+<td>RBAC</td>
+<td>Role-Based Access Control — granting data access based on user roles rather than individual identities</td>
+</tr>
+<tr>
+<td>ABAC</td>
+<td>Attribute-Based Access Control — access decisions based on attributes of users, resources, and environment</td>
+</tr>
+<tr>
+<td>Column-Level Security</td>
+<td>Restricting access to specific columns in a table based on user role or attribute</td>
+</tr>
+<tr>
+<td>Row-Level Security</td>
+<td>RLS — filtering rows returned to a user based on their identity or role</td>
+</tr>
+<tr>
+<td>Dynamic Data Masking</td>
+<td>Masking sensitive data in query results without changing the stored data</td>
+</tr>
+<tr>
+<td>Tokenization</td>
+<td>Replacing sensitive data values with non-sensitive tokens; original value stored in a secure vault</td>
+</tr>
+<tr>
+<td>Encryption at Rest</td>
+<td>Encrypting data while stored on disk; protects against physical media theft</td>
+</tr>
+<tr>
+<td>Encryption in Transit</td>
+<td>Encrypting data as it moves over networks (TLS/SSL); protects against interception</td>
+</tr>
+<tr>
+<td>Key Management</td>
+<td>Managing cryptographic keys for encryption; critical for key rotation and access control</td>
+</tr>
+<tr>
+<td>Audit Trail</td>
+<td>Immutable log of all data access and modification events for compliance and forensic purposes</td>
+</tr>
+<tr>
+<td>Data Trust Score</td>
+<td>Metric quantifying the reliability and quality of a dataset based on multiple quality dimensions</td>
+</tr>
+<tr>
+<td>Data Policy</td>
+<td>Formal rules governing data collection, use, storage, sharing, and disposal</td>
+</tr>
+<tr>
+<td>Data Standard</td>
+<td>Agreed specifications for data formats, definitions, coding, and quality rules</td>
+</tr>
+<tr>
+<td>Interoperability</td>
+<td>Ability of different systems to exchange and use data without special integration effort</td>
+</tr>
+<tr>
+<td>Data Portability</td>
+<td>Ability to transfer data from one system to another in a usable format</td>
+</tr>
+<tr>
+<td>Metadata Management</td>
+<td>Discipline for collecting, storing, maintaining, and using metadata to improve data usability</td>
+</tr>
+<tr>
+<td>Apache Atlas</td>
+<td>Open-source metadata management and governance platform for Hadoop ecosystems</td>
+</tr>
+<tr>
+<td>Collibra</td>
+<td>Enterprise data governance and catalog platform</td>
+</tr>
+<tr>
+<td>Alation</td>
+<td>AI-based data catalog and governance platform</td>
+</tr>
+<tr>
+<td>Atlan</td>
+<td>Modern collaborative data catalog with active metadata capabilities</td>
+</tr>
+<tr>
+<td>DataHub</td>
+<td>LinkedIn's open-source metadata platform for data discovery and lineage</td>
+</tr>
+<tr>
+<td>OpenMetadata</td>
+<td>Open-source metadata platform and data catalog</td>
+</tr>
+<tr>
+<td>Unity Catalog</td>
+<td>Databricks' unified governance layer for data and AI assets</td>
+</tr>
+<tr>
+<td>Informatica IDMC</td>
+<td>Informatica Intelligent Data Management Cloud — enterprise data management platform</td>
+</tr>
+<tr>
+<td>Waterline Data</td>
+<td>AI-driven data discovery and cataloging tool (acquired by Infogix)</td>
+</tr>
+<tr>
+<td>Data Contract</td>
+<td>Formal schema and quality agreement between data producers and consumers</td>
+</tr>
+<tr>
+<td>Schema Registry</td>
+<td>Central repository for managing and versioning event schemas (Confluent, AWS Glue)</td>
+</tr>
+<tr>
+<td>Data Mesh Governance</td>
+<td>Federated computational governance in Data Mesh; policies enforced via automated platforms, not central teams</td>
+</tr>
+<tr>
+<td>FAIR Principles</td>
+<td>Findable, Accessible, Interoperable, Reusable — principles for scientific data management</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-semantic-layer-ontology">5. Semantic Layer &amp; Ontology<a class="headerlink" href="#5-semantic-layer-ontology" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Full Form / Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Semantic Layer</td>
+<td>Abstraction that translates business terms into technical data queries; sits between data and BI tools</td>
+</tr>
+<tr>
+<td>Metric Layer</td>
+<td>Centralized definition of business metrics (revenue, churn) ensuring consistent calculation everywhere</td>
+</tr>
+<tr>
+<td>Headless BI</td>
+<td>Metric definitions and business logic decoupled from any specific BI tool; accessible via API</td>
+</tr>
+<tr>
+<td>Metrics Store</td>
+<td>Repository of defined, versioned, and governed business metrics (e.g., dbt Metrics, Cube.js)</td>
+</tr>
+<tr>
+<td>Ontology</td>
+<td>Formal representation of knowledge including concepts, categories, and relationships in a domain</td>
+</tr>
+<tr>
+<td>Knowledge Graph</td>
+<td>Graph structure that represents real-world entities and semantic relationships between them</td>
+</tr>
+<tr>
+<td>RDF</td>
+<td>Resource Description Framework — W3C standard for representing information as subject-predicate-object triples</td>
+</tr>
+<tr>
+<td>RDFS</td>
+<td>RDF Schema — vocabulary extension for RDF providing class and property hierarchies</td>
+</tr>
+<tr>
+<td>OWL</td>
+<td>Web Ontology Language — W3C standard for creating rich ontologies on top of RDF</td>
+</tr>
+<tr>
+<td>SPARQL</td>
+<td>SPARQL Protocol and RDF Query Language — query language for RDF data stores</td>
+</tr>
+<tr>
+<td>Triple</td>
+<td>Atomic unit of RDF data: subject (entity) + predicate (relationship) + object (entity or value)</td>
+</tr>
+<tr>
+<td>Named Graph</td>
+<td>RDF graph with an associated URI; allows managing and querying subsets of a triple store</td>
+</tr>
+<tr>
+<td>Linked Data</td>
+<td>Practice of using RDF and HTTP URIs to publish and connect structured data on the web</td>
+</tr>
+<tr>
+<td>SKOS</td>
+<td>Simple Knowledge Organization System — W3C standard for expressing controlled vocabularies</td>
+</tr>
+<tr>
+<td>Taxonomy</td>
+<td>Hierarchical classification system for organizing concepts into parent-child relationships</td>
+</tr>
+<tr>
+<td>Thesaurus</td>
+<td>Vocabulary of preferred terms with synonyms, broader/narrower terms, and related terms</td>
+</tr>
+<tr>
+<td>Controlled Vocabulary</td>
+<td>Standardized set of terms used for consistent tagging and classification</td>
+</tr>
+<tr>
+<td>URI</td>
+<td>Uniform Resource Identifier — globally unique identifier for resources in linked data and the web</td>
+</tr>
+<tr>
+<td>Property Graph</td>
+<td>Graph model where nodes and edges can have properties; used by Neo4j, TigerGraph</td>
+</tr>
+<tr>
+<td>Cypher</td>
+<td>Declarative query language for property graphs; used by Neo4j</td>
+</tr>
+<tr>
+<td>Gremlin</td>
+<td>Graph traversal language for property graphs; part of Apache TinkerPop</td>
+</tr>
+<tr>
+<td>Triple Store</td>
+<td>Database optimized for storing and querying RDF triples (e.g., Stardog, GraphDB, Amazon Neptune)</td>
+</tr>
+<tr>
+<td>Inference / Reasoning</td>
+<td>Deriving new facts from existing knowledge using ontology rules (e.g., OWL reasoning)</td>
+</tr>
+<tr>
+<td>Semantic Search</td>
+<td>Search that understands the meaning and context of queries rather than just keyword matching</td>
+</tr>
+<tr>
+<td>Entity Resolution</td>
+<td>Process of identifying when records from different sources refer to the same real-world entity</td>
+</tr>
+<tr>
+<td>Entity Extraction</td>
+<td>NLP technique for identifying named entities (people, places, organizations) in unstructured text</td>
+</tr>
+<tr>
+<td>Knowledge Representation</td>
+<td>Formal encoding of domain knowledge for automated reasoning</td>
+</tr>
+<tr>
+<td>dbt Semantic Layer</td>
+<td>dbt's implementation of a metric layer allowing consistent metric definitions across BI tools</td>
+</tr>
+<tr>
+<td>LookML</td>
+<td>Looker's proprietary data modeling language for defining metrics, dimensions, and explores</td>
+</tr>
+<tr>
+<td>AtScale</td>
+<td>Semantic layer and universal data model platform</td>
+</tr>
+<tr>
+<td>Cube.js</td>
+<td>Open-source analytical API platform with a metric/semantic layer</td>
+</tr>
+<tr>
+<td>Superset Semantic Layer</td>
+<td>Apache Superset's virtual dataset layer for metric definitions</td>
+</tr>
+<tr>
+<td>Open Metadata Standards</td>
+<td>Efforts like OpenLineage, OpenMetadata, and dbt Contracts to standardize metadata exchange</td>
+</tr>
+<tr>
+<td>Conceptual Schema</td>
+<td>Technology-agnostic representation of business concepts and their relationships</td>
+</tr>
+<tr>
+<td>Domain Model</td>
+<td>Model representing concepts, relationships, and rules within a specific business domain</td>
+</tr>
+<tr>
+<td>Fact vs. Dimension (semantic)</td>
+<td>Semantic layer concepts mapping to numerical metrics (facts) vs. descriptive attributes (dimensions)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-bi-analytics">6. BI &amp; Analytics<a class="headerlink" href="#6-bi-analytics" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Full Form / Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OLAP</td>
+<td>Online Analytical Processing — multi-dimensional analysis of business data for decision support</td>
+</tr>
+<tr>
+<td>ROLAP</td>
+<td>Relational OLAP — OLAP implemented on relational databases using SQL; no pre-aggregated cubes</td>
+</tr>
+<tr>
+<td>MOLAP</td>
+<td>Multidimensional OLAP — data stored in pre-aggregated multidimensional arrays; fast queries, less flexible</td>
+</tr>
+<tr>
+<td>HOLAP</td>
+<td>Hybrid OLAP — combines ROLAP and MOLAP; aggregates in multidimensional store, details in relational</td>
+</tr>
+<tr>
+<td>Cube</td>
+<td>Multi-dimensional data structure with pre-calculated aggregates along dimensions and hierarchies</td>
+</tr>
+<tr>
+<td>MDX</td>
+<td>MultiDimensional Expressions — query language for OLAP cubes (Microsoft Analysis Services, Essbase)</td>
+</tr>
+<tr>
+<td>DAX</td>
+<td>Data Analysis Expressions — formula language used in Power BI, Power Pivot, and SSAS Tabular models</td>
+</tr>
+<tr>
+<td>Power Query / M</td>
+<td>Microsoft's data transformation language and engine embedded in Power BI and Excel</td>
+</tr>
+<tr>
+<td>Measure</td>
+<td>Numeric value calculated in a BI context (sum, average, count); can be implicit or explicit</td>
+</tr>
+<tr>
+<td>Dimension (BI)</td>
+<td>Categorical attribute used to slice and filter measures (Time, Geography, Product)</td>
+</tr>
+<tr>
+<td>Hierarchy</td>
+<td>Ordered levels within a dimension enabling drill-down (Year &gt; Quarter &gt; Month &gt; Day)</td>
+</tr>
+<tr>
+<td>KPI</td>
+<td>Key Performance Indicator — quantifiable metric reflecting critical business objectives</td>
+</tr>
+<tr>
+<td>OKR</td>
+<td>Objectives and Key Results — goal-setting framework pairing aspirational goals with measurable outcomes</td>
+</tr>
+<tr>
+<td>Drill-Down</td>
+<td>Navigating from a summary level to more detailed data (e.g., Year → Quarter → Month)</td>
+</tr>
+<tr>
+<td>Drill-Up / Roll-Up</td>
+<td>Aggregating detail data to a higher summary level</td>
+</tr>
+<tr>
+<td>Drill-Through</td>
+<td>Accessing underlying transaction-level detail records from a summarized BI view</td>
+</tr>
+<tr>
+<td>Slice</td>
+<td>Filtering a cube on one dimension to a specific value</td>
+</tr>
+<tr>
+<td>Dice</td>
+<td>Filtering a cube on multiple dimensions simultaneously</td>
+</tr>
+<tr>
+<td>Pivot</td>
+<td>Rotating a data table to exchange rows and columns for different analytical perspectives</td>
+</tr>
+<tr>
+<td>Cross-Tab</td>
+<td>Cross-tabulation — matrix display with row and column totals; pivot table equivalent</td>
+</tr>
+<tr>
+<td>Scorecard</td>
+<td>Dashboard presenting KPIs against targets, typically using RAG (Red/Amber/Green) status indicators</td>
+</tr>
+<tr>
+<td>Dashboard</td>
+<td>Visual display of key metrics and data visualizations for at-a-glance monitoring</td>
+</tr>
+<tr>
+<td>Report</td>
+<td>Structured presentation of data with filtering and formatting; less interactive than a dashboard</td>
+</tr>
+<tr>
+<td>Ad Hoc Query</td>
+<td>Unscheduled, user-defined query created on-demand to answer a specific business question</td>
+</tr>
+<tr>
+<td>LOD</td>
+<td>Level of Detail — Tableau expression type (FIXED, INCLUDE, EXCLUDE) for controlling aggregation scope</td>
+</tr>
+<tr>
+<td>Table Calculation</td>
+<td>Tableau calculations performed on the result set after aggregation, not on underlying data</td>
+</tr>
+<tr>
+<td>Calculated Field</td>
+<td>User-defined computed column or measure within a BI tool</td>
+</tr>
+<tr>
+<td>Aggregation</td>
+<td>Summarizing multiple rows into a single value (SUM, COUNT, AVG, MIN, MAX)</td>
+</tr>
+<tr>
+<td>Running Total</td>
+<td>Cumulative sum of a measure over an ordered dimension (e.g., year-to-date revenue)</td>
+</tr>
+<tr>
+<td>YTD</td>
+<td>Year-to-Date — cumulative value from the start of the fiscal/calendar year to current date</td>
+</tr>
+<tr>
+<td>MTD</td>
+<td>Month-to-Date — cumulative value from the start of the current month</td>
+</tr>
+<tr>
+<td>QTD</td>
+<td>Quarter-to-Date — cumulative value from the start of the current quarter</td>
+</tr>
+<tr>
+<td>Period-over-Period</td>
+<td>Comparing a metric in one period to the same metric in a prior period (YoY, MoM, WoW)</td>
+</tr>
+<tr>
+<td>Time Intelligence</td>
+<td>BI functions for date-based calculations (SAMEPERIODLASTYEAR, DATEADD in DAX)</td>
+</tr>
+<tr>
+<td>Parameterized Report</td>
+<td>Report with user-defined input parameters that filter or modify the output</td>
+</tr>
+<tr>
+<td>Paginated Report</td>
+<td>Fixed-layout, print-optimized report; suitable for invoices, statements, pixel-perfect output</td>
+</tr>
+<tr>
+<td>Self-Service BI</td>
+<td>BI tools enabling business users to create their own reports and analyses without IT assistance</td>
+</tr>
+<tr>
+<td>Augmented Analytics</td>
+<td>AI/ML-powered analytics that automates insight discovery, data preparation, and explanation</td>
+</tr>
+<tr>
+<td>Natural Language Query</td>
+<td>NLQ — querying data using plain language questions; enabled by NLP in BI tools</td>
+</tr>
+<tr>
+<td>Embedded Analytics</td>
+<td>BI capabilities integrated directly into business applications rather than standalone tools</td>
+</tr>
+<tr>
+<td>Pixel-Perfect Reporting</td>
+<td>Reports with precise layout control for printing; contrasted with interactive dashboards</td>
+</tr>
+<tr>
+<td>Semantic Model</td>
+<td>In Power BI, the dataset layer that defines measures, hierarchies, relationships, and row-level security</td>
+</tr>
+<tr>
+<td>Tabular Model</td>
+<td>Microsoft SSAS model type storing data in-memory in columnar format for fast DAX queries</td>
+</tr>
+<tr>
+<td>Multidimensional Model</td>
+<td>Microsoft SSAS model using MDX cubes with pre-aggregated measures</td>
+</tr>
+<tr>
+<td>Composite Model</td>
+<td>Power BI model combining DirectQuery and import sources in the same dataset</td>
+</tr>
+<tr>
+<td>DirectQuery</td>
+<td>Power BI/Tableau mode sending live queries to the source system; no local data import</td>
+</tr>
+<tr>
+<td>Import Mode</td>
+<td>Power BI mode that loads data into an in-memory columnar engine (VertiPaq)</td>
+</tr>
+<tr>
+<td>VertiPaq</td>
+<td>In-memory columnar storage engine powering Power BI's import mode</td>
+</tr>
+<tr>
+<td>Tableau</td>
+<td>Popular BI and data visualization platform known for drag-and-drop exploration</td>
+</tr>
+<tr>
+<td>Looker</td>
+<td>Google's data platform for BI with LookML semantic modeling</td>
+</tr>
+<tr>
+<td>Power BI</td>
+<td>Microsoft's BI suite including Desktop, Service, and Mobile components</td>
+</tr>
+<tr>
+<td>MicroStrategy</td>
+<td>Enterprise BI platform known for large-scale deployments and HyperIntelligence</td>
+</tr>
+<tr>
+<td>Qlik</td>
+<td>BI platform with associative data model engine (QlikView, Qlik Sense)</td>
+</tr>
+<tr>
+<td>Superset</td>
+<td>Apache Superset — open-source BI and data visualization platform</td>
+</tr>
+<tr>
+<td>Metabase</td>
+<td>Open-source BI tool designed for simplicity and self-service</td>
+</tr>
+<tr>
+<td>Redash</td>
+<td>Open-source data visualization and querying tool</td>
+</tr>
+<tr>
+<td>Grafana</td>
+<td>Open-source observability and visualization platform; strong for time-series and operational metrics</td>
+</tr>
+<tr>
+<td>A/B Testing</td>
+<td>Controlled experiment comparing two variants (A and B) to determine which performs better</td>
+</tr>
+<tr>
+<td>Cohort Analysis</td>
+<td>Analyzing behavior of groups of users who share a common characteristic at a point in time</td>
+</tr>
+<tr>
+<td>Funnel Analysis</td>
+<td>Tracking sequential steps users take toward a conversion goal</td>
+</tr>
+<tr>
+<td>Retention Analysis</td>
+<td>Measuring how many users return over time after initial engagement</td>
+</tr>
+<tr>
+<td>Attribution Modeling</td>
+<td>Assigning credit for a conversion to different marketing touchpoints</td>
+</tr>
+<tr>
+<td>Segmentation</td>
+<td>Dividing users or data into groups based on shared attributes for targeted analysis</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-cloud-infrastructure">7. Cloud &amp; Infrastructure<a class="headerlink" href="#7-cloud-infrastructure" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Full Form / Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Columnar Storage</td>
+<td>Data stored by column rather than row; dramatically improves analytical query performance and compression</td>
+</tr>
+<tr>
+<td>Row-Based Storage</td>
+<td>Traditional RDBMS storage; efficient for OLTP (full row access) but poor for analytical (column scans)</td>
+</tr>
+<tr>
+<td>Compression Ratio</td>
+<td>Measure of how much data is reduced by compression; columnar formats achieve much higher ratios than row-based</td>
+</tr>
+<tr>
+<td>Data Skipping</td>
+<td>Using metadata (min/max statistics, bloom filters) to skip irrelevant data files during query execution</td>
+</tr>
+<tr>
+<td>Bloom Filter</td>
+<td>Probabilistic data structure used to test whether an element is in a set; used in Parquet and Iceberg</td>
+</tr>
+<tr>
+<td>Zone Maps</td>
+<td>Column-level min/max statistics stored in file metadata for data skipping optimization</td>
+</tr>
+<tr>
+<td>Open Table Format</td>
+<td>Specification defining how data lake files are organized and queried with ACID support</td>
+</tr>
+<tr>
+<td>Delta Lake</td>
+<td>Linux Foundation open table format providing ACID transactions and schema enforcement on data lakes</td>
+</tr>
+<tr>
+<td>Apache Iceberg</td>
+<td>Open table format for huge analytic datasets with schema evolution and time travel</td>
+</tr>
+<tr>
+<td>Apache Hudi</td>
+<td>Hadoop Upserts Deletes and Incrementals — open table format with CDC and incremental processing</td>
+</tr>
+<tr>
+<td>ACID</td>
+<td>Atomicity, Consistency, Isolation, Durability — properties guaranteeing reliable database transactions</td>
+</tr>
+<tr>
+<td>Atomicity</td>
+<td>Transaction property: all operations succeed or none do; no partial updates</td>
+</tr>
+<tr>
+<td>Consistency (ACID)</td>
+<td>Transaction property: database moves from one valid state to another</td>
+</tr>
+<tr>
+<td>Isolation</td>
+<td>Transaction property: concurrent transactions don't interfere with each other</td>
+</tr>
+<tr>
+<td>Durability</td>
+<td>Transaction property: committed transactions survive system failures</td>
+</tr>
+<tr>
+<td>MVCC</td>
+<td>Multi-Version Concurrency Control — allows concurrent reads and writes by maintaining multiple data versions</td>
+</tr>
+<tr>
+<td>Time Travel</td>
+<td>Ability to query data as it existed at a past point in time; supported by Delta Lake, Iceberg, Snowflake</td>
+</tr>
+<tr>
+<td>Data Versioning</td>
+<td>Tracking changes to datasets over time, enabling rollback and historical queries</td>
+</tr>
+<tr>
+<td>Snapshot Isolation</td>
+<td>Transaction isolation level where reads see a consistent snapshot of data at the transaction start time</td>
+</tr>
+<tr>
+<td>Write-Ahead Log</td>
+<td>WAL — transaction log written before data changes; enables crash recovery and CDC</td>
+</tr>
+<tr>
+<td>Optimistic Concurrency</td>
+<td>Allows multiple transactions to proceed without locking; checks for conflicts at commit time</td>
+</tr>
+<tr>
+<td>Pessimistic Concurrency</td>
+<td>Locks data resources during a transaction to prevent conflicts; reduces throughput</td>
+</tr>
+<tr>
+<td>Manifest File</td>
+<td>Metadata file in Iceberg/Delta that tracks which data files are part of a table snapshot</td>
+</tr>
+<tr>
+<td>Transaction Log</td>
+<td>Ordered record of all changes to a Delta Lake table; basis for ACID properties and time travel</td>
+</tr>
+<tr>
+<td>Compaction</td>
+<td>Process of merging many small files into fewer larger files to improve read performance</td>
+</tr>
+<tr>
+<td>Small File Problem</td>
+<td>Performance issue where too many small files cause excessive metadata overhead and slow queries</td>
+</tr>
+<tr>
+<td>Auto-Optimize</td>
+<td>Databricks feature that automatically compacts small files</td>
+</tr>
+<tr>
+<td>Liquid Clustering</td>
+<td>Databricks' dynamic, incremental replacement for static partition-based clustering</td>
+</tr>
+<tr>
+<td>Copy-on-Write</td>
+<td>Table format update strategy: rewrites entire data files on every update; better for read-heavy workloads</td>
+</tr>
+<tr>
+<td>Merge-on-Read</td>
+<td>Table format update strategy: writes delta files on update; merges at read time; better for write-heavy workloads</td>
+</tr>
+<tr>
+<td>Serverless</td>
+<td>Computing model where infrastructure management is abstracted away; auto-scales and billed per use</td>
+</tr>
+<tr>
+<td>Elastic Scaling</td>
+<td>Automatically adding or removing compute resources based on workload demand</td>
+</tr>
+<tr>
+<td>Separation of Storage and Compute</td>
+<td>Architecture where data storage and query compute scale independently; foundational to Snowflake, BigQuery</td>
+</tr>
+<tr>
+<td>Virtual Warehouse</td>
+<td>Snowflake's independent compute cluster that can be sized and scaled independently</td>
+</tr>
+<tr>
+<td>Slot</td>
+<td>BigQuery's unit of computational capacity; reserved or on-demand pricing</td>
+</tr>
+<tr>
+<td>Redshift</td>
+<td>Amazon Redshift — managed MPP data warehouse on AWS</td>
+</tr>
+<tr>
+<td>BigQuery</td>
+<td>Google BigQuery — serverless, multi-cloud data warehouse</td>
+</tr>
+<tr>
+<td>Snowflake</td>
+<td>Cloud data platform with separated storage and compute; supports multi-cloud deployment</td>
+</tr>
+<tr>
+<td>Synapse Analytics</td>
+<td>Azure Synapse Analytics — integrated analytics service combining data warehousing and big data</td>
+</tr>
+<tr>
+<td>Databricks</td>
+<td>Unified analytics platform built on Apache Spark; pioneered the Lakehouse concept</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>Amazon Simple Storage Service — object storage; de facto standard for data lake storage</td>
+</tr>
+<tr>
+<td>ADLS</td>
+<td>Azure Data Lake Storage — Microsoft's scalable object storage for analytics workloads</td>
+</tr>
+<tr>
+<td>GCS</td>
+<td>Google Cloud Storage — Google's object storage service</td>
+</tr>
+<tr>
+<td>Object Storage</td>
+<td>Storage model using objects with metadata and unique IDs; highly scalable, no hierarchy</td>
+</tr>
+<tr>
+<td>Block Storage</td>
+<td>Raw storage volumes (EBS, Azure Disks); low latency, used for databases</td>
+</tr>
+<tr>
+<td>File Storage</td>
+<td>Hierarchical filesystem-based storage (EFS, Azure Files, NFS)</td>
+</tr>
+<tr>
+<td>Data Transfer Cost</td>
+<td>Cloud charges for moving data between regions, availability zones, or out of cloud</td>
+</tr>
+<tr>
+<td>Egress Cost</td>
+<td>Charges for data transferred out of a cloud provider's network</td>
+</tr>
+<tr>
+<td>Reserved Capacity</td>
+<td>Pre-purchasing cloud compute/storage at discounted rates vs. on-demand pricing</td>
+</tr>
+<tr>
+<td>Spot/Preemptible Instance</td>
+<td>Unused cloud capacity sold at steep discount; can be interrupted; used for fault-tolerant batch jobs</td>
+</tr>
+<tr>
+<td>VPC</td>
+<td>Virtual Private Cloud — isolated network environment within a cloud provider</td>
+</tr>
+<tr>
+<td>Private Link</td>
+<td>Direct private network connection between services without traversing the public internet</td>
+</tr>
+<tr>
+<td>IAM</td>
+<td>Identity and Access Management — cloud service for managing authentication and authorization</td>
+</tr>
+<tr>
+<td>Service Account</td>
+<td>Non-human identity used by applications and services for authentication to cloud APIs</td>
+</tr>
+<tr>
+<td>Encryption Key Management</td>
+<td>KMS — managed service for creating and controlling encryption keys (AWS KMS, Azure Key Vault, GCP KMS)</td>
+</tr>
+<tr>
+<td>Data Plane</td>
+<td>The infrastructure layer that processes and stores actual data</td>
+</tr>
+<tr>
+<td>Control Plane</td>
+<td>The infrastructure layer managing metadata, configuration, and orchestration</td>
+</tr>
+<tr>
+<td>Multi-Cloud</td>
+<td>Strategy of using services from multiple cloud providers to avoid lock-in or optimize cost/capability</td>
+</tr>
+<tr>
+<td>Hybrid Cloud</td>
+<td>Combining on-premises infrastructure with public cloud services</td>
+</tr>
+<tr>
+<td>Data Gravity</td>
+<td>Tendency for data to attract applications and services; moving large datasets is expensive</td>
+</tr>
+<tr>
+<td>Vendor Lock-In</td>
+<td>Dependency on a single vendor's proprietary technology that makes migration costly</td>
+</tr>
+<tr>
+<td>Open Standards</td>
+<td>Non-proprietary specifications enabling interoperability (Parquet, Iceberg, OpenTelemetry)</td>
+</tr>
+<tr>
+<td>Cost Allocation Tags</td>
+<td>Cloud resource tags used for billing attribution by team, project, or environment</td>
+</tr>
+<tr>
+<td>FinOps</td>
+<td>Financial Operations — practice of managing cloud costs and optimizing cloud financial management</td>
+</tr>
+<tr>
+<td>Infrastructure as Code</td>
+<td>IaC — managing infrastructure through version-controlled configuration files (Terraform, Pulumi)</td>
+</tr>
+<tr>
+<td>Terraform</td>
+<td>HashiCorp's open-source IaC tool for provisioning cloud infrastructure</td>
+</tr>
+<tr>
+<td>Docker</td>
+<td>Container platform enabling consistent application packaging and deployment</td>
+</tr>
+<tr>
+<td>Kubernetes</td>
+<td>K8s — container orchestration system for automating deployment, scaling, and management</td>
+</tr>
+<tr>
+<td>Helm</td>
+<td>Package manager for Kubernetes applications</td>
+</tr>
+<tr>
+<td>CI/CD</td>
+<td>Continuous Integration/Continuous Delivery — automated build, test, and deployment pipelines</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-data-quality-observability">8. Data Quality &amp; Observability<a class="headerlink" href="#8-data-quality-observability" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Full Form / Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data Quality</td>
+<td>Degree to which data is fit for its intended use; measured across multiple dimensions</td>
+</tr>
+<tr>
+<td>DQ Dimensions</td>
+<td>Standard aspects of data quality: completeness, accuracy, consistency, timeliness, validity, uniqueness</td>
+</tr>
+<tr>
+<td>Completeness</td>
+<td>DQ dimension: percentage of required fields that contain values; no unexpected nulls</td>
+</tr>
+<tr>
+<td>Accuracy</td>
+<td>DQ dimension: data correctly reflects the real-world entity or event it describes</td>
+</tr>
+<tr>
+<td>Consistency (DQ)</td>
+<td>DQ dimension: data values are consistent across systems and over time</td>
+</tr>
+<tr>
+<td>Timeliness</td>
+<td>DQ dimension: data is available when needed and reflects current reality</td>
+</tr>
+<tr>
+<td>Validity</td>
+<td>DQ dimension: data conforms to defined formats, ranges, and rules</td>
+</tr>
+<tr>
+<td>Uniqueness</td>
+<td>DQ dimension: no unintended duplicate records exist</td>
+</tr>
+<tr>
+<td>Integrity</td>
+<td>DQ dimension: referential and relational integrity is maintained across datasets</td>
+</tr>
+<tr>
+<td>Conformity</td>
+<td>DQ dimension: data adheres to specified data standards and formats</td>
+</tr>
+<tr>
+<td>Data Anomaly</td>
+<td>Unexpected deviation from normal data patterns; may indicate quality issues or real events</td>
+</tr>
+<tr>
+<td>Anomaly Detection</td>
+<td>Automated identification of unusual patterns in data (statistical, ML-based approaches)</td>
+</tr>
+<tr>
+<td>Data Drift</td>
+<td>Gradual change in data distribution over time that degrades model or report accuracy</td>
+</tr>
+<tr>
+<td>Schema Drift</td>
+<td>Unexpected changes to a data source's schema that break downstream pipelines</td>
+</tr>
+<tr>
+<td>Data Observability</td>
+<td>End-to-end visibility into data health including freshness, volume, schema, distribution, and lineage</td>
+</tr>
+<tr>
+<td>Data Reliability</td>
+<td>Consistent availability of high-quality, trustworthy data to consumers</td>
+</tr>
+<tr>
+<td>Freshness</td>
+<td>How recently data was updated; critical SLA for operational and real-time analytics</td>
+</tr>
+<tr>
+<td>Volume Anomaly</td>
+<td>Unexpected spike or drop in row counts, signaling ingestion or source issues</td>
+</tr>
+<tr>
+<td>Distribution Shift</td>
+<td>Change in statistical distribution of column values over time</td>
+</tr>
+<tr>
+<td>Null Rate</td>
+<td>Percentage of null values in a column; tracked as a quality and freshness indicator</td>
+</tr>
+<tr>
+<td>Duplicate Rate</td>
+<td>Percentage of duplicate records in a dataset</td>
+</tr>
+<tr>
+<td>Data SLA</td>
+<td>Service Level Agreement for data products defining freshness, completeness, and availability targets</td>
+</tr>
+<tr>
+<td>Great Expectations</td>
+<td>Open-source Python library for defining, documenting, and validating data quality expectations</td>
+</tr>
+<tr>
+<td>dbt Tests</td>
+<td>dbt's built-in and extensible data testing framework (not_null, unique, accepted_values, relationships)</td>
+</tr>
+<tr>
+<td>Soda</td>
+<td>Data quality platform for defining and running data checks across SQL and file sources</td>
+</tr>
+<tr>
+<td>Monte Carlo</td>
+<td>Data observability platform using ML to detect and alert on data quality issues</td>
+</tr>
+<tr>
+<td>Bigeye</td>
+<td>Data observability and monitoring platform with automated anomaly detection</td>
+</tr>
+<tr>
+<td>Acceldata</td>
+<td>Data observability and pipeline intelligence platform</td>
+</tr>
+<tr>
+<td>MoD</td>
+<td>Metrics on Data — tracking operational metrics (row count, null %, freshness) on datasets over time</td>
+</tr>
+<tr>
+<td>Data Testing</td>
+<td>Automated validation of data against defined expectations or business rules</td>
+</tr>
+<tr>
+<td>Unit Test (data)</td>
+<td>Testing individual transformation logic with known inputs and expected outputs</td>
+</tr>
+<tr>
+<td>Integration Test (data)</td>
+<td>End-to-end test validating that the complete pipeline produces correct results</td>
+</tr>
+<tr>
+<td>Data Reconciliation</td>
+<td>Comparing data between source and target systems to verify completeness and accuracy of transfers</td>
+</tr>
+<tr>
+<td>Checksum</td>
+<td>Hash value computed over data to verify integrity during transfer or storage</td>
+</tr>
+<tr>
+<td>Row Count Validation</td>
+<td>Comparing record counts between source and target as a basic completeness check</td>
+</tr>
+<tr>
+<td>Referential Integrity</td>
+<td>Constraint ensuring foreign key values exist in the referenced primary key table</td>
+</tr>
+<tr>
+<td>Business Rule Validation</td>
+<td>Testing data against domain-specific rules (e.g., order amount must be positive)</td>
+</tr>
+<tr>
+<td>Statistical Process Control</td>
+<td>SPC — applying statistical methods to monitor and control data quality over time</td>
+</tr>
+<tr>
+<td>Control Chart</td>
+<td>Visualization plotting quality metrics over time with upper/lower control limits</td>
+</tr>
+<tr>
+<td>Data Profiling</td>
+<td>Automated analysis of data to understand structure, completeness, distribution, and relationships</td>
+</tr>
+<tr>
+<td>Column Statistics</td>
+<td>Min, max, mean, median, standard deviation, null count computed per column</td>
+</tr>
+<tr>
+<td>Cardinality Check</td>
+<td>Validating the number of distinct values in a column against expectations</td>
+</tr>
+<tr>
+<td>Pattern Matching</td>
+<td>Validating that values conform to expected formats using regex (e.g., email, phone)</td>
+</tr>
+<tr>
+<td>Range Check</td>
+<td>Validating that numeric or date values fall within expected bounds</td>
+</tr>
+<tr>
+<td>Cross-Field Validation</td>
+<td>Validating relationships between multiple columns (e.g., end_date &gt;= start_date)</td>
+</tr>
+<tr>
+<td>Golden Record</td>
+<td>The authoritative, trusted version of a master data entity after deduplication</td>
+</tr>
+<tr>
+<td>Data Deduplication</td>
+<td>Process of identifying and removing duplicate records from a dataset</td>
+</tr>
+<tr>
+<td>Fuzzy Matching</td>
+<td>Identifying similar (not exact) records using string distance algorithms</td>
+</tr>
+<tr>
+<td>Record Linkage</td>
+<td>Linking records across systems that refer to the same entity without a common identifier</td>
+</tr>
+<tr>
+<td>Probabilistic Matching</td>
+<td>Matching records using statistical likelihood scores across multiple attributes</td>
+</tr>
+<tr>
+<td>Data Quality Score</td>
+<td>Composite metric summarizing overall quality of a dataset across multiple dimensions</td>
+</tr>
+<tr>
+<td>Data Health Dashboard</td>
+<td>Centralized view of data quality metrics and SLA compliance across data assets</td>
+</tr>
+<tr>
+<td>Alerting</td>
+<td>Automated notifications when data quality metrics breach defined thresholds</td>
+</tr>
+<tr>
+<td>Root Cause Analysis</td>
+<td>Systematic process for identifying the underlying cause of a data quality issue</td>
+</tr>
+<tr>
+<td>Incident Management</td>
+<td>Process for tracking, escalating, and resolving data quality incidents</td>
+</tr>
+<tr>
+<td>Data Debugging</td>
+<td>Tracing data issues through pipelines using lineage and observability tools</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9-emerging-concepts">9. Emerging Concepts<a class="headerlink" href="#9-emerging-concepts" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Full Form / Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data Product</td>
+<td>A self-contained, discoverable, addressable, trustworthy, and interoperable data asset served by a domain team</td>
+</tr>
+<tr>
+<td>Domain Ownership</td>
+<td>Data Mesh principle: teams closest to the data own its quality, availability, and access</td>
+</tr>
+<tr>
+<td>Data as a Product</td>
+<td>Data Mesh principle: applying product thinking (SLAs, discoverability, documentation) to data assets</td>
+</tr>
+<tr>
+<td>Self-Serve Data Platform</td>
+<td>Data Mesh principle: infrastructure platform enabling domain teams to build and serve data products independently</td>
+</tr>
+<tr>
+<td>Federated Computational Governance</td>
+<td>Data Mesh principle: global policies enforced through automated platforms rather than central data teams</td>
+</tr>
+<tr>
+<td>DataOps</td>
+<td>Agile methodology applying DevOps principles to data engineering; emphasizes automation, collaboration, and quality</td>
+</tr>
+<tr>
+<td>MLOps</td>
+<td>Machine Learning Operations — practices for deploying, monitoring, and maintaining ML models in production</td>
+</tr>
+<tr>
+<td>LLMOps</td>
+<td>Practices for deploying and managing Large Language Model applications in production</td>
+</tr>
+<tr>
+<td>ModelOps</td>
+<td>Operationalizing all types of AI/ML models including statistical, ML, and deep learning models</td>
+</tr>
+<tr>
+<td>Feature Store</td>
+<td>Centralized repository for storing, sharing, and serving ML features for training and inference</td>
+</tr>
+<tr>
+<td>Feature Engineering</td>
+<td>Transforming raw data into features (input variables) that improve ML model performance</td>
+</tr>
+<tr>
+<td>Feature Serving</td>
+<td>Providing low-latency access to ML features for real-time model inference</td>
+</tr>
+<tr>
+<td>Online Store</td>
+<td>Feature store layer for low-latency feature retrieval for real-time inference (e.g., Redis)</td>
+</tr>
+<tr>
+<td>Offline Store</td>
+<td>Feature store layer for high-throughput feature retrieval for batch training (e.g., S3, BigQuery)</td>
+</tr>
+<tr>
+<td>Training-Serving Skew</td>
+<td>Discrepancy between features used in model training vs. what's served in production; major ML risk</td>
+</tr>
+<tr>
+<td>Model Registry</td>
+<td>Versioned repository for storing, tracking, and managing ML model artifacts</td>
+</tr>
+<tr>
+<td>Experiment Tracking</td>
+<td>Recording hyperparameters, metrics, and artifacts from ML training runs (MLflow, W&amp;B)</td>
+</tr>
+<tr>
+<td>MLflow</td>
+<td>Open-source platform for managing the end-to-end ML lifecycle</td>
+</tr>
+<tr>
+<td>Kubeflow</td>
+<td>Kubernetes-native platform for deploying and managing ML workflows</td>
+</tr>
+<tr>
+<td>Vector Database</td>
+<td>Database optimized for storing and querying high-dimensional embedding vectors (Pinecone, Weaviate, Qdrant)</td>
+</tr>
+<tr>
+<td>Embedding</td>
+<td>Dense numerical vector representation of data (text, images, audio) capturing semantic meaning</td>
+</tr>
+<tr>
+<td>RAG</td>
+<td>Retrieval-Augmented Generation — LLM pattern that retrieves relevant context from a knowledge base before generating responses</td>
+</tr>
+<tr>
+<td>ANN</td>
+<td>Approximate Nearest Neighbor — algorithms for finding similar vectors efficiently (HNSW, IVF)</td>
+</tr>
+<tr>
+<td>HNSW</td>
+<td>Hierarchical Navigable Small World — graph-based algorithm for fast ANN search in vector databases</td>
+</tr>
+<tr>
+<td>Cosine Similarity</td>
+<td>Metric measuring the angle between two vectors; common similarity measure for embeddings</td>
+</tr>
+<tr>
+<td>Fine-Tuning</td>
+<td>Adapting a pre-trained LLM to a specific task by training on domain-specific data</td>
+</tr>
+<tr>
+<td>Prompt Engineering</td>
+<td>Designing effective prompts to get desired outputs from LLMs without changing model weights</td>
+</tr>
+<tr>
+<td>LLM</td>
+<td>Large Language Model — deep learning model trained on massive text datasets for NLP tasks (GPT-4, Claude)</td>
+</tr>
+<tr>
+<td>Foundation Model</td>
+<td>Large pre-trained model serving as a base that can be fine-tuned for specific tasks</td>
+</tr>
+<tr>
+<td>Open Lakehouse</td>
+<td>Lakehouse built on open standards (Iceberg, Delta, Parquet) without vendor lock-in</td>
+</tr>
+<tr>
+<td>Streaming Lakehouse</td>
+<td>Real-time streaming ingestion and processing directly on lakehouse table formats</td>
+</tr>
+<tr>
+<td>Knowledge Fabric</td>
+<td>Evolution of data fabric incorporating semantic knowledge graphs and ontologies</td>
+</tr>
+<tr>
+<td>Semantic Data Fabric</td>
+<td>Data fabric with rich semantic metadata enabling context-aware data discovery and access</td>
+</tr>
+<tr>
+<td>Augmented Data Management</td>
+<td>Using AI/ML to automate metadata management, data quality, and governance tasks</td>
+</tr>
+<tr>
+<td>Generative AI for Data</td>
+<td>Using LLMs for automated SQL generation, data documentation, anomaly explanation, and data exploration</td>
+</tr>
+<tr>
+<td>Text-to-SQL</td>
+<td>LLM capability to convert natural language questions into executable SQL queries</td>
+</tr>
+<tr>
+<td>Data Contract (modern)</td>
+<td>Machine-readable schema + quality + SLA agreement between producers and consumers; versioned and enforced</td>
+</tr>
+<tr>
+<td>Open Data Contract Standard</td>
+<td>ODCS — open specification for data contracts enabling interoperability between governance tools</td>
+</tr>
+<tr>
+<td>Soda Core</td>
+<td>Open-source data quality CLI tool supporting data contracts and checks</td>
+</tr>
+<tr>
+<td>Streaming SQL</td>
+<td>Writing streaming data pipelines using familiar SQL syntax (Flink SQL, ksqlDB, Apache Calcite)</td>
+</tr>
+<tr>
+<td>ksqlDB</td>
+<td>SQL streaming engine built on top of Apache Kafka</td>
+</tr>
+<tr>
+<td>Materialize</td>
+<td>Streaming database maintaining incrementally-updated materialized views from streaming sources</td>
+</tr>
+<tr>
+<td>RisingWave</td>
+<td>Cloud-native streaming database with PostgreSQL-compatible SQL</td>
+</tr>
+<tr>
+<td>Unified Data Platform</td>
+<td>Single platform combining data engineering, warehousing, analytics, and ML (Databricks, Snowflake)</td>
+</tr>
+<tr>
+<td>Iceberg REST Catalog</td>
+<td>Open REST API specification for interacting with Iceberg catalogs; enables multi-engine access</td>
+</tr>
+<tr>
+<td>Apache Polaris</td>
+<td>Open-source Iceberg catalog supporting the Iceberg REST Catalog spec</td>
+</tr>
+<tr>
+<td>Apache Gravitino</td>
+<td>Open-source unified metadata lake for managing metadata across heterogeneous data sources</td>
+</tr>
+<tr>
+<td>Nessie</td>
+<td>Open-source catalog with Git-like version control for Iceberg and Delta tables</td>
+</tr>
+<tr>
+<td>Table Format Wars</td>
+<td>Industry competition between Delta Lake, Apache Iceberg, and Apache Hudi for open table format dominance</td>
+</tr>
+<tr>
+<td>UniForm</td>
+<td>Databricks feature allowing Delta Lake tables to be read as Iceberg or Hudi tables</td>
+</tr>
+<tr>
+<td>DeltaSharing</td>
+<td>Open protocol for securely sharing live data across organizations without copying</td>
+</tr>
+<tr>
+<td>Apache Arrow</td>
+<td>In-memory columnar data format enabling zero-copy reads across different runtimes</td>
+</tr>
+<tr>
+<td>Apache Arrow Flight</td>
+<td>RPC framework for high-speed data transfer using Arrow format</td>
+</tr>
+<tr>
+<td>ADBC</td>
+<td>Arrow Database Connectivity — Arrow-native replacement for JDBC/ODBC for analytical workloads</td>
+</tr>
+<tr>
+<td>Ibis</td>
+<td>Python dataframe library with multiple backends (DuckDB, BigQuery, Spark) using the same API</td>
+</tr>
+<tr>
+<td>DuckDB</td>
+<td>Embeddable in-process OLAP database; fast analytics on local files without a server</td>
+</tr>
+<tr>
+<td>MotherDuck</td>
+<td>Serverless cloud DuckDB with collaboration features</td>
+</tr>
+<tr>
+<td>Data Clean Room</td>
+<td>Secure environment where multiple parties can analyze combined data without exposing raw data</td>
+</tr>
+<tr>
+<td>Privacy-Enhancing Technologies</td>
+<td>PETs — techniques (differential privacy, homomorphic encryption, secure MPC) for analyzing sensitive data safely</td>
+</tr>
+<tr>
+<td>Differential Privacy</td>
+<td>Mathematical framework adding calibrated noise to query results to protect individual privacy</td>
+</tr>
+<tr>
+<td>Federated Learning</td>
+<td>ML training across distributed data without centralizing the data; preserves privacy</td>
+</tr>
+<tr>
+<td>Synthetic Data</td>
+<td>Artificially generated data statistically similar to real data; used for testing and privacy compliance</td>
+</tr>
+<tr>
+<td>Data Tokenomics</td>
+<td>Emerging concept of data as an economic asset with pricing, ownership, and exchange mechanisms</td>
+</tr>
+<tr>
+<td>DataOps Manifesto</td>
+<td>Published principles for applying DevOps practices to data management</td>
+</tr>
+<tr>
+<td>Continuous Integration (Data)</td>
+<td>Automatically testing data pipeline code changes and data quality before merging to production</td>
+</tr>
+<tr>
+<td>Continuous Delivery (Data)</td>
+<td>Automatically deploying validated data pipeline changes to production environments</td>
+</tr>
+<tr>
+<td>Infrastructure as Code (Data)</td>
+<td>Managing data infrastructure, pipelines, and schemas through version-controlled code</td>
+</tr>
+<tr>
+<td>Data Version Control</td>
+<td>DVC — open-source tool for versioning datasets and ML models alongside code</td>
+</tr>
+<tr>
+<td>dbt Cloud</td>
+<td>Managed cloud service for running dbt transformations with scheduling and CI/CD</td>
+</tr>
+<tr>
+<td>Git-based Workflows</td>
+<td>Managing data pipeline code with Git for version control, branching, and code review</td>
+</tr>
+<tr>
+<td>Blue-Green Deployment (Data)</td>
+<td>Maintaining two identical environments to enable zero-downtime pipeline deployments</td>
+</tr>
+<tr>
+<td>Canary Deployment (Data)</td>
+<td>Gradually rolling out pipeline changes to a subset of users/data before full rollout</td>
+</tr>
+<tr>
+<td>Schema Migration</td>
+<td>Versioned, automated process for evolving database schemas in a controlled way</td>
+</tr>
+<tr>
+<td>Data Incident</td>
+<td>Event where data quality, availability, or security degrades below acceptable thresholds</td>
+</tr>
+<tr>
+<td>SRE for Data</td>
+<td>Applying Site Reliability Engineering principles to data systems for improved reliability</td>
+</tr>
+<tr>
+<td>Data Engineering</td>
+<td>Discipline focused on designing, building, and maintaining data infrastructure and pipelines</td>
+</tr>
+<tr>
+<td>Analytics Engineering</td>
+<td>Discipline at the intersection of data engineering and analysis; owns the transformation layer (dbt)</td>
+</tr>
+<tr>
+<td>Data Platform Engineering</td>
+<td>Building self-serve internal data infrastructure and tooling for data teams</td>
+</tr>
+<tr>
+<td>Data as Code</td>
+<td>Treating data assets (schemas, pipelines, quality rules) with software engineering rigor</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.highlight", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/tts.js"></script>
+      
+    
+  </body>
+</html>

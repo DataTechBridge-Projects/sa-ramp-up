@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Design Patterns — Exhaustive Reference</title>
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --surface: #ffffff;
+    --surface2: #f1f3f5;
+    --border: #dee2e6;
+    --text: #212529;
+    --text2: #6c757d;
+    --header-bg: #1a1d27;
+    --header-text: #e2e8f0;
+    --header-sub: #8892a4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --surface2: #252836;
+      --border: #2a2d3a;
+      --text: #e2e8f0;
+      --text2: #8892a4;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+  }
+
+  #header {
+    background: var(--header-bg);
+    border-bottom: 1px solid #2a2d3a;
+    padding: 14px 24px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  #header h1 { font-size: 16px; font-weight: 600; color: var(--header-text); }
+  #header .sub { font-size: 12px; color: var(--header-sub); }
+  #header a.home-link {
+    margin-left: auto;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    background: #378ADD;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 26px;
+    transition: background 0.15s;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+  }
+  #header a.home-link:hover { background: #2a6ab8; }
+
+  .page { max-width: 1100px; margin: 0 auto; padding: 24px 20px 48px; }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .leg-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text2);
+  }
+  .leg-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  .cat {
+    margin-bottom: 10px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .cat-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: var(--surface2);
+    cursor: pointer;
+    user-select: none;
+  }
+  .cat-header:hover { filter: brightness(0.97); }
+  .cat-num {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 9px;
+    border-radius: 20px;
+    min-width: 28px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .cat-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    flex: 1;
+  }
+  .cat-count {
+    font-size: 11px;
+    color: var(--text2);
+    flex-shrink: 0;
+  }
+  .chevron {
+    font-size: 13px;
+    color: var(--text2);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+  .cat-body {
+    padding: 12px 16px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+    gap: 8px;
+    background: var(--surface);
+  }
+  .item {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+  }
+  .item-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .item-desc {
+    font-size: 11px;
+    color: var(--text2);
+    margin-top: 3px;
+    line-height: 1.4;
+  }
+
+  .collapsed .cat-body { display: none; }
+  .collapsed .chevron { transform: rotate(-90deg); }
+</style>
+</head>
+<body>
+
+<div id="header">
+  <h1>Data Design Patterns</h1>
+  <span class="sub">Exhaustive reference — 18 categories</span>
+  <a class="home-link" href="https://datatechbridge-projects.github.io/sa-ramp-up/" target="_blank" rel="noopener">&#8599; Home</a>
+</div>
+
+<div class="page">
+
+  <div class="legend">
+    <div class="leg-item"><div class="leg-dot" style="background:#5DCAA5"></div> Storage &amp; DB types</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#7F77DD"></div> Architecture patterns</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#D85A30"></div> Modeling &amp; schema</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#378ADD"></div> Processing &amp; integration</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#888780"></div> Org &amp; governance</div>
+  </div>
+
+  <div id="cats"></div>
+</div>
+
+<script>
+const cats = [
+  {
+    num: "01", color: "#5DCAA5", bg: "#D1F5EA",
+    title: "Database types",
+    items: [
+      { name: "Relational DBMS", desc: "PostgreSQL, Oracle, MySQL" },
+      { name: "Key-value stores", desc: "DynamoDB, Redis" },
+      { name: "Document stores", desc: "MongoDB, Couchbase" },
+      { name: "Wide column stores", desc: "Cassandra, HBase" },
+      { name: "Graph DBMS", desc: "Neo4j, Amazon Neptune" },
+      { name: "Time series DBMS", desc: "InfluxDB, TimescaleDB" },
+      { name: "Vector DBMS", desc: "Pinecone, Weaviate, Milvus" },
+      { name: "Search engines", desc: "Elasticsearch, OpenSearch" },
+      { name: "Columnar", desc: "Redshift, BigQuery internals" },
+      { name: "Spatial DBMS", desc: "PostGIS, geospatial patterns" },
+      { name: "Object oriented DBMS", desc: "db4o, ObjectDB" },
+      { name: "RDF stores", desc: "Semantic web, knowledge graphs" },
+      { name: "Native XML DBMS", desc: "BaseX, eXist-db" },
+      { name: "Event stores", desc: "EventStoreDB" },
+      { name: "Content stores", desc: "CMS-backed storage" },
+      { name: "Navigational DBMS", desc: "Hierarchical, network models" },
+      { name: "Multivalue DBMS", desc: "UniData, UniVerse" },
+      { name: "Multi-model DBMS", desc: "ArangoDB, CosmosDB" },
+      { name: "NoSQL (general)", desc: "Umbrella for non-relational" },
+    ]
+  },
+  {
+    num: "02", color: "#5DCAA5", bg: "#D1F5EA",
+    title: "Storage systems",
+    items: [
+      { name: "Object / Blob storage", desc: "S3, Azure Blob, GCS — unstructured at scale" },
+      { name: "Block storage", desc: "EBS, Azure Disk — raw volumes, low latency I/O" },
+      { name: "File storage (NFS)", desc: "NFS, EFS, Azure Files — shared POSIX filesystem" },
+      { name: "HDFS", desc: "Distributed file system for big data clusters" },
+      { name: "DBFS (Databricks FS)", desc: "Abstraction over cloud object storage in Databricks" },
+      { name: "Local / ephemeral storage", desc: "Instance-attached SSD, temp compute storage" },
+      { name: "Cold / archive storage", desc: "S3 Glacier, Azure Archive — low cost, slow retrieval" },
+      { name: "Shared network storage (SAN)", desc: "Storage area network, block-level over network" },
+      { name: "In-memory storage", desc: "Redis, Memcached — sub-millisecond caching layer" },
+      { name: "Delta / Iceberg / Hudi tables", desc: "ACID table format on top of object storage" },
+    ]
+  },
+  {
+    num: "03", color: "#5DCAA5", bg: "#D1F5EA",
+    title: "OLTP vs OLAP",
+    items: [
+      { name: "OLTP", desc: "Transactional, fast small writes" },
+      { name: "OLAP", desc: "Analytical, large scans & aggregations" },
+      { name: "HTAP", desc: "Hybrid transactional + analytical" },
+    ]
+  },
+  {
+    num: "03", color: "#7F77DD", bg: "#E4E2FB",
+    title: "Data warehouse architecture",
+    items: [
+      { name: "Kimball approach", desc: "Bottom-up, dimensional modeling" },
+      { name: "Inmon approach", desc: "Top-down, enterprise DW" },
+      { name: "Data vault", desc: "Flexible, audit-friendly, hub-spoke" },
+      { name: "Dimensional modeling", desc: "Facts + dimensions" },
+      { name: "Conformed dimensions", desc: "Shared dims across marts" },
+      { name: "Fact table design", desc: "Transactional, periodic, accumulating" },
+      { name: "Aggregate tables", desc: "Pre-computed summaries" },
+    ]
+  },
+  {
+    num: "04", color: "#D85A30", bg: "#FAE0D6",
+    title: "Schema organization & modeling",
+    items: [
+      { name: "Star schema", desc: "Denormalized, flat dimensions" },
+      { name: "Snowflake schema", desc: "Normalized sub-dimensions" },
+      { name: "3rd normal form (3NF)", desc: "Eliminating redundancy" },
+      { name: "Denormalization", desc: "Trading storage for speed" },
+      { name: "SCD Type 1", desc: "Overwrite — no history" },
+      { name: "SCD Type 2", desc: "New row — full history" },
+      { name: "SCD Type 3", desc: "Add column — limited history" },
+      { name: "SCD Type 4 & 6", desc: "Mini-dims, hybrid approaches" },
+    ]
+  },
+  {
+    num: "05", color: "#7F77DD", bg: "#E4E2FB",
+    title: "Data lake architecture",
+    items: [
+      { name: "Medallion / Bronze-Silver-Gold", desc: "Layered quality progression" },
+      { name: "Zone-based architecture", desc: "Raw, refined, curated zones" },
+      { name: "Data lake governance", desc: "Metadata mgmt within lakes" },
+      { name: "Data lake organization", desc: "Partitioning, folder structure" },
+    ]
+  },
+  {
+    num: "06", color: "#7F77DD", bg: "#E4E2FB",
+    title: "Lakehouse architecture",
+    items: [
+      { name: "Delta Lake", desc: "ACID on data lakes" },
+      { name: "Apache Iceberg", desc: "Open table format" },
+      { name: "Apache Hudi", desc: "Upserts on data lakes" },
+      { name: "Databricks Lakehouse", desc: "Unified analytics platform" },
+    ]
+  },
+  {
+    num: "07", color: "#378ADD", bg: "#D6E9FA",
+    title: "Streaming & real-time patterns",
+    items: [
+      { name: "Lambda architecture", desc: "Batch + stream layers" },
+      { name: "Kappa architecture", desc: "Stream-only, no batch" },
+      { name: "Event sourcing", desc: "Immutable event log as truth" },
+      { name: "CQRS", desc: "Separate read/write models" },
+      { name: "Change data capture (CDC)", desc: "Capture DB changes as events" },
+      { name: "Micro-batching", desc: "Near-real-time batch windows" },
+    ]
+  },
+  {
+    num: "08", color: "#378ADD", bg: "#D6E9FA",
+    title: "ETL / ELT & pipeline patterns",
+    items: [
+      { name: "ETL", desc: "Transform before loading" },
+      { name: "ELT", desc: "Transform after loading" },
+      { name: "Reverse ETL", desc: "Warehouse → operational systems" },
+      { name: "Data pipeline orchestration", desc: "Airflow, MWAA, dbt" },
+      { name: "Idempotent pipelines", desc: "Safe reruns" },
+    ]
+  },
+  {
+    num: "09", color: "#7F77DD", bg: "#E4E2FB",
+    title: "Data domain & data products",
+    items: [
+      { name: "Data mesh", desc: "Decentralized domain ownership" },
+      { name: "Domain-driven design", desc: "Data aligned to business domains" },
+      { name: "Data as a product", desc: "Discoverable, usable data assets" },
+      { name: "Data contracts", desc: "Schema agreements between teams" },
+      { name: "Data fabric", desc: "Unified metadata + integration layer" },
+    ]
+  },
+  {
+    num: "10", color: "#888780", bg: "#E8E6DF",
+    title: "API-first & data sharing",
+    items: [
+      { name: "Federated query", desc: "Query across sources without moving data" },
+      { name: "Data sharing patterns", desc: "Snowflake shares, Delta sharing" },
+      { name: "API-first design", desc: "Data exposed via APIs" },
+      { name: "Data marketplace", desc: "Internal/external data exchange" },
+    ]
+  },
+  {
+    num: "11", color: "#378ADD", bg: "#D6E9FA",
+    title: "Cost optimization patterns",
+    items: [
+      { name: "Partitioning strategies", desc: "Reduce scan footprint" },
+      { name: "Hot/warm/cold tiering", desc: "Storage class by access frequency" },
+      { name: "Compute/storage separation", desc: "Scale independently" },
+      { name: "Query optimization", desc: "Pruning, caching, materialization" },
+    ]
+  },
+  {
+    num: "12", color: "#888780", bg: "#E8E6DF",
+    title: "Legacy & mainframe modernization",
+    items: [
+      { name: "Mainframe patterns", desc: "COBOL, CICS, DB2 design" },
+      { name: "Strangler fig pattern", desc: "Incremental migration" },
+      { name: "ETL migration", desc: "SSIS, Informatica → cloud native" },
+      { name: "Schema conversion", desc: "Automated DDL/DML translation" },
+      { name: "Data replication strategies", desc: "Cutover vs parallel run" },
+    ]
+  },
+  {
+    num: "13", color: "#888780", bg: "#E8E6DF",
+    title: "Data governance",
+    items: [
+      { name: "Data governance framework", desc: "Policies, roles, and processes for data ownership" },
+      { name: "Data stewardship", desc: "Domain owners accountable for data assets" },
+      { name: "Data catalog", desc: "Centralized discovery: Collibra, Alation, Atlan" },
+      { name: "Data lineage", desc: "End-to-end tracking of data origin & transformations" },
+      { name: "Master data management (MDM)", desc: "Golden record for key entities (customer, product)" },
+      { name: "Reference data management", desc: "Controlled vocabularies, code tables, lookups" },
+      { name: "Data classification", desc: "Tagging PII, PHI, confidential, public" },
+      { name: "Data privacy & compliance", desc: "GDPR, CCPA, HIPAA controls & audit trails" },
+      { name: "Access control policies", desc: "RBAC, ABAC, column/row-level security" },
+      { name: "Data retention & archival", desc: "Lifecycle policies, regulatory hold" },
+      { name: "Data contracts", desc: "Schema agreements between producers and consumers" },
+      { name: "Policy-as-code", desc: "Open Policy Agent (OPA), automated enforcement" },
+      { name: "Unity Catalog", desc: "Databricks unified governance across clouds" },
+      { name: "Microsoft Purview", desc: "Azure-native data catalog & compliance" },
+      { name: "AWS Glue Data Catalog", desc: "Managed metadata store for AWS data assets" },
+      { name: "Google Dataplex", desc: "GCP intelligent data fabric & governance" },
+      { name: "Collibra", desc: "Enterprise data intelligence & governance platform" },
+      { name: "Alation", desc: "Data catalog with active governance features" },
+    ]
+  },
+  {
+    num: "14", color: "#888780", bg: "#E8E6DF",
+    title: "Data quality frameworks",
+    items: [
+      { name: "Great Expectations", desc: "Python-native data validation & docs" },
+      { name: "dbt tests", desc: "Built-in & custom tests in dbt pipelines" },
+      { name: "Soda Core", desc: "SQL-based data quality checks" },
+      { name: "Apache Griffin", desc: "Big data quality at scale (batch + stream)" },
+      { name: "AWS Deequ", desc: "Spark-based data quality library by Amazon" },
+      { name: "MonteCarlo", desc: "Data observability & anomaly detection" },
+      { name: "Acceldata", desc: "Multi-layer data reliability platform" },
+      { name: "Talend Data Quality", desc: "Profiling, cleansing, deduplication" },
+      { name: "Informatica DQ", desc: "Enterprise-grade data quality suite" },
+      { name: "Data profiling", desc: "Automated stats, nulls, distributions" },
+      { name: "Data validation rules", desc: "Schema, range, referential checks" },
+      { name: "Data SLAs / SLOs", desc: "Freshness, completeness, accuracy targets" },
+      { name: "Anomaly detection", desc: "ML-based drift & outlier alerting" },
+      { name: "Reconciliation patterns", desc: "Source-to-target count/sum checks" },
+    ]
+  },
+  {
+    num: "15", color: "#378ADD", bg: "#D6E9FA",
+    title: "Data frameworks",
+    items: [
+      { name: "Apache Spark", desc: "Distributed in-memory batch & stream processing" },
+      { name: "Apache Flink", desc: "Low-latency stateful stream processing" },
+      { name: "Apache Beam", desc: "Unified batch/stream SDK, multi-runner" },
+      { name: "Apache Kafka", desc: "Distributed event streaming platform" },
+      { name: "Apache Airflow", desc: "Workflow orchestration & DAG scheduling" },
+      { name: "dbt (data build tool)", desc: "SQL-first transformation & testing" },
+      { name: "Apache Hadoop / HDFS", desc: "Distributed storage & MapReduce" },
+      { name: "Apache Hive", desc: "SQL interface over Hadoop / object storage" },
+      { name: "Trino / Presto", desc: "Distributed SQL query engine, federated" },
+      { name: "Apache Arrow", desc: "In-memory columnar format & compute" },
+      { name: "DuckDB", desc: "Embedded OLAP for local analytics" },
+      { name: "Prefect", desc: "Modern Python-first workflow orchestration" },
+      { name: "Dagster", desc: "Asset-centric data orchestration platform" },
+      { name: "DAMA-DMBOK", desc: "Industry framework for data management practice" },
+      { name: "Zachman / TOGAF", desc: "Enterprise architecture frameworks for data" },
+    ]
+  },
+  {
+    num: "16", color: "#D85A30", bg: "#FAE0D6",
+    title: "AI & vector data patterns",
+    items: [
+      { name: "Embedding storage", desc: "Vector DBMS for AI workloads" },
+      { name: "RAG pattern", desc: "Retrieval-augmented generation" },
+      { name: "Feature stores", desc: "ML feature management" },
+      { name: "Semantic search", desc: "Similarity over meaning" },
+      { name: "Knowledge graphs", desc: "RDF + graph for AI context" },
+    ]
+  },
+];
+
+const container = document.getElementById('cats');
+
+cats.forEach(cat => {
+  const div = document.createElement('div');
+  div.className = 'cat';
+  div.innerHTML = `
+    <div class="cat-header" onclick="this.parentElement.classList.toggle('collapsed')">
+      <span class="cat-num" style="background:${cat.bg};color:${cat.color}">${cat.num}</span>
+      <span class="cat-title">${cat.title}</span>
+      <span class="cat-count">${cat.items.length} patterns</span>
+      <span class="chevron">&#9660;</span>
+    </div>
+    <div class="cat-body">
+      ${cat.items.map(it => `
+        <div class="item">
+          <div class="item-name">${it.name}</div>
+          <div class="item-desc">${it.desc}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+  container.appendChild(div);
+});
+</script>
+</body>
+</html>
